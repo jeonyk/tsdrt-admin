@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<!-- container-->
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<!--inner-->
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">주행 내역 추가</h2>
+				</div>
+				<!--content-->
+				<div class="content">
+					<div class="content_h">
+						<div class="box_section">
+							<!-- 지역 분류필 필터 -->
+							<div class="search_filter">
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">시도</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>강원도</option>
+												<option>경기도</option>
+												<option>경상남도</option>
+												<option>경상북도</option>
+												<option selected>전라북도</option>
+												<option>전라남도</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">시군구</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">소속기관</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">센터</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시브라보택시</option>
+											</select>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //지역 분류필터 -->
+
+						</div>
+
+						<h3 class="title_md">
+							<div class="title">기사 정보</div>
+						</h3>
+						<div class="box_section">
+							<div class="detail_top mt0">
+								<div class="left_area">
+									<div class="form_inline">
+										<div class="label_t">기사 이름</div>
+										<input type="text" class="form_ctl f_search" placeholder="기사 이름 검색">
+										<button type="button" class="btn btn_blue"><span>검색</span></button>
+									</div>
+								</div>
+								<div class="right_area">
+									<button type="button" class="btn btn_gray"><span>삭제</span></button>
+								</div>
+							</div>
+							<!-- 검색내역이 없을때(초기화 화면) -->
+							<!-- <p class="blank">기사 이름을 검색하세요.</p> -->
+							<div class="both_col">
+								<div class="left">
+									<div class="table_list align_left">
+										<table>
+											<caption class="sr_only">기사 정보1</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>기사 이름</th>
+													<td>조정수</td>
+												</tr>
+												<tr>
+													<th>기사 연락처</th>
+													<td>010-0000-0000</td>
+												</tr>
+												<tr>
+													<th>기사 구분</th>
+													<td>개인</td>
+												</tr>
+												<tr>
+													<th>운수 회사</th>
+													<td>-</td>
+												</tr>
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="right">
+									<div class="table_list align_left">
+										<table>
+											<caption class="sr_only">기사 정보2</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>차량 유형</th>
+													<td>택시</td>
+												</tr>
+												<tr>
+													<th>차종 </th>
+													<td>중형</td>
+												</tr>
+												<tr>
+													<th>차량번호 </th>
+													<td>전북36바3003</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="title_md">
+							<div class="title">주행 정보</div>
+						</h3>
+						<div class="box_section">
+							<div class="driver_lst">
+								<div class="btn_right">
+									<button type="button" class="btn btn_blue btn_outline btn_add">경유지 추가</button>
+								</div>
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t"><span class="essential" title="필수">탑승지</span></div>
+											<input type="text" class="form_ctl" placeholder="탑승지 입력">
+										</div>
+										<div class="form_inline">
+											<div class="label_t"><span class="essential" title="필수">탑승 일시</span></div>
+											<input type="text" name="datepicker" class="form_ctl datepicker"
+												placeholder="YYYY-MM-DD">
+											<input type="text" class="form_ctl w_small timepicker" name=""
+												placeholder="00:00">
+										</div>
+									</li>
+									<li>
+										<div class="form_inline">
+											<div class="label_t"><span class="essential" title="필수">탑승 인원</span></div>
+											<div class="wrap_count">
+												<button type="button" class="btn_plus"></button>
+												<input type="text" class="form_ctl" value="0">
+												<button type="button" class="btn_minus"></button>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="driver_lst point_pass">
+								<div class="btn_right">
+									<button type="button" class="btn btn_gray btn_outline btn_delete">경유지 삭제</button>
+								</div>
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">경유지1</div>
+											<input type="text" class="form_ctl" placeholder="경유지 입력">
+										</div>
+										<div class="form_inline">
+											<div class="label_t">탑승 일시</div>
+											<input type="text" name="datepicker" class="form_ctl datepicker"
+												placeholder="YYYY-MM-DD">
+											<input type="text" class="form_ctl w_small timepicker" name=""
+												placeholder="00:00">
+										</div>
+										<div class="form_inline">
+											<div class="label_t">하차 일시</div>
+											<input type="text" name="datepicker" class="form_ctl datepicker"
+												placeholder="YYYY-MM-DD">
+											<input type="text" class="form_ctl w_small timepicker" name=""
+												placeholder="00:00">
+										</div>
+									</li>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">탑승 인원</div>
+											<div class="wrap_count">
+												<button type="button" class="btn_plus"></button>
+												<input type="text" class="form_ctl" value="0">
+												<button type="button" class="btn_minus"></button>
+											</div>
+											<div class="label_t">하차 인원</div>
+											<div class="wrap_count">
+												<button type="button" class="btn_plus"></button>
+												<input type="text" class="form_ctl" value="0">
+												<button type="button" class="btn_minus"></button>
+											</div>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">구간 주행거리</div>
+											<div class="distance_input">
+												<input type="text" class="form_ctl" name="">
+												<span class="inner_txt">km</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="driver_lst">
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t"><span class="essential" title="필수">하차지</span></div>
+											<input type="text" class="form_ctl" placeholder="하차지 입력">
+										</div>
+										<div class="form_inline">
+											<div class="label_t"><span class="essential" title="필수">하차 일시</span></div>
+											<input type="text" name="datepicker" class="form_ctl datepicker"
+												placeholder="YYYY-MM-DD">
+											<input type="text" class="form_ctl w_small timepicker" name=""
+												placeholder="00:00">
+										</div>
+									</li>
+									<li>
+										<div class="form_inline">
+											<div class="label_t"><span class="essential" title="필수">하차 인원</span></div>
+											<div class="wrap_count">
+												<button type="button" class="btn_plus"></button>
+												<input type="text" class="form_ctl" value="0">
+												<button type="button" class="btn_minus"></button>
+											</div>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">구간 주행거리</div>
+											<div class="distance_input">
+												<input type="text" class="form_ctl" name="">
+												<span class="inner_txt">km</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="driver_lst">
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">총 주행시간</div>
+											<input type="text" class="form_ctl" placeholder="00시 00분 00초" readonly>
+										</div>
+									</li>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">총 주행거리</div>
+											<div class="distance_input">
+												<input type="text" class="form_ctl" placeholder="0" readonly>
+												<span class="inner_txt">km</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<h3 class="title_md">
+							<div class="title">결제 정보</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray"><span>수정하기</span></button>
+							</div>
+						</h3>
+
+
+						<div class="box_section">
+							<div class="both_col">
+								<div class="left">
+
+									<div class="table_list align_left">
+										<table>
+											<caption class="sr_only">결제정보</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>요금제</th>
+													<td>미터기요금 <a href="javascript:void(0);"
+															class="detail_btn fr">상세보기</a> </td>
+												</tr>
+												<tr>
+													<th class="sub_th">총 요금</th>
+													<td class="sub_td">9,000</td>
+												</tr>
+												<tr>
+													<th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+													<td class="sub_td">1,000</td>
+												</tr>
+												<tr>
+													<th><i class="icon sub_mark"></i>보조금</th>
+													<td>8,000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="table_list align_left">
+										<table>
+											<caption class="sr_only"></caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>결제 상태</th>
+													<td>결제 완료</td>
+												</tr>
+												<tr>
+													<th>실결제 요금</th>
+													<td>1,000</td>
+												</tr>
+												<tr>
+													<th>미수금</th>
+													<td>0</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+						<h3 class="title_md">
+							<div class="title">주행 기록 증빙 사진</div>
+						</h3>
+						<div class="box_section">
+							<div class="photo_wrap">
+								<dl>
+									<dt>사진1</dt>
+									<dd>
+										<div class="photo_area">
+										</div>
+										<button class="btn btn_white"><i class="icon_plus icon"></i>사진추가</button>
+									</dd>
+								</dl>
+								<dl>
+									<dt>사진2</dt>
+									<dd>
+										<div class="photo_area">
+
+										</div>
+										<button class="btn btn_white"><i class="icon_plus icon"></i>사진추가</button>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="btn_area ac mt20 mb20">
+							<button type="button" class="btn btn_gray btn_outline">취소</button>
+							<button type="button" class="btn btn_blue ml10">저장</button>
+						</div>
+					</div>
+					<!--//content_h-->
+				</div>
+				<!--// content-->
+			</div>
+			<!--//inner-->
+		</div>
+		<!-- //container-->
+
+	</div>
+	<!--//wrap-->
+
+	<script>
+		$(function () {
+
+			// 경유지 삭제
+			$(document).on('click', '.btn_delete', function () {
+				console.log($(this))
+				$(this).parent().closest('.driver_lst.point_pass').remove();
+			});
+
+			$(document).on('click', '.wrap_count button', function () {
+				var cls = $(this).attr('class');
+				var val = $(this).siblings('input').val();
+				var result;
+				switch (cls) {
+					case 'btn_plus':
+						val++;
+						break;
+					case 'btn_minus':
+						val > 0 ? val-- : val;
+						break;
+				}
+				$(this).siblings('input').val(val);
+			});
+		})
+	</script>
+
+
+</body>
+
+
+</html>

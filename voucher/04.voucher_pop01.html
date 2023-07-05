@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">타이틀 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="voucher_pop01" style="display: none;">
+		
+	<div class="pop_contents">
+			
+		<div class="box_section">
+			
+			<div class="search_filter">
+				<ul>
+					<li>
+						<div class="form_inline">
+							<select class="form_ctl" id=""> 
+								<option>시도</option>
+								<option>경상남도</option>
+								<option>경상북도</option>
+							</select>
+							<select class="form_ctl" id="">
+								<option>시군구</option>
+								<option>ㅇㅇ군</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t "><span class="essential" title="필수">바우처 고유번호</span></div>
+							<input type="text" class="form_ctl" placeholder=""  maxlength="14">
+							<button type="button" class="btn btn_gray btn_outline w_mid"><span>중복 검사</span></button>
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t "><span class="essential" title="필수">바우처 카드번호</span></div>
+							<input type="text" class="form_ctl" placeholder="" maxlength="13">
+							<button type="button" class="btn btn_gray btn_outline w_mid"><span>중복 검사</span></button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#voucher_pop01').dialog({
+	dialogClass: 'popup',
+	width: 680,
+	height: 480,
+	title: '바우처카드 등록 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+	titleIsHtml: true,
+	buttons: [
+		{
+			text: "취소",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "등록",  
+			class: "btn btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+
+
+});
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

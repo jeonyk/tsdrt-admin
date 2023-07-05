@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">타이틀 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">
+								
+							</div>
+							
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+
+<!-- Table Modal  -->
+<div id="voucher_pop09" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="pt20 pb20">
+			<p class="tit">이미 입력한 2건의 회원 정보가 있습니다.</p>
+			<span class="txt">아래 그룹에 속한 회원의 잔여 개수를 <br/>30개로 일괄 적용하시겠습니까?</span>
+			<span class="txt color_red">중대 그룹, 대대 그룹</span>
+		</div>
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#voucher_pop09').dialog({
+	dialogClass: 'alert_popup',
+	width: '400',
+	buttons: [{
+			text: "취소",
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			},
+		},
+		{
+			text: "예",
+			class: "btn btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			},
+		},
+		]
+});
+
+});
+
+</script> -->
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

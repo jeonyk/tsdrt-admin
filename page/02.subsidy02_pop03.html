@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_result" style="display: none;">
+		
+	<div class="pop_contents">	
+	
+		<div class="table_list align_left">
+			<table>
+				<caption class="sr_only">결제정보 수정</caption>
+				<colgroup>
+					<col width="200px">
+					<col width="*">
+				</colgroup>
+				<tbody>
+				<tr> 
+					<th>결제상태</th>
+					<td>결제완료</td>
+				</tr>
+				<tr>
+					<th class="sub_th">총 요금</th>
+					<td class="sub_td">9,000</td>
+					<!-- 수정 선택 시-->
+					<!-- <td class="sub_td"><input type="text" class="form_ctl" placeholder="" value="9,000"></td> -->
+				</tr>
+				<tr>
+					<th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+					<td class="sub_td">1,000</td>
+					<!-- 수정 선택 시-->
+					<!-- <td class="sub_td"><input type="text" class="form_ctl" placeholder="" value="1,000"></td> -->
+				</tr>
+				<tr>
+					<th><i class="icon sub_mark"></i>보조금</th>
+					<td>8,000</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="table_list align_left">
+			<table>
+				<caption class="sr_only"></caption>
+				<colgroup>
+					<col width="200px">
+					<col width="*">
+				</colgroup>
+				<tbody>
+				<tr>
+					<th>실결제 요금</th>
+					<td>1,000</td>
+					<!-- 수정 선택 시-->
+					<!-- <td><input type="text" class="form_ctl" placeholder="" value="1,000"></td> -->
+				</tr>
+				<tr>
+					<th>미수금</th>
+					<td>0</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="title_sm">
+			<div class="title">
+				수정 사유
+			</div>
+		</div>
+		
+		<select class="form_ctl" id="" disabled>
+			<option>선택</option>
+			<option>선택</option>
+			<option>선택</option>
+		</select>
+ 
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_result').dialog({
+	dialogClass: 'popup',
+	width: 840,
+	height: 650,
+	title: '결제 정보 수정',
+	modal: true,
+	buttons: [
+		{
+			text: "취소",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "수정",  
+			class: "btn btn_blue",
+			disabled: true,
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+
+
+});
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

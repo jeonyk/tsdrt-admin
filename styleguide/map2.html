@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>마크업가이드 - GRID</title>
+<!-- 가이드 css -->
+<link rel="stylesheet" href="../guide_common/css/common.css">
+<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+
+<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+
+<script src="../assets/js/common.js"></script>
+
+<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function(){
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(5).addClass("active");
+	});
+</script>
+</head>
+<body>
+<div id="g-wrap" class="open-aside">
+	<!-- aside -->
+	<div id="g-aside">
+		<!-- # 좌측컨텐츠 # -->
+		<div class="wrap-aside">
+			<!-- 사용자정보영역 -->
+			<div class="box-info">
+			</div>
+			<!-- 네비게이션 : SNB -->
+			<div class="g-nav-snb guide"></div>
+		</div>
+		<!-- # 컨트롤 # -->
+		<div class="g-area-control">
+			<a href="#none">좌측영역 펼침/닫기</a>
+		</div>
+	</div>
+	<!-- //aside -->
+
+	<div class="g-content">
+		<div class="g-box-basic">
+			<h2 class="g-tit-basic">Navigation</h2>
+
+			<!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<!-- view -->
+							<h3 class="g-tit-basic mt50">Tmap</h3>
+							<div id="map_div"></div>
+							<!-- <button onClick="Info()">지도 정보보기</button> -->
+	                        <!-- <div id="result"></div> -->
+
+							<script>
+                                var appKey = "l7xxb3b0b2ba959c4572891ba1bc2343cf6b";
+                                var map;
+                                var vector_layer;
+                                var resultPolygon = [];
+                                function initTmap() {
+                                    // 1. 지도 띄우기
+                                    map = new Tmapv2.Map("map_div", {
+                                        center : new Tmapv2.LatLng(37.56520450, 126.98702028),
+                                        width : "100%",
+                                        height : "400px",
+                                        zoom : 17,
+                                        zoomControl : true,
+                                        scrollwheel : true
+                                    });
+
+                                    // 2. 공간 API 사용요청
+                                    $("#btn_select").click(function() {
+                                        var searchKeyword = $('#searchKeyword').val();
+                                        var searchOption = $("#selectLevel").val();
+
+                                        $.ajax({
+                                            method : "GET",
+                                            url : "https://apis.openapi.sk.com/tmap/geofencing/regions?version=1&format=json&callback=result",
+                                            async : false,
+                                            crossDomain : true,
+                                            data : {
+                                                "count" : "20",
+                                                "categories" : searchOption,//categories,
+                                                "searchType" : "KEYWORD",
+                                                "searchKeyword" : searchKeyword,
+                                                "appKey" : appKey,
+                                            },
+                                            success : function(response) {
+                                                console.log(response);
+                                                if(response){
+                                                    // 3. regionId 얻기
+                                                    var resultRegionsInfo = response.searchRegionsInfo;
+                                                    console.log(resultRegionsInfo);
+        
+                                                    var innerHtml = "";
+        
+                                                    for ( var i in resultRegionsInfo) {
+                                                        var description = resultRegionsInfo[i].regionInfo.description;
+                                                        var regionId = resultRegionsInfo[i].regionInfo.regionId;
+        
+                                                        innerHtml += "<div>"
+                                                                + description
+                                                                + ""
+                                                                + "<button type='button' name='sendBtn' onClick='geofencingRegions("
+                                                                + regionId
+                                                                + ");'>상세보기</button><\div>";
+                                                    }
+        
+                                                    $("#searchResult").html(innerHtml);
+                                                }
+                                                else{
+                                                    alert("잘못된 검색입니다.");
+                                                    $("#searchResult").html("");
+                                                }
+                                            },
+                                            error : function(request, status, error) {
+                                                console.log("code:"
+                                                        + request.status + "\n"
+                                                        + "message:"
+                                                        + request.responseText
+                                                        + "\n" + "error:" + error);
+                                            }
+                                        });
+                                    });
+                                }
+
+                                // 4. 영역API 사용요청
+                                function geofencingRegions(regionId) {
+                                    $.ajax({
+                                        method : "GET",
+                                        url : "https://apis.openapi.sk.com/tmap/geofencing/regions/"
+                                                + regionId
+                                                + "?version=1&format=json&callback=result",
+                                        async : false,
+                                        data : {
+                                            "resCoordType" : "EPSG3857",
+                                            "appKey" : appKey,
+                                        },
+                                        success : function(response) {
+                                            
+                                            var resultGeometry = response.features[0].geometry;
+                                            var resultArea = resultGeometry.coordinates[0];
+
+                                            var resultProperties = response.features[0].properties.regionName;
+                                            console.log(resultProperties);
+
+                                            var drawInfoArr = [];
+                                            var polyline_;
+
+                                            var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
+
+                                            // if (resultPolygon.length > 0) {
+                                            //     for(var i in resultPolygon){
+                                            //         resultPolygon[i].setMap(null);
+                                            //     }
+                                            //     resultPolygon = [];
+                                            // }
+
+                                            if(resultGeometry.type == "MultiPolygon"){
+                                                console.log('MultiPolygon');
+                                                for(var i in resultGeometry.coordinates){
+                                                    drawInfoArr = []; 
+                                                    resultArea = resultGeometry.coordinates[i];
+                                                    var resultArea_array = resultArea[0];
+                                                    for(var j in resultArea_array){
+                                                        
+                                                        // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+                                                        var latlng = new Tmapv2.Point(resultArea_array[j][0], resultArea_array[j][1]);
+                                                        // 포인트 객체를 받아 좌표값으로 변환
+                                                        var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                                                        // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                                                        var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+                                                        
+                                                        drawInfoArr.push(convertChange);
+                                                        positionBounds.extend(convertChange);
+                                                    }
+                                                    var polygon = new Tmapv2.Polygon({
+                                                        paths: drawInfoArr,
+                                                        strokeColor : "red",
+                                                        fillColor:"pink", // 다각형 내부 색상
+                                                        map: map // 지도 객체
+                                                    });
+                                                    resultPolygon.push(polygon);
+                                                }
+                                            }
+                                            
+                                            else{
+                                                console.log('Polygon');
+                                                for(var i in resultArea){
+                                                    // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+                                                    var latlng = new Tmapv2.Point(resultArea[i][0], resultArea[i][1]);
+                                                    // 포인트 객체를 받아 좌표값으로 변환
+                                                    var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                                                    // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                                                    var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+                                                    
+                                                    drawInfoArr.push(convertChange);
+                                                    positionBounds.extend(convertChange);
+                                                }
+                                                var polygon = new Tmapv2.Polygon({
+                                                    paths: drawInfoArr,
+                                                    strokeColor : "red",
+                                                    fillColor:"pink", // 다각형 내부 색상
+                                                    map: map // 지도 객체
+                                                });
+                                                resultPolygon.push(polygon);
+                                            }
+                                            
+                                            map.panToBounds(positionBounds);	// 확장된 bounds의 중심으로 이동시키기
+                                            map.zoomOut();
+
+                                        },
+                                        error : function(request, status, error) {
+                                            console.log("code:" + request.status + "\n"
+                                                    + "message:" + request.responseText + "\n"
+                                                    + "error:" + error);
+                                        }
+                                    });
+
+                                }
+                                
+                                initTmap();
+
+                                geofencingRegions(22710);
+                                geofencingRegions(21466);
+                                geofencingRegions(21471);
+                                geofencingRegions(21495);
+                            </script>
+							<!-- //view -->
+
+                            
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html"></pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css"></pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

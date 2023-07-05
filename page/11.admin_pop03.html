@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_admin03" style="display: none;">
+		
+	<div class="pop_contents">	
+	
+		<div class="info_list">
+			<ul>
+				<li class="w100">
+					<div class="tit">관리자 타입</div>
+					<div class="txt">
+						시군구 관리자
+					</div>
+				</li>
+				<li>
+					<div class="tit">시도</div>
+					<div class="txt">
+						경상남도
+					</div>
+				</li>
+				<li>
+					<div class="tit">소속기관</div>
+					<div class="txt">
+						-
+					</div>
+				</li>
+				<li>
+					<div class="tit">아이디</div>
+					<div class="txt">
+						tester
+					</div>
+				</li>
+				<li>
+					<div class="tit">시군구</div>
+					<div class="txt">
+						김해시
+					</div>
+				</li>
+				<li>
+					<div class="tit">센터</div>
+					<div class="txt">
+						-
+					</div>
+				</li>
+				<li>
+					<div class="tit">관리자이름</div>
+					<div class="txt">
+						조정수
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<h3 class="title_md">
+			<div class="left_area">
+				<button type="button" class="btn btn_gray btn_outline"><span>초기화</span></button>
+			</div>
+		</h3>
+		
+	
+		<div class="mt20">
+			<div id="grid_list_admin03" class="grid_list"></div>
+		</div>
+				  		
+	</div>
+</div>
+
+
+<!-- 성공 시 토스트 팝업 -->
+<div class="toast_popup toastPop_conf">
+	<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>관리자 계정 등록에 성공했습니다</p></div>
+</div>
+
+<!-- 실패 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>관리자 개별 권한 설정에 실패했습니다</p></div>
+</div>	
+
+
+<script>
+$(function(){
+	$('#pop_admin03').dialog({
+		dialogClass: 'popup',
+		width: 840,
+		height: 792,
+		title: '관리자 개별 권한 설정',
+		modal: true,
+		buttons: [
+			{
+				text: "취소",  
+				class: "btn btn_md btn_gray btn_outline ",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "저장",  
+				class: "btn btn_md btn_blue",
+				//onclick: 'toastPop_conf();',
+				onclick: 'toastPop_err();',
+				click: function () {
+					//$(this).dialog("close");
+				}
+			}
+		]
+	});
+	
+});
+
+
+</script>
+
+<script>
+	$(function(){
+	
+		var colModel = [
+			
+			{ title: "", dataIndx: "agency", width: 80, nodrag: true, nodrop: true, cls: "r_line"},
+			{ title: "메뉴", dataIndx: "agency2", width: 120, nodrag: true, nodrop: true, cls: "al" },
+			{
+				dataIndx: "state", maxWidth: 80, minWidth: 80, align: "center", resizable: false,
+				title: "메뉴 권한",
+				menuIcon: false,
+				type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+				dataType: 'bool',
+				cb: {
+					all: false, //checkbox selection in the header affect current page only.
+					header: false, //show checkbox in header. 
+					select: false,
+				},
+				editable: function (ui) {
+					return !ui.rowData.disabled
+				},
+			},
+		]; 
+	
+		var dataModel = {
+			"data": [
+				{ "agency": "모니터링", "agency2": "대시보드" },
+				{ "agency": "모니터링", "agency2": "통계현황" },
+				{ "agency": "예약접수", "agency2": "" },
+				{ "agency": "접수관리", "agency2": "접수내역" },
+				{ "agency": "보조금관리", "agency2": "보조금 지급 승인 내역" },
+				{ "agency": "회원관리", "agency2": "회원목록" },
+				{ "agency": "바우처 관리", "agency2": "바우처 목록" },
+				{ "agency": "차량 관리", "agency2": "차량 목록" },
+				{ "agency": "기사 관리", "agency2": "기사 목록" },
+				{ "agency": "소속기관/센터 관리", "agency2": "소속기관 목록" },
+				
+			]
+		};
+	
+		var options = {
+			scrollModel: { autoFit: true },
+			width: '560',
+			minWidth: 560,
+			height: '340',
+			minHeight: 340,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+	
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+	
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+	
+			columnTemplate: {
+				align: 'left', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+	
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+	
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+	
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+			
+			
+			selectionModel: { column: true },
+		 
+		    //셀 병합
+			mergeCells: [
+			//r1 is shorthand for rowIndx, c1 for colIndx, rc for rowCount or rowspan, cc for columnCount or colspan.
+				{ r1: 0, c1: 0, rc: 2, cc: 1, },
+				{ r1: 0, c1: 2, rc: 2, cc: 1, },
+				//{ r1: 4, c1: 0, rc: 2, cc: 1, },
+			],
+			
+			
+		};
+	
+	
+		var grid = pq.grid("#grid_list_admin03", options);
+	});
+	
+	</script>
+
+
+
+</body>
+
+
+
+</html>

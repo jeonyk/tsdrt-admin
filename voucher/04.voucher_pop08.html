@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_voucher08" style="display: none;">
+		
+	<div class="pop_contents">	
+	
+		<div class="title_md">
+			<div class="title"><span class="fwn color_gray">변경 완료</span> 4건</div>
+		</div>
+		<div>
+		<div id="grid_voucher3" class="grid_list"></div>
+		  		
+	</div>
+</div>
+
+
+<script>
+$(function(){
+	$('#pop_voucher08').dialog({
+		dialogClass: 'popup',
+		width: 1120,
+		height: 700,
+		title: '변경 결과',
+		modal: true,
+		buttons: [
+			{
+				text: "확인",  
+				class: "btn btn_md btn_blue",
+				click: function () {
+					$(this).dialog("close");
+				}
+			}
+		]
+	});
+	
+});
+
+
+</script>
+
+
+</body>
+
+<script>
+	$(function () {
+		var dataModel = {
+			"data": [
+			{"no":10,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","voucher_use_type":"-","member_name":"-","voucher_countnum":"-",  pq_rowcls:'disabled_col'},
+			{"no":9,"voucher_sido":"부산광역시","voucher_sigungu":"사상구","voucher_number":"3646000001699","member_agency":"사상구","member_center":"사상행복택시","member_group":"사상그룹","voucher_use_type":"그룹","member_name":"조수정","voucher_countnum":"30"},
+			{"no":8,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"그룹","member_name":"조정수","voucher_countnum":"30"},
+			{"no":7,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"개인","member_name":"송진혁","voucher_countnum":"30"},
+			{"no":6,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"그룹","member_name":"조정수","voucher_countnum":"30"},
+			{"no":5,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"개인","member_name":"조정수","voucher_countnum":"30"},
+			{"no":4,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"그룹","member_name":"조정수","voucher_countnum":"30"},
+			{"no":3,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"그룹","member_name":"조정수","voucher_countnum":"30"},
+			{"no":2,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"그룹","member_name":"조정수","voucher_countnum":"30"},
+			{"no":1,"voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"울주군","member_center":"울주군행복택시","member_group":"대대그룹","voucher_use_type":"그룹","member_name":"조정수","voucher_countnum":"30"},
+			]
+		};
+
+		var colModel = [
+			// { dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+			// 	title: "",
+			// 	menuIcon: false,
+			// 	type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+			// 	dataType: 'bool',
+			// 	cb: {
+			// 		all: false, //checkbox selection in the header affect current page only.
+			// 		header: true, //show checkbox in header. 
+			// 		select: true 
+			// 	}
+			// }, 
+			{ title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true},
+			{
+				title: "바우처카드 정보", dataIndx: "vc-info", nodrag: true, nodrop: true, align: "center", cls: "bb_line", 
+				colModel: [
+					{ title: "시도", dataIndx: "voucher_sido", width: 110, nodrag: true, nodrop: true},
+					{ title: "시군구", dataIndx: "voucher_sigungu", width: 90, nodrag: true, nodrop: true},
+					{ title: "바우처카드번호", dataIndx: "voucher_number", width: 120, nodrag: true, nodrop: true},
+				]
+			},
+			{
+				title: "회원 정보", dataIndx: "member", nodrag: true, nodrop: true, align: "center", cls: "bb_line",
+				colModel: [
+					{ title: "소속기관", dataIndx: "member_agency", width: 120, nodrag: true, nodrop: true},
+					{ title: "센터", dataIndx: "member_center", width: 120, nodrag: true, nodrop: true},
+					{ title: "그룹", dataIndx: "member_group", width: 100, nodrag: true, nodrop: true},
+					{ title: "바우처 이용 유형", dataIndx: "voucher_use_type", width: 100, nodrag: true, nodrop: true},
+					{ title: "바우처 충전 개수", dataIndx: "voucher_countnum", width: 100, nodrag: true, nodrop: true},
+					{ title: "회원 이름", dataIndx: "member_name", width: 100, nodrag: true, nodrop: true},
+				]
+			},
+		];
+		var options = {
+			scrollModel: { autoFit: false },
+			width: '1030',
+			minWidth: 1030,
+			minHeight: 360,
+			rowHt: 50,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			// postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+
+			rowSelect: function (evt, ui) {
+				console.log('rowSelect', ui);
+			},
+			selectChange: function (evt, ui) {
+				console.log('selectChange', evt, ui);
+
+			},
+		};
+		var grid = pq.grid("#grid_voucher3", options);
+		
+		
+		
+	});
+</script>
+	
+
+</html>

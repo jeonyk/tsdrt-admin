@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	
+<div id="wrap">
+	@@include('../_include/header.html')	
+	
+	<!-- container-->
+	<div id="container">
+		@@include('../_include/lnb.html')
+		<!--inner-->
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보</h2>
+				<div class="btn_area">
+					<button type="button" class="btn btn_gray">승인 상태 변경</span></button> 
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<div class="info_list">
+							<ul>
+								<li>
+									<div class="tit">접수 정보</div>
+									<div class="txt">
+										<button type="button" class="btn btn_gray btn_outline"><span>접수 상세 확인하기</span></button>
+									</div>
+								</li>
+								<li>
+									<div class="tit">주행 상태</div>
+									<div class="txt">
+										<div class="state_navy state">주행 완료</div>
+									</div>
+								</li>
+								<li>
+									<div class="tit">검증 여부</div>
+									<div class="txt">
+										정상
+									</div>
+								</li>
+								<li>
+									<div class="tit">접수 일시</div>
+									<div class="txt">
+										2022-10-02 13:34:43
+									</div>
+								</li>
+								<li>
+									<div class="tit">접수 정보</div>
+									<div class="txt">
+										승인 대기
+									</div>
+								</li>
+								
+							</ul>
+							
+						</div>
+						
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">탑승자 정보 총 3명</div>
+					</h3>
+					
+					<div class="box_section">
+						<div class="title_sm">
+							<div class="title color_blue">
+								총 3명
+							</div>
+						</div>
+
+						<div id="grid_list" class="grid_list"></div>
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">기사 정보</div>
+					</h3>
+					
+					<div class="box_section">
+						<div class="both_col">
+							<div class="left">
+								<div class="table_list align_left">
+									<!--검색된 결과가 없을 시-->
+									<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+									<table>
+										<caption class="sr_only">기사 정보1</caption>
+										<colgroup>
+											<col width="20%">
+											<col width="*">
+										</colgroup>
+										<tbody>
+										<tr>
+											<th>기사 이름</th>
+											<td>조정수</td>
+										</tr>
+										<tr>
+											<th>기사 연락처</th>
+											<td>010-0000-0000</td>
+										</tr>
+										<tr>
+											<th>기사 구분</th>
+											<td>개인</td>
+										</tr>
+										<tr>
+											<th>운수 회사</th>
+											<td>-</td>
+										</tr>
+										
+										</tbody>
+									</table>
+								</div>
+							</div>
+							
+							<div class="right">
+								<div class="table_list align_left">
+									<!--검색된 결과가 없을 시-->
+									<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+									<table>
+										<caption class="sr_only">기사 정보2</caption>
+										<colgroup>
+											<col width="20%">
+											<col width="*">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>차량 유형</th>
+												<td>택시</td>
+											</tr>
+											<tr>
+												<th>차종 </th>
+												<td>중형</td>
+											</tr>
+											<tr>
+												<th>차량번호 </th>
+												<td>전북36바3003</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">주행 정보</div>
+					</h3>
+					
+					<div class="box_section">
+						<div class="title_sm">
+							<div class="title">
+								총 주행시간 <span id="totalTime">2시간 58분 15초</span>
+							</div>
+						</div>
+						<div id="grid_driving"></div>
+						
+						<div class="title_sm">
+							<div class="title">
+								총 주행 거리 <span id="totalDistance">5.795km</span>
+							</div>
+						</div>
+						<div class="both_col map_col">
+							<div class="left">
+								<div id="map_div" class="map_area"></div>
+							</div>
+							
+							<div class="right">
+								<div id="grid_list2" class="grid_list"></div>
+							</div>
+						</div>
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">결제 정보</div>
+						<div class="right_area">
+							<button type="button" class="btn btn_gray"><span>수정하기</span></button>
+						</div>
+					</h3>
+					
+					
+					<div class="box_section">
+						<div class="both_col">
+							<div class="left">
+							
+								<div class="table_list align_left">
+									<!--검색된 결과가 없을 시-->
+									<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+									<table>
+										<caption class="sr_only">결제정보</caption>
+										<colgroup>
+											<col width="20%">
+											<col width="*">
+										</colgroup>
+										<tbody>
+										<tr> 
+											<th>요금제</th>
+											<td>미터기요금 <a href="javascript:void(0);" class="detail_btn fr">상세보기</a> </td>
+										</tr>
+										<tr>
+											<th class="sub_th">총 요금</th>
+											<td class="sub_td">9,000</td>
+										</tr>
+										<tr>
+											<th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+											<td class="sub_td">1,000</td>
+										</tr>
+										<tr>
+											<th><i class="icon sub_mark"></i>보조금</th>
+											<td>8,000</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+								
+								<div class="table_list align_left">
+									<!--검색된 결과가 없을 시-->
+									<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+									<table>
+										<caption class="sr_only"></caption>
+										<colgroup>
+											<col width="20%">
+											<col width="*">
+										</colgroup>
+										<tbody>
+										<tr>
+											<th>결제 상태</th>
+											<td>결제 완료</td>
+										</tr>
+										<tr>
+											<th>실결제 요금</th>
+											<td>1,000</td>
+										</tr>
+										<tr>
+											<th>미수금</th>
+											<td>0</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+								
+							</div>
+							
+							<!-- <div class="right">
+								<div class="table_list align_left">
+									<table>
+										<caption class="sr_only"></caption>
+										<colgroup>
+											<col width="20%">
+											<col width="*">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>TIMS요금</th>
+												<td>-</td>
+											</tr>
+											<tr>
+												<th>TIMS거리 </th>
+												<td>-</td>
+											</tr>
+											<tr>
+												<th>예상요금차이비교 </th>
+												<td>0% </td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div> -->
+						</div>
+					
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">주행 기록 증빙 사진</div>
+					</h3>
+					
+					<div class="box_section">
+						<div class="photo_wrap">
+							<dl>
+								<dt>사진1</dt>
+								<dd>
+									<div class="photo_area">
+										<img src="../assets/img/img01.png" alt="">
+									</div>
+									<button class="btn btn_white">사진변경</button>
+								</dd>
+							</dl>
+							<dl>
+								<dt>사진2</dt>
+								<dd>
+									<div class="photo_area">
+										
+									</div>
+									<button class="btn btn_white"><i class="icon_plus icon"></i>사진추가</button>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">히스토리</div>
+					</h3>
+					
+					<div class="box_section">
+						<div class="title_sm">
+							<div class="title">
+								주행 상태 변경 내역
+							</div>
+						</div>
+
+						<div id="grid_list3" class="grid_list"></div>
+						
+						<div class="title_sm">
+							<div class="title">
+								결제 정보 변경 내역 
+							</div>
+						</div>
+
+						<div id="grid_list4" class="grid_list"></div>
+						
+						<div class="title_sm">
+							<div class="title">
+								승인 상태 변경 내역
+							</div>
+						</div>
+					
+						<div id="grid_list5" class="grid_list"></div>				
+					</div>
+					
+					
+				</div><!--//content_h-->
+			
+				
+			</div> 
+			<!--// content-->
+			
+		</div>
+		<!--//inner-->
+	</div>
+	<!-- //container-->
+	
+</div>
+<!--//wrap-->
+
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script>
+	$(function(){
+		// 탐승자 정보 그리드
+		var colModel = [
+			/* { dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+				title: "",
+				menuIcon: false,
+				type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+				dataType: 'bool',
+				cb: {
+					all: false, //checkbox selection in the header affect current page only.
+					header: true, //show checkbox in header. 
+					select: true 
+				}
+			}, */
+			{ title: "No", dataIndx: "no", width: 86, nodrag: true, nodrop: true,},
+			{ title: "센터", dataIndx: "center", width: 238, nodrag: true, nodrop: true,},
+			{ title: "그룹", dataIndx: "group", width: 237, nodrag: true, nodrop: true,},
+			{ title: "이름", dataIndx: "name", width: 238, nodrag: true, nodrop: true,},
+			{ title: "출생연도", dataIndx: "birth-year", width: 238, nodrag: true, nodrop: true,},
+			{ title: "바우처 잔여 개수", dataIndx: "voucher-number", width: 237, nodrag: true, nodrop: true,},
+			{ title: "바우처 유형", dataIndx: "voucher-type", width: 238, nodrag: true, nodrop: true,},
+		];
+		var dataModel = {
+			"data": [
+				{ "no": 1, "center": "설천면택시", "group": "아우토크립트", "name": "송진혁", "birth-year": "1949", "voucher-number": "49/50", "voucher-type": "개인" },
+				{ "no": 1, "center": "설천면택시", "group": "아우토크립트", "name": "송진혁", "birth-year": "1949", "voucher-number": "49/50", "voucher-type": "개인" },
+				{ "no": 1, "center": "설천면택시", "group": "아우토크립트", "name": "송진혁", "birth-year": "1949", "voucher-number": "49/50", "voucher-type": "개인" },
+				{ "no": 1, "center": "설천면택시", "group": "아우토크립트", "name": "송진혁", "birth-year": "1949", "voucher-number": "49/50", "voucher-type": "개인" },
+				{ "no": 1, "center": "설천면택시", "group": "아우토크립트", "name": "송진혁", "birth-year": "1949", "voucher-number": "49/50", "voucher-type": "개인" },
+				{ "no": 1, "center": "설천면택시", "group": "아우토크립트", "name": "송진혁", "birth-year": "1949", "voucher-number": "49/50", "voucher-type": "개인" },
+			]
+		};
+		var options = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			height: 182,
+			//minWidth: 980,
+			// minHeight: 200,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		var grid = pq.grid("#grid_list", options);
+
+		// 주행 정보 그리드
+		var colModel2 = [
+			{ title: "위치번호", dataIndx: "no", width: 100, nodrag: true, nodrop: true, },
+			{ title: "시간", dataIndx: "time", width: 120, nodrag: true, nodrop: true, },
+			{ title: "위치", dataIndx: "location", width: 487, nodrag: true, nodrop: true, },
+		];
+		var dataModel2 = {
+			"data": [
+				{"no":1, "time":"18:00:00", "location":"전북 무주군 무주읍 한풍루로 351 무주공용버스터미널", "lat":36.028032030280826, "lon":127.70028359821887, "case":"start"},
+				{"no":2, "time":"18:00:00", "location":"전북 무주군 무주읍 한풍루로 351 무주공용버스터미널", "lat":36.00470830000012, "lon":127.66404465769727,  "case":"pass"},
+				{"no":3, "time":"18:00:00", "location":"전북 무주군 무주읍 한풍루로 351 무주공용버스터미널", "lat":35.97918884549752, "lon":127.65010275307006, "case":"pass"},
+				{"no":4, "time":"18:00:00", "location":"전북 무주군 무주읍 한풍루로 351 무주공용버스터미널", "lat":35.99540252379289, "lon":127.57340466568048, "case":"end"},
+			]
+		};
+		var options2 = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			height: 'flex',
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel2,
+			colModel: colModel2,
+			selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+
+			rowClick: function( event, ui ) {
+				// console.log(ui);
+				var lat = ui.rowData.lat;
+				var lon = ui.rowData.lon;
+				var center = new naver.maps.LatLng(lat, lon);
+				map.setCenter(center);
+				map.setZoom(16, true);
+			}
+		};
+
+		var grid_list2 = pq.grid("#grid_list2", options2);
+
+		// 지도 영역
+		var map, mapOptions;
+		var markerList = [];
+		var arr_passList = [];  // 경유지
+		var arr_blankList = [];  // 승하차 지점 
+		
+		function addMarker(status, lon, lat, tag) {
+			//출도착경유구분
+			//이미지 파일 변경.    
+			var markerLayer;
+			var cls = '';
+			var txt = '';
+			var rotate = 0;
+			var driver = '';
+			var car_num = '';
+			var zindex = 0;
+			
+			switch (status) {
+				case "pinBlank":
+					txt = tag;
+					cls = "pin_blank";
+					zindex = 1;
+					break;
+
+				case "pinStart":
+					txt = '';
+					cls = "pin_start";
+					zindex = 3;
+					break;
+				case "pinPass":
+					txt = '위치' + tag;
+					cls = "pin_pass";
+					zindex = 3;
+					break;
+				case "pinEnd":
+					txt = '';
+					cls = "pin_end";
+					zindex = 3;
+					break
+			};
+			
+			var marker = new naver.maps.Marker({
+				position: new naver.maps.LatLng(lat,lon),
+				map: map,
+				icon: {
+					content: [
+						'<div class="pin ' + cls + '" style="transform:rotate(' + rotate + 'deg)">',
+							'<div class="pin_name">',
+								txt,
+							'</div>',
+						'</div>',
+						'<div class="label_car">',
+							'<span class="driver">' + driver + '</span>',
+							'<span class="car_num">' + car_num + '</span>',
+						'</div>',
+					].join(''),
+					size: new naver.maps.Size(44, 36),
+					anchor: new naver.maps.Point(22, 36),
+				},
+				draggable: false,
+				zIndex: zindex
+			});
+
+			markerList.push(marker);
+
+			marker.tag = tag;
+			marker.car_num = car_num;
+
+			markerList[tag] = marker;
+			return marker;
+		}
+
+		function createMarker(mapDataItems) {
+			arr_passList = [];
+			arr_blankList = [];
+
+			for(var i = 0; i < mapDataItems.length; i ++){
+				if(mapDataItems[i].case === 'start') {
+					addMarker('pinStart', mapDataItems[0].lon, mapDataItems[0].lat, 0);
+				} 
+				else if(mapDataItems[i].case === 'end') {
+					addMarker('pinEnd', mapDataItems[mapDataItems.length - 1].lon, mapDataItems[mapDataItems.length - 1].lat, i);
+				}
+				else if(mapDataItems[i].case === 'pass') {
+					arr_passList.push(mapDataItems[i].lon + ',' + mapDataItems[i].lat);
+					
+				} else {
+					arr_blankList.push(mapDataItems[i].lon + ',' + mapDataItems[i].lat);
+				}
+			}
+
+			// 경유지 마커
+			for(var i = 0; i < arr_passList.length; i ++){
+				addMarker('pinPass', arr_passList[i].split(',')[0], arr_passList[i].split(',')[1], i + 1);
+			}
+
+			// 승하차 지점 마커
+			for(var i = 0; i < arr_blankList.length; i ++){
+				addMarker('pinBlank', arr_blankList[i].split(',')[0], arr_blankList[i].split(',')[1], i + 1);
+			}
+		}
+
+		function drawData(data){
+			// 지도위에 선은 다 지우기
+			var resultStr = "";
+			var distance = 0;
+			var idx = 1;
+			var newData = [];
+			var equalData = [];
+			var pointId1 = "-1234567";
+			var ar_line = [];
+			
+			for (var i = 0; i < data.features.length; i++) {
+				var feature = data.features[i];
+				
+				//배열에 경로 좌표 저장
+				if(feature.geometry.type == "LineString"){
+					ar_line = [];
+					for (var j = 0; j < feature.geometry.coordinates.length; j++) {
+						var startPt = new naver.maps.LatLng(feature.geometry.coordinates[j][1],feature.geometry.coordinates[j][0]);
+						ar_line.push(startPt);
+					}
+
+					var polyline = new naver.maps.Polyline({
+						path: ar_line,
+						strokeColor: '#14429c',
+						strokeOpacity: 0.8,
+						strokeWeight: 4,
+						zIndex: 2,
+						clickable: true,
+						map: map
+					});
+				}
+				var pointId2 = feature.properties.viaPointId;
+				if (pointId1 != pointId2) {
+					equalData = [];
+					equalData.push(feature);
+					newData.push(equalData);
+					pointId1 = pointId2;
+				}
+				else {
+					equalData.push(feature);
+				}
+			}
+			geoData = newData;
+		}
+
+		function time(seconds) {
+			//3항 연산자를 이용하여 10보다 작을 경우 0을 붙이도록 처리 하였다.
+			var hour = parseInt(seconds/3600) < 10 ? '0'+ parseInt(seconds/3600) : parseInt(seconds/3600);
+			var min = parseInt((seconds%3600)/60) < 10 ? '0'+ parseInt((seconds%3600)/60) : parseInt((seconds%3600)/60);
+			var sec = seconds % 60 < 10 ? '0'+seconds % 60 : seconds % 60;
+
+			//연산한 값을 화면에 뿌려주는 코드
+			// document.getElementById("time").innerHTML = hour+":"+min+":" + sec;
+			return hour+"시간 "+min+"분 " + sec + "초";
+		}
+
+		function Info(data) {
+			// taxiFare // 택시 예상 요금 정보(단위:원)
+			// totalDistance // 경로 총 길이(단위: m)
+			// totalFare // 경로 총 요금 정보(단위:원)
+			// totalTime  // 경로 총 소요 시간(단위: 초)
+			// turnType // 회전 정보
+			
+			var center = map.getCenter();//map의 중심 좌표 값
+			var level = map.getZoom();//map의 ZoomLevel 값
+			var extent = map.getBounds();//map의 영역의 값
+			var km = data.totalDistance/1000;
+			var totalDistance = km.toFixed(2) + 'km';
+			var totalTime = time(data.totalTime);
+			var taxiFare = data.taxiFare.toLocaleString('ko-KR');
+			
+			$("#totalDistance").html(totalDistance);
+			$("#totalTime").html(totalTime);
+		}
+
+		function createRoute(mapDataItems) {
+			var appKey = "l7xxb3b0b2ba959c4572891ba1bc2343cf6b";
+			var passList = arr_passList.join('_');
+			var prtcl;
+			var headers = {};
+			headers["appKey"]=appKey;
+
+			var arr_start = mapDataItems.filter((item) => {
+				return item.case === 'start';
+			});
+			var arr_end = mapDataItems.filter((item) => {
+				return item.case === 'end';
+			});
+			
+			$.ajax({
+				method:"POST", 
+				headers : headers, 
+				url:"https://apis.openapi.sk.com/tmap/routes?version=1&format=json",
+				async:false,
+				data:{ 
+					startX : arr_start[0].lon,
+					startY : arr_start[0].lat,
+					endX : arr_end[0].lon,
+					endY : arr_end[0].lat,
+					passList : passList,
+					reqCoordType : "WGS84GEO",
+					resCoordType : "WGS84GEO",
+					angle : "172",
+					searchOption : "0",
+					trafficInfo : "Y"
+				},
+				success:function(response){
+					prtcl = response;
+
+					// 정보 표시
+					Info(response.features[0].properties);
+				
+					//경로탐색 결과 Line 그리기
+					drawData(prtcl);
+				
+					// 경로탐색 결과 반경만큼 지도 레벨 조정
+					var newData = geoData[0];
+					PTbounds = new naver.maps.LatLngBounds();
+					for (var i = 0; i < newData.length; i++) {
+						var mData = newData[i];
+						var type = mData.geometry.type;
+						var pointType = mData.properties.pointType;
+						if(type == "Point"){
+							var linePt = new naver.maps.LatLng(mData.geometry.coordinates[1],mData.geometry.coordinates[0]);
+							PTbounds.extend(linePt);
+						}
+						else{
+							var startPt,endPt;
+							for (var j = 0; j < mData.geometry.coordinates.length; j++) {
+								var linePt = new naver.maps.LatLng(mData.geometry.coordinates[j][1],mData.geometry.coordinates[j][0]);
+								PTbounds.extend(linePt);
+							}
+						}
+					}
+					map.fitBounds(PTbounds);
+				},
+				error:function(request,status,error){
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+			});
+
+		}
+		
+		function createMap(mapDataItems, carGpsDataItems){
+			if(map !== undefined) {
+				map.destroy();
+			}
+			
+			mapOptions = {
+				zoom: 12,
+				minZoom: 9,
+				maxZoom: 13
+			};
+
+			map = new naver.maps.Map('map_div', mapOptions);
+
+			naver.maps.Event.addListener(map, 'click', function(e) {
+				$('.pin_pass').removeClass('on');
+				$('.pin_blank').removeClass('on');
+			});
+
+			createMarker(mapDataItems); // 마커 생성
+			createRoute(mapDataItems);  // 경로탐색 API 사용요청
+		}
+
+		createMap(dataModel2.data);
+
+		
+		
+
+		// 주행 상태 변경 내역 그리드
+		var colModel3 = [
+			{ title: "No", dataIndx: "no", width: 100, nodrag: true, nodrop: true, },
+			{ title: "주행 상태 변경 결과", dataIndx: "driving-results", width: 355, nodrag: true, nodrop: true, },
+			{ title: "주행 세부 상태", dataIndx: "driving-details", width: 355, nodrag: true, nodrop: true, },
+			{ title: "상태 업데이트 일시", dataIndx: "update", width: 355, nodrag: true, nodrop: true, },
+			{ title: "담당자", dataIndx: "person", width: 355, nodrag: true, nodrop: true, },
+		];
+		var dataModel3 = {
+			"data": [
+				{ "no": 1, "driving-results": "배차 완료", "driving-details": "탑승지로 이동", "update": "2022-10-14 01:48","person":"기사(조정수)"},
+				{ "no": 2, "driving-results": "주행 중", "driving-details": "탑승지로 이동", "update": "2022-10-14 01:48","person":"기사(조정수)"},
+				{ "no": 3, "driving-results": "주행 완료", "driving-details": "탑승지로 이동", "update": "2022-10-14 01:48","person":"기사(조정수)"},
+				{ "no": 4, "driving-results": "주행 중", "driving-details": "탑승지로 이동", "update": "2022-10-14 01:48","person":"기사(조정수)"},
+			]
+		};
+		var options3 = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			height: 'flex',
+			// minWidth: 980,
+			// minHeight: 200,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel3,
+			colModel: colModel3,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		var grid = pq.grid("#grid_list3", options3);
+
+		
+
+		// 결제 정보 변경 내역 그리드
+		var colModel4 = [
+			{ title: "No", dataIndx: "no", width: 100, nodrag: true, nodrop: true, },
+			{ title: "종류", dataIndx: "type", width: 237, nodrag: true, nodrop: true, },
+			{ title: "총 요금", dataIndx: "total-charge", width: 237, nodrag: true, nodrop: true, },
+			{ title: "승객 지불 요금", dataIndx: "passenger-paid-fare", width: 237, nodrag: true, nodrop: true, },
+			{ title: "실결제 요금", dataIndx: "actual-fare", width: 237, nodrag: true, nodrop: true, },
+			{ title: "상태 업데이트 일시", dataIndx: "update", width: 237, nodrag: true, nodrop: true, },
+			{ title: "담당자", dataIndx: "person", width: 237, nodrag: true, nodrop: true, },
+		];
+		var dataModel4 = {
+			"data": [
+				{ "no": 1, "type": "입력 완료", "total-charge": "0","passenger-paid-fare":"1,500", "actual-fare":"1,500","update": "2022-10-14 01:48", "person": "기사(조정수)" },
+				{ "no": 2, "type": "요금 수정", "total-charge": "9,000","passenger-paid-fare":"1,500", "actual-fare":"1,500","update": "2022-10-14 01:48", "person": "기사(조정수)" },
+			]
+		};
+		var options4 = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			height: 'flex',
+			// minWidth: 980,
+			// minHeight: 200,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel4,
+			colModel: colModel4,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+		var grid = pq.grid("#grid_list4", options4);
+
+		// 승인 상태 내역 변경 그리드
+		var colModel5 = [
+			{ title: "No", dataIndx: "no", width: 100, nodrag: true, nodrop: true, },
+			{ title: "승인 상태", dataIndx: "approval-status", width: 355, nodrag: true, nodrop: true, },
+			{ title: "상태 업데이트 일시", dataIndx: "update", width: 355, nodrag: true, nodrop: true, },
+			{ title: "담당자", dataIndx: "person", width: 355, nodrag: true, nodrop: true, },
+			{ title: "비고", dataIndx: "etc", width: 355, nodrag: true, nodrop: true, 
+				render: function (ui) { // checkbox custom
+					var rowData = ui.rowData, dataIndx = ui.dataIndx;
+					var val = rowData[dataIndx];
+					console.log(ui.rowIndx);
+					if (val === '반려') {
+						return "<span class='msg'><strong>주행 증빙 누락</strong>주행 기록 증빙 사진이 없습니다.</span>";
+					} else{
+						return "<span>-</span>"
+					}
+				},
+			},
+		];
+		var dataModel5 = {
+			"data": [
+				{ "no": 1, "approval-status": "승인 대기", "update": "2022-10-16 07:48", "person": "기사(조정수)", "etc":"" },
+				{ "no": 2, "approval-status": "반려", "update": "2022-10-16 07:48", "person": "기사(조정수)", "etc":"반려" },
+				{ "no": 3, "approval-status": "승인 대기", "update": "2022-10-16 07:48", "person": "기사(조정수)", "etc":"" },
+				{ "no": 4, "approval-status": "승인 대기", "update": "2022-10-16 07:48", "person": "기사(조정수)", "etc":"" },
+			]
+		};
+		var options5 = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			height: 'flex',
+			// minWidth: 980,
+			// minHeight: 200,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel5,
+			colModel: colModel5,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+		var grid = pq.grid("#grid_list5", options5);
+
+		var dataModel6 = {
+			"data": [
+				{"receipt-location": [{"case":"start", "spot": "탑승지", "detail":"전북 무주군 무주읍 항품루로 351 무주공용버스터미널 무주공용버스터미널"}, ], "receipt-location-matching":"신나면사무소", "boarding": "2", "boarding-number": "2", "boarding-info": "이재성, 송진혁", "boarding-time": "2022-10-02 14:01:20", "off-number": "0", "off-info":"이재성, 송진혁", "off-time":"2022-10-02 14:47:36", "section-distance":"21.482"},
+				{"receipt-location": [{"case":"pass", "spot": "경유지", "detail":"전북 무주군 부남면 대타길 58"},], "receipt-location-matching":"신나면사무소", "boarding": "2", "boarding-number": "2", "boarding-info": "이재성, 송진혁", "boarding-time": "2022-10-02 14:01:20", "off-number": "0", "off-info":"이재성, 송진혁", "off-time":"2022-10-02 14:47:36", "section-distance":"21.482"},
+				{"receipt-location": [{"case":"end", "spot": "하차지", "detail":"전북 무주군 하장백길 71"}], "receipt-location-matching":"신나면사무소", "boarding": "2", "boarding-number": "2", "boarding-info": "이재성, 송진혁", "boarding-time": "2022-10-02 14:01:20", "off-number": "0", "off-info":"이재성, 송진혁", "off-time":"2022-10-02 14:47:36", "section-distance":"21.482"},
+			]
+		};
+
+		var colModel6 = [
+			{ title: "탑승지/하차지", dataIndx: "receipt-location", width: 370, nodrag: true, nodrop: true, align:'left',
+				render: function (ui) { // checkbox custom
+					var items = ui.cellData;
+					console.log(items)
+					var div = `<div class='driving_lst'>`;
+					var div_end = `</div>`;
+					var p = '';
+					var cls = '';
+
+					for (var i = 0; i < items.length; i++) {
+						if (items[i].case === 'start') {
+							cls = 'icon_location1';
+						} else if(items[i].case === 'pass'){
+							cls = 'icon_location2';
+						} else{
+							cls = 'icon_location3';
+						}
+						p += `<p><i class='icon ${cls}'></i>${items[i].spot}</p><span>${items[i].detail}</span>`
+					}
+					result = div + p + div_end;
+					return result;
+				}
+			},
+			{ title: "탑승지/하차지 <br> (승하차지점 매칭)", dataIndx: "receipt-location-matching", width:260, nodrag: true, nodrop: true,},
+			{
+				title: "<span class='header_title'>탑승 정보<span>", dataIndx: "boarding", nodrag: true, nodrop: true, align: "center",
+				colModel: [
+					{ title: "탑승자수", dataIndx: "boarding-number", width: 100, nodrag: true, nodrop: true, cls: "hd_line br0", },
+					{ title: "탑승자 정보", dataIndx: "boarding-info", width: 100, nodrag: true, nodrop: true, cls: "hd_line", },
+					{ title: "탑승 일시", dataIndx: "boarding-time", width: 100, nodrag: true, nodrop: true, cls: "hd_line", },
+				]
+			},
+
+			{
+				title: "<span class='header_title'>하차 정보<span>", dataIndx: "off", nodrag: true, nodrop: true, align: "center",
+				colModel: [
+					{ title: "하차자수", dataIndx: "off-number", width: 100, nodrag: true, nodrop: true, sortable: false, cls: "hd_line br0", },
+					{ title: "하차자 정보", dataIndx: "off-info", width: 100, nodrag: true, nodrop: true, sortable: false, cls: "hd_line", },
+					{ title: "하차 일시", dataIndx: "off-time", width: 100, nodrag: true, nodrop: true, sortable: false, cls: "hd_line", },
+				]
+			},
+			{
+				title: "<span class='header_title'>총 주행거리(km)<span>", dataIndx: "total-distance", nodrag: true, nodrop: true, align: "center",
+				colModel: [
+					{ title: "구간 주행 거리", dataIndx: "section-distance", width: 200, nodrag: true, nodrop: true, sortable: false, cls: "hd_line br0", },
+				]
+			},
+
+		];
+		var options6 = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			height: 'flex',
+			minHeight: 200,
+			rowHt: 50,
+			rowHtHead: 36,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel6,
+			colModel: colModel6,
+			selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+		var grid = pq.grid("#grid_driving", options6);
+	});
+</script>
+
+	
+</body>
+
+
+</html>
+

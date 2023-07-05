@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">타이틀 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_all01" style="display: none;">
+		
+	<div class="pop_contents">
+			
+		<div class="box_section">
+			<div class="search_filter">
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t" style="width:92px">등록 양식</div>						
+							<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>다운로드</span></button>
+						</div>
+					</li>
+					
+					<li>
+						<div class="form_inline">
+							<div class="label_t" style="width:92px">파일 업로드</div>
+							<div class="file_up">
+								<label for="upload02" class="file_label btn btn_gray">파일 선택</label>
+								<div class="file_text_wtap form_ctl" style="width: 720px;">
+									<input type="text" readonly="readonly" class="file_text" placeholder="파일명 : 선택된 파일 없음"/>
+									<a href="#" class="file_close" title="파일삭제"></a>
+								</div>
+								<input type="file" name="" id="upload02" class="file_upload" />
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_all01').dialog({
+	dialogClass: 'popup',
+	width: 1120,
+	height: 408,
+	title: '일괄 등록',
+	titleIsHtml: true,
+	buttons: [
+		{
+			text: "취소",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "확인",  
+			class: "btn btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+
+});
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">약관 등록<span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span></h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><span>불러오기</span></button>
+					</div>
+				</div>
+				<div class="content">
+					<div class="box_section">
+						<div class="search_filter">
+							<ul>
+								<li>
+									<div class="form_inline">
+										<div class="label_t "><span class="essential" title="필수">약관 유형</span></div>
+										<select class="form_ctl" id="">
+											<option>선택</option>
+										</select>
+									</div>
+									<div class="form_inline">
+										<div class="label_t "><span class="essential" title="필수">약관 동의 대상</span></div>
+										<select class="form_ctl" id="">
+											<option>선택</option>
+											<option>관리자</option>
+											<option>기사</option>
+											<option>회원</option>
+										</select>
+									</div>
+									<div class="form_inline">
+										<div class="label_t "><span class="essential" title="필수">버전</span></div>
+										<input type="text" class="form_ctl" placeholder="버전 입력">
+									</div>
+								</li>
+								<li>
+									<div class="form_inline">
+										<div class="label_t ">배포일</div>
+										<div class="input_radio">
+											<input type="radio" id="label_text1" name="date" checked>
+											<label for="label_text1" class="txt_label">즉시</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="label_text2" name="date">
+											<label for="label_text2" class="txt_label">예약</label>
+										</div>
+										<div class="date_wrap">
+											<i class="icon icon_date"></i>
+											<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+											<span class="dash">~</span>
+											<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" name="" placeholder="0000" value="00:00" />
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="edit_wrap">
+							<div id="toolbar-container"></div>
+							<div id="editor">
+								<p>내용 입력</p>
+							</div>
+						</div>
+					</div>
+					<div class="btn_area ac mt20">
+						<button type="button" class="btn btn_gray btn_outline">취소</button>
+						<button type="button" class="btn btn_blue ml10"  onclick="toastPop_err();">등록</button>
+					</div>
+				</div>
+				
+				
+			</div>
+					
+		</div>
+	</div>
+
+<!-- 실패 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>이전 약관과 버전을 다르게 입력하세요</p></div>
+</div>
+
+<div class="toast_popup toastPop_err">
+	<div class="toast">
+		<p class="error_type"><i class="icon icon_error"></i>약관 내용을 입력해 주세요.</p>
+	</div>	
+</div>
+
+</body>
+<script>
+	$(function () {
+
+		ClassicEditor
+			.create(document.querySelector('#editor'))
+			.catch(error => {
+				console.error(error);
+			});
+	});
+</script>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	
+<div id="wrap">
+	@@include('../_include/header.html')	
+	
+	<!-- container-->
+	<div id="container">
+		@@include('../_include/lnb.html')
+		<!--inner-->
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg"></h2>
+				<div class="btn_area">
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역 추가</span></button>
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄 추가</span></button>
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+			
+				
+			</div> 
+			<!--// content-->
+			
+		</div>
+		<!--//inner-->
+	</div>
+	<!-- //container-->
+	
+</div>
+<!--//wrap-->
+
+<!-- Table Modal  -->
+<div id="pop_dw02" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="title_md">
+			<div class="title color_gray">2022년 6월의 운행 실적이 표시됩니다.</div>
+		</div>
+		
+		<div class="search_filter mt40">
+			<ul>
+				<li>
+					<div class="form_inline form_xlg">
+						<div class="label_t"><span class="essential" title="필수">다운로드 사유</span></div>
+						<select class="form_ctl" id="">
+							<option>다운로드 사유 선택</option>
+							<option>제출용</option>
+							<option>보관용</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<div class="form_inline ">
+						<div class="label_t">직접 입력</div>
+						<input type="text" class="form_ctl" placeholder="최대 10자 까지 입력 가능합니다." value="" />
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		
+		
+		
+ 
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_dw02').dialog({
+	dialogClass: 'popup',
+	width: 500,
+	height: 430,
+	title: '월간 운행 실적표 다운로드',
+	modal: true,
+	buttons: [{
+			text: "취소",
+			class: "btn btn_md btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "확인",  
+			class: "btn btn_md btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+});
+
+</script>
+
+
+
+	
+</body>
+<script>
+
+</script>
+
+</html>
+

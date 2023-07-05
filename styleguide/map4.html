@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>마크업가이드 - GRID</title>
+<!-- 가이드 css -->
+<link rel="stylesheet" href="../guide_common/css/common.css">
+<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqselect.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.css">
+
+<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+<script src="../assets/js/vendor/pqgrid.min.js"></script>
+<script src="../assets/js/vendor/pqselect.min.js"></script>
+<script src="../assets/js/vendor/jszip.min.js"></script>
+<script src="../assets/js/vendor/FileSaver.min.js"></script>
+
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script src="../assets/js/vendor/MarkerClustering.js"></script>
+<!-- <script type="text/javascript" src="./accidentdeath.js"></script> -->
+<script src="../assets/js/common.js"></script>
+
+<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function(){
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(5).addClass("active");
+	});
+</script>
+<style>
+    .pin{
+        width: 52px;
+        height: 36px;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+<div id="g-wrap" class="open-aside">
+	<!-- aside -->
+	<div id="g-aside">
+		<!-- # 좌측컨텐츠 # -->
+		<div class="wrap-aside">
+			<!-- 사용자정보영역 -->
+			<div class="box-info">
+			</div>
+			<!-- 네비게이션 : SNB -->
+			<div class="g-nav-snb guide"></div>
+		</div>
+		<!-- # 컨트롤 # -->
+		<div class="g-area-control">
+			<a href="#none">좌측영역 펼침/닫기</a>
+		</div>
+	</div>
+	<!-- //aside -->
+
+	<div class="g-content">
+		<div class="g-box-basic">
+			<h2 class="g-tit-basic">Navigation</h2>
+
+			<!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+                            <!-- view -->
+							<h3 class="g-tit-basic">MarkerClustering</h3>
+
+                            <div id="map_div" style="margin: 0 auto;width:400px;height:500px;"></div>
+
+							<script>
+                                var accidentDeath = [
+                                    
+                                    
+                                    {
+                                            "year": "2014",
+                                            "dt_006": "2014031102",
+                                            "dt_006_lv8": "20",
+                                            "cd_008": "2",
+                                            "cd_007": "3",
+                                            "no_010": 1,
+                                            "injpsn_co": 3,
+                                            "no_011": 1,
+                                            "no_012": 1,
+                                            "no_013": 0,
+                                            "cd_003": "1517",
+                                            "cd_003_lv1": "1500",
+                                            "cd_014_lv1": "03",
+                                            "cd_014_lv2": "34",
+                                            "cd_014": "45",
+                                            "cd_027_1_lv1": "01",
+                                            "cd_027_1_lv2": "12",
+                                            "cd_043_lv1": "02",
+                                            "cd_043": "06",
+                                            "cd_036_1_lv1": "01",
+                                            "cd_036_1": "03",
+                                            "cd_036_1_lv2": "00",
+                                            "cd_036_2": "00",
+                                            "x_coord": "1016945 ",
+                                            "y_coord": "1880378 ",
+                                            "grd_lo": "127.70505351",
+                                            "grd_la": "36.94499381"
+                                    },
+                                    {
+                                            "year": "2014",
+                                            "dt_006": "2014032319",
+                                            "dt_006_lv8": "25",
+                                            "cd_008": "2",
+                                            "cd_007": "1",
+                                            "no_010": 1,
+                                            "injpsn_co": 1,
+                                            "no_011": 0,
+                                            "no_012": 0,
+                                            "no_013": 0,
+                                            "cd_003": "1308",
+                                            "cd_003_lv1": "1300",
+                                            "cd_014_lv1": "01",
+                                            "cd_014_lv2": "15",
+                                            "cd_014": "05",
+                                            "cd_027_1_lv1": "01",
+                                            "cd_027_1_lv2": "12",
+                                            "cd_043_lv1": "02",
+                                            "cd_043": "07",
+                                            "cd_036_1_lv1": "01",
+                                            "cd_036_1": "03",
+                                            "cd_036_1_lv2": "11",
+                                            "cd_036_2": "25",
+                                            "x_coord": "960686  ",
+                                            "y_coord": "1897749 ",
+                                            "grd_lo": "127.05770261",
+                                            "grd_la": "37.07752506"
+                                    },
+                                    
+                                    
+                                ]
+                                        
+
+
+                                var map = new naver.maps.Map("map_div", {
+                                    zoom: 7,
+                                    minZoom:7,
+                                    maxZoom:13,
+                                    center: new naver.maps.LatLng(36.2253017, 127.6460516),
+                                    zoomControl: true,
+                                    zoomControlOptions: {
+                                        position: naver.maps.Position.TOP_LEFT,
+                                        style: naver.maps.ZoomControlStyle.SMALL
+                                    }
+                                });
+                            
+                                var markers = [],
+                                    data = accidentDeath;
+                            
+                                for (var i = 0; i < accidentDeath.length; i++) {
+                                    var spot = data[i],
+                                        latlng = new naver.maps.LatLng(spot.grd_la, spot.grd_lo),
+                                        marker = new naver.maps.Marker({
+                                            position: latlng,
+                                            draggable: true
+                                        });
+                            
+                                    markers.push(marker);
+                                }
+                            
+                                var htmlMarker1 = {
+                                        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../assets/img/cluster-marker-1.png);background-size:contain;"></div>',
+                                        size: N.Size(40, 40),
+                                        anchor: N.Point(20, 20)
+                                    },
+                                    htmlMarker2 = {
+                                        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../assets/img/cluster-marker-2.png);background-size:contain;"></div>',
+                                        size: N.Size(40, 40),
+                                        anchor: N.Point(20, 20)
+                                    },
+                                    htmlMarker3 = {
+                                        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../assets/img/cluster-marker-3.png);background-size:contain;"></div>',
+                                        size: N.Size(40, 40),
+                                        anchor: N.Point(20, 20)
+                                    },
+                                    htmlMarker4 = {
+                                        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../assets/img/cluster-marker-4.png);background-size:contain;"></div>',
+                                        size: N.Size(40, 40),
+                                        anchor: N.Point(20, 20)
+                                    },
+                                    htmlMarker5 = {
+                                        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../assets/img/cluster-marker-5.png);background-size:contain;"></div>',
+                                        size: N.Size(40, 40),
+                                        anchor: N.Point(20, 20)
+                                    };
+                            
+                                var markerClustering = new MarkerClustering({
+                                    minClusterSize: 2,
+                                    maxZoom: 13,
+                                    map: map,
+                                    markers: markers,
+                                    disableClickZoom: false,
+                                    gridSize: 200,
+                                    icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
+                                    indexGenerator: [10, 100, 200, 500, 1000],
+                                    stylingFunction: function(clusterMarker, count) {
+                                        $(clusterMarker.getElement()).find('div:first-child').text(count);
+                                    }
+                                });
+
+                                naver.maps.Event.addListener(map, 'zoom_changed', function(zoom) {
+                                    console.log('zoom 값이 '+ zoom +'으로 변경되었습니다!');
+
+                                    // for (var i=0, ii=markerList.length; i<ii; i++) {
+                                    //     markerList[i].setMap(null);
+                                    // }
+                                });
+                            </script>
+							<!-- //view -->
+
+							
+              
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html"></pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css"></pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

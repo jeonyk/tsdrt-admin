@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	
+<div id="wrap">
+	@@include('../_include/header.html')	
+	
+	<!-- container-->
+	<div id="container">
+		@@include('../_include/lnb.html')
+		<!--inner-->
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg"></h2>
+				<div class="btn_area">
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역 추가</span></button>
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄 추가</span></button>
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+			
+				
+			</div> 
+			<!--// content-->
+			
+		</div>
+		<!--//inner-->
+	</div>
+	<!-- //container-->
+	
+</div>
+<!--//wrap-->
+
+<!-- Table Modal  -->
+<div id="pop_voucher10" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="alert_left">
+			<div class="title_md mt20">
+				<div class="title">지급 대기 3건과 지급 완료 2건이 선택되었습니다.</div>
+			</div>
+			<div class="title_sm mt0">
+				<div class="title color_gray  al">수행할 작업을 선택하세요</div>
+			</div>					
+		</div>
+		
+		<div class="input_radio">
+			<input type="radio" id="label_text1" name="pop_voucher" autocomplete="off">
+			<label for="label_text1" class="txt_radio">카드 지급 (지급 대기 -> 지급 완료)</label>
+		</div>
+		<div class="input_radio mt10">
+			<input type="radio" id="label_text2" name="pop_voucher" checked="" autocomplete="off">
+			<label for="label_text2" class="txt_radio">카드 회수 (지급 완료 -> 지급 대기)</label>
+		</div>
+		
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_voucher10').dialog({
+	dialogClass: 'alert_popup',
+	width: 450,
+	height: 280,
+	buttons: [{
+			text: "취소",
+			class: "btn btn_md btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "확인",  
+			class: "btn btn_md btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+});
+
+</script>
+
+
+
+	
+</body>
+<script>
+
+</script>
+
+</html>
+

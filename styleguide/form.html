@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>마크업가이드 - FORM</title>
+	<!-- 가이드 css -->
+	<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+	<link rel="stylesheet" href="../guide_common/css/common.css">
+	<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+	<link rel="stylesheet" href="../assets/css/vendor/daterangepicker.css">
+	<link rel="stylesheet" href="../assets/css/common.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<!-- <link href='../css/vendor/jquery.timepicker.min.css' rel='stylesheet'> -->
+	<!-- <link href='../css/vendor/flatpickr.min.css' rel='stylesheet'> -->
+
+	<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+	<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+	<!-- <script src="../assets/js/vendor/moment.min.js"></script>
+	<script src="../assets/js/vendor/daterangepicker.js"></script> -->
+	<!-- <script src="../assets/js/vendor/jquery.timepicker.min.js"></script> -->
+	<!-- <script src="../assets/js/vendor/flatpickr.js"></script> -->
+	<script src="../assets/js/common.js"></script>
+	
+	<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+	<script src="../assets/js/common.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+		$(document).ready(function () {
+			$('.g-nav-snb').append(webSnb);
+			$('.g-nav-snb ul li').eq(3).addClass("active");		
+		});
+	</script>
+</head>
+
+<body>
+	<div id="g-wrap" class="open-aside">
+		<!-- aside -->
+		<div id="g-aside">
+			<!-- # 좌측컨텐츠 # -->
+			<div class="wrap-aside">
+				<!-- 사용자정보영역 -->
+				<div class="box-info">
+				</div>
+				<!-- 네비게이션 : SNB -->
+				<div class="g-nav-snb guide"></div>
+			</div>
+			<!-- # 컨트롤 # -->
+			<div class="g-area-control">
+				<a href="#none">좌측영역 펼침/닫기</a>
+			</div>
+		</div>
+		<!-- //aside -->
+
+		<div class="g-content">
+			<div class="g-box-basic">
+				<h2 class="g-tit-basic">FORM</h2>
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">INPUT / SELECT BOX / DATE PICKER</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<!-- view -->
+								<h3 class="g-tit-basic">default</h3>
+						<!-- 지역 분류필 터 -->
+						<div class="content">
+							<div class="content_h">
+								<div class="box_section">
+									<div class="search_filter">
+										<ul>
+											<li>
+												<div class="form_inline">
+													<div class="label_t"><span class="essential" title="필수">시도</span></div>
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option selected>전라북도</option>
+														<option>경상남도</option>
+													</select>
+												</div>
+												<div class="form_inline">
+													<div class="label_t">시군구</div>
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option>거제시</option>
+													</select>
+												</div>
+												<div class="form_inline">
+													<div class="label_t">소속기관</div>
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option>거제시</option>
+													</select>
+												</div>
+												<div class="form_inline">
+													<div class="label_t">센터</div>
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option>거제시브라보택시</option>
+													</select>
+												</div>
+											</li>
+							
+											<li>
+												<div class="form_inline">
+													<div class="label_t">기사 구분</div>
+													<div class="input_check">
+														<input type="checkbox" id="label_text1" name="">
+														<label for="label_text1" class="txt_label">전체</label>
+													</div>
+													<div class="input_check">
+														<input type="checkbox" id="label_text2" name="" checked="">
+														<label for="label_text2" class="txt_label">개인</label>
+													</div>
+													<div class="input_check">
+														<input type="checkbox" id="label_text3" name="" disabled="">
+														<label for="label_text3" class="txt_label">법인</label>
+													</div>
+												</div>
+												<div class="form_inline">
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option>거제시브라보택시</option>
+													</select>
+													<div class="date_wrap">
+														<i class="icon icon_date"></i>
+														<input type="text" name="datepicker" class="form_ctl datepicker" placeholder="" />
+														<span class="dash">~</span>
+														<input type="text" name="datepicker" class="form_ctl datepicker" placeholder="" />
+													</div>
+													<div class="date_wrap">
+														<i class="icon icon_date"></i>
+														<input type="text" name="datepicker" class="form_ctl datepicker only_year" placeholder="" />
+														<span class="dash">~</span>
+														<input type="text" name="datepicker" class="form_ctl datepicker only_year" placeholder="" />
+													</div>
+												</div>
+												<div class="form_inline">
+													<select class="form_ctl" id="">
+														<option>담당기사</option>
+														<option>차량번호</option>
+														<option>예약자 전화번호</option>
+													</select>
+													<input type="text" class="form_ctl f_search" placeholder="운수회사 검색1">
+												</div>
+											</li>
+											<li>
+												<div class="form_inline">
+													<input type="text" class="form_ctl f_search" placeholder="운수회사 검색1">
+												</div>
+												<div class="form_inline">
+													<div class="date_wrap">
+														<input type="text" class="form_ctl" placeholder="" />
+														<span class="inner_txt">원/회당</span>
+													</div>
+												</div>
+												<div class="form_inline">
+													<div class="label_t"><span class="essential" title="필수">소속기관 연락처</span></div>
+													<input type="text" class="form_ctl w_small" placeholder="000" value="010"/>
+													<input type="text" class="form_ctl w_small" placeholder="0000" value="0123"/>
+													<input type="text" class="form_ctl w_small" placeholder="0000" value="3456"/>
+												</div>
+												<div class="form_inline">
+													<input type="text" class="form_ctl w_small timepicker" name="" placeholder="0000" value="00:00"/>
+													<span class="dash">~</span>
+													<input type="text" class="form_ctl w_small timepicker" name="" placeholder="0000" value="23:59"/>
+												</div>
+											</li>
+											<li>
+												<div class="form_inline">
+													<input type="text" class="form_ctl f_search" placeholder="운수회사 검색1" disabled>
+												</div>
+												<div class="form_inline">
+													<div class="date_wrap">
+														<input type="text" class="form_ctl" placeholder="" disabled/>
+														<span class="inner_txt">원/회당</span>
+													</div>
+												</div>
+												<div class="form_inline">
+													<select class="form_ctl" id="" disabled>
+														<option>담당기사</option>
+														<option>차량번호</option>
+														<option>예약자 전화번호</option>
+													</select>
+												</div>
+											</li>
+										</ul>
+							
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //지역 분류필터 -->
+								<br>
+								<br>
+								<!-- <h3 class="g-tit-basic">Login</h3>
+								<div class="input_wrap">
+									<input type="text" placeholder="ID" class="form_ctl form_id">
+									<input type="password" placeholder="Password" class="form_ctl form_pw">
+									<input type="number" placeholder="OTP 인증번호 입력" class="form_ctl form_otp" style="display: block;">
+								</div> -->
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+							</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //탭그룹 -->
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">INPUT (radio,checkbox)</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<!-- view -->
+								<h3 class="g-tit-basic">TOGGLE</h3>
+								<div>
+									<div class="push">
+										<span class="icon"></span>
+									</div>	
+								</div>
+
+								<br>
+								<br>
+
+								<h3 class="g-tit-basic">텍스트 없는 체크박스</h3>
+								<div>
+									<div class="input_check">
+										<input type="checkbox" id="label_1" name="">
+										<label for="label_1" class="txt_label"></label>
+									</div>
+									<div class="input_check">
+										<input type="checkbox" id="label_2" name="" checked>
+										<label for="label_2" class="txt_label"></label>
+									</div>
+									<div class="input_check">
+										<input type="checkbox" id="label_3" name="" disabled>
+										<label for="label_3" class="txt_label"></label>
+									</div>
+								</div>
+
+								<br>
+
+								<h3 class="g-tit-basic">체크박스 Default</h3>
+								<div>
+									<div class="input_check">
+										<input type="checkbox" id="label_1" name="">
+										<label for="label_1" class="txt_label">체크 해제</label>
+									</div>	
+									<div class="input_check">
+										<input type="checkbox" id="label_2" name="" checked>
+										<label for="label_2" class="txt_label">체크</label>
+									</div>	
+									<div class="input_check">
+										<input type="checkbox" id="label_3" name="" disabled>
+										<label for="label_3" class="txt_label">비활성화</label>
+									</div>	
+								</div>
+								<br>
+
+								<h3 class="g-tit-basic">텍스트 없는 라디오박스</h3>
+								<div>
+									<div class="input_radio">
+										<input type="radio" id="empty_label1" name="" checked>
+										<label for="empty_label1" class="txt_label"></label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="empty_label2" name="">
+										<label for="empty_label2" class="txt_label"></label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="empty_label3" name="" disabled>
+										<label for="empty_label3" class="txt_label"></label>
+									</div>
+								</div>							
+
+								<br>
+								<h3 class="g-tit-basic">라디오박스 Default</h3>
+								<div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label1" name="" checked>
+										<label for="txt_label1" class="txt_label">RADIO</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label2" name="">
+										<label for="txt_label2" class="txt_label">RADIO</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label3" name="" disabled>
+										<label for="txt_label3" class="txt_label">RADIO</label>
+									</div>
+								</div>		
+								<br>
+
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+								<!-- 텍스트 없는 체크박스 -->
+								<input type="checkbox" id="label1" name="">
+								<label for="label1"></label>
+
+								<input type="checkbox" id="label2" name="" checked>
+								<label for="label2"></label>
+
+								<input type="checkbox" id="label3" name="" disabled>
+								<label for="label3"></label>
+
+								<input type="checkbox" id="label4" name="" disabled checked>
+								<label for="label4"></label>
+
+								
+								<!-- 체크박스 Default -->
+								<input type="checkbox" id="label_text1" name="">
+								<label for="label_text1" class="txt_check">체크 해제</label>
+
+								<input type="checkbox" id="label_text2" name="" checked>
+								<label for="label_text2" class="txt_check">체크</label>
+
+								<input type="checkbox" id="label_text3" name="">
+								<label for="label_text3" class="txt_check">비활성화</label>
+
+								<input type="checkbox" id="label_text4" name="" checked disabled>
+								<label for="label_text4" class="txt_check">체크 비활성화</label>
+
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+
+							</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //탭그룹 -->
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">selectbox</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<!-- view -->
+								<select class="form_ctl">
+									<option>This is a native select element</option>
+									<option>Apples</option>
+									<option>Bananas</option>
+									<option>Grapes</option>
+									<option>Oranges</option>
+								</select>
+								<br/><br/>
+								<div class="form_inline form_lg">
+									<select class="form_ctl">
+										<option>This is a native select element</option>
+										<option>Apples</option>
+										<option>Bananas</option>
+										<option>Grapes</option>
+										<option>Oranges</option>
+									</select>
+								</div>
+								<br/>
+								<div class="form_inline form_xlg">
+									<select class="form_ctl">
+										<option>This is a native select element</option>
+										<option>Apples</option>
+										<option>Bananas</option>
+										<option>Grapes</option>
+										<option>Oranges</option>
+									</select>
+								</div>
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+
+								<select class="form_ctl">
+									<option>This is a native select element</option>
+									<option>Apples</option>
+									<option>Bananas</option>
+									<option>Grapes</option>
+									<option>Oranges</option>
+								</select>
+
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+
+							</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //탭그룹 -->
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">Datepicker, Timepicker</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<!-- view -->
+								<div class="date_wrap">
+									<i class="icon icon_date"></i>
+									<input type="text" name="datepicker" class="form_ctl datepicker" placeholder="" />
+									<span class="dash">~</span>
+									<input type="text" name="datepicker" class="form_ctl datepicker" placeholder="" />
+								</div>			
+								<!-- //view -->
+							</div>
+			
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+								<input type="text" name="datepicker" class="form_ctl" placeholder="YYYY-MM-DD"/>
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:js">
+								<script>
+
+							   </script>
+							</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //탭그룹 -->
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<!-- <h3 class="g-tit-basic">FILE Upload</h3> -->
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<!-- view -->
+								<!-- <div class="file_box">
+									<input type="file" id="inputUpload" class="fileInput dn" name="fileInput" multiple>
+									<label for="inputUpload" class="btn btn_md btn_purple">파일찿기</label>
+									<p class="file_info"><i class="icon icon_warning"></i>선택된 파일이 없습니다. 파일
+										찾기 버튼을 눌러주세요.</p>
+								</div>
+								<ul id="fileList" style="color:#fff">
+
+								</ul>								 -->
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<!-- <div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+									<div class="file_box">
+										<input type="file" id="inputUpload" class="fileInput dn" name="fileInput" multiple>
+										<label for="inputUpload" class="btn btn_md btn_purple">파일찿기</label>
+										<p class="file_info"><i class="icon icon_warning"></i>선택된 파일이 없습니다. 파일
+											찾기 버튼을 눌러주세요.</p>
+									</div>
+									<ul id="fileList">
+	
+									</ul>	
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+									#fileList {
+										display: flex;
+										flex-wrap: wrap;
+										align-items: center;
+										margin: 8px 0;
+										&.file_list {
+											 margin: 0;
+											 li {
+												  cursor: pointer;
+											 }
+										}
+										li {
+											 font-size: 1.4rem;
+											 background-color: $tertiary04;
+											 line-height: 24px;
+											 height: 24px;
+											 padding: 8px;
+											 padding-right: 0;
+											 margin: 8px;
+											 margin-left: 0;
+											 border-radius: 4px;
+											 display: flex;
+											 align-items: center;
+											 justify-content: space-between;
+											 a {
+												  display: flex;
+												  align-items: center;
+							 
+											 }
+											 button {
+												  width: 24px;
+												  height: 24px;
+												  display: flex;
+												  align-items: center;
+												  margin-right: 4px;
+											 }
+											 span {
+												  color: $black07;
+												  font-size: 1.2rem;
+												  margin-left: 5px;
+											 }            
+										}
+								  }
+							</pre>
+							</div> -->
+						</div>
+					</div>
+				</div>
+				<!-- //탭그룹 -->
+
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+
+
+</script>
+
+</html>

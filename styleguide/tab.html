@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>마크업가이드 - TAB</title>
+	<!-- 가이드 css -->
+	<link rel="stylesheet" href="../guide_common/css/common.css">
+	<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+	<link rel="stylesheet" href="../assets/css/common.css">
+	<!-- //style -->
+	<script type="text/javascript" src="../guide_common/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/guide.js" defer></script>
+
+</head>
+
+<body>
+	<div id="g-wrap" class="open-aside">
+		<!-- aside -->
+		<div id="g-aside">
+			<!-- # 좌측컨텐츠 # -->
+			<div class="wrap-aside">
+				<!-- 사용자정보영역 -->
+				<div class="box-info">
+				</div>
+				<!-- 네비게이션 : SNB -->
+				<div class="g-nav-snb guide"></div>
+			</div>
+			<!-- # 컨트롤 # -->
+			<div class="g-area-control">
+				<a href="#none">좌측영역 펼침/닫기</a>
+			</div>
+		</div>
+		<!-- //aside -->
+
+		<div class="g-content">
+			<div class="g-box-basic">
+				<h2 class="g-tit-basic">TAB</h2>
+
+				<!-- 탭그룹 -->
+				<div class="row">
+
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<!-- view -->
+								<h3 class="g-tit-basic">tab default</h3>
+								<ul class="tabs tab">
+									<li class="on"><a href="#none">사용자</a></li>
+									<li><a href="#none">현장</a></li>
+									<li><a href="#none">현장 매핑</a></li>
+								</ul>
+
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+								<ul class="tabs tab">
+									<li class="on"><a href="#none">사용자</a></li>
+									<li><a href="#none">현장</a></li>
+									<li><a href="#none">현장 매핑</a></li>
+								</ul>
+
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+							</pre>
+								<p>JS</p>
+								<pre class="syntax brush:javascript">
+								<script>
+									$(document).ready(function() {
+										var tabMenu = $('.tabs li a');
+										var tabContent = $('.tab_contents');
+
+										tabMenu.on('click', function(e) {
+											e.preventDefault();
+											var idx =tabMenu.index(this);
+
+											$(this).addClass('on').closest('li').siblings().children('a').removeClass('on');
+											tabContent.eq(idx).addClass('on').siblings().removeClass('on');
+										});
+									})
+								</script>
+							</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //탭그룹 -->
+			</div>
+
+		</div>
+	</div>
+	</div>
+</body>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function () {
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(2).addClass("active");
+
+		var tabMenu = $('.tabs li a');
+		var tabContent = $('.tab_contents');
+
+		tabMenu.on('click', function (e) {
+			console.log(e)
+			e.preventDefault();
+			var idx = tabMenu.index(this);
+
+			$(this).parent().addClass('on').closest('li').siblings('li').removeClass('on');
+			tabContent.eq(idx).addClass('on').siblings().removeClass('on');
+		});
+
+		var tabMenu_in = $('.tabs_in li a');
+		var tabContent_in = $('.tab_contents_in');
+
+		tabMenu_in.on('click', function (e) {
+			e.preventDefault();
+			var idx = tabMenu_in.index(this);
+
+			$(this).addClass('on').closest('li').siblings().children('a').removeClass('on');
+			tabContent_in.eq(idx).addClass('on').siblings().removeClass('on');
+		});
+	});
+</script>
+
+</html>

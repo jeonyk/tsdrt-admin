@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_drive03" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="title_md">
+			<div class="title color_gray">선택하신 N개의 승인 상태를 변경하시겠습니까?</div>
+		</div>
+		
+		<div class="form_inline">
+			<div class="input_radio">
+				<input type="radio" id="rd_text1" name="">
+				<label for="rd_text1" class="txt_label">승인</label>
+			</div>
+			<div class="input_radio">
+				<input type="radio" id="rd_text2" name="">
+				<label for="rd_text2" class="txt_label">반려</label>
+			</div>
+		</div>
+		
+		<div class="mt20">
+			<select class="form_ctl" id="">
+				<option>반려 사유 선택</option>
+				<option>승인</option>
+				<option>승인완료</option>
+				<option>반려</option>
+			</select>
+		</div>
+		
+		
+		<div class="mt12 textarea_wrap">
+			<textarea name="" id="" class="form_ctl textarea">
+반려사유 작성
+			</textarea>
+		</div>
+ 
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_drive03').dialog({
+	dialogClass: 'popup',
+	width: 1120,
+	height: 588,
+	title: '승인 상태 변경하기',
+	modal: true,
+	buttons: [{
+			text: "취소",
+			class: "btn btn_md btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "확인",  
+			class: "btn btn_md btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+});
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>마크업가이드 - GRID</title>
+<!-- 가이드 css -->
+<link rel="stylesheet" href="../guide_common/css/common.css">
+<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/sub1.css">
+<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqselect.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.css">
+
+<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+<script src="../assets/js/vendor/pqgrid.min.js"></script>
+<script src="../assets/js/vendor/pqselect.min.js"></script>
+<script src="../assets/js/vendor/jszip.min.js"></script>
+<script src="../assets/js/vendor/FileSaver.min.js"></script>
+
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script src="../assets/js/common.js"></script>
+
+<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function(){
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(5).addClass("active");
+	});
+</script>
+<style>
+    .pin{
+        width: 52px;
+        height: 36px;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+<div id="g-wrap" class="open-aside">
+	<!-- aside -->
+	<div id="g-aside">
+		<!-- # 좌측컨텐츠 # -->
+		<div class="wrap-aside">
+			<!-- 사용자정보영역 -->
+			<div class="box-info">
+			</div>
+			<!-- 네비게이션 : SNB -->
+			<div class="g-nav-snb guide"></div>
+		</div>
+		<!-- # 컨트롤 # -->
+		<div class="g-area-control">
+			<a href="#none">좌측영역 펼침/닫기</a>
+		</div>
+	</div>
+	<!-- //aside -->
+
+	<div class="g-content">
+		<div class="g-box-basic">
+			<h2 class="g-tit-basic">Navigation</h2>
+
+			<!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+                            <!-- view -->
+							<h3 class="g-tit-basic">MarkerClustering</h3>
+
+                            <div id="map_div" class="map_area" style="margin: 0 auto;width:588px;height:766px;"></div>
+
+							<script>
+                                var dataModel = {   // 시, 도
+                                    "data": [
+                                        { "name":"경기도", "lat":"4479441.55063332", "lon":"14143573.56989571", "count":"2230"},
+                                        { "name":"강원도", "lat":"4563245.81944605", "lon":"14218819.88277769", "count":"545"},
+                                        { "name":"충청북도", "lat":"4388450.34314208", "lon":"14192276.56840460", "count":"1245"},
+                                        { "name":"충청남도", "lat":"4391747.04832568", "lon":"14101200.60980514", "count":"334"},
+                                        { "name":"경상북도", "lat":"4380160.54350907", "lon":"14305212.65999097", "count":"4455"},
+                                        { "name":"경상남도", "lat":"4196245.29181517", "lon":"14325920.41508494", "count":"16000"},
+                                        { "name":"전라북도", "lat":"4275933.93699862", "lon":"14149678.37042744", "count":"6550"},
+                                        { "name":"전라남도", "lat":"4138935.80685049", "lon":"14077787.53128276", "count":"22400"},
+                                        { "name":"제주도", "lat":"3960394.53336689", "lon":"14081723.93307265", "count":"555"}
+                                    ],
+                                };
+
+                                var dataModel2 = {  // 시, 군, 구
+                                    "data": [
+                                        { "name":"고창군", "lat":"4223264.17351224", "lon":"14104413.56738598", "count":"504"},
+                                        { "name":"장수군", "lat":"4252201.45183824", "lon":"14195597.18097096", "count":"521"},
+                                        { "name":"순창군", "lat":"4214881.91047825", "lon":"14152895.26435587", "count":"346"},
+                                        { "name":"광주광역시", "lat":"4185657.92121210", "lon":"14121036.57445829", "count":"854"},
+                                        { "name":"하동군", "lat":"4173020.63314568", "lon":"14221206.27576951", "count":"237"},
+                                    ],
+                                };
+
+                                var map = new naver.maps.Map("map_div", {
+                                    zoom: 7,
+                                    minZoom:7,
+                                    maxZoom:13,
+                                    center: new naver.maps.LatLng(35.7290000, 127.6460516),
+                                    // zoomControl: true,
+                                    // zoomControlOptions: {
+                                    //     position: naver.maps.Position.TOP_LEFT,
+                                    //     style: naver.maps.ZoomControlStyle.SMALL
+                                    // }
+                                });
+
+                                var markerList = [];
+                            
+                                // create an array of markerList
+                                function createMarker(dataItems, selectedValue) {
+                                    // markerList 초기화
+                                    if(markerList.length > 0) {
+                                        for(var i = 0; i < markerList.length; i ++) {
+                                            markerList[i].setMap(null);
+                                        }
+                                        markerList = [];
+                                    }
+
+                                    if(selectedValue) {
+                                        var selectedItem = dataItems.filter((item) => {
+                                            return item.name === selectedValue;
+                                        });
+
+                                        console.log(selectedItem)
+
+                                        // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+                                        var latlng = new Tmapv2.Point(selectedItem[0].lon, selectedItem[0].lat);
+                                        // 포인트 객체를 받아 좌표값으로 변환
+                                        var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                                        // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                                        var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+                                        
+                                        map.setCenter(convertChange);
+                                        map.setZoom(9);
+                                    }
+                                    
+                                    for (var i = 0; i < dataItems.length; i ++) {
+                                        // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+                                        var latlng = new Tmapv2.Point(dataItems[i].lon, dataItems[i].lat);
+                                        // 포인트 객체를 받아 좌표값으로 변환
+                                        var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                                        // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                                        var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+
+                                        var name = dataItems[i].name;
+                                        var count = Number(dataItems[i].count);
+                                        var cls = '';
+                                        var str = count.toString().split('')[0];
+                                        var result = '';
+
+                                        if(count >= 1000 &&  count < 10000) {
+                                            cls = 'more1000';
+                                            result = str + '천 +';
+                                        } else if (count >= 10000) {
+                                            cls = 'more10000';
+                                            result = str + '만 +';
+                                        } else {
+                                            cls = '';
+                                            result = count;
+                                        }
+
+                                        var marker = new naver.maps.Marker({
+                                            position: convertChange,
+                                            map: map,
+                                            icon: {
+                                                content: [
+                                                    '<div class="pin pin_area ' + cls +'">',
+                                                        '<div class="name">',
+                                                            name,
+                                                        '</div>',
+                                                        '<div class="count">',
+                                                            result,
+                                                        '</div>',
+                                                    '</div>'
+                                                ].join(''),
+                                                size: new naver.maps.Size(120, 60),
+                                                anchor: new naver.maps.Point(60, 30),
+                                            },
+                                            draggable: false,
+                                            zIndex: 10
+                                        });
+                                        markerList.push(marker);
+                                    }
+                                }
+
+
+                                function updateCluster(label) {
+                                    console.log('label: ', label)
+                                    var zoomLabel = label;
+
+                                    if(zoomLabel < 10) {
+                                        createMarker(dataModel.data);
+                                    } else {
+                                        createMarker(dataModel2.data);
+                                    }
+                                }
+
+                                // 전체 선택 시
+                                createMarker(dataModel.data);
+
+                                // 시군구 선택 시
+                                // createMarker(dataModel2.data, "순창군");
+
+                                // register the function to the zoom_changed event
+                                naver.maps.Event.addListener(map, 'zoom_changed', updateCluster);
+                            </script>
+							<!-- //view -->
+
+							
+              
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html"></pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css"></pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	
+<div id="wrap">
+	@@include('../_include/header.html')	
+	
+	<!-- container-->
+	<div id="container">
+		@@include('../_include/lnb.html')
+		<!--inner-->
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">보조금 지급 승인 내역</h2>
+				<div class="btn_area">
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역 추가</span></button>
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄 추가</span></button>
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<!-- 지역 분류필 필터 -->
+						<div class="search_filter">
+							<ul>
+								<li>
+									<div class="form_inline">
+										<div class="label_t"><span class="essential" title="필수">시도</span></div>
+										<select class="form_ctl" id="">
+											<option>전체</option>
+											<option>강원도</option>
+											<option>경기도</option>
+											<option>경상남도</option>
+											<option>경상북도</option>
+											<option selected>전라북도</option>
+											<option>전라남도</option>
+										</select>
+									</div>
+									<div class="form_inline">
+										<div class="label_t">시군구</div>
+										<select class="form_ctl" id="">
+											<option>전체</option>
+											<option>거제시</option>
+										</select>
+									</div>
+									<div class="form_inline">
+										<div class="label_t">소속기관</div>
+										<select class="form_ctl" id="">
+											<option>전체</option>
+											<option>거제시</option>
+										</select>
+									</div>
+									<div class="form_inline">
+										<div class="label_t">센터</div>
+										<select class="form_ctl" id="">
+											<option>전체</option>
+											<option>거제시브라보택시</option>
+										</select>
+									</div>
+								</li>
+								
+								<li>
+									<div class="form_inline">
+										<div class="label_t">기사 구분</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text1" name="">
+											<label for="label_text1" class="txt_label">전체</label>
+										</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text2" name="" >
+											<label for="label_text2" class="txt_label">개인</label>
+										</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text3" name="">
+											<label for="label_text3" class="txt_label">법인</label>
+										</div>
+										<!--
+											[기사 구분 필터]에서 ‘법인＇이 선택된 경우만 입력필그 활성화
+											드롭다운 리스트 [운수회사 관리]에서 등록된 {운수회사명}만 표출
+										-->
+										<input type="text" class="form_ctl f_search" placeholder="운수회사 검색">
+										
+										<select class="form_ctl" id="">
+											<option selected>운수회사 검색</option>
+											<option>회사1</option>
+											<option>회사2</option>
+										</select>
+									</div>
+									<div class="form_inline">
+										<div class="label_t">차량 구분</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text4" name="">
+											<label for="label_text4" class="txt_label">전체</label>
+										</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text2" name="">
+											<label for="label_text2" class="txt_label">택시</label>
+										</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text3" name="">
+											<label for="label_text3" class="txt_label">버스</label>
+										</div>
+									</div>
+									<div class="form_inline">
+										<div class="label_t">검증 여부</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text7" name="">
+											<label for="label_text7" class="txt_label">전체</label>
+										</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text8" name="">
+											<label for="label_text8" class="txt_label">정상</label>
+										</div>
+										<div class="input_check">
+											<input type="checkbox" id="label_text9" name="">
+											<label for="label_text9" class="txt_label">비정상</label>
+										</div>
+									</div>	
+								</li>
+								
+								<li>
+									<div class="form_inline">
+										<div class="label_t">탑승 일자</div>
+										<div class="date_wrap">
+											<i class="icon icon_date"></i>
+											<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+											<span class="dash">~</span>
+											<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+										</div>
+									</div>
+									<div class="form_inline">
+										<select class="form_ctl" id="">
+											<option selected>주행거리</option>
+											<option>승객 지불 요금</option>
+										</select>
+										<div class="date_wrap">
+											<i class="icon icon_date"></i>
+											<input type="text" class="form_ctl" placeholder="" />
+											<span class="inner_txt">Km</span>
+											<span class="dash">~</span>
+											<input type="text" class="form_ctl" placeholder="" />
+											<span class="inner_txt">Km</span>
+										</div>
+									</div>
+									<div class="form_inline">
+										<select class="form_ctl" id="">
+											<option selected>담당 기사 검색</option>
+											<option>차량번호</option>
+										</select>
+										<input type="text" class="form_ctl f_search" placeholder="담당 기사 검색">
+									</div>
+									<div class="form_inline">
+										<button type="button" class="btn btn_blue"><span>검색</span></button>
+									</div>	
+								</li>
+							</ul>
+						
+						</div>
+						<!-- //지역 분류필터 -->
+						
+					</div>
+					
+					<h3 class="title_md">
+						<div class="title">합계</div>
+					</h3>
+					
+					<div class="box_section">
+						<div class="table_list">
+							<!--검색된 결과가 없을 시-->
+							<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+							<table>
+								<caption class="sr_only">보조금 지급 승인 내역 합계</caption>
+								<colgroup>
+									<col width="*">
+									<col width="*">
+									<col width="*">
+									<col width="*">
+									<col width="*">
+									<col width="*">
+									<col width="*">
+									<col width="*">
+								</colgroup>
+								<thead>
+								<tr>
+									<th><span>승인 상세</span></th>
+									<th><span>주행 건수</span></th>
+									<th><span>총 요금</span></th>
+									<th><span>승객 지불요금</span></th>
+									<th><span>보조금</span></th>
+									<th><span>탑승 인원</span></th>
+									<th><span>총 주행 시간</span></th>
+									<th><span>총 주행 거리(Km)</span></th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>승인 완료 </td>
+									<td>25</td>
+									<td>225,000 </td>
+									<td>37,500</td>
+									<td>187,500</td>
+									<td>50</td>
+									<td>00:27:30 </td>
+									<td>45.643</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						
+					</div>
+					
+					
+					<div class="detail_top">
+						<div class="left_area">
+							<button type="button" class="btn btn_blue btn_outline"><span>전체</span></button>
+							<button type="button" class="btn btn_blue btn_outline"><span>승인 대기</span></button>
+							<button type="button" class="btn btn_blue btn_outline"><span>승인 완료</span></button>
+							<button type="button" class="btn btn_blue btn_outline"><span>반려</span></button>
+						</div>
+						
+						<div class="right_area">
+							<button type="button" class="btn btn_gray">승인 상태 변경</span></button>
+							<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>다운로드</span></button>
+						</div>
+					</div>
+					
+					<div class="grid_bg">
+						<div id="grid_json"></div>
+						
+						<ul class="lst_options">
+							<li><a href="javascript:void(0);">접수 상세 정보</a></li>
+							<li><a href="javascript:void(0);">주행 상세 정보</a></li>
+							<li><a href="javascript:void(0);">배차 대기</a></li>
+							<li><a href="javascript:void(0);">배차</a></li>
+							<li><a href="javascript:void(0);">배차 정보 수정</a></li>
+							<li><a href="javascript:void(0);">예약 취소</a></li>
+						</ul>
+						
+						<ul class="lst_status">
+							<li><a href="javascript:void(0);">배차 대기</a></li>
+							<li><a href="javascript:void(0);">배차</a></li>
+							<li><a href="javascript:void(0);">예약 취소</a></li>
+						</ul>
+					</div>
+					
+					
+				</div>
+				
+							
+				
+				<div class="footer">
+					<div class="page_wrap">
+						<div class="page_num">Rows per page</div>
+								
+						<select class="page_sel" id="">
+							<option>20</option>
+							<option selected>30</option>
+							<option>40</option>
+							<option>50</option>
+						</select> 
+						
+						<!-- 처음 일 떄 first 클래스 추가-->
+						<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+						<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+						<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+						<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+						
+						<div class="page_count">
+							1 - 7 of 1 
+						</div>
+						
+						<!-- 마지막 페이지 일 떄 last 클래스 추가-->	
+						<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+						<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+						<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+						<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막 페이지</span></a>
+					</div>
+				</div>
+				
+			</div> 
+			<!--// content-->
+			
+		</div>
+		<!--//inner-->
+	</div>
+	<!-- //container-->
+	
+</div>
+<!--//wrap-->
+
+<!-- Table Modal  -->
+<div id="pop_drive02" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="title_md">
+			<div class="title color_gray">설정한 기간 동안 승인 완료된 내역이 표시됩니다.</div>
+		</div>
+		<div class="box_section_wrap">
+			<div class="box_section"> 
+				<div class="title_sm">
+					<div class="title">
+						기간 설정
+					</div>
+				</div>
+				
+				<div class="table_list align_left">
+					<!--검색된 결과가 없을 시-->
+					<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+					<table>
+						<caption class="sr_only">승인 완료 내역 기간 설정 </caption>
+						<colgroup>
+							<col width="20%">
+							<col width="*">
+						</colgroup>
+						<tbody>
+						<tr>
+							<th>탑승 일자</th>
+							<td>
+								<div class="date_wrap">
+									<i class="icon icon_date"></i>
+									<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+									<span class="dash">~</span>
+									<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>기사 연락처</th>
+							<td>010-0000-0000</td>
+						</tr>
+						
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="title_sm">
+					<div class="title">
+						주행 증빙 사진
+					</div>
+				</div>
+				<div class="form_inline">
+					<div class="input_radio">
+						<input type="radio" id="rd_text1" name="">
+						<label for="rd_text1" class="txt_label">포함</label>
+					</div>
+					<div class="input_radio">
+						<input type="radio" id="rd_text2" name="">
+						<label for="rd_text2" class="txt_label">비포함</label>
+					</div>
+				</div>
+				
+				<div class="title_sm">
+					<div class="title ">
+						<span class="essential">다운로드 사유</span>   
+					</div>
+				</div>
+				<select class="form_ctl" id="">
+					<option>선택</option>
+					<option>선택2</option>
+					<option>선택</option>
+				</select>
+			
+			</div>
+		</div>
+		
+ 
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_drive02').dialog({
+	dialogClass: 'popup',
+	width: 800,
+	height: 737,
+	title: '승인내역 다운로드',
+	modal: true,
+	buttons: [{
+			text: "취소",
+			class: "btn btn_md btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "확인",  
+			class: "btn btn_md btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+});
+
+</script>
+
+
+
+	
+</body>
+<script>
+
+</script>
+
+</html>
+

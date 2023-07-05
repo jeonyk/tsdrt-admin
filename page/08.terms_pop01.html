@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_terms01" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="detail_top mt0">
+			<div class="left_area">
+			</div>
+			<div class="right_area">
+				<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>추가</span></button>
+				<button type="button" class="btn btn_gray"><span>삭제</span></button>
+			</div>
+		</div>
+		
+		<div class="grid_wrap mt10">
+			<div id="grid_terms_pop01" class="grid_list"></div>
+		</div>
+		
+		
+		<!-- <div class="grid_wrap mt10">
+			<div id="grid_select" class="grid_list"></div>
+		</div>
+		 -->
+	</div>	
+</div>
+
+
+<script>
+$(function(){
+	$('#pop_terms01').dialog({
+		dialogClass: 'popup',
+		width: 950,
+		height: 700,
+		title: '약관 유형 관리',
+		titleIsHtml: true,
+		modal: true,
+		buttons: [
+			{
+				text: "취소",  
+				class: "btn btn_gray btn_outline",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "저장",  
+				class: "btn btn_md btn_blue",
+				click: function () {
+					$(this).dialog("close");
+				}
+			}
+		]
+	});
+	
+});
+</script>
+
+<script>
+	$(function () {
+		var colModel = [
+			{
+				dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+				title: "",
+				menuIcon: false,
+				type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+				dataType: 'bool',
+				cb: {
+					all: false, //checkbox selection in the header affect current page only.
+					header: true, //show checkbox in header. 
+					select: true,
+				},
+				editable: function (ui) {
+					return !ui.rowData.disabled
+				},
+			},
+			{ title: "No", dataIndx: "no", width: 100, nodrag: true, nodrop: true, },
+			{ title: "약관 유형", dataIndx: "terms", width: 300, nodrag: true, nodrop: true,
+				render: function (ui) { // checkbox custom
+					var rowData = ui.rowData.terms;
+					var items = rowData.case;
+					var title = rowData.title;
+					
+					if(items === 'required'){
+						return `<p>${title}<span class='color_red'>[필수]</span><p>`
+					}else {
+						return`<p>${title}<p>`
+					}
+				},
+			},			
+			{ title: "필수 동의 여부", dataIndx: "deploy", width: 260, nodrag: true, nodrop: true, },
+
+		];
+
+		var dataModel = {
+			"data": [
+				{ "no": 10, "terms": { "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 9, "terms": { "case": "select", "title": "위치기반서비스 이용 약관" }, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 8, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 7, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 6, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 5, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 4, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 3, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 2, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+				{ "no": 1, "terms":{ "case": "required", "title": "위치기반서비스 이용 약관"}, "agree": "기사", "ver": "1.0.0", "status":"배포 완료", "deploy":"2022-11-28 15:12:01",},
+			]
+		};
+
+		var options = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			// height: 'flex',
+			minHeight: 400,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		var grid = pq.grid("#grid_terms_pop01", options);
+
+
+	});
+</script>
+
+
+
+
+<script>
+
+
+$(function () {        
+        var countries = [
+            { id: "CA", name: "Canada", regions: "Alberta|British Columbia|Manitoba|New Brunswick|Newfoundland|Northwest Territories|Nova Scotia|Nunavut|Ontario|Prince Edward Island|Quebec|Saskatchewan|Yukon Territory" },
+            { id: "VI", name: "Virgin Islands, U.S.", regions: "St. Thomas|St. John|St. Croix" }
+        ];
+
+        var colM = [
+            { title: "Ship Country", dataIndx: "country", width: 200,
+                editor: {
+                    type: "select",
+                    mapIndices: { name: "country", id: "id" },
+                    labelIndx: "name",
+                    valueIndx: "id",
+                    prepend: { "": "" },
+                    options: countries
+                }
+            },
+            { dataIndx: "region", title: "Region", width: 200,
+                editor: {
+                    type: "select",
+                    prepend: { "": "" },
+                    options: function (ui) {
+                        var id = ui.rowData.id;
+
+                        if (id) {
+                            //iterate through the countries list to find the matching record.
+                            for (var i = 0; i < countries.length; i++) {
+                                var row = countries[i];
+                                
+                                if (row.id == id) {//match found.
+                                    return row.regions.split("|");
+                                }
+                            }
+                        }
+                        return [];
+                    }
+                }
+            },
+            { dataIndx: "id", hidden: true }
+		];
+        var dataModel = {
+            data: [
+                {},
+                { id: "VI", country: "Virgin Islands, U.S." },
+                {},
+                { id: "CA", country: "Canada" }
+            ]
+        }
+        $("div#grid_select").pqGrid({
+            height : 'flex',
+            colModel: colM,
+            dataModel: dataModel,
+            editModel: { 
+                keyUpDown: false,
+                clicksToEdit: 1 
+            },
+            //title: "Cascading Select Lists",
+            pasteModel: {on: false},
+            cellSave: function (evt, ui) {
+                if (ui.dataIndx == "country" && ui.newVal.id !== ui.oldVal.id) {      
+
+                    //reset the region cell whenever country cell is modified.              
+                    this.updateRow({ 
+                        rowIndx: ui.rowIndx,
+                        row: { 'region': '' }
+                    });
+                }
+            }
+        });
+    });
+
+</script>
+
+
+</body>
+	
+
+</html>

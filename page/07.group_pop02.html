@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_group02" style="display: none;">
+		
+	<div class="pop_contents">	
+		
+		<div class="box_section">
+		
+			<div class="title_sm">
+				<div class="title">
+					그룹 정보
+				</div>
+			</div>	
+			<div class="table_list">
+				<!--검색된 결과가 없을 시-->
+				<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+				<table>
+					<caption class="sr_only"></caption>
+					<colgroup>
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+					</colgroup>
+					<thead>
+					<tr>
+						<th><span>시도</span></th>
+						<th><span>시군구</span></th>
+						<th><span>소속기관</span></th>
+						<th><span>센터</span></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>경상남도</td>
+						<td>고성군</td>
+						<td>고성군청</td>
+						<td>고성군청</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			
+			<div class="search_filter mt40">
+				<ul>
+					
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">그룹명</span></div>
+							<input type="text" class="form_ctl" placeholder="그룹명 입력" value="하일면 대군막마을">
+							<!-- 중복된 그룹명이 없는 경우 -->
+							<button type="button" class="btn btn_gray btn_outline w_mid"  onclick="toastPop_conf();"><span>중복체크</span></button>
+							<!-- 중복된 그룹명이 있는 경우 -->
+							<!-- <button type="button" class="btn btn_gray btn_outline w_mid"  onclick="toastPop_err();"><span>중복체크</span></button> -->
+						</div>
+					</li>
+				</ul>
+				<div class="title_sm">
+					<div class="title">
+						바우처 정보
+					</div>
+				</div>	
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">바우처 이용 유형</span></div>
+							<div class="input_radio">
+								<input type="radio" id="label_text1" name="">
+								<label for="label_text1" class="txt_label">개인</label>
+							</div>
+							<div class="input_radio">
+								<input type="radio" id="label_text2" name="" checked="">
+								<label for="label_text2" class="txt_label">그룹</label>
+							</div>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">바우처 충전 후 잔여 개수 (기본 설정값)</span></div>
+							<input type="text" class="form_ctl" placeholder="바우처 충전 개수 입력" value="30">
+						</div>
+					</li>
+					
+					<li>
+						<div class="form_inline">
+							<div class="label_t">바우처 자동 충전 주기</div>
+							<select class="form_ctl" id="">
+								<option>선택안함</option>
+								<option>1개월</option>
+								<option>2개월</option>
+								<option>3개월</option>
+								<option>4개월</option>
+								<option>5개월</option>
+								<option>6개월</option>
+								<option>7개월</option>
+								<option>8개월</option>
+								<option>9개월</option>
+								<option>10개월</option>
+								<option>11개월</option>
+								<option>12개월</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t">바우처 충전 시작일자</div>
+							<div class="date_wrap">
+								<i class="icon icon_date"></i>
+								<input type="text" name="" class="form_ctl datepicker" placeholder="일자 선택" value="" disabled/>
+							</div>
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		
+	</div>	
+</div>
+
+<!-- 중복된 그룹명이 없는 경우  토스트 팝업 -->
+<div class="toast_popup toastPop_conf">
+	<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>등록 가능한 그룹명입니다.</p></div>
+</div>
+
+<!-- 중복된 그룹명이 있는 경우 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>이미 등록 된 그룹명입니다</p></div>
+</div>
+
+<!-- 중복 검사 통과 못할 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>중복검사를 실행해 주세요</p></div>
+</div>	
+
+
+<script>
+$(function(){
+	$('#pop_group02').dialog({
+		dialogClass: 'popup',
+		width: 1120,
+		height: 700,
+		title: '그룹 정보 수정',
+		titleIsHtml: true,
+		modal: true,
+		buttons: [
+			{
+				text: "취소",  
+				class: "btn btn_gray btn_outline",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "변경",  
+				class: "btn btn_md btn_blue",
+				onclick: 'toastPop_err();',
+				click: function () {
+					//$(this).dialog("close");
+				}
+			}
+		]
+	});
+	
+});
+
+
+</script>
+
+
+</body>
+	
+
+</html>

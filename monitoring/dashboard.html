@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+    <div id="wrap">
+        @@include('../_include/header.html')
+
+        <div id="container">
+            @@include('../_include/lnb.html')
+            <div class="inner">
+                <div class="title_wrap">
+                    <h2 class="title_lg">대시보드</h2>
+                </div>
+                <div class="content dashboard">
+                    <!-- 검색 -->
+                    <div class="box_section">
+                        <div class="search_filter">
+                            <ul>
+                                <li>
+                                    <div class="form_inline">
+                                        <div class="label_t">시도</div>
+                                        <select class="form_ctl" id="">
+                                            <option>전체</option>
+                                            <option>강원도</option>
+                                            <option>경기도</option>
+                                            <option>경상남도</option>
+                                            <option>경상북도</option>
+                                            <option>전라북도</option>
+                                            <option>전라남도</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_inline">
+                                        <div class="label_t">시군구</div>
+                                        <select class="form_ctl" id="">
+                                            <option>전체</option>
+                                            <option>거제시</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_inline">
+                                        <div class="label_t">소속기관</div>
+                                        <select class="form_ctl" id="">
+                                            <option>전체</option>
+                                            <option>거제시</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_inline">
+                                        <select class="form_ctl type" id="">
+                                            <option value="m">월간 검색</option>
+                                            <option value="y">연간 검색</option>
+                                        </select>
+                                        <div class="date_wrap month">
+                                            <i class="icon icon_date"></i>
+                                            <input type="text" name="" class="form_ctl monthPicker" placeholder="" />
+                                        </div>
+                                        <div class="date_wrap year">
+                                            <i class="icon icon_date"></i>
+                                            <select class="form_ctl" id="">
+                                                <option>선택</option>
+                                                <option>2023</option>
+                                                <option>2022</option>
+                                                <option>2021</option>
+                                                <option>2020</option>
+                                                <option>2019</option>
+                                                <option>2018</option>
+                                                <option>2017</option>
+                                                <option>2016</option>
+                                            </select>
+                                            <!-- <input type="text" name="" class="form_ctl yearPicker" placeholder="" /> -->
+                                        </div>
+                                    </div>
+                                    <div class="form_inline">
+                                        <button type="button" class="btn btn_blue"><span>검색</span></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 운영 지자체 현황 -->
+                    <div class="box_content">
+                        <div class="title_md">
+                            <p class="title">운영 지자체 현황</p>
+                            <span class="txt">업데이트 일시 <strong>2023-01-31 00시 00분</strong></span>
+                        </div>
+                        <div class="box_section">
+                            <div class="table_list align_left">
+                                <table>
+                                    <caption class="sr_only">운영 지자체 현황</caption>
+                                    <colgroup>
+                                        <col width="200px">
+                                        <col width="*">
+                                        <col width="200px">
+                                        <col width="*">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>시군구</th>
+                                            <td>101개</td>
+                                            <th>소속기관</th>
+                                            <td>640개</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 지역 별 이용 현황 / 승인 비용 총계 -->
+                    <div class="row">
+                        <div class="col map">
+                            <div id="map_div" class="map_area" style="width:100%;height:100%"></div>
+                        </div>
+                        <div class="col">
+                            <div class="title_md mt0">
+                                <p class="title">월간 승인 비용 총계</p>
+                            </div>
+                            <div class="box_section">
+                                <div class="table_area">
+                                    <div class="table_list align_left">
+                                        <table>
+                                            <caption class="sr_only">총 주행 건수</caption>
+                                            <colgroup>
+                                                <col width="200px">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>총 주행 건수</th>
+                                                    <td>1,150,500건 </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>승인대기</th>
+                                                    <td class="sub_td">3,500건</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_section df">
+                                <div class="table_area">
+                                    <div class="table_list align_left">
+                                        <table>
+                                            <caption class="sr_only">총 요금(승인)</caption>
+                                            <colgroup>
+                                                <col width="200px">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>승인</th>
+                                                    <td colspan="2">1,150,500건</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th">총 요금</th>
+                                                    <td class="sub_td">1,130,000,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전월대비
+                                                            <span><i class="icon icon_high"></i>145,500원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+                                                    <td class="sub_td">1,1500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전월대비
+                                                            <span><i class="icon icon_high"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>보조금</th>
+                                                    <td class="sub_td">1,127,500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point blue">
+                                                            전월대비
+                                                            <span><i class="icon icon_low"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="chart_area">
+                                    <div class="chart_wrap">
+                                        <canvas id="totalChart"></canvas>
+                                    </div>
+                                    <div class="labels">
+                                        <p>승객 지불 요금</p>
+                                        <p>보조금</p>
+                                    </div>
+                                    <div class="top">
+                                        <i class="icon icon_question"></i>
+                                        <div class="pop_question">
+                                            <strong>총 요금을 구성하는 비율입니다.</strong>
+                                            <p>총 요금 : <span>주행 1건의 운임료(승객 지불 요금+보조금)</span></p>
+                                            <p>승객 지불 요금 : <span>주민 부담금</span></p>
+                                            <p>보조금 : <span>운임 지원금</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_section df">
+                                <div class="table_area">
+                                    <div class="table_list align_left">
+                                        <table>
+                                            <caption class="sr_only">총 요금(반려)</caption>
+                                            <colgroup>
+                                                <col width="200px">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>반려</th>
+                                                    <td colspan="2">1,150,500건</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th">총 요금</th>
+                                                    <td class="sub_td">1,130,000,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전월대비
+                                                            <span><i class="icon icon_high"></i>145,500원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+                                                    <td class="sub_td">1,1500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전월대비
+                                                            <span><i class="icon icon_high"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>보조금</th>
+                                                    <td class="sub_td">1,127,500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point blue">
+                                                            전월대비
+                                                            <span><i class="icon icon_low"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="chart_area">
+                                    <div class="chart_wrap">
+                                        <canvas id="totalChart2"></canvas>
+                                    </div>
+                                    <div class="labels">
+                                        <p>승객 지불 요금</p>
+                                        <p>보조금</p>
+                                    </div>
+                                    <div class="top">
+                                        <i class="icon icon_question"></i>
+                                        <div class="pop_question">
+                                            <strong>총 요금을 구성하는 비율입니다.</strong>
+                                            <p>총 요금 : <span>주행 1건의 운임료(승객 지불 요금+보조금)</span></p>
+                                            <p>승객 지불 요금 : <span>주민 부담금</span></p>
+                                            <p>보조금 : <span>운임 지원금</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab_menu">
+                        <!-- 월간 보조금 지급 승인 현황 -->
+                        <ul class="tabs mt40">
+                            <li class="on"><a href="#subsidy">보조금 승인 현황</a></li>
+                            <li><a href="#local">지자체별 운행 현황</a></li>
+                        </ul>
+                        <!-- 보조금 승인 현황 tab -->
+                        <div id="subsidy" class="tab_contents on">
+                            <div class="box_section bar_chart">
+                                <div class="chart_area">
+                                    <div class="chart_wrap">
+                                        <canvas id="monthChart" width="100%" height="20vh"></canvas>
+                                    </div>
+                                    <div class="bar_labels">
+                                        <p>승인</p>
+                                        <p>반려</p>
+                                        <p>승인 대기</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 지자체별 운행 현황 tab -->
+                        <div id="local" class="tab_contents">
+                            <div class="box_section bar_chart">
+                                <div class="chart_area">
+                                    <div class="chart_wrap">
+                                        <canvas id="localChart" width="100%" height="20vh"></canvas>
+                                    </div>
+                                    <div class="bar_labels local">
+                                        <p>2021년</p>
+                                        <p>2022년</p>
+                                        <p>2023년</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab_menu">
+                        <!--  tab  -->
+                        <div class="tabs_wrap df">
+                            <ul class="tabs">
+                                <li class="on"><a href="#operate_total">운영 현황 총계</a></li>
+                                <li><a href="#driver_total">기사 현황 총계</a></li>
+                            </ul>
+                            <div class="form_inline">
+                                <div class="label_t">센터</div>
+                                <select class="form_ctl" id="">
+                                    <option>전체</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 운영 현황 총계 tab -->
+                        <div id="operate_total" class="tab_contents on">
+                            <div class="box_section">
+                                <div class=" operate_group">
+                                    <div class="col">
+                                        <div class="title_sm">
+                                            <div class="title">운행차량 현황</div>
+                                        </div>
+                                        <div id="carGrid" class="grid_list"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="title_sm">
+                                            <div class="title">이용자 수 현황</div>
+                                        </div>
+                                        <div id="userGrid" class="grid_list"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 기사 현황 총계 tab -->
+                        <div id="driver_total" class="tab_contents">
+                            <div class="box_section">
+                                <div class="driver_group">
+                                    <div class="col">
+                                        <div class="col_area">
+                                            <div class="title_sm">
+                                                <div class="title">기사 현황</div>
+                                            </div>
+                                            <div class="col_area">
+                                                <div class="table_list align_left">
+                                                    <table>
+                                                        <caption class="sr_only">기사 현황</caption>
+                                                        <colgroup>
+                                                            <col width="46%">
+                                                            <col width="*">
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="top">
+                                                                        등록 기사 수
+                                                                        <i class="icon icon_question"></i>
+                                                                        <div class="pop_question">
+                                                                            <strong class="bold">등록 기사 수</strong>
+                                                                            <p>조회한 기간에 기 등록된 기사 수입니다.</p>
+                                                                            <strong class="bold mt10">당해 연간/월간 검색인 경우</strong>
+                                                                            <p>대시보드 업데이트 일시 기준으로 등록된 기사 수</p>
+                                                                            <strong class="bold mt10">당해 지난달 월간 검색인 경우</strong>
+                                                                            <p>조회한 달 말일까지 등록된 기사 수</p>
+                                                                            <strong class="bold mt10">지난해 연간/월간 검색인 경우</strong>
+                                                                            <p>조회한 연월 말일까지 등록된 기사 수</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </th>
+                                                                <td>232540명</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="top">
+                                                                        평균 주행 건수
+                                                                        <i class="icon icon_question"></i>
+                                                                        <div class="pop_question">
+                                                                            <strong class="bold">평균 주행 건수</strong>
+                                                                            <p>조회한 기간에 기사님 1명 당 평균 주행 건수입니다</p>
+                                                                            <strong class="bold mt10">당해 연간/월간 검색인 경우</strong>
+                                                                            <p>조회한 연월 초부터 대시보드 업데이트 일시까지 총 주행 건수 ÷ 등록 기사 수</p>
+                                                                            <strong class="bold mt10">당해 지난달 월간 검색인 경우</strong>
+                                                                            <p>조회한 달 초부터 말일까지 총 주행 건수 ÷ 등록 기사 수</p>
+                                                                            <strong class="bold mt10">지난해 연간/월간 검색인 경우</strong>
+                                                                            <p>조회한 연월 초부터 말일까지 등록된 기사 수 ÷ 등록 기사 수</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </th>
+                                                                <td>3760건</td>
+                                                            </tr>
+                                                            <!-- <tr>
+                                                                <th>
+                                                                    <div class="top">
+                                                                        미주행 기사 수
+                                                                        <i class="icon icon_question"></i>
+                                                                        <div class="pop_question">
+                                                                            <p>주행 건수가 0건인 기사님의 수입니다.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </th>
+                                                                <td>360명</td>
+                                                            </tr> -->
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="top">
+                                                                        평균 지급 보조금
+                                                                        <i class="icon icon_question"></i>
+                                                                        <div class="pop_question">
+                                                                            <strong class="bold">평균 지급 보조금</strong>
+                                                                            <p>조회한 기간에 기사님 1명 당 평균 수급 보조금입니다.</p>
+                                                                            <strong class="bold mt10">당해 연간/월간 검색인 경우</strong>
+                                                                            <p>조회한 연월 초부터 대시보드 업데이트 일시까지 승인된 보조금 ÷ 등록 기사 수</p>
+                                                                            <strong class="bold mt10">당해 지난달 월간 검색인 경우</strong>
+                                                                            <p>조회한 달 초부터 말일까지 승인된 보조금 ÷ 등록 기사 수</p>
+                                                                            <strong class="bold mt10">지난해 연간/월간 검색인 경우</strong>
+                                                                            <p>조회한 연월 초부터 말일까지 승인된 보조금 ÷ 등록 기사  수</p>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                </th>
+                                                                <td>236,300원</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col df_col">
+                                            <div class="title_sm">
+                                                <div class="title">보조금 최다 수급 기사님 TOP5</div>
+                                            </div>
+                                            <div id="topDriverGrid" class="grid_list"></div>
+                                            <div class="driver_info">
+                                                <div class="title_sm">
+                                                    <div class="title">김행복 기사님</div>
+                                                </div>
+                                                <div class="table_list align_left">
+                                                    <table>
+                                                        <caption class="sr_only">기사 정보</caption>
+                                                        <colgroup>
+                                                            <col width="20%">
+                                                            <col width="*">
+                                                            <col width="20%">
+                                                            <col width="*">
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>시도</th>
+                                                                <td>울산시</td>
+                                                                <th>시군구</th>
+                                                                <td>울주군</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>센터</th>
+                                                                <td>울주군 행복택시 센터</td>
+                                                                <th>기사구분</th>
+                                                                <td>법인</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>운수 회사</th>
+                                                                <td>울산운수</td>
+                                                                <th>소속기관</th>
+                                                                <td>울주군 행복택시</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>전화번호</th>
+                                                                <td rowspan="2">010-1234-5678</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--//inner-->
+        </div> <!-- //container-->
+    </div> <!-- //wrap-->
+</body>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script>
+    $(function () {
+
+        /*=============================================
+            TAB
+        =============================================*/
+        var tabMenu = $('.tab_menu .tabs li a');
+        var tabContent = $('.tab_menu .tab_contents');
+
+        tabMenu.on('click', function (e) {
+            e.preventDefault();
+            var idx = tabMenu.index(this);
+
+            $(this).parent().addClass('on').closest('li').siblings('li').removeClass('on');
+            tabContent.eq(idx).addClass('on').siblings().removeClass('on');
+        });
+
+        /*=============================================
+            일간/월간 검색
+        =============================================*/
+
+        $('.date_wrap.month').show();
+        $('.date_wrap.year').hide();
+
+        $(".type").on('selectmenuchange', function () {
+            console.log($(this).val())
+            if ($(this).val() === 'm') {
+                $('.date_wrap.month').show();
+                $('.date_wrap.year').hide();
+            } else {
+                $('.date_wrap.year').show();
+                $('.date_wrap.month').hide();
+            }
+        })
+
+
+
+        /* ==========================================================================
+           일간 승인 비용 총계 PIE 그래프
+       ========================================================================== */
+
+        let totalData = {
+            labels: ['보조금', '승객 지불 요금',],
+            datasets: [{
+                label: 'Dataset',
+                data: [20, 80],
+                backgroundColor: [
+                    '#5e8ce7',
+                    '#14429c',
+                ],
+                borderWidth: 0,
+            }]
+        }
+
+        let totalData2 = {
+            labels: ['보조금', '승객 지불 요금',],
+            datasets: [{
+                label: 'Dataset',
+                data: [60, 40],
+                backgroundColor: [
+                    '#5e8ce7',
+                    '#14429c',
+                ],
+                borderWidth: 0,
+            }]
+        }
+
+        let totalOption = {
+            legend: {
+                display: false
+            },
+            tooltips: {
+                enabled: false
+            },
+            plugins: {
+                datalabels: {
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        return percentage;
+                    },
+                    color: '#FFFFFF',
+                    font: {
+                        size: 12,
+                        family: "'SUIT', 'sans-serif'",
+                        weight: 500,
+                    }
+                },
+            }
+        }
+
+        const totalCtx = document.querySelector('#totalChart').getContext('2d');
+        const totalChart = new Chart(totalCtx, {
+            type: 'pie',
+            data: totalData,
+            options: totalOption
+        });
+
+        const totalCtx2 = document.querySelector('#totalChart2').getContext('2d');
+        const totalChart2 = new Chart(totalCtx2, {
+            type: 'pie',
+            data: totalData2,
+            options: totalOption
+        });
+
+
+        /* ==========================================================================
+            보조금 승인 현황 막대 그래프
+        ========================================================================== */
+
+
+        let monthData = {
+            labels: ['4월;22년', '5월;22년', '6월;22년', '7월;22년', '8월;22년', '9월;22년', '10월;22년', '11월;22년', '12월;22년', '1월;23년', '2월;23년', '3월;23년'],
+            datasets: [
+                {
+                    xAxisID: 'xAxis1',
+                    label: '승인',
+                    data: [2500, 2000, 3000, 2500, 2000, 3000, 4000, 3500, 1500, 2000, 1000, 2000],
+                    backgroundColor: '#14429c',
+                },
+                {
+                    label: '반려',
+                    data: [2000, 1500, 2000, 2000, 1500, 2000, 1000, 2000, 1500, 2000, 2000, 2000],
+                    backgroundColor: '#5e8ce7',
+                },
+                {
+                    label: '승인 대기',
+                    data: [500, 600, 100, 500, 600, 100, 200, 700, 600, 400, 500, 600],
+                    backgroundColor: '#cfdaf8',
+                },
+            ]
+        }
+
+
+        let monthOption = {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                y: {
+                    stacked: true,
+                },
+                xAxes: [
+                    {
+                        id: 'xAxis1',
+                        type: "category",
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            fontColor: '#000000',
+                            callback: function (label) {
+                                var month = label.split(";")[0];
+                                var year = label.split(";")[1];
+                                return month;
+                            }
+                        }
+                    },
+                    {
+                        id: 'xAxis2',
+                        type: "category",
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            padding: 0,
+                            fontColor: '#000000',
+                            // callback: function (label) {
+                            //     var month = label.split(";")[0];
+                            //     var year = label.split(";")[1];
+                            //     if (month === "1월") {
+                            //         return year;
+                            //     } else {
+                            //         return "";
+                            //     }
+                            // }
+                            callback: function (label, index) {
+                                var date = label.split(";");
+                                var month = date[0];
+                
+                                if (index == 0 || month === "1월") {
+                                  return date[1]; // year
+                                } else {
+                                  return "";
+                                }
+                            },
+                        },
+                    },
+                ],
+
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 500,
+                        fontColor: '#000000',
+                    },
+                    gridLines: {
+                        lineWidth: 0,
+                    },
+                }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                enabled: false,
+                bodyFontFamily: "'SUIT', sans-serif",
+                bodyFontSize: 14,
+                custom: function (tooltipModel) {
+                    // 툴팁 요소
+                    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                    // 첫번째 그리기에서 요소 만들기
+                    if (!tooltipEl) {
+                        tooltipEl = document.createElement('div');
+                        tooltipEl.id = 'chartjs-tooltip';
+                        tooltipEl.classList.add('wrap_tooltip');
+                        const contents = document.createElement('div');
+                        contents.classList.add('tooltip');
+                        tooltipEl.appendChild(contents);
+                        document.body.appendChild(tooltipEl);
+                    }
+
+                    // 툴팁이 없으면 숨기기
+                    if (tooltipModel.opacity === 0) {
+                        tooltipEl.style.opacity = 0;
+                        return;
+                    }
+
+                    // 캐럿 위치 설정
+                    tooltipEl.classList.remove('above', 'below', 'no-transform');
+                    if (tooltipModel.yAlign) {
+                        tooltipEl.classList.add(tooltipModel.yAlign);
+                    } else {
+                        tooltipEl.classList.add('no-transform');
+                    }
+
+                    function getBody(bodyItem) {
+                        let newArr = [];
+                        let lines = bodyItem.lines;
+                        newArr.push(lines.toString().split(":"))
+                        // console.log(newArr[0][1]);
+
+                        bodyItem = newArr;
+                        return bodyItem;
+                    }
+
+                    // 텍스트 설정
+                    if (tooltipModel.body) {
+                        var titleLines = tooltipModel.title || [];
+                        var bodyLines = tooltipModel.body.map(getBody);
+
+                        const titleArea = document.createElement('div');
+                        titleArea.classList.add('title_wrap');
+
+
+                        titleLines.forEach(title => {
+                            titleArea.innerHTML = `<p class='title'>${title} 승인 내역</p><span>1,112건</span>`;
+                        });
+
+                        const contentsArea = document.createElement('div');
+                        contentsArea.classList.add('table_list');
+                        const tableWrap = document.createElement('table');
+                        const tableWrapBody = document.createElement('tbody');
+                        $(tableWrap).append(tableWrapBody);
+                        $(contentsArea).append(tableWrap);
+
+
+                        bodyLines.forEach(function (body, i) {
+                            let bodyTitle = body[0][0];
+                            let bodyText = body[0][1];
+                            let result = bodyText.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                            const table = `<tr><th>${bodyTitle}</th><td>${result}원</td></tr>`
+
+                            $(tableWrapBody).append(table);
+                        });
+
+
+                        const tableRoot = tooltipEl.querySelector('.tooltip');
+
+                        // Remove old children
+                        while (tableRoot.firstChild) {
+                            tableRoot.firstChild.remove();
+                        }
+
+                        // Add new children
+                        tableRoot.appendChild(titleArea);
+                        tableRoot.appendChild(contentsArea);
+
+                    }
+
+                    // `this` 전반적인 툴팁이 될 것입니다
+                    const { offsetLeft: positionX, offsetTop: positionY } = this._chart.canvas;
+                    console.log(positionX, positionY);
+
+                    // 폰트에 대한 보여지기, 위치, 그리고 스타일을 설정합니다
+                    tooltipEl.style.opacity = 1;
+                    tooltipEl.style.position = 'absolute';
+                    tooltipEl.style.left = positionX + tooltipModel.caretX + 100 + 'px';
+                    tooltipEl.style.top = positionY + tooltipModel.caretY + 100 + 'px';
+                    tooltipEl.style.pointerEvents = 'none';
+
+                },
+            },
+            plugins: {
+                datalabels: {
+                    font: {
+                        size: 'none',
+                    }
+                },
+            },
+        }
+
+        const monthCtx = document.querySelector('#monthChart').getContext('2d');
+        const monthChart = new Chart(monthCtx, {
+            type: 'bar',
+            data: monthData,
+            options: monthOption
+        });
+
+        /* ==========================================================================
+            지자체별 운행 현황 막대 그래프
+        ========================================================================== */
+
+
+        let localData = {
+            labels: ['서울', '부산','대구','인천', '광주','대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '전남', '경북', '경상', '제주'],
+            datasets: [
+                {
+                    xAxisID: 'xAxis1',
+                    label: '2023년 1월',
+                    data: [20000, 20000, 100000, 100000, 150000, 200000, 200000, 250000, 300000, 100000, 100000, 150000, 200000, 200000, 250000, 300000, 150000,],
+                    backgroundColor: '#14429c',
+                },
+                {
+                    label: '2023년 2월',
+                    data: [30000, 30000, 100000, 100000, 150000, 250000, 150000, 300000, 300000, 100000, 100000, 150000, 200000, 200000, 250000, 300000, 100000],
+                    backgroundColor: '#ff6928',
+                },
+                {
+                    label: '2023년 3월',
+                    data: [30000, 30000, 100000, 100000, 150000, 200000, 200000, 250000, 300000, 150000, 300000, 300000, 100000, 100000, 150000, 200000, 200000,],
+                    backgroundColor: '#cfdaf8',
+                },
+            ]
+        }
+
+
+        let localOption = {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                y: {
+                    stacked: true,
+                },
+                xAxes: [
+                    {
+                        id: 'xAxis1',
+                        type: "category",
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            fontColor: '#000000',
+                            callback: function (label) {
+                                var month = label.split(";")[0];
+                                var year = label.split(";")[1];
+                                return month;
+                            }
+                        }
+                    },
+                    {
+                        id: 'xAxis2',
+                        type: "category",
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            padding: 0,
+                            fontColor: '#000000',
+                            callback: function (label) {
+                                var month = label.split(";")[0];
+                                var year = label.split(";")[1];
+                                if (month === "1월") {
+                                    return year;
+                                } else {
+                                    return "";
+                                }
+                            }
+                        },
+                    },
+                ],
+
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 50000,
+                        fontColor: '#000000',
+                    },
+                    gridLines: {
+                        lineWidth: 0,
+                    },
+                }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                enabled: false,
+                bodyFontFamily: "'SUIT', sans-serif",
+                bodyFontSize: 14,
+                custom: function (tooltipModel) {
+                    // 툴팁 요소
+                    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                    // 첫번째 그리기에서 요소 만들기
+                    if (!tooltipEl) {
+                        tooltipEl = document.createElement('div');
+                        tooltipEl.id = 'chartjs-tooltip';
+                        tooltipEl.classList.add('wrap_tooltip');
+                        const contents = document.createElement('div');
+                        contents.classList.add('tooltip');
+                        tooltipEl.appendChild(contents);
+                        document.body.appendChild(tooltipEl);
+                    }
+
+                    // 툴팁이 없으면 숨기기
+                    if (tooltipModel.opacity === 0) {
+                        tooltipEl.style.opacity = 0;
+                        return;
+                    }
+
+                    // 캐럿 위치 설정
+                    tooltipEl.classList.remove('above', 'below', 'no-transform');
+                    if (tooltipModel.yAlign) {
+                        tooltipEl.classList.add(tooltipModel.yAlign);
+                    } else {
+                        tooltipEl.classList.add('no-transform');
+                    }
+
+                    function getBody(bodyItem) {
+                        let newArr = [];
+                        let lines = bodyItem.lines;
+                        newArr.push(lines.toString().split(":"))
+                        // console.log(newArr[0][1]);
+
+                        bodyItem = newArr;
+                        return bodyItem;
+                    }
+
+                    // 텍스트 설정
+                    if (tooltipModel.body) {
+                        var titleLines = tooltipModel.title || [];
+                        var bodyLines = tooltipModel.body.map(getBody);
+
+                        const titleArea = document.createElement('div');
+                        titleArea.classList.add('title_wrap');
+
+                        titleLines.forEach(title => {
+                            titleArea.innerHTML = `<p class='title'>${title} 운행 건수</p>`;
+                        });
+
+                        const contentsArea = document.createElement('div');
+                        contentsArea.classList.add('table_list');
+                        const tableWrap = document.createElement('table');
+                        const tableWrapBody = document.createElement('tbody');
+                        $(tableWrap).append(tableWrapBody);
+                        $(contentsArea).append(tableWrap);
+
+
+                        bodyLines.forEach(function (body, i) {
+                            let bodyTitle = body[0][0];
+                            let bodyText = body[0][1];
+                            let result = bodyText.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                            const table = `<tr><th>${bodyTitle}</th><td>${result}건</td></tr>`
+
+                            $(tableWrapBody).append(table);
+                        });
+
+
+                        const tableRoot = tooltipEl.querySelector('.tooltip');
+
+                        // Remove old children
+                        while (tableRoot.firstChild) {
+                            tableRoot.firstChild.remove();
+                        }
+
+                        // Add new children
+                        tableRoot.appendChild(titleArea);
+                        tableRoot.appendChild(contentsArea);
+
+                    }
+
+                    // `this` 전반적인 툴팁이 될 것입니다
+                    const { offsetLeft: positionX, offsetTop: positionY } = this._chart.canvas;
+
+                    // 폰트에 대한 보여지기, 위치, 그리고 스타일을 설정합니다
+                    tooltipEl.style.opacity = 1;
+                    tooltipEl.style.position = 'absolute';
+                    tooltipEl.style.left = positionX + tooltipModel.caretX + 100 + 'px';
+                    tooltipEl.style.top = positionY + tooltipModel.caretY + 100 + 'px';
+                    tooltipEl.style.pointerEvents = 'none';
+
+                },
+            },
+            plugins: {
+                datalabels: {
+                    font: {
+                        size: 'none',
+                    }
+                },
+            },
+        }
+
+        const localCtx = document.querySelector('#localChart').getContext('2d');
+        const localChart = new Chart(localCtx, {
+            type: 'bar',
+            data: localData,
+            options: localOption
+        });
+
+
+        /* ==========================================================================
+              chart style
+          ========================================================================== */
+        Chart.pluginService.register({
+            beforeDraw: function (chart, easing) {
+                // let count = chart.chart.data.datasets[0].data
+                let width = chart.chart.width,
+                    height = chart.chart.height,
+                    ctx = chart.chart.ctx;
+                var chartArea = chart.chartArea;
+                ctx.restore();
+                ctx.font = "12px SUIT";
+                // console.log(ctx);
+
+                //bar chart background color
+                if (chart.canvas.id === 'monthChart' || chart.canvas.id === 'localChart') {
+                    ctx.fillStyle = "#f0f3f5";
+                    ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+
+                };
+            }
+        });
+
+
+        //========================================
+        //  운영 현황 총계 TAB
+        //======================================== 
+
+        // 운행차량 현황 grid
+        var carColGroup = {
+            carCol: [
+                {
+                    title: "차량 구분", dataIndx: "car_type", width: 100, nodrag: true, nodrop: true, exportRender: false,
+                    render: function (ui) {
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData;
+                        }
+                    }
+                },
+                {
+                    title: "차량 대수", dataIndx: "car_num", width: 120, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        return ui.cellData + '대';
+                    }
+                },
+                {
+                    title: "전월", dataIndx: "last_year", width: 120, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        return ui.cellData + '대';
+                    }
+                },
+                {
+                    title: "전년 대비", dataIndx: "on_year", width: 100, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        const high = "<i class='icon icon_high'></i>";
+                        return high + ui.cellData + '%';
+                    }
+                },
+            ],
+            summaryData: [
+                { car_type: '합계', summaryRow: true, pq_fn: { car_num: 'sum(B:B)', last_year: 'sum(C:C)', on_year: 'sum(D:D)', } },
+            ]
+        }
+
+        var carData = {
+            "data": [
+                { "car_type": "택시", "car_num": "16070", "last_year": "15880", "on_year": "3.13" },
+                { "car_type": "버스", "car_num": "130", "last_year": "130", "on_year": "2.14" }
+            ]
+        };
+
+
+        var carOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 60,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: carData,
+            colModel: carColGroup.carCol,
+            summaryData: carColGroup.summaryData,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#carGrid", carOpt);
+
+        // 이용자 수 현황 grid
+        var userColGroup = {
+            userCol: [
+                {
+                    title: "차량 구분", dataIndx: "car_type", width: 100, nodrag: true, nodrop: true, exportRender: false,
+                    render: function (ui) {
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData;
+                        }
+                    }
+                },
+                {
+                    title: "이용자 수", dataIndx: "user_num", width: 120, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        return ui.cellData + '명';
+                    }
+                },
+                {
+                    title: "전월", dataIndx: "last_year", width: 120, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        return ui.cellData + '명';
+                    }
+                },
+                {
+                    title: "전년 대비", dataIndx: "on_year", width: 120, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        const low = "<i class='icon icon_low'></i>";
+                        return low + ui.cellData + '%';
+                    }
+                },
+            ],
+            summaryData: [
+                { car_type: '합계', summaryRow: true, pq_fn: { user_num: 'sum(B:B)', last_year: 'sum(C:C)', on_year: 'sum(D:D)', } },
+            ]
+        }
+
+        var userData = {
+            "data": [
+                { "car_type": "택시", "user_num": "16070", "last_year": "15880", "on_year": 3.13 },
+                { "car_type": "버스", "user_num": "130", "last_year": "130", "on_year": 3.13 }
+            ]
+        };
+
+        var userOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 60,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: userData,
+            colModel: userColGroup.userCol,
+            summaryData: userColGroup.summaryData,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true,
+            virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#userGrid", userOpt);
+
+
+
+        //========================================
+        //  기사 현황 총계 TAB
+        //======================================== 
+
+        function showStatus(rowIndx, grid, tg) {
+            // console.log(tg);
+            var st = $(window).scrollTop();
+            var sl = $(window).scrollLeft();
+
+
+            $(window).scroll(function (evt) {
+                $('.driver_info').css({ 'display': 'none' });
+            });
+
+            $(window).resize(function () {
+                $('.driver_info').css({ 'display': 'none' });
+            });
+
+            if (!tg.hasClass('on')) {
+                $('.driver_info').css({
+                    'display': 'block',
+                    'left': (tg.offset().left / 2) - (tg.outerWidth() / 2),
+                    'top': tg.offset().top / $('.driver_info').outerHeight() * 10 + tg.outerHeight()
+                });
+                console.log(tg.offset().top / $('.driver_info').outerHeight())
+
+                // tg.addClass('on');
+            } else {
+                $('.driver_info').css({ 'display': 'none' });
+            }
+        }
+
+
+        //보조금 최다 수급 기사님 TOP5 grid
+        var topDriverCol = [
+            { title: "순위", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+            {
+                title: "기사 이름", dataIndx: "name", width: 120, nodrag: true, nodrop: true, cls: "link",
+                postRender: function (ui) {
+                    // console.log(ui);
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = grid.getCell(ui);
+                    $cell.bind('mouseover mouseout', function (evt) {
+                        var tg = $(this);
+                        if (evt.type == "mouseover") {
+                            $('.driver_info').css({ 'display': 'boick' });
+                            showStatus(rowIndx, grid, tg);
+                        }
+                        else if (evt.type == "mouseout") {
+                            $('.driver_info').css({ 'display': 'none' });
+                        }
+                    })
+                },
+            },
+            { title: "주행 건수", dataIndx: "driving_num", width: 100, nodrag: true, nodrop: true, },
+            { title: "이용자 수", dataIndx: "user_num", width: 100, nodrag: true, nodrop: true, },
+            { title: "총 주행거리", dataIndx: "total_distance", width: 100, nodrag: true, nodrop: true, },
+            { title: "평균 주행 거리", dataIndx: "average_distance", width: 100, nodrag: true, nodrop: true, },
+            { title: "지급 보조금", dataIndx: "subsidy", width: 120, nodrag: true, nodrop: true, },
+
+        ];
+
+
+        var topDriverData = {
+            "data": [
+                { "no": "1", "name": "김행복", "driving_num": "30건", "user_num": "35명", "total_distance": "1.234km", "average_distance": "1.234km", "subsidy": "150,000원", },
+                { "no": "2", "name": "나행복", "driving_num": "30건", "user_num": "35명", "total_distance": "1.234km", "average_distance": "1.234km", "subsidy": "150,000원" },
+                { "no": "3", "name": "박행복", "driving_num": "30건", "user_num": "35명", "total_distance": "1.234km", "average_distance": "1.234km", "subsidy": "150,000원" },
+                { "no": "4", "name": "이행복", "driving_num": "30건", "user_num": "35명", "total_distance": "1.234km", "average_distance": "1.234km", "subsidy": "150,000원" },
+                { "no": "5", "name": "임행복", "driving_num": "30건", "user_num": "35명", "total_distance": "1.234km", "average_distance": "1.234km", "subsidy": "150,000원" },
+            ]
+        };
+
+
+        var topDriverOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: topDriverData,
+            colModel: topDriverCol,
+
+            columnTemplate: {
+                align: 'center', valign: 'center',
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true,
+            virtualY: true,
+
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+
+        var grid_desc2 = pq.grid("#topDriverGrid", topDriverOpt);
+
+
+        //======================================== 
+        // PQ Grid refresh
+        //======================================== 
+
+        $(".tab_menu .tabs li a").on("click", function () {
+            grid_desc.refreshDataAndView();
+            grid_desc2.refreshDataAndView();
+        });
+        //======================================== 
+    })
+</script>
+
+<script>
+    var dataModel = {   // 시, 도
+        "data": [
+            { "name": "경기도", "lat": "4479441.55063332", "lon": "14143573.56989571", "count": "2230" },
+            { "name": "강원도", "lat": "4563245.81944605", "lon": "14218819.88277769", "count": "545" },
+            { "name": "충청북도", "lat": "4388450.34314208", "lon": "14192276.56840460", "count": "1245" },
+            { "name": "충청남도", "lat": "4391747.04832568", "lon": "14101200.60980514", "count": "334" },
+            { "name": "경상북도", "lat": "4380160.54350907", "lon": "14305212.65999097", "count": "4455" },
+            { "name": "경상남도", "lat": "4196245.29181517", "lon": "14325920.41508494", "count": "16000" },
+            { "name": "전라북도", "lat": "4275933.93699862", "lon": "14149678.37042744", "count": "6550" },
+            { "name": "전라남도", "lat": "4138935.80685049", "lon": "14077787.53128276", "count": "22400" },
+            { "name": "제주도", "lat": "3960394.53336689", "lon": "14081723.93307265", "count": "555" }
+        ],
+    };
+
+    var dataModel2 = {  // 시, 군, 구
+        "data": [
+            { "name": "고창군", "lat": "4223264.17351224", "lon": "14104413.56738598", "count": "504" },
+            { "name": "장수군", "lat": "4252201.45183824", "lon": "14195597.18097096", "count": "521" },
+            { "name": "순창군", "lat": "4214881.91047825", "lon": "14152895.26435587", "count": "346" },
+            { "name": "광주광역시", "lat": "4185657.92121210", "lon": "14121036.57445829", "count": "854" },
+            { "name": "하동군", "lat": "4173020.63314568", "lon": "14221206.27576951", "count": "237" },
+        ],
+    };
+
+    var map = new naver.maps.Map("map_div", {
+        zoom: 7,
+        minZoom: 7,
+        maxZoom: 13,
+        center: new naver.maps.LatLng(35.7290000, 127.6460516),
+        // zoomControl: true,
+        // zoomControlOptions: {
+        //     position: naver.maps.Position.TOP_LEFT,
+        //     style: naver.maps.ZoomControlStyle.SMALL
+        // }
+    });
+
+    var markerList = [];
+
+    // create an array of markerList
+    function createMarker(dataItems, selectedValue) {
+        // markerList 초기화
+        if (markerList.length > 0) {
+            for (var i = 0; i < markerList.length; i++) {
+                markerList[i].setMap(null);
+            }
+            markerList = [];
+        }
+
+        if (selectedValue) {
+            var selectedItem = dataItems.filter((item) => {
+                return item.name === selectedValue;
+            });
+
+            console.log(selectedItem)
+
+            // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+            var latlng = new Tmapv2.Point(selectedItem[0].lon, selectedItem[0].lat);
+            // 포인트 객체를 받아 좌표값으로 변환
+            var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+            // 포인트객체의 정보로 좌표값 변환 객체로 저장
+            var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+
+            map.setCenter(convertChange);
+            map.setZoom(9);
+        }
+
+        for (var i = 0; i < dataItems.length; i++) {
+            // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+            var latlng = new Tmapv2.Point(dataItems[i].lon, dataItems[i].lat);
+            // 포인트 객체를 받아 좌표값으로 변환
+            var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+            // 포인트객체의 정보로 좌표값 변환 객체로 저장
+            var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+
+            var name = dataItems[i].name;
+            var count = Number(dataItems[i].count);
+            var cls = '';
+            var str = count.toString().split('')[0];
+            var result = '';
+
+            if (count >= 1000 && count < 10000) {
+                cls = 'more1000';
+                result = str + '천 +';
+            } else if (count >= 10000) {
+                cls = 'more10000';
+                result = str + '만 +';
+            } else {
+                cls = '';
+                result = count;
+            }
+
+            var marker = new naver.maps.Marker({
+                position: convertChange,
+                map: map,
+                icon: {
+                    content: [
+                        '<div class="pin pin_area ' + cls + '">',
+                        '<div class="name">',
+                        name,
+                        '</div>',
+                        '<div class="count">',
+                        result,
+                        '</div>',
+                        '</div>'
+                    ].join(''),
+                    size: new naver.maps.Size(120, 60),
+                    anchor: new naver.maps.Point(60, 30),
+                },
+                draggable: false,
+                clickable: false,
+                zIndex: 10
+            });
+            markerList.push(marker);
+        }
+    }
+
+
+    function updateCluster(label) {
+        console.log('label: ', label)
+        var zoomLabel = label;
+
+        if (zoomLabel < 10) {
+            createMarker(dataModel.data);
+        } else {
+            createMarker(dataModel2.data);
+        }
+    }
+
+    // 전체 선택 시
+    createMarker(dataModel.data);
+
+    // 시군구 선택 시
+    // createMarker(dataModel2.data, "순창군");
+
+    // register the function to the zoom_changed event
+    naver.maps.Event.addListener(map, 'zoom_changed', updateCluster);
+
+
+</script>
+
+
+
+</html>

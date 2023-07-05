@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>마크업가이드 - BUTTON</title>
+<!-- 가이드 css -->
+<link rel="stylesheet" href="../guide_common/css/common.css">
+<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+<!-- <link rel="stylesheet" href="../css/guide_common.css"> -->
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/common.scss">
+
+<!-- //style -->
+<script type="text/javascript" src="../guide_common/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function(){
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(1).addClass("active");
+	});
+</script>
+</head>
+<body>
+<div id="g-wrap" class="open-aside" >
+	<!-- aside -->
+	<div id="g-aside">
+		<!-- # 좌측컨텐츠 # -->
+		<div class="wrap-aside">
+			<!-- 사용자정보영역 -->
+			<div class="box-info">
+			</div>
+			<!-- 네비게이션 : SNB -->
+			<div class="g-nav-snb guide"></div>
+		</div>
+		<!-- # 컨트롤 # -->
+		<div class="g-area-control">
+			<a href="#none">좌측영역 펼침/닫기</a>
+		</div>
+	</div>
+	<!-- //aside -->
+
+	<div class="g-content">
+		<div class="g-box-basic">
+			<h2 class="g-tit-basic">BUTTON</h2>
+
+			<!-- 탭그룹 -->
+			<div class="row" >
+				<h3 class="g-tit-basic">공통버튼</h3>
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<!-- view -->
+
+							<!-- <h3 class="g-tit-basic">xLarge(180 * 48)</h3>
+							<button type="button" class="btn btn_xlg btn_darkgray">LOGIN</button>
+							<button type="button" class="btn btn_xlg btn_blue">확인</button>
+							<br><br> -->
+
+							<h3 class="g-tit-basic">Large</h3>
+													
+							<button type="button" class="btn btn_blue">Button</button>
+							<button type="button" class="btn btn_blue" disabled>Button</button>
+							<button type="button" class="btn btn_blue btn_outline">Button</button>
+							<button type="button" class="btn btn_blue btn_outline" disabled>Button</button>
+							<button type="button" class="btn btn_gray">Button</button>
+							<button type="button" class="btn btn_gray btn_outline">Button</button>
+							<button type="button" class="btn btn_gray btn_outline color_black">Button</button>
+							<button type="button" class="btn btn_gray btn_outline" disabled>Button</button>
+							
+							<!-- <button type="button" class="btn btn_lg btn_red">Button</button> -->
+							<!-- <button type="button" class="btn btn_lg btn_white">Button</button> -->
+<!-- 							
+							<button type="button" class="btn btn_lg btn_red btn_outline">Button</button>
+							
+							<button type="button" class="btn btn_lg btn_blue btn_outline">Button</button>
+							<button type="button" class="btn btn_lg btn_purple btn_outline">Button</button>
+							
+							<button type="button" class="btn btn_lg btn_gray btn_outline">Button</button>
+							<button type="button" class="btn btn_lg btn_white btn_outline">Button</button> -->
+							<!-- 							
+							<button type="button" class="btn btn_lg btn_white btn_outline btn_disable">Button</button>
+							<button type="button" class="btn btn_lg btn_disable">Button</button>
+							<button type="button" class="btn btn_lg btn_blue btn_text">Button</button>
+							<button type="button" class="btn btn_lg btn_blue btn_text btn_disable">Button</button> -->
+
+							<br><br>
+
+							<!-- <h3 class="g-tit-basic">Middle</h3>
+							<button type="button" class="btn btn_md btn_blue">Button</button>
+							<button type="button" class="btn btn_md btn_purple">Button</button>
+							<button type="button" class="btn btn_md btn_red">Button</button>
+							<button type="button" class="btn btn_md btn_gray">Button</button>
+							<button type="button" class="btn btn_md btn_blue btn_outline">Button</button>
+							<button type="button" class="btn btn_md btn_purple btn_outline">Button</button>
+							<button type="button" class="btn btn_md btn_red btn_outline">Button</button>
+							<button type="button" class="btn btn_md btn_gray btn_outline">Button</button>
+							<button type="button" class="btn btn_md btn_disable">Button</button>
+							<button type="button" class="btn btn_md btn_white btn_outline btn_disable">Button</button> -->
+
+
+							<h3 class="g-tit-basic">Small</h3>
+							
+							<button type="button" class="btn btn_blue">Button</button>
+							<button type="button" class="btn btn_blue w_mid">Button</button>
+							<button type="button" class="btn btn_blue w_small">Button</button>
+<!-- 							
+							<button type="button" class="btn btn_sm btn_blue">Button</button>
+							<button type="button" class="btn btn_sm btn_purple">Button</button>
+							<button type="button" class="btn btn_sm btn_red">Button</button>
+							<button type="button" class="btn btn_sm btn_gray">Button</button>
+							<button type="button" class="btn btn_sm btn_blue btn_outline">Button</button>
+							<button type="button" class="btn btn_sm btn_purple btn_outline">Button</button>
+							<button type="button" class="btn btn_sm btn_red btn_outline">Button</button>
+							<button type="button" class="btn btn_sm btn_gray btn_outline">Button</button>
+							<button type="button" class="btn btn_sm btn_disable">Button</button>
+							<button type="button" class="btn btn_sm btn_white btn_outline btn_disable">Button</button> -->
+
+							<br><br>
+							
+							<h3 class="g-tit-basic">icon btn</h3>
+							<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>다운로드</span></button>
+							<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행내역 추가</span></button>
+
+							<!-- <h3 class="g-tit-basic">xSmall(80 * 30)</h3>
+							<button type="button" type="button" class="btn btn_xs btn_blue btn_add">BUTTON</button>
+							<button type="button" type="button" class="btn btn_xs btn_outline">BUTTON</button>
+							<br><br> -->
+
+							<!-- //view -->
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html">
+
+								<!-- Middle -->
+								<button type="button" class="btn btn_blue">Button</button>
+								<button type="button" class="btn btn_blue" disabled>Button</button>
+								<button type="button" class="btn btn_blue btn_outline">Button</button>
+								<button type="button" class="btn btn_blue btn_outline" disabled>Button</button>
+								<button type="button" class="btn btn_gray">Button</button>
+								<button type="button" class="btn btn_gray btn_outline">Button</button>
+								<button type="button" class="btn btn_gray btn_outline color_black">Button</button>
+								<button type="button" class="btn btn_gray btn_outline" disabled>Button</button>
+								<!-- Small -->
+								<button type="button" class="btn btn_blue">Button</button>
+								<button type="button" class="btn btn_blue w_mid">Button</button>
+								<button type="button" class="btn btn_blue w_small">Button</button>
+								<!-- icon -->
+								<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>다운로드</span></button>
+								<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행내역 추가</span></button>
+							
+
+							</pre>
+							<p>SCSS</p>
+							<pre class="syntax brush:css">
+								button {
+									&.btn {
+										 background-color: transparent;
+										 border: 0;
+										 margin: 0;
+										 font-size: inherit;
+										 font-family: inherit;
+										 font-weight: 700;
+										 border-radius: 5px;
+										 color: $white;
+										 transition: .2s;
+										 vertical-align: top;
+									}
+									&.btn_blue {
+										 background-color: $primary01;
+										 &:hover {
+											  background-color: $primary02;
+										 }
+										 &.btn_outline {
+											  border:1px solid $primary01;
+											  background-color: #fff;
+											  color: $primary01;
+											  &:hover {
+													color: $primary02;
+													border-color: $primary02;
+											  }
+										 }  
+										 &.btn_text {
+											  border:0;
+											  background-color: transparent;
+											  color: $primary01;
+											  &:hover {
+													color: $primary02;
+											  }           
+											  &.btn_disable {
+													color: $black07;
+											  } 
+										 }        
+									}
+									&.btn_purple {
+										 background-color: $secondary01;
+										 &:hover {
+											  background-color: $secondary02;
+										 }
+										 &.btn_outline {
+											  border:1px solid $secondary01;
+											  background-color: #fff;
+											  color: $secondary01;
+											  &:hover {
+													color: $secondary02;
+													border-color: $secondary02;
+											  }
+										 }        
+									}
+									&.btn_red {
+										 background-color: $error01;       
+										 &:hover {
+											  background-color: $error02;
+										 }
+										 &.btn_outline {
+											  border:1px solid $error01;
+											  background-color: #fff;
+											  color: $error01;
+											  &:hover {
+													color: $error02;
+													border-color: $error02;
+											  }
+										 }         
+									}
+									&.btn_gray {
+										 background-color: $black06;       
+										 &:hover {
+											  background-color: $black05;
+										 }
+										 &.btn_outline {
+											  border:1px solid $black06;
+											  background-color: #fff;
+											  color: $black06;
+											  &:hover {
+													color: $black05;
+													border-color: $black05;
+											  }
+										 }         
+									}
+							  
+									&.btn_white {
+										 background-color: $black10;
+										 color: $tertiary01;       
+										 border: 0;
+										 &:hover {
+											  background-color: $white;
+										 }
+										 &.btn_outline {
+											  border:1px solid $white;
+											  background-color: transparent;
+											  color: $white;
+											  &:hover {
+													color: $white;
+													border-color: $white;
+											  }
+											  &.btn_disable {
+													background-color: rgba($color: $white, $alpha: .1);
+													color:$black06;
+													border:1px solid $black06;
+											  }            
+										 }         
+									}
+							  
+									&.btn_disable {
+										 background-color: $black10;
+										 color:$black07;
+										 border:1px solid $black07;
+									}
+									
+									&.btn_lg {
+										 // padding: .75em 1.5em;
+										 padding: 0 1.5em;
+										 height: 48px;
+									}
+							  
+									&.btn_md {
+										 // padding: .56em .75em;
+										 padding: 0em .75em;
+										 height: 40px;
+									}
+							  
+									&.btn_sm {
+										 padding: 0 .5em;
+										 height: 32px;
+									}
+							  }
+							</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+		</div>
+	</div>
+</div>
+</body>
+</html>

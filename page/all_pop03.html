@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<!-- container-->
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<!--inner-->
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">보조금 지급 승인 내역</h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역
+								추가</span></button>
+						<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄
+								추가</span></button>
+					</div>
+				</div>
+				<!--content-->
+				<div class="content">
+					<div class="content_h">
+
+
+					</div>
+				</div>
+				<!--// content-->
+
+			</div>
+			<!--//inner-->
+		</div>
+		<!-- //container-->
+
+	</div>
+	<!--//wrap-->
+
+	<!-- Table Modal  -->
+	<div id="pop_all03" style="display: none;">
+
+		<div class="pop_contents">
+			<div class="title_md ac">
+				<div class="title">
+					<span class="color_red">16</span> 명의 기사님이 등록 가능합니다.<br />
+					등록을 완료하시겠습니까?
+				</div>
+			</div>
+			<div id="grid_write" class="grid_list"></div>
+		</div>
+	</div>
+
+
+	<script>
+		$(function () {
+
+			$('#pop_all03').dialog({
+				dialogClass: 'popup',
+				width: 600,
+				height: 717,
+				title: '기사 일괄 등록',
+				modal: true,
+				buttons: [
+					{
+						text: "취소",
+						class: "btn btn_gray btn_outline",
+						click: function () {
+							$(this).dialog("close");
+						}
+					},
+					{
+						text: "확인",
+						class: "btn btn_md btn_blue",
+						click: function () {
+							$(this).dialog("close");
+						}
+					}
+				]
+			});
+		})
+	</script>
+	<script>
+		$(function () {
+
+			//기사 일괄 등록 그리드
+			var colModel = [
+				{ title: "No", dataIndx: "no", width: 80, nodrag: true, nodrop: true, },
+				{ title: "이름", dataIndx: "name", width: 120, nodrag: true, nodrop: true, },
+				{ title: "연락처", dataIndx: "num", width: 200, nodrag: true, nodrop: true, },
+				{ title: "연락처", dataIndx: "num2", width: 200, nodrag: true, nodrop: true, },
+			]
+
+			var dataModel = {
+				"data": [
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+					{ "no": "1", "name": "양진혁", "num": "010-4849-6309", "num2": "010-4849-6309", },
+				]
+			};
+
+
+			var options = {
+				scrollModel: { autoFit: false },
+				width: 'auto',
+				minWidth: 518,
+				height: 413,
+				rowHt: 50,
+				rowHtHead: 45,
+				collapsible: { on: false, toggle: false },
+
+				columnBorders: true,
+				rowBorders: true,
+				stripeRows: true,
+
+				postRenderInterval: -1, //synchronous post rendering.
+				dataModel: dataModel,
+				colModel: colModel,
+				selectionModel: { type: 'row', mode: 'block' },
+
+				columnTemplate: {
+					align: 'center', valign: 'center'
+				},
+				editable: false,
+				freezeCols: 0,
+				freezeRows: 0,
+
+				numberCell: { show: false },
+				reactive: true,
+				roundCorners: false,
+				resizable: false,
+
+				showHeader: true,
+				showTitle: false,
+				showToolbar: false,
+				showTop: false,
+				showBottom: false,
+				virtualX: true, virtualY: true,
+
+				title: "",
+				strNoRows: '조회된 데이터가 없습니다.',
+			};
+
+			var grid_desc = pq.grid("#grid_write", options);
+
+		});
+
+	</script>
+
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

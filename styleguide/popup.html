@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>마크업가이드 - POPUP</title>
+	<!-- 가이드 css -->
+	<link rel="stylesheet" href="../guide_common/css/common.css">
+	<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+	<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+	<link rel="stylesheet" href="../assets/css/common.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<!-- //style -->
+	<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+	<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+	<script src="../assets/js/common.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+		$(document).ready(function () {
+			$('.g-nav-snb').append(webSnb);
+			$('.g-nav-snb ul li').eq(6).addClass("active");
+		});
+	</script>
+</head>
+
+<body>
+	<div id="g-wrap" class="open-aside">
+		<!-- aside -->
+		<div id="g-aside">
+			<!-- # 좌측컨텐츠 # -->
+			<div class="wrap-aside">
+				<!-- 사용자정보영역 -->
+				<div class="box-info">
+				</div>
+				<!-- 네비게이션 : SNB -->
+				<div class="g-nav-snb guide"></div>
+			</div>
+			<!-- # 컨트롤 # -->
+			<div class="g-area-control">
+				<a href="#none">좌측영역 펼침/닫기</a>
+			</div>
+		</div>
+		<!-- //aside -->
+
+		<div class="g-content">
+			<div class="g-box-basic">
+				<h2 class="g-tit-basic">POPUP</h2>
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">Alert</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+
+								<!-- <button type="button" id="alert_type1" class="btn btn_md btn_blue">Comfirm</button>
+								 -->
+								
+								<button type="button" id="alert_type" class="btn btn_md btn_blue">팝업</button>
+								
+								<button type="button" class="btn btn_gray btn_outline" id="alert_type1"><span>배경없는 알럿 버튼1</span></button>
+								<button type="button" class="btn btn_gray btn_outline" id="alert_type2"><span>배경없는 알럿 팝업 버튼2</span></button>
+								<button type="button" class="btn btn_gray btn_outline" id="alert_type3"><span>에러 팝업</span></button>
+								
+								<br/> <br/>
+								<button type="button" class="btn btn_gray btn_outline" id="" onclick="toastPop_conf();"><span>승인 토스트팝업</span></button>		
+								<button type="button" class="btn btn_gray btn_outline" id="" onclick="toastPop_err();"><span>에러 토스트팝업</span></button>
+								<div class="toast_popup toastPop_conf">
+									<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>정상적으로 승인되었습니다</p></div>
+								</div>
+								
+								<div class="toast_popup toastPop_err">
+									<div class="toast"><p class="error_type"><i class="icon icon_error"></i>공지사항 등록에 실패했습니다. <br/>문제가 반복될 경우 문의해 주세요</p></div>
+								</div>
+					
+								<!-- view -->
+								<script>
+									$('#alert_type1').on('click', function () {
+										popup.alertMsg('Comfirm Test Popup', '확인')
+									});
+									$('#alert_type2').on('click', function () {
+										popup.alertMsg('Alert Test Popup', '확인', '취소')
+									});
+									$('#alert_type3').on('click', function () {
+										popup.alertMsg('Error Test Popup')
+									});
+								</script>
+								
+								<!-- <div id="alert01" style="display: none;">
+									<div class="pop_contents">
+										<p class="tit">이미 입력한 2건의 회원 정보가 있습니다.</p>
+										<span class="txt">아래 그룹에 속한 회원의 잔여 개수를 <br/>30개로 일괄 적용하시겠습니까?</span>
+										<span class="txt color_red">중대 그룹, 대대 그룹</span>
+									</div>
+								</div> -->
+								
+								<div id="alert0" style="display: none;">
+									<div class="pop_contents">
+										<p class="tit">입력 된 정보가 보두 사라집니다. <br/>정말 창을 닫으시겠습니까?</p>
+									</div>
+								</div>
+										
+										
+										
+								
+								<script>
+									// $('#alert_type1').on('click', function () {
+									// 	$('#alert01').dialog({
+									// 		dialogClass: 'alert_popup',
+									// 		width: '400',
+									// 		buttons: [{
+									// 				text: "취소",
+									// 				class: "btn btn_gray btn_outline",
+									// 				click: function () {
+									// 					$(this).dialog("close");
+									// 				},
+									// 			},
+									// 			{
+									// 				text: "예",
+									// 				class: "btn btn_blue",
+									// 				click: function () {
+									// 					$(this).dialog("close");
+									// 				},
+									// 			},
+									// 		]
+									// 	});
+									// });
+									$('#alert_type').on('click', function () {
+										$('#alert0').dialog({
+											dialogClass: 'alert_popup',
+											width: '400',
+											buttons: [{
+													text: "아니오",
+													class: "btn btn_gray btn_outline",
+													click: function () {
+														$(this).dialog("close");
+													},
+												},
+												{
+													text: "예",
+													class: "btn btn_blue",
+													click: function () {
+														$(this).dialog("close");
+													},
+												},
+											]
+										});
+									});
+								</script>
+								
+								
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+									<button type="button" id="alert_type1" class="btn btn_md btn_blue">Comfirm</button>
+									<button type="button" id="alert_type2" class="btn btn_md btn_blue">Alert</button>
+									<button type="button" id="alert_type3" class="btn btn_md btn_blue">Error </button>						
+									<script>
+										$('#alert_type1').on('click', function () {
+											popup.alertMsg('Comfirm Test Popup','확인')
+										});
+										$('#alert_type2').on('click', function () {
+											popup.alertMsg('Alert Test Popup', '확인', '취소')
+										});
+										$('#alert_type3').on('click', function () {
+											popup.alertMsg('Error Test Popup')
+										});
+									</script>
+									
+									<button type="button" class="btn btn_gray btn_outline" id="" onclick="toastPop_conf();"><span>승인 토스트팝업</span></button>								
+									<div class="toast_popup toastPop_conf">
+										<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>정상적으로 승인되었습니다</p></div>
+									</div>
+									
+									<button type="button" class="btn btn_gray btn_outline" id="" onclick="toastPop_err();"><span>에러 토스트팝업</span></button>
+									<div class="toast_popup toastPop_err">
+										<div class="toast"><p class="error_type"><i class="icon icon_error"></i>공지사항 등록에 실패했습니다. 문제가 반복될 경우 문의해 주세요</p></div>
+									</div>
+									
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+
+							</pre>
+							</div>
+						</div>
+					</div>
+					<!-- //탭그룹 -->
+				</div>
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">Modal</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<button type="button" id="modal_type1" class="btn btn_md btn_blue">Table Modal</button>
+								<!-- <button type="button" id="modal_type2" class="btn btn_md btn_blue">PW Modal</button>
+								<button type="button" id="modal_type3" class="btn btn_md btn_blue">OTP Modal</button> -->
+								<!-- view -->
+								<!-- Table Modal  -->
+								<div id="pop_search" style="display: none;">
+									<div class="pop_contents">
+									
+										<ul class="step_wrap">
+											<li class="on">기본정보</li>
+											<li>서비스 지역</li>
+											<li>요금제</li>
+										</ul>
+										
+										<div class="box_section">
+											<div class="search_filter">
+												<ul>
+													<li>
+														<div class="form_inline"><div class="label_t "><span class="essential" title="필수">회원 서비스 이용지역 (시도, 시군구)</span></div></div>
+														<div class="form_inline">
+															<select class="form_ctl" id="">
+																<option>시도</option>
+																<option>경상남도</option>
+																<option>경상북도</option>
+															</select>
+															<select class="form_ctl" id="">
+																<option>시군구</option>
+																<option>ㅇㅇ군</option>
+															</select>
+														</div>
+														<div class="form_inline">
+															
+														</div>
+													</li>
+													<li>
+														<div class="form_inline"><div class="label_t "><span class="essential" title="필수">회원 상세 서비스 이용지역 (소속기관, 센터, 그룹)</span></div></div>
+														<div class="form_inline">
+															<select class="form_ctl" id="">
+																<option>소속기관</option>
+																<option>소속기관1</option>
+																<option>소속기관2</option>
+															</select>
+															<select class="form_ctl" id="">
+																<option>센터</option>
+																<option>센터</option>
+															</select>
+															<!-- (바우처카드 미사용 센터 선택 시 disabled-->
+															<select class="form_ctl" id="">
+																<option>그룹</option>
+																<option>그룹</option>
+															</select>
+														</div>
+													</li>
+													<li>
+														<div class="form_inline">
+															<div class="label_t "><span class="essential" title="필수">이름</span></div>
+															<input type="text" class="form_ctl" placeholder="이름을 입력해 주세요" />
+														</div>
+														<div class="form_inline">
+															<div class="label_t">성별</div>
+															<div class="input_radio">
+																<input type="radio" id="label_text1" name="">
+																<label for="label_text1" class="txt_label">남성</label>
+															</div>
+															<div class="input_radio">
+																<input type="radio" id="label_text2" name="">
+																<label for="label_text2" class="txt_label">여성</label>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="form_inline">
+															<div class="label_t">회원유형</div>
+															<div class="input_radio">
+																<input type="radio" id="label_text1" name="">
+																<label for="label_text1" class="txt_label">교통약자</label>
+															</div>
+															<div class="input_radio">
+																<input type="radio" id="label_text2" name="">
+																<label for="label_text2" class="txt_label">보호자</label>
+															</div>
+															<div class="input_radio">
+																<input type="radio" id="label_text2" name="">
+																<label for="label_text2" class="txt_label">일반</label>
+															</div>
+															<select class="form_ctl" id="">
+																<option>고령자</option>
+																<option>고령자</option>
+															</select>
+														</div>
+													</li>
+													<li>
+														<div class="form_inline">
+															<div class="label_t">전화번호</div>
+															<input type="text" class="form_ctl w_small" placeholder="000" value="010"/>
+															<input type="text" class="form_ctl w_small" placeholder="0000" value="0123"/>
+															<input type="text" class="form_ctl w_small" placeholder="0000" value="3456"/>
+															<button type="button" class="btn btn_blue w_mid"><span>중복검사</span></button>
+														</div>
+													</li>
+													<li>
+														<div class="form_inline">
+															<div class="label_t">출생연도</div>
+															<select class="form_ctl" id="">
+																<option>1960</option>
+																<option>1961</option>
+																<option>1962</option>
+																<option>1963</option>
+																<option>1964</option>
+																<option>1965</option>
+															</select>
+														</div>
+														
+													</li>
+												</ul>
+											</div>
+										</div>
+												
+								 
+									</div>
+								</div>
+
+								<div id="pop_otp" style="display: none;">
+									<div class="pop_contents">
+										<div class="qr_box">
+											<img src="../assets/img/main/qr.png" alt="">
+										</div>
+										<ul class="step_list">
+											<li><strong>STEP 1</strong>휴대폰으로 QR코드 인식 후 Google Authenticator 설치</li>
+											<li><strong>STEP 2</strong>어플 실행 후 QR 코드 스캔 메뉴 선택</li>
+											<li><strong>STEP 3</strong>하단에 OTP 인증번호 입력</li>
+										</ul>
+										<input type="number" placeholder="OTP 인증번호 입력" class="form_ctl">
+									</div>
+								</div>
+								
+								
+								<div id="pop_pw" style="display: none;">
+									<div class="pop_contents">
+										<input type="password" placeholder="기존 비밀번호 입력" class="form_ctl form_pw">
+										<input type="password" placeholder="새 비밀번호 입력" class="form_ctl form_pw">
+										<input type="password" placeholder="새 비밀번호 재입력" class="form_ctl form_pw">
+										<p class="file_info">
+											<i class="icon icon_warning"></i> 비밀번호는 8자~20자로 숫자, 영문, 특수문자를 혼용하여
+											입력하여 주십시오.
+										</p>
+									</div>
+								</div>
+
+								<script>
+									$('#modal_type1').on('click', function () {
+										$('#pop_search').dialog({
+											dialogClass: 'popup pop_table',
+											width: 900,
+											height: 700,
+											title: '센터 등록',
+											modal: true,
+											buttons: [{
+													text: "취소",
+													class: "btn btn_md btn_gray btn_outline",
+													click: function () {
+														$(this).dialog("close");
+													}
+												},
+												{
+													text: "다음",  
+													class: "btn btn_md btn_blue",
+													click: function () {
+														$(this).dialog("close");
+													}
+												}
+											]
+										});
+									});
+
+									$('#modal_type2').on('click', function () {
+										$('#pop_pw').dialog({
+											dialogClass: 'popup pop_table pop_login',
+											width: 480,
+											title: '비밀번호 변경',
+											modal: true,
+											buttons: [{
+												text: "확인",
+												class: "btn btn_md btn_blue",
+												click: function () {
+													$(this).dialog("close");
+												}
+											}, ]
+										});
+									});
+
+									$('#modal_type3').on('click', function () {
+										$('#pop_otp').dialog({
+												dialogClass: 'popup pop_table pop_login',
+												width: 480,
+												title: 'OTP 등록',
+												modal: true,
+												buttons: [{
+													text: "확인",
+													class: "btn btn_md btn_blue",
+													click: function () {
+														$(this).dialog("close");
+													}
+												}, ]
+											},
+											$('#pop_otp').find('.qr_box').addClass('on')
+										);
+									});
+								</script>
+
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+								<!-- Table Modal  -->
+								<div id="pop_search" style="display: none;">
+									<div class="pop_contents">
+
+										<div class="search_box">
+											<ul class="search_wrap mt0">
+												<li>
+													<p>사용자명</p>
+													<div class="box">
+														<input type="text" class="form_ctl" placeholder="내용을 입력해주세요.">
+													</div>
+												</li>
+												<li>
+													<p>직급(직책)</p>
+													<div class="box">
+														<input type="text" class="form_ctl" placeholder="내용을 입력해주세요.">
+													</div>
+												</li>
+											</ul>
+
+											<div class="ar search">
+												<button class="btn"><i class="icon icon_reset"></i></button>
+												<button class="btn btn_md btn_purple"><i class="icon icon_search"></i>검색
+												</button>
+											</div>
+										</div>
+
+										<div class="scrly_box view_box">
+											<table class="list_table view">
+												<colgroup>
+													<col width="5%" style="max-width: 64px;">
+													<col width="5%" style="max-width: 64px;">
+													<col width="15%">
+													<col width="15%">
+													<col width="15%">
+													<col width="*">
+												</colgroup>
+												<thead>
+													<th>
+														<input type="checkbox" id="all">
+														<label for="all"></label>
+													</th>
+													<th class="fix"><span>No</span></th>
+													<th><span>사용자명</span></th>
+													<th><span>직급(직책)</span></th>
+													<th><span>권한</span></th>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<input type="checkbox" id="user1">
+															<label for="user1"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user2">
+															<label for="user2"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr class="on">
+														<td>
+															<input type="checkbox" id="user3" checked>
+															<label for="user3"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user4">
+															<label for="user4"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user5">
+															<label for="user5"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user6">
+															<label for="user6"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user7">
+															<label for="user7"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user8">
+															<label for="user8"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user9">
+															<label for="user9"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user10">
+															<label for="user10"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user11">
+															<label for="user11"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+													<tr>
+														<td>
+															<input type="checkbox" id="user11">
+															<label for="user11"></label>
+														</td>
+														<td><span>226</span></td>
+														<td><span>김현대</span></td>
+														<td><span>매니저</span></td>
+														<td><span>본사 사용자</span></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+									</div>
+								</div>
+
+								<!-- OTP Modal  -->
+								<div id="pop_otp" style="display: none;">
+									<div class="pop_contents">
+										<div class="qr_box">
+											<img src="../assets/img/main/qr.png" alt="">
+										</div>
+										<ul class="step_list">
+											<li><strong>STEP 1</strong>휴대폰으로 QR코드 인식 후 Google Authenticator 설치</li>
+											<li><strong>STEP 2</strong>어플 실행 후 QR 코드 스캔 메뉴 선택</li>
+											<li><strong>STEP 3</strong>하단에 OTP 인증번호 입력</li>
+										</ul>
+										<input type="number" placeholder="OTP 인증번호 입력" class="form_ctl">
+									</div>
+								</div>
+
+								<!-- PW Modal  -->
+								<div id="pop_pw" style="display: none;">
+									<div class="pop_contents">
+										<input type="password" placeholder="기존 비밀번호 입력" class="form_ctl form_pw">
+										<input type="password" placeholder="새 비밀번호 입력" class="form_ctl form_pw">
+										<input type="password" placeholder="새 비밀번호 재입력" class="form_ctl form_pw">
+										<p class="file_info">
+											<i class="icon icon_warning"></i> 비밀번호는 8자~20자로 숫자, 영문, 특수문자를 혼용하여
+											입력하여 주십시오.
+										</p>
+									</div>
+								</div>
+
+								<script>
+									$('#modal_type1').on('click', function () {
+										$('#pop_search').dialog({
+											dialogClass: 'popup pop_table',
+											width: 900,
+											height: 740,
+											title: '센터 등록',
+											modal: true,
+											buttons: [{
+													text: "취소",
+													class: "btn btn_md btn_gray btn_outline",
+													click: function () {
+														$(this).dialog("close");
+													}
+												},
+												{
+													text: "다음",  
+													class: "btn btn_md btn_blue",
+													click: function () {
+														$(this).dialog("close");
+													}
+												}
+											]
+										});
+									});
+
+									$('#modal_type2').on('click', function () {
+										$('#pop_pw').dialog({
+											dialogClass: 'popup pop_table pop_login',
+											width: 480,
+											title: '비밀번호 변경',
+											modal: true,
+											buttons: [{
+												text: "확인",
+												class: "btn btn_md btn_blue",
+												click: function () {
+													$(this).dialog("close");
+												}
+											}, ]
+										});
+									});
+
+									$('#modal_type3').on('click', function () {
+										$('#pop_otp').dialog({
+												dialogClass: 'popup pop_table pop_login',
+												width: 480,
+												title: 'OTP 등록',
+												modal: true,
+												buttons: [{
+													text: "확인",
+													class: "btn btn_md btn_blue",
+													click: function () {
+														$(this).dialog("close");
+													}
+												}, ]
+											},
+											$('#pop_otp').find('.qr_box').addClass('on')
+										);
+									});
+								</script>
+
+							</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+
+							</pre>
+							</div>
+						</div>
+					</div>
+					<!-- //탭그룹 -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

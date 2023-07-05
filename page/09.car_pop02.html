@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_car02" style="display: none;">
+		
+	<div class="pop_contents">	
+		
+		<div class="box_section">
+			<div class="search_filter">				
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">시도</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>울산시</option>
+								<option>울산시</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">시군구</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>울주군</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">소속기관</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>울주군 행복택시</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">센터</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>울주군 행복센터</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">차량 번호</span></div>
+							<input type="text" class="form_ctl" placeholder="" value="울산가1234">
+							<button type="button" class="btn btn_gray btn_outline w_mid"><span>중복 검사</span></button>
+						</div>	
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">차량 구분</span></div>
+							<div class="input_radio">
+								<input type="radio" id="label_text1" name="">
+								<label for="label_text1" class="txt_label">택시</label>
+							</div>
+							<div class="input_radio">
+								<input type="radio" id="label_text2" name="" checked="">
+								<label for="label_text2" class="txt_label">버스</label>
+							</div>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">차종</span></div>
+							<select class="form_ctl" id="">
+								<option>선택</option>
+								<option>소형</option>
+								<option>중형</option>
+								<option>중대형</option>
+								<option>대형</option>
+							</select>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="box_section mt30" style="width:672px;">
+				<div class="title_sm">
+					<div class="title">
+						차량 소속기관 
+						<span class="color_gray fs14">(선택) 소속기관 선택 시 검색가능</span>
+					</div>
+					
+					<div class="right_area">
+						<button type="button" class="btn btn_gray btn_add"><i class="icon icon_plus"></i> 담당 기사 추가</button>
+					</div>
+				</div>	
+				
+				<div class="payment_option type02">
+					<ul>
+						<li class="form_select">
+							<div class="label_t">담당기사 1</div>
+							<div class="wrap_auto">
+								<input type="text" class="form_ctl f_search" placeholder="기사 검색" value="송중기(010-2561-6425)">
+								<button type="button" class="btn btn_clear ir">초기화</button>
+							</div>
+						</li>
+						<li class="form_select">
+							<div class="label_t">담당기사 2</div>
+							<div class="wrap_auto">
+								<input type="text" class="form_ctl f_search" placeholder="기사 검색" value="박보검(010-3564-9215)">
+								<button type="button" class="btn btn_clear ir">초기화</button>
+							</div>
+						</li>
+						<li class="form_select point_start">
+							<div class="label_t">담당기사 3</div>
+							<div class="wrap_auto">
+								<input type="text" class="form_ctl f_search startPoint" placeholder="기사 검색" value="차은우 (010-3261-5498)">
+								<button type="button" class="btn btn_clear ir">초기화</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+					  
+			</div>
+		</div>
+	
+	
+		<!-- 필수값 입력되지 않을 시 토스트 팝업 -->
+		<div class="toast_popup toastPop_err">
+			<div class="toast"><p class="error_type"><i class="icon icon_error"></i>필수 입력 항목을 모두 입력해 주세요</p></div>
+		</div>	
+		
+		
+	</div>	
+</div>
+
+
+<script>
+$(function(){
+	$('#pop_car02').dialog({
+		dialogClass: 'popup',
+		width: 1120,
+		height: 770,
+		title: '차량 수정 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+		titleIsHtml: true,
+		modal: true,
+		buttons: [
+			{
+				text: "취소",  
+				class: "btn btn_gray btn_outline",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "수정",  
+				class: "btn btn_md btn_blue",
+				onclick: 'toastPop_err();',
+				click: function () {
+					//$(this).dialog("close");
+				}
+			}
+		]
+	});
+	
+});
+
+
+//디폴트 기사 정보 
+$(function () {
+	var arr_driver = [
+		"강동원 (010-1234-5678)",
+		"강유미 (010-1124-5678)",
+		"김기덕 (010-1234-5678)",
+		"김기사 (010-1234-5679)",
+		"김기수 (010-1234-5679)",
+		"김수진 (010-1234-5679)",
+		"김이박 (010-1234-5679)",
+		"김정수 (010-1234-5679)",
+		"김철수 (010-1234-5679)",
+		"김태석 (010-1234-5679)",
+		"마동석 (010-1234-5679)",
+	];
+
+	$('.f_search').autocomplete({
+		source : arr_driver,
+		minLength : 0,
+		position: {
+			my: "left+0 top+8",
+		},
+		disabled: true,
+		select: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+		close: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+	});
+
+});
+
+// 기사 추가
+$(document).on('click', '.btn_add', function(){
+	var passlist = $('.point_pass');
+
+	var contentString = [
+		'<li class="form_select point_pass">',
+		'   <div class="label_t">담당기사' + (passlist.length + 4) + '</div>',
+		'   <div class="wrap_auto">',
+		'       <input type="text" class="form_ctl f_search passPoint" placeholder="이름 검색">',
+		'       <button type="button" class="btn btn_clear ir">초기화</button>',
+		'   </div>',
+		'   <button type="button" class="btn_delete">삭제하기</button>',
+		'</li>'
+	].join('');
+
+	if(passlist.length === 0) {
+		$('.point_start').after(contentString);
+	} else {
+		$('.point_pass').eq(passlist.length - 1).after(contentString);
+	}
+
+	//기사 정보 
+	var arr_driver_add = [
+		"강동원 (010-1234-5678)",
+		"강유미 (010-1124-5678)",
+		"김기덕 (010-1234-5678)",
+		"김기사 (010-1234-5679)",
+		"김기수 (010-1234-5679)",
+		"김수진 (010-1234-5679)",
+		"김이박 (010-1234-5679)",
+		"김정수 (010-1234-5679)",
+		"김철수 (010-1234-5679)",
+		"김태석 (010-1234-5679)",
+		"마동석 (010-1234-5679)",
+	];
+
+	$('.f_search').autocomplete({
+		source : arr_driver_add,
+		minLength : 0,
+		position: {
+			my: "left+0 top+8",
+		},
+		disabled: true,
+		select: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+		close: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+	});
+});
+
+// 기사 삭제
+$(document).on('click', '.btn_delete', function(){
+	$(this).closest('li').remove();
+});
+
+// input 입력시 btn_clear 활성화
+function checkSearchForm(target) {
+	// console.log(target)
+	if(target.val() === ''){
+		target.siblings('.btn_clear').removeClass('on');
+	} else{
+		target.siblings('.btn_clear').addClass('on');
+	}
+}
+$(document).on("propertychange change keydown keyup paste input", ".wrap_auto input", function(e) {
+	var tg = $(this);
+	if(e.keyCode === 13) {
+		$(this).autocomplete('enable');
+		$(this).autocomplete("search", $(this).val());
+	}
+	checkSearchForm(tg);
+});
+
+// btn_clear 클릭시 input value 삭제
+$(document).on('click', '.wrap_auto .btn_clear', function(){
+	$(this).siblings('.form_ctl').val('');
+	$(this).removeClass('on');
+});
+
+</script>
+
+
+</body>
+	
+
+</html>

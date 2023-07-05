@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">타이틀 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_result" style="display: none;">
+		
+	<div class="pop_contents">
+			
+		<div class="box_section">
+			<div class="title_sm">
+				<div class="title">
+					회원 기본 정보
+				</div>
+			</div>
+			<div class="search_filter">
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">시도</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>전라북도</option>
+								<option>경상남도</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">시군구</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>거제시</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">소속기관</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>거제시</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">센터</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>거제시브라보택시</option>
+							</select>
+						</div>
+					</li>
+					<li>
+					<!--바우처카드 미사용 센터인 경우, 그룹 선택 드롭다운 박스 비활성화 (선택 불가)-->
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">그룹</span></div>
+							<select class="form_ctl" id="" disabled>
+								<option>선택</option>
+								<option selected>선택</option>
+								<option>그룹선택</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">이름</span></div>
+							<input type="text" name="" class="form_ctl w150" placeholder="이름 입력" />
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>	
+		
+		<div class="box_section">
+			<div class="title_sm">
+				<div class="title">
+					회원 상세 정보
+				</div>
+			</div>
+			<div class="search_filter">
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t">성별</div>
+							<div class="input_radio">
+								<input type="radio" id="label_text1" name="" checked>
+								<label for="label_text1" class="txt_label">남성</label>
+							</div>
+							<div class="input_radio">
+								<input type="radio" id="label_text2" name="">
+								<label for="label_text2" class="txt_label">여성</label>
+							</div>
+						</div>
+						<div class="form_inline">
+							<div class="label_t">회원유형</div>
+							<div class="input_radio">
+								<input type="radio" id="label_text1" name="">
+								<label for="label_text1" class="txt_label">교통약자</label>
+							</div>
+							<select class="form_ctl" id="">
+								<option>고령자</option>
+								<option selected>고령자</option>
+							</select> 
+							
+							<div class="input_radio">
+								<input type="radio" id="label_text2" name="">
+								<label for="label_text2" class="txt_label">보호자</label>
+							</div>
+							<div class="input_radio">
+								<input type="radio" id="label_text2" name="" checked>
+								<label for="label_text2" class="txt_label">일반</label>
+							</div>
+							
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t">전화번호</div>
+							<input type="text" class="form_ctl w_small" placeholder="000" value="010"/>
+							<input type="text" class="form_ctl w_small" placeholder="0000" value="0123"/>
+							<input type="text" class="form_ctl w_small" placeholder="0000" value="3456"/>
+							<button type="button" class="btn btn_gray btn_outline w_mid"><span>중복검사</span></button>
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t">출생연도</div>
+							<select class="form_ctl" id="">
+								<option>1960</option>
+								<option selected>1961</option>
+								<option>1962</option>
+								<option>1963</option>
+								<option>1964</option>
+								<option>1965</option>
+							</select>
+						</div>
+						
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_result').dialog({
+	dialogClass: 'popup',
+	width: 1120,
+	height: 756,
+	title: '회원 수정 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+	titleIsHtml: true,
+	buttons: [
+		{
+			text: "취소",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "수정",  
+			class: "btn btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+
+
+});
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="company_pop02" style="display: none;">
+	<div class="pop_contents">
+			
+		<div class="box_section">
+			<h3 class="title_md">
+				<div class="title">운수회사 정보</div>
+			</h3>
+			
+			<div class="table_list">
+				<!--검색된 결과가 없을 시-->
+				<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+				<table>
+					<caption class="sr_only"></caption>
+					<colgroup>
+						<col width="*">
+						<col width="*">
+						<col width="*">
+					</colgroup>
+					<thead>
+					<tr>
+						<th><span>시도</span></th>
+						<th><span>시군구</span></th>
+						<th><span>소속기관</span></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>경상남도</td>
+						<td>고성군</td>
+						<td>고성군청</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="search_filter mt40">
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">운수회사명</span></div>
+							<input type="text" class="form_ctl" placeholder="운수회사명 입력" value="군동택시">
+						</div>
+						<div class="form_inline">
+							<div class="label_t">법인등록 번호</div>
+							<input type="text" class="form_ctl" placeholder="법인등록 입력"  value="4158100123">
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t">대표자명</div>
+							<input type="text" class="form_ctl" placeholder="대표자명 입력" value="이재성">
+						</div>
+						<div class="form_inline">
+							<div class="label_t">전화번호</div>
+							<input type="text" class="form_ctl" placeholder="전화번호 입력" value="06112345684">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#company_pop02').dialog({
+	dialogClass: 'popup',
+	width: 950,
+	height: 560,
+	title: '운수회사 등록 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+	titleIsHtml: true,
+	dialogClass: "n_over",
+	
+	buttons: [
+		{
+			text: "취소",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "수정",  
+			class: "btn btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			
+			}
+		}
+	],
+// 	closeOnEscape: false,
+// 	open: function(event, ui) { 
+//       $(".ui-dialog-titlebar-close", $(this).parent()).hide(); 
+//    }
+   
+});
+
+
+});
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_result" style="display: none;">
+		
+	<div class="pop_contents">	
+	
+		<div id="tabs">
+			<ul class="tabs tab">
+			  <li><a href="#tabs-1">변경 완료 2건</a></li>
+			  <li><a href="#tabs-2">변경 실패 2건
+				<!-- <span class="class_tail">사유 : 이미 승인된 내역입니다</span></a></li> -->
+			</ul>
+			<div id="tabs-1">
+				<div id="grid_tab1"></div>
+			</div>
+			<div id="tabs-2">
+				<div id="grid_tab2"></div>
+			</div>
+			
+		  </div>
+		  		
+	</div>
+</div>
+
+
+<script>
+$(function(){
+	$('#pop_result').dialog({
+		dialogClass: 'popup',
+		width: 1120,
+		height: 732,
+		title: '변경 결과',
+		modal: true,
+		buttons: [
+			{
+				text: "확인",  
+				class: "btn btn_md btn_blue",
+				click: function () {
+					$(this).dialog("close");
+				}
+			}
+		]
+	});
+	
+});
+
+$(document).ready(function () {
+	$("#tabs").tabs({
+		load: function( event, ui ) {}
+		,activate: function(event,ui) {
+		var ix=ui.newTab.index();
+		switch (ix) {
+		case 0:
+			$("#grid_tab1").pqGrid("refresh");
+			break
+		case 1:
+			$("#grid_tab2").pqGrid("refresh");
+			break
+		default:
+			console.log(ix);
+		}
+	}});
+});
+</script>
+
+
+</body>
+
+<script>
+	$(function () {
+		var dataModel = {
+			"data": [
+				{ "no": 1, "approval-status": "승인 완료", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 2, "approval-status": "승인 완료", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 남동1", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소2", "driving-personnel": "2"},
+				{ "no": 3, "approval-status": "승인 대기", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소3", "driving-personnel": "1"},
+				{ "no": 4, "approval-status": "승인 완료", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소4", "driving-personnel": "2"},
+				{ "no": 5, "approval-status": "승인 완료", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 6, "approval-status": "승인 완료", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 7, "approval-status": "승인 대기", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 8, "approval-status": "승인 대기", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 9, "approval-status": "승인 대기", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 10, "approval-status": "승인 대기", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+			]
+		};
+
+		var colModel = [
+			{ title: "No", dataIndx: "no", width: 65, nodrag: true, nodrop: true, },
+			{ title: "승인 상태", dataIndx: "approval-status", width: 100, nodrag: true, nodrop: true,},
+			{ title: "탑승 일시", dataIndx: "driving-intime", width: 120, nodrag: true, nodrop: true, },
+			{ title: "하차 일시", dataIndx: "driving-outtime", width: 120, nodrag: true, nodrop: true, },
+			{
+				title: "탑승지/하차지", dataIndx: "receipt-location", width: 260, align: "left", nodrag: true, nodrop: true,
+				render: function (ui) { // checkbox custom
+					// console.log(ui.rowData);
+					let location_lst = `<ul class='location_lst'>`;
+					let lst1 = `<li><i class='icon icon_location1'></i><span><strong>${ui.rowData.location1}</strong></span></li>`;
+					let lst2 = `<li><i class='icon icon_location3'></i><span><strong>${ui.rowData.location2}</strong></span></li>`;
+
+					location_lst += `${lst1}${lst2}`;
+
+					return location_lst += `</ul>`;
+				}
+			},
+			{
+				title: "탑승지/하차지<br>(승하자지점 매칭)", dataIndx: "receipt-location-matching", width: 260, align: "left", nodrag: true, nodrop: true,
+				render: function (ui) { // checkbox custom
+					// console.log(ui.rowData);
+					let location_lst = `<ul class='location_lst'>`;
+					let lst1 = `<li><i class='icon icon_location1'></i><span><strong>${ui.rowData.case1}</strong></span></li>`;
+					let lst2 = `<li><i class='icon icon_location3'></i><span><strong>${ui.rowData.case2}</strong></span></li>`;
+
+					location_lst += `${lst1}${lst2}`;
+
+					return location_lst += `</ul>`;
+				}
+			},
+			{ title: "탑승 인원", dataIndx: "driving-personnel", width: 100, nodrag: true, nodrop: true, },
+		];
+		var options = {
+			scrollModel: { autoFit: false },
+			width: '1030',
+			minWidth: 1030,
+			minHeight: 460,
+			rowHt: 92,
+			rowHtHead: 64,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			// postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+
+			rowSelect: function (evt, ui) {
+				console.log('rowSelect', ui);
+			},
+			selectChange: function (evt, ui) {
+				console.log('selectChange', evt, ui);
+
+			},
+		};
+		var grid = pq.grid("#grid_tab1", options);
+		
+		
+		
+		var dataModel2 = {
+			"data": [
+				{ "no": 1, "approval-status": "중복 승인 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "인천 부평구 부평2동", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 2, "approval-status": "중복 반려 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소2", "driving-personnel": "2"},
+				{ "no": 3, "approval-status": "중복 승인 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소3", "driving-personnel": "1"},
+				{ "no": 4, "approval-status": "중복 반려 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소4", "driving-personnel": "2"},
+				{ "no": 5, "approval-status": "중복 승인 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 6, "approval-status": "중복 승인 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 7, "approval-status": "중복 반려 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 8, "approval-status": "중복 반려 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 9, "approval-status": "중복 반려 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+				{ "no": 10, "approval-status": "중복 반려 처리", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": "", "location1": "부산 해운대구 중동 1015", "location2": "부산 해운대구 남동 26", "receipt-location-matching": "", "case1": "등촌마을(상남면)", "case2": "신나면사무소", "driving-personnel": "1"},
+			]
+		};
+
+		var colModel2 = [
+			{ title: "No", dataIndx: "no", width: 65, nodrag: true, nodrop: true, },
+			{ title: "승인 상태", dataIndx: "approval-status", width: 100, nodrag: true, nodrop: true, 
+				render: function (ui) {
+					var rowData = ui.rowData, dataIndx = ui.dataIndx;
+					var val = rowData[dataIndx];
+					//var lst;
+					if (val === '중복 승인 처리') {
+						return "<div>" + val + "<p class='color_red'>이미 승인 된 내역입니다.</p></div>";
+					} else if (val === '중복 반려 처리') {
+						return "<div>" + val + "<p class='color_red'>이미 반려 된 내역입니다.</p></div>";
+					}
+				}
+				
+			},
+			{ title: "탑승 일시", dataIndx: "driving-intime", width: 120, nodrag: true, nodrop: true, },
+			{ title: "하차 일시", dataIndx: "driving-outtime", width: 120, nodrag: true, nodrop: true, },
+			{
+				title: "탑승지/하차지", dataIndx: "receipt-location", width: 260, align: "left", nodrag: true, nodrop: true,
+				render: function (ui) { // checkbox custom
+					// console.log(ui.rowData);
+					let location_lst = `<ul class='location_lst'>`;
+					let lst1 = `<li><i class='icon icon_location1'></i><span><strong>${ui.rowData.location1}</strong></span></li>`;
+					let lst2 = `<li><i class='icon icon_location3'></i><span><strong>${ui.rowData.location2}</strong></span></li>`;
+
+					location_lst += `${lst1}${lst2}`;
+
+					return location_lst += `</ul>`;
+				}
+			},
+			{
+				title: "탑승지/하차지<br>(승하자지점 매칭)", dataIndx: "receipt-location-matching", width: 260, align: "left", nodrag: true, nodrop: true,
+				render: function (ui) { // checkbox custom
+					// console.log(ui.rowData);
+					let location_lst = `<ul class='location_lst'>`;
+					let lst1 = `<li><i class='icon icon_location1'></i><span><strong>${ui.rowData.case1}</strong></span></li>`;
+					let lst2 = `<li><i class='icon icon_location3'></i><span><strong>${ui.rowData.case2}</strong></span></li>`;
+
+					location_lst += `${lst1}${lst2}`;
+
+					return location_lst += `</ul>`;
+				}
+			},
+			{ title: "탑승 인원", dataIndx: "driving-personnel", width: 100, nodrag: true, nodrop: true, },
+		];
+		var options2 = {
+			scrollModel: { autoFit: false },
+			width: '1030',
+			//minWidth: 1030,
+			minHeight: 460,
+			rowHt: 92,
+			rowHtHead: 64,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			// postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel2,
+			colModel: colModel2,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+
+			rowSelect: function (evt, ui) {
+				console.log('rowSelect', ui);
+			},
+			selectChange: function (evt, ui) {
+				console.log('selectChange', evt, ui);
+
+			},
+		};
+		
+		var grid = pq.grid("#grid_tab2", options2);
+	});
+</script>
+	
+
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>마크업가이드 - GRID</title>
+<!-- 가이드 css -->
+<link rel="stylesheet" href="../guide_common/css/common.css">
+<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/sub1.css">
+<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqselect.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.css">
+
+<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+<script src="../assets/js/vendor/pqgrid.min.js"></script>
+<script src="../assets/js/vendor/pqselect.min.js"></script>
+<script src="../assets/js/vendor/jszip.min.js"></script>
+<script src="../assets/js/vendor/FileSaver.min.js"></script>
+
+<script src="../assets/js/common.js"></script>
+
+<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function(){
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(5).addClass("active");
+	});
+</script>
+<style>
+    .pin{
+        width: 52px;
+        height: 36px;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+<div id="g-wrap" class="open-aside">
+	<!-- aside -->
+	<div id="g-aside">
+		<!-- # 좌측컨텐츠 # -->
+		<div class="wrap-aside">
+			<!-- 사용자정보영역 -->
+			<div class="box-info">
+			</div>
+			<!-- 네비게이션 : SNB -->
+			<div class="g-nav-snb guide"></div>
+		</div>
+		<!-- # 컨트롤 # -->
+		<div class="g-area-control">
+			<a href="#none">좌측영역 펼침/닫기</a>
+		</div>
+	</div>
+	<!-- //aside -->
+
+	<div class="g-content">
+		<div class="g-box-basic">
+			<h2 class="g-tit-basic">Navigation</h2>
+
+			<!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+                            <!-- view -->
+							<h3 class="g-tit-basic">MarkerClustering</h3>
+
+                            <div id="map_div" class="map_area" style="margin: 0 auto;width:588px;height:766px;"></div>
+                            <div id="result">
+                                <div>반경 내 Data : </div>
+                                <ul class="indata"></ul>
+                                <div>반경 외 Data : </div>
+                                <ul class="outdata"></ul>
+                            </div>
+
+                            <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f"></script>
+                            <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+							<script>
+                                var appKey = "WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f";    // tmap
+
+                                var radius = 500;   // 기준 거리 (반경)
+                                var data_center = { "name":"중심", "lat":"37.5666805", "lon":"126.9784147" };   // 기준점
+
+                                var dataModel = {   // 승하차지
+                                    "data": [
+                                        { "name":"위치1", "lat":"37.5866805", "lon":"126.9984147" },
+                                        { "name":"위치2", "lat":"37.5366805", "lon":"126.9584147" },
+                                        { "name":"위치3", "lat":"37.569805", "lon":"126.9824147" },
+                                    ]
+                                };
+
+                                var map = new naver.maps.Map('map_div', {
+                                    center: new naver.maps.LatLng(37.5666805, 126.9784147),
+                                    zoom: 12,
+                                    minZoom: 9,
+                                    maxZoom: 14
+                                });
+                               
+                                function addMarker(status, dataItem, tag) {
+                                    //출도착경유구분
+                                    //이미지 파일 변경.    
+                                    var markerLayer;
+                                    var cls = '';
+                                    var txt = '';
+                                    var name = dataItem.name;
+                                    
+                                    switch (status) {
+                                        case "pinBlank":
+                                            txt = name;
+                                            cls = "pin_blank";
+                                            zindex = 1;
+                                            break;
+                                    };
+                                    
+                                    var marker = new naver.maps.Marker({
+                                        position: new naver.maps.LatLng(dataItem.lat, dataItem.lon),
+                                        map: map,
+                                        icon: {
+                                            content: [
+                                                '<div class="pin ' + cls + '">',
+                                                    '<div class="pin_name">',
+                                                        txt,
+                                                    '</div>',
+                                                '</div>',
+                                            ].join(''),
+                                            size: new naver.maps.Size(44, 36),
+                                            anchor: new naver.maps.Point(22, 36),
+                                        },
+                                        draggable: true,
+                                        zIndex: zindex
+                                    });
+
+                                    return marker;
+                                }
+
+                                function createMarker() {
+                                    // 승하차 지점 마커
+                                    for(var i = 0; i < dataModel.data.length; i ++){
+                                        addMarker('pinBlank', dataModel.data[i], i);
+                                    }
+                                }
+
+                                function getDistance(centerData, targetData) {
+                                    var headers = {};
+                                    headers["appKey"]=appKey;
+
+                                    var distance;
+
+                                    $.ajax({
+                                        method : "GET",
+                                        headers : headers,
+                                        url : "https://apis.openapi.sk.com/tmap/routes/distance?version=1&format=json&callback=result",//
+                                        async : false,
+                                        data : {
+                                            "startX" : centerData.lon,
+                                            "startY" : centerData.lat,
+                                            "endX" : targetData.lon,
+                                            "endY" : targetData.lat,
+                                            "reqCoordType" : "WGS84GEO"
+                                        },
+                                        success : function(response) {
+                                            distance = response.distanceInfo.distance;
+                                        },
+                                        error : function(request, status, error) {
+                                            console.log("code:" + request.status + "\n"
+                                                    + "message:" + request.responseText + "\n"
+                                                    + "error:" + error);
+                                        }
+                                    });
+
+                                    return distance;
+                                }
+
+                                function srchInclude(dataItems) {
+                                    var inData = [];
+                                    var outData = [];
+
+                                    for(var i = 0; i < dataItems.length; i ++) {
+                                        var distance = getDistance(data_center, dataItems[i]);
+                                        console.log(distance)
+
+                                        if(distance <= radius) {
+                                            inData.push(dataItems[i]);
+                                            $('.indata').append('<li>' + dataItems[i].name + '</li>')
+                                        } else {
+                                            outData.push(dataItems[i]);
+                                            $('.outdata').append('<li>' + dataItems[i].name + '</li>')
+                                        }
+                                    }
+
+                                    console.log('반경 내: ', inData);
+                                    console.log('반경 외: ', outData);
+                                }
+
+                                addMarker('pinBlank', data_center, 0);  // 중심점 마커
+                                createMarker(); // 승하차지 마커
+                                
+                                
+                                srchInclude(dataModel.data);
+                            </script>
+							<!-- //view -->
+
+							
+              
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html"></pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css"></pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

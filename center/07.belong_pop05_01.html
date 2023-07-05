@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_result" style="display: none;">
+		
+	<div class="pop_contents">
+			
+		<div class="detail_top mt10">
+			<div class="left_area">
+				<ul class="step_wrap">
+					<li>기본정보</li>
+					<li>서비스 지역</li>
+					<li class="on">요금제</li>
+				</ul>
+			</div>
+		</div>
+			
+		<div class="box_section_wrap">
+					
+			<div class="box_section">
+				<div class="title_sm">
+					<div class="title">
+						<span class="essential">요금 정책 설정</span>
+					</div>
+				</div>	
+				<div class="search_filter">
+					<ul>
+						<li>
+							<div class="form_inline">
+								<div class="label_t"><span class="essential" title="필수">총 요금정책</span></div>
+								<div class="input_radio">
+									<input type="radio" id="label_text1" name="">
+									<label for="label_text1" class="txt_label">미터기 요금</label>
+								</div>
+								<div class="input_radio">
+									<input type="radio" id="label_text2" name="">
+									<label for="label_text2" class="txt_label">협정요금 
+									<!--협정요금 선택 시 텍스트 노출-->
+									<span class="color_red pl10">협정요금 선택 시, 승하차지점을 반드시 설정해주세요</span></label>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<!--협정요금 선택 시 노출-->
+				<div class="box_section mt30">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential color_gray fs14">구간별 총 요금정책</span>
+						</div>
+						<div class="right_area">
+							<button type="button" class="btn btn_gray btn_outline btn_add">구간 추가</button>
+						</div>
+					</div>	
+					
+					<div class="payment_option autotype">
+						<ul> <!--point_defalt 뒤로 구간 추가-->
+							<li class="form_select point_defalt">
+								<span class="tit">구간1</span>
+								<div class="wrap_auto">
+									<input type="text" class="form_ctl f_search startPoint" placeholder="탑승지를 선택해 주세요">
+									<button type="button" class="btn btn_clear ir">초기화</button>
+								</div>
+								<div class="wrap_auto">
+									<input type="text" class="form_ctl f_search endPoint" placeholder="하차지를 선택해 주세요">
+									<button type="button" class="btn btn_clear ir">초기화</button>
+								</div>
+								<div class="date_wrap">
+									<input type="text" class="form_ctl" placeholder="" />
+									<span class="inner_txt">원</span>
+								</div>
+								
+								<!-- <a href="javascript:void(0);" class="del_btn">삭제하기</a> -->
+							</li>
+							
+						</ul>
+					</div>
+					
+				</div>
+				
+				
+				<div class="scrolling_area mt40">
+					<div class="scrolling_inner">
+						<div class="label_t scrolling_left"><span class="essential" title="필수">승객 지불 요금정책</span></div>
+						<ul class="inner_list scrolling_right">
+							<li>
+								<div class="form_inline">
+									<div class="input_radio">
+										<input type="radio" id="label_text3" name="">
+										<label for="label_text3" class="txt_label">이용 횟수(원/회)</label>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" />
+										<span class="inner_txt">원/회당</span>
+									</div>
+								</div>
+								
+							</li>
+							<li>
+								<div class="form_inline">
+									<div class="input_radio">
+										<input type="radio" id="label_text4" name="">
+										<label for="label_text4" class="txt_label">이용 횟수(원/회)</label>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">원/회당</span>
+									</div>
+								</div>
+								
+							</li>
+							<li>
+								<div class="form_inline">
+									<div class="input_radio">
+										<input type="radio" id="label_text5" name="">
+										<label for="label_text5" class="txt_label">이용 횟수(원/회)</label>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">원/회당</span>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">최소 기준 요금</span>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="form_inline">
+									<div class="input_radio">
+										<input type="radio" id="label_text6" name="">
+										<label for="label_text6" class="txt_label">인원 수 별 책정 (1인/2인/3인/4인)</label>
+									</div>
+									<div class="date_wrap disabled">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">원/1명</span>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">원/2명</span>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">원/3명</span>
+									</div>
+									<div class="date_wrap">
+										<input type="text" class="form_ctl" placeholder="" disabled/>
+										<span class="inner_txt">원/4명</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>	
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		
+ 
+	</div>
+</div>
+
+
+<!-- 필수값이 입력되지 않은 경우 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>필수 값을 모두 입력해 주세요.”</p></div>
+</div>	
+
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>협정요금 설정 시, <br/> 1 페이지에서 경유지 설정허용 여부에서 <br/>”비허용”으로 설정해야 합니다. </p></div>
+</div>	
+
+<!-- 성공 시 토스트 팝업 -->
+<div class="toast_popup toastPop_conf">
+	<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>센터 정보와 정책이 설정 되었습니다</p></div>
+</div>
+
+<!-- 실패 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>통신이 불안정 합니다. 잠시후에 다시 시도해주세요</p></div>
+</div>	
+
+
+<script>
+$(function(){
+$('#pop_result').dialog({
+	dialogClass: 'popup',
+	width: 1120,
+	height: 737,
+	title: '센터 등록 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+	titleIsHtml: true,
+	buttons: [
+		{
+			text: "뒤로",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "등록",  
+			class: "btn btn_blue",
+			//onclick: 'toastPop_conf();',
+			onclick: 'toastPop_err();',
+			click: function () {
+				//$(this).dialog("close");
+			}
+		}
+	]
+});
+  
+
+});
+
+// 팁승지, 하치지 dropdown
+$(function () {
+	var arr_start = [
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+	];
+	var arr_end = [
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+	];
+
+	$('.startPoint').autocomplete({
+		source : arr_start,
+		minLength : 0,
+		position: {
+			my: "left+0 top+8",
+		},
+		disabled: true,
+		select: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+		close: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+	});
+	
+	$('.endPoint').autocomplete({
+		source : arr_start,
+		minLength : 0,
+		position: {
+			my: "left+0 top+8",
+		},
+		disabled: true,
+		select: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+		close: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+	});
+
+});
+
+// 구간별 요금 추가
+$(document).on('click', '.btn_add', function(){
+		
+	var passlist = $('.point_add');
+
+	var contentString = [            
+		'<li class="form_select point_add">',
+		'	<span class="tit">구간' + (passlist.length + 2) + '</span>',
+		'		<div class="wrap_auto">',
+		'         <input type="text" class="form_ctl f_search startPoint" placeholder="탑승지를 선택해 주세요">',
+		'            <button type="button" class="btn btn_clear ir">초기화</button>',
+		'       </div>',
+		'		<div class="wrap_auto">',
+		'         <input type="text" class="form_ctl f_search endPoint" placeholder="하차지를 선택해 주세요">',
+		'         <button type="button" class="btn btn_clear ir">초기화</button>',
+		'       </div>',
+		'	     <div class="date_wrap">',
+		'			<input type="text" class="form_ctl" placeholder="" />',
+		'			<span class="inner_txt">원</span>',
+		'		</div>',
+		'		<a href="javascript:void(0);" class="btn_delete">삭제하기</a>',
+		'</li>'						
+	].join('');
+
+	if(passlist.length === 0) {
+		$('.point_defalt').after(contentString);
+	} else {
+		$('.point_add').eq(passlist.length - 1).after(contentString);
+	}
+
+	var arr_start_add = [
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+	];
+	var arr_end_add = [
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+		"청와대 (서울 종로구 세종로 1)",
+		"약선동 (서울 종로구 삼일대로 32길 51)",
+		"혜화역 (서울 종로구 대학로 120 4호선 혜화역)",
+		"종로3가 (서울 종로구 종로 129)",
+		"창신동 (서울 종로구 지봉로 8-6)",
+		"마로니에 공원 (서울 종로구 대학로 104)",
+		"성대 정문 (서울 종로구 명륜 3가)",
+		"이화마을 (서울 종로구 이화동 9-413)",
+		"이화장 (서울 종로구 이화장 1길 32 우남이승만박사기념관)",
+		"혜화동 로터리 (서울 종로구 혜화동)",
+	];
+
+	$('.startPoint').autocomplete({
+		source : arr_start_add,
+		minLength : 0,
+		position: {
+			my: "left+0 top+8",
+		},
+		disabled: true,
+		select: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+		close: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+	});
+	
+	$('.endPoint').autocomplete({
+		source : arr_start_add,
+		minLength : 0,
+		position: {
+			my: "left+0 top+8",
+		},
+		disabled: true,
+		select: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+		close: function( event, ui ) {
+			$(this).autocomplete('disable');
+		},
+	});
+	
+});
+
+// 경유지 삭제
+$(document).on('click', '.btn_delete', function(){
+	$(this).parents('ul').addClass('last_on');
+	$(this).closest('li').remove();		
+	$('.last_on li').removeClass('point_defalt');
+	$('.last_on li').last().addClass('point_defalt');
+});
+
+// input 입력시 btn_clear 활성화
+function checkSearchForm(target) {
+	// console.log(target)
+	if(target.val() === ''){
+		target.siblings('.btn_clear').removeClass('on');
+	} else{
+		target.siblings('.btn_clear').addClass('on');
+	}
+}
+$(document).on("propertychange change keydown keyup paste input", ".wrap_auto input", function(e) {
+	var tg = $(this);
+	if(e.keyCode === 13) {
+		$(this).autocomplete('enable');
+		$(this).autocomplete("search", $(this).val());
+	}
+	checkSearchForm(tg);
+});
+
+// btn_clear 클릭시 input value 삭제
+$(document).on('click', '.wrap_auto .btn_clear', function(){
+	$(this).siblings('.form_ctl').val('');
+	$(this).removeClass('on');
+});
+
+
+
+</script>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

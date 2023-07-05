@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="company_pop01" style="display: none;">
+	<div class="pop_contents">
+			
+		<div class="box_section">
+			<h3 class="title_md">
+				<div class="title">운수회사 정보</div>
+			</h3>
+			<div class="search_filter">
+				<ul>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">시도</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option selected>전라북도</option>
+								<option>경상남도</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">시군구</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option>거제시</option>
+							</select>
+						</div>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">소속기관</span></div>
+							<select class="form_ctl" id="">
+								<option>전체</option>
+								<option>거제시</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t"><span class="essential" title="필수">운수회사명</span></div>
+							<input type="text" class="form_ctl" placeholder="운수회사명 입력">
+						</div>
+						<div class="form_inline">
+							<div class="label_t">법인등록 번호</div>
+							<input type="text" class="form_ctl" placeholder="법인등록 입력">
+						</div>
+					</li>
+					<li>
+						<div class="form_inline">
+							<div class="label_t">대표자명</div>
+							<input type="text" class="form_ctl" placeholder="대표자명 입력">
+						</div>
+						<div class="form_inline">
+							<div class="label_t">전화번호</div>
+							<input type="text" class="form_ctl" placeholder="전화번호 입력">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>	
+		
+	</div>
+</div>
+
+<!-- 성공 시 토스트 팝업 -->
+<div class="toast_popup toastPop_conf">
+	<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>성공적으로 등록되었습니다</p></div>
+</div>
+
+<!-- 실패 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>필수 입력 항목을 모두 입력해 주세요</p></div>
+</div>	
+
+
+<script>
+$(function(){
+$('#company_pop01').dialog({
+	dialogClass: 'popup',
+	width: 950,
+	height: 510,
+	title: '운수회사 등록 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+	titleIsHtml: true,
+	dialogClass: "n_over",
+	
+	buttons: [
+		{
+			text: "취소",  
+			class: "btn btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "등록",  
+			class: "btn btn_blue",
+			//onclick: 'toastPop_conf();',
+			onclick: 'toastPop_err();',
+			click: function () {
+				//$(this).dialog("close");
+			
+			}
+		}
+	],
+// 	closeOnEscape: false,
+// 	open: function(event, ui) { 
+//       $(".ui-dialog-titlebar-close", $(this).parent()).hide(); 
+//    }
+   
+});
+
+
+});
+
+</script>
+>
+
+
+
+</body>
+<script>
+
+</script>
+
+</html>

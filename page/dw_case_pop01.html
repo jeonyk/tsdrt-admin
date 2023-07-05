@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	
+<div id="wrap">
+	@@include('../_include/header.html')	
+	
+	<!-- container-->
+	<div id="container">
+		@@include('../_include/lnb.html')
+		<!--inner-->
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">보조금 지급 승인 내역</h2>
+				<div class="btn_area">
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역 추가</span></button>
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄 추가</span></button>
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+			
+				
+			</div> 
+			<!--// content-->
+			
+		</div>
+		<!--//inner-->
+	</div>
+	<!-- //container-->
+	
+</div>
+<!--//wrap-->
+
+<!-- Table Modal  -->
+<div id="pop_dw01" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="title_md">
+			<div class="title color_gray">설정한 기간 동안 승인 완료된 내역이 표시됩니다.</div>
+		</div>
+		
+		<div class="box_section"> 
+			<div class="title_sm">
+				<div class="title">
+					기간 설정
+				</div>
+			</div>
+			
+			<div class="table_list align_left">
+				<table>
+					<caption class="sr_only">승인 완료 내역 기간 설정 </caption>
+					<colgroup>
+						<col width="20%">
+						<col width="*">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th>탑승 일자</th>
+						<td>
+							<div class="date_wrap">
+								<i class="icon icon_date"></i>
+								<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+								<span class="dash">~</span>
+								<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>기사 연락처</th>
+						<td>010-0000-0000</td>
+					</tr>
+					
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="title_sm">
+				<div class="title">
+					주행 증빙 사진
+				</div>
+			</div>
+			<div class="form_inline">
+				<div class="input_radio">
+					<input type="radio" id="rd_text1" name="">
+					<label for="rd_text1" class="txt_label">포함</label>
+				</div>
+				<div class="input_radio">
+					<input type="radio" id="rd_text2" name="">
+					<label for="rd_text2" class="txt_label">비포함</label>
+				</div>
+			</div>
+			
+			<div class="title_sm">
+				<div class="title ">
+					<span class="essential">다운로드 사유</span>   
+				</div>
+			</div>
+			
+			<!-- 0406 입력란 추가 -->
+			<div class="search_filter">
+				<ul>
+					<li>
+						<div class="form_inline form_xlg">
+							<select class="form_ctl" id="">
+								<option>선택</option>
+								<option>선택2</option>
+								<option selected>직접 입력</option>
+							</select>
+						</div>
+						<!--직접입력 선택 시-->
+						<div class="form_inline ">
+							<div class="label_t">직접 입력</div>
+							<input type="text" class="form_ctl" placeholder="최대 10자 까지 입력 가능합니다." value="" autocomplete="off">
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			
+			
+		
+		</div>
+		
+		
+ 
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_dw01').dialog({
+	dialogClass: 'popup',
+	width: 800,
+	height: 737,
+	title: '승인내역 다운로드',
+	modal: true,
+	buttons: [{
+			text: "취소",
+			class: "btn btn_md btn_gray btn_outline",
+			click: function () {
+				$(this).dialog("close");
+			}
+		},
+		{
+			text: "확인",  
+			class: "btn btn_md btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+});
+
+</script>
+
+
+
+	
+</body>
+<script>
+
+</script>
+
+</html>
+

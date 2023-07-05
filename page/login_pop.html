@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap" class="login_wrap admin">
+        <h1 class="logo"><div class="sr_only">한국교통안전공단 로고</div></h1>
+        <div class="login">
+            <p class="title">공단 수요응답형 대충교통은 <strong>모든 교통약자를 위한 DRT 플랫폼</strong>입니다</p>
+            <div class="login_form">
+                <strong>관리자 시스템</strong>
+                <div class="input_wrap">
+                    <input type="text" class="form_control" placeholder="ID">
+                    <input type="Password" placeholder="Password" class="form_control" autocomplete="off">
+                </div>
+                <button class="btn btn_login">로그인</button>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="inner">
+                <div class="footer_bt">
+                    <p class="copyright">Copyright &copy;<em>TS.</em> All rights reserved <em>with AUTOCRYPT EQ</em></p>
+                    <a href="#none" class="banner"><img src="../assets/img/google.png"></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Table Modal  -->
+	<div id="pop_login" style="display: none;">
+		
+		<div class="pop_contents">	
+			<div class="title_md">
+				<div class="title color_gray">접속을 계속하시려면, 개인정보 보호 서약에 동의해야 합니다. (최초 1회)</div>
+				<div class="right_area">
+					<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>다운로드</span></button>
+				</div>
+			</div>
+			<div class="box_section_wrap">
+				<div class="box_section"> 
+					<div class="clause_area">
+						<h1>개인정보 취급자 개인정보보호 서약서</h1>
+						<p>본인은 공단 수요응답형 DRT 서비스를 통해 정보 파일명 기재의 개인정보 취급자로서 개인정보보호를 위
+						하여 다음 사항을 준수할 것을 엄숙히 서약합니다.</p>
+						<ol>
+							<li><span class="num">1.</span> 업무상 알게 된 개인정보를 허가 없이 제3자 제공하거나 수집 목적 외로 이용하지 않는다.</li>
+							<li><span class="num">2.</span>명백히 허가받지 않은 정보나 시설에 접근하지 않으며, 업무를 수행할 때에는 기곤에서 지정되고 허
+								가된 데이터 처리 시설 및 설비만을 이용한다.</li>
+							<li><span class="num">3.</span> 업무와 관련한 개인정보의 수집, 생성, 기록, 저장, 보유, 가공, 편집, 검색, 출력, 정정, 복구, 이용, 제공, 공개, 파기 및 그 밖에 이와 유사한 일체의 행위에 대하여 기관의 규정과 통제절차를 준수할 것이다.
+							<li><span class="num"></span>4. 본인에게 할당된 사용자 ID, 패스워드, 출입증, 개인정보 처리시스템을 타인과 공동 사용하거나 관련
+								정보를 누설하지 않는다.</li>
+							<li><span class="num">5.</span> 기관으로부터 제공받은 개인정보자산(서류, 사진, 영상, 전자파일, 저장매체 등)을 무단 변조, 복사 ,훼
+								손, 분실 등으로부터 안전하게 관리하고, 승인받지 않은 프로그램 정보 저장 매체를 기관 내에서 사용
+								하지 않는다.</li>
+							<li><span class="num">6.</span> 나는 부서 이동 및 퇴직 시 기관에서 제공받은 모든 정보자산을 반드시 반납할 것이며, 부서 이동 및
+								퇴직 후에도 해당 업루를 통해 업는 모든 개인 정보에 대하여는 일체 누설하지 않는다.</li>
+							<li><span class="num">6.</span> 나는 부서 이동 및 퇴직 시 기관에서 제공받은 모든 정보자산을 반드시 반납할 것이며, 부서 이동 및
+								퇴직 후에도 해당 업루를 통해 업는 모든 개인 정보에 대하여는 일체 누설하지 않는다.</li>
+							<li><span class="num">6.</span> 나는 부서 이동 및 퇴직 시 기관에서 제공받은 모든 정보자산을 반드시 반납할 것이며, 부서 이동 및
+									퇴직 후에도 해당 업루를 통해 업는 모든 개인 정보에 대하여는 일체 누설하지 않는다.</li>
+							<li><span class="num">6.</span>나는 부서 이동 및 퇴직 시 기관에서 제공받은 모든 정보자산을 반드시 반납할 것이며, 부서 이동 및
+									퇴직 후에도 해당 업루를 통해 업는 모든 개인 정보에 대하여는 일체 누설하지 않는다.</li>
+							<li><span class="num">6.</span>나는 부서 이동 및 퇴직 시 기관에서 제공받은 모든 정보자산을 반드시 반납할 것이며, 부서 이동 및 퇴직 후에도 해당 업루를 통해 업는 모든 개인 정보에 대하여는 일체 누설하지 않는다.</li>
+						</ol>
+	
+
+					</div>
+					
+				
+				
+				</div>
+			</div>
+			
+					
+	 
+		</div>
+	</div>
+	
+	
+<script>
+$(function(){
+	$('#pop_login').dialog({
+		dialogClass: 'popup pop_table',
+		width: 1120,
+		height: 737,
+		title: '개인정보 보호 서약',
+		modal: true,
+		buttons: [{
+				text: "동의하지 않음",
+				class: "btn btn_md btn_gray btn_outline",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "동의",  
+				class: "btn btn_md btn_blue",
+				click: function () {
+					$(this).dialog("close");
+				}
+			}
+		]
+	});
+});
+
+</script>
+    
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+<style>
+	/* .form_ctl { margin-right: 10px;}
+	.form_ctl + .form_ctl { margin-left: 30px;} */
+</style>
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">센터 상세 정보</h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><span>수정하기</span></button>
+						<!-- <button type="button" class="btn btn_blue btn_outline"><span>돌아가기</span></button> -->
+					</div>
+				</div>
+
+				<div class="content">
+					<ul class="tabs tab mb20">
+						<li class="on"><a href="#none">기본 정보</a></li>
+						<li><a href="#none">서비스 지역</a></li>
+						<li><a href="#none">요금제</a></li>
+					</ul>
+					<div class="tab_contents on">
+						<div class="box_section">
+							<div class="both_col">
+								<div class="left">
+									<h3 class="title_md mb0">
+										<div class="title">지역 정보</div>
+									</h3>
+									<h3 class="title_sm mt20 mb10">
+										<div class="title">센터 기본 정보</div>
+									</h3>
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">센터 기본 정보</caption>
+											<colgroup>
+												<col width="30%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>시도</th>
+													<td>서울시</td>
+												</tr>
+												<tr>
+													<th>시군구</th>
+													<td>종로구</td>
+												</tr>
+												<tr>
+													<th>소속기관</th>
+													<td>종로구 행복택시</td>
+												</tr>
+												<tr>
+													<th>센터</th>
+													<td>사직 1</td>
+												</tr>
+												<tr>
+													<th>전화번호</th>
+													<td>02-2222-2222</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<h3 class="title_md mb0">
+										<div class="title">센터 정책</div>
+									</h3>
+									<h3 class="title_sm mt20 mb10">
+										<div class="title">배차 및 증빙</div>
+									</h3>
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">배차 및 증빙</caption>
+											<colgroup>
+												<col width="40%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>배차 방식</th>
+													<td>셀프 배차</td>
+												</tr>
+												<tr>
+													<th>경유지 설정 허용 여부</th>
+													<td>허용</td>
+												</tr>
+												<tr>
+													<th>증빙 사진 첨부 여부</th>
+													<td>첨부</td>
+												</tr>
+												<tr>
+													<th>탑승 인원 확인 방식 </th>
+													<td>수동</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div>
+									<h3 class="title_md mb0">
+										<div class="title">센터 현황</div>
+									</h3>
+									<h3 class="title_sm mt20 mb10">
+										<div class="title">센터 구성</div>
+									</h3>
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">센터 구성</caption>
+											<colgroup>
+												<col width="25%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>보유 기사</th>
+													<td>22명</td>
+												</tr>
+												<tr>
+													<th>보유 차량</th>
+													<td>24대</td>
+												</tr>
+												<tr>
+													<th>보유 그룹</th>
+													<td>5그룹</td>
+												</tr>
+												<tr>
+													<th>보유 회원</th>
+													<td>125명</td>
+												</tr>
+												<tr>
+													<th>소속 관리자</th>
+													<td>3명</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div>
+									<h3 class="title_md mb0">
+										<div class="title">운영 시간</div>
+									</h3>
+									<h3 class="title_sm mt20 mb10 respon">
+										<div class="title"></div>
+									</h3>
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">운영 시간</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th class="ac">월요일</th>
+													<td class="ac">00:00</td>
+													<td class="ac">23:59</td>
+												</tr>
+												<tr>
+													<th class="ac">화요일</th>
+													<td class="ac">00:00</td>
+													<td class="ac">23:59</td>
+												</tr>
+												<tr>
+													<th class="ac">수요일</th>
+													<td class="ac">00:00</td>
+													<td class="ac">23:59</td>
+												</tr>
+												<tr>
+													<th class="ac">목요일</th>
+													<td class="ac">00:00</td>
+													<td class="ac">23:59</td>
+												</tr>
+												<tr>
+													<th class="ac">금요일</th>
+													<td class="ac">00:00</td>
+													<td class="ac">23:59</td>
+												</tr>
+												<tr>
+													<th class="ac">토요일</th>
+													<td class="ac">운영 안함</td>
+													<td class="ac">-</td>
+												</tr>
+												<tr>
+													<th class="ac">일요일</th>
+													<td class="ac">운영 안함</td>
+													<td class="ac">-</td>
+												</tr>
+												<tr>
+													<th class="ac">공휴일</th>
+													<td class="ac">운영 안함</td>
+													<td class="ac">-</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div class="tab_contents ">
+						<div class="content_h">
+							<div class="box_section">
+								<div class="search_filter">
+									<ul style="display:flex;">
+										<li>
+											<div class="form_inline">
+												<div class="label_t"><span title="">시도</span></div>
+												<input type="text" class="form_ctl" readonly value="서울시"></input>
+											</div>
+											<div class="form_inline">
+												<div class="label_t"><span title="">시군구</span></div>
+												<input type="text" class="form_ctl" readonly value="종로구"></input>
+											</div>
+											<div class="form_inline">
+												<div class="label_t"><span title="">소속기관</span></div>
+												<input type="text" class="form_ctl" readonly value="종로구 행복택시"></input>
+											</div>
+											<div class="form_inline">
+												<div class="label_t"><span title="">센터</span></div>
+												<input type="text" class="form_ctl" readonly value="사직 1"></input>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+
+							<div class="box_section">
+
+								<div class="both_col">
+									<div class="left">
+										<h3 class="title_md">
+											<div class="title">주행 정보</div>
+										</h3>
+										<div id="map_div" class="map_area">
+
+										</div>
+									</div>
+
+									<div class="right w100">
+										<h3 class="title_md">
+											<div class="title">행정 구역</div>
+										</h3>
+										<div id="grid_list_name" class="grid_list"></div>
+									</div>
+								</div>
+							</div>
+							<h3 class="title_md">
+								<div class="title">승하차 지점</div>
+							</h3>
+
+							<div class="box_section mb50">
+								<div id="grid_list_inout" class="grid_list"></div>
+							</div>
+						</div>
+					</div>		
+					<div class="tab_contents ">
+						<div class="content_h">
+							<div class="box_section">
+								<div class="search_filter">
+									<ul style="display:flex;">
+										<li>
+											<div class="form_inline">
+												<div class="label_t"><span title="">시도</span></div>
+												<input type="text" class="form_ctl" readonly value="서울시"></input>
+											</div>
+											<div class="form_inline">
+												<div class="label_t"><span title="">시군구</span></div>
+												<input type="text" class="form_ctl" readonly value="종로구"></input>
+											</div>
+											<div class="form_inline">
+												<div class="label_t"><span title="">소속기관</span></div>
+												<input type="text" class="form_ctl" readonly value="종로구 행복택시"></input>
+											</div>
+											<div class="form_inline">
+												<div class="label_t"><span title="">센터</span></div>
+												<input type="text" class="form_ctl" readonly value="사직 1"></input>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<h3 class="title_md">
+								<div class="title">총 요금 정책</div>
+								<span class="add_text pl0"><span class="color_red">*</span> (센터가 사용할 요금제의 종류를
+									선택합니다.)</span>
+							</h3>
+							<div class="box_section">
+								<div id="allCharge_list" class="grid_list"></div>
+							</div>
+							
+							<h3 class="title_md">
+								<div class="title">구간별 요금 설정</div>
+								<span class="add_text pl0"><span class="color_red">*</span> (센터의 총 요금을 설정 합니다.)</span>
+							</h3>
+							
+							<div class="box_section">
+								<div class="payment_option" style="width: 540px;">
+									<ul>
+										<li>
+											<span class="tit">구간1</span>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지1</option>
+												<option selected>승하차지2</option>
+												<option>승하차지3</option>
+											</select>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지선책</option>
+												<option>승하차지2</option>
+												<option selected>승하차지3</option>
+											</select>
+											<div class="date_wrap">
+												<input type="text" class="form_ctl" placeholder="" value="5000" disabled/>
+												<span class="inner_txt">원</span>
+											</div>
+											
+										</li>
+										<li>
+											<span class="tit">구간2</span>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지1</option>
+												<option selected>승하차지2</option>
+												<option>승하차지3</option>
+											</select>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지선책</option>
+												<option>승하차지2</option>
+												<option selected>승하차지3</option>
+											</select>
+											<div class="date_wrap">
+												<input type="text" class="form_ctl" placeholder="" value="5000" disabled/>
+												<span class="inner_txt">원</span>
+											</div>
+											
+										</li>
+										<li>
+											<span class="tit">구간3</span>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지1</option>
+												<option selected>승하차지2</option>
+												<option>승하차지3</option>
+											</select>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지선책</option>
+												<option>승하차지2</option>
+												<option selected>승하차지3</option>
+											</select>
+											<div class="date_wrap">
+												<input type="text" class="form_ctl" placeholder="" value="5000" disabled/>
+												<span class="inner_txt">원</span>
+											</div>
+										</li>
+										<li>
+											<span class="tit">구간4</span>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지1</option>
+												<option selected>승하차지2</option>
+												<option>승하차지3</option>
+											</select>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지선책</option>
+												<option>승하차지2</option>
+												<option selected>승하차지3</option>
+											</select>
+											<div class="date_wrap">
+												<input type="text" class="form_ctl" placeholder="" value="5000" disabled/>
+												<span class="inner_txt">원</span>
+											</div>
+										</li>
+										<li>
+											<span class="tit">구간5</span>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지1</option>
+												<option selected>승하차지2</option>
+												<option>승하차지3</option>
+											</select>
+											<select class="form_ctl" id="" disabled>
+												<option>승하차지선책</option>
+												<option>승하차지2</option>
+												<option selected>승하차지3</option>
+											</select>
+											<div class="date_wrap">
+												<input type="text" class="form_ctl" placeholder="" value="5000" disabled/>
+												<span class="inner_txt">원</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+							
+							<h3 class="title_md">
+								<div class="title">승객 지불 요금 정책</div>
+								<span class="add_text pl0"><span class="color_red">*</span> (센터의 승객 지불 요금정책을
+									설정합니다.)</span>
+							</h3>
+							<div class="box_section">
+								<div id="charge_list" class="grid_list"></div>
+							</div>
+							
+						</div>
+					</div>												
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=8xWDhN5buX852AwcGIHAvGD04h9thtW1HgAhpjO9"></script> -->
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script src="../assets/js/vendor/turf.min.js"></script>
+<script>
+$(function () {
+	var allCharData = {
+		"data": [
+			{ "state": true, "charKind": "거리 비례(미터기 측정)"},
+			{ "state": false, "charKind": "협정 요금"},
+		]
+	};
+
+	var allCharCol = [{
+			dataIndx: "state",
+			maxWidth: 100,
+			minWidth: 100,
+			align: "center",
+			resizable: false,
+			title: "설정된 요금",
+			menuIcon: false,
+			type: 'checkBoxSelection',
+			cls: 'ui-state-default',
+			sortable: false,
+			editor: false,
+			dataType: 'bool',
+			cb: {
+				all: false, //checkbox selection in the header affect current page only.
+				header: false, //show checkbox in header. 
+				select: false,
+			},
+			editable: function (ui) {
+				console.log(ui)
+				return ui.rowData.disabled
+			},
+		},
+		{ title: "요금 종류", dataIndx: "charKind", width: 300, nodrag: true, nodrop: true,},
+	];
+
+	var allCharOpt = {
+		scrollModel:{autoFit:true},
+		width: 402,
+		height:147,
+		rowHt: 50,
+		rowHtHead: 45,
+		collapsible: {
+			on: false,
+			toggle: false
+		},
+
+		columnBorders: true,
+		rowBorders: true,
+		stripeRows: true,
+
+		postRenderInterval: -1, //synchronous post rendering.
+		dataModel: allCharData,
+		colModel: allCharCol,
+		// selectionModel: {
+		// 	type: 'row',
+		// 	mode: 'block'
+		// },
+
+		columnTemplate: {
+			align: 'center',
+			valign: 'center'
+		},
+		editable: false,
+		freezeCols: 0,
+		freezeRows: 0,
+
+		numberCell: {
+			show: false
+		},
+		reactive: true,
+		roundCorners: false,
+		resizable: false,
+
+		showHeader: true,
+		showTitle: false,
+		showToolbar: false,
+		showTop: false,
+		showBottom: false,
+		virtualX: true,
+		virtualY: true,
+		pageModel: {
+			type: "remote",
+			rPP: 20,
+			strRpp: "{0}"
+		},
+
+		title: "",
+		strNoRows: '조회된 데이터가 없습니다.',
+	};
+	var grid = pq.grid("#allCharge_list", allCharOpt);
+
+
+
+
+	//승객 지불 요금 정책 일 때
+	var chargeData = {
+		"data": [
+			{ "state":true,"chKind": "거리 비례 (원/km)", "chSettings": ""},
+			{ "state":false,"chKind": "이용 횟수 (원/회)", "chSettings": ""},
+			{ "state":false,"chKind": "인당 (원/명)", "chSettings": ""},
+			{ "state":false,"chKind": "인원 수 별 책정(1인/2인/3인/4인)", "chSettings": ""},
+		]
+	};
+
+	var chargeCol = [{
+			dataIndx: "state",
+			maxWidth: 100,
+			minWidth: 100,
+			align: "center",
+			resizable: false,
+			title: "요금 책정 방식",
+			menuIcon: false,
+			type: 'checkBoxSelection',
+			cls: 'ui-state-default',
+			sortable: false,
+			editor: false,
+			dataType: 'bool',
+			cb: {
+				all: false, //checkbox selection in the header affect current page only.
+				header: false, //show checkbox in header. 
+				select: false,
+			},
+			editable: false
+		},
+		{ title: "요금 종류",dataIndx: "chKind",width: 250,nodrag: true,nodrop: true, },
+		{ title: "승객 지불 요금 설정",dataIndx: "chSettings", width: 1160,nodrag: true, nodrop: true,
+			render: function (ui) {
+				var rowData = ui.rowData, dataIndx = ui.dataIndx;
+				var idx = rowData.pq_ri;
+				var val = rowData[dataIndx];
+				var lst;
+				if ( idx == 0 ) {
+					let case1 = `<div class="form_inline"><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" placeholder="" readonly value="500원" ><span class="inner_txt">원/회당</span></div></div>`;
+					return case1;
+				} else if ( idx == 1 ){
+					let case2 = `<div class="form_inline"><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" placeholder="" readonly value="" ><span class="inner_txt">원/회당</span></div></div>`;
+					return case2;
+				} else if (  idx == 2 ) {
+					let case3 = `<div class="form_inline"><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" placeholder="" readonly value="" ><span class="inner_txt">원/회당</span></div><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" placeholder="" readonly value="" ><span class="inner_txt">최소요금기준</span></div></div>`;
+					return case3;
+				} else {
+					let case4 = `<div class="form_inline"><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" readonly value=""><span class="inner_txt">원 (1명)</span></div><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" readonly value=""><span class="inner_txt">원 (2명)</span></div><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" readonly value=""><span class="inner_txt">원 (3명)</span></div><div class="date_wrap disabled"><input type="text" class="form_ctl bd0" readonly value=""><span class="inner_txt">원 (4명)</span></div>`;
+					return case4;
+				}
+			},		
+		},
+	];
+
+	var chargeOpt = {
+		scrollModel:{autoFit:true},
+		width: 'auto',
+		// minWidth: 903,
+		// minHeight: 200,
+		height:247,
+		rowHt: 50,
+		rowHtHead: 45,
+		collapsible: {
+			on: false,
+			toggle: false
+		},
+
+		columnBorders: true,
+		rowBorders: true,
+		stripeRows: true,
+
+		postRenderInterval: -1, //synchronous post rendering.
+		dataModel: chargeData,
+		colModel: chargeCol,
+		// selectionModel: {
+		// 	type: 'row',
+		// 	mode: 'block'
+		// },
+
+		columnTemplate: {
+			align: 'left',
+			valign: 'center'
+		},
+		editable: false,
+		freezeCols: 0,
+		freezeRows: 0,
+
+		numberCell: {
+			show: false
+		},
+		reactive: true,
+		roundCorners: false,
+		resizable: false,
+
+		showHeader: true,
+		showTitle: false,
+		showToolbar: false,
+		showTop: false,
+		showBottom: false,
+		virtualX: true,
+		virtualY: true,
+		pageModel: {
+			type: "remote",
+			rPP: 20,
+			strRpp: "{0}"
+		},
+
+		title: "",
+		strNoRows: '조회된 데이터가 없습니다.',
+	};
+	var grid = pq.grid("#charge_list", chargeOpt);
+
+	$(".tabs li a").on("click", function(){
+		$(".grid_list").pqGrid("refreshDataAndView");
+	});
+	//======================================== PQ Grid refresh
+
+
+
+	var colModel = [
+		/* { dataIndx: "state", width:80, align: "center", resizable: false,
+			title: "",
+			menuIcon: false,
+			type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: true,
+			dataType: 'bool', editable: true,
+			cb: {
+				all: false, //checkbox selection in the header affect current page only.
+				header: true, //show checkbox in header. 
+				select: true 
+			}
+		}, */
+		{ title: "No", dataIndx: "no", width: 100, maxWidth: 100, nodrag: true, },
+		{ title: "행정구역명", dataIndx: "dong", width: 120, nodrag: true, },
+	];
+
+	var dataModel = {
+		"data": [	// city_do(시도), gu_gun(시군구), legalDong(법정동), adminDong(행정동)
+			{ "state":true, "no": 1, "sido":"대전광역시", "gungu":"중구", "dong": "은행선화동", "type":"adminDong"},
+			{ "state":true, "no": 2, "sido":"대전광역시", "gungu":"중구", "dong": "용두동", "type":"adminDong"},
+			{ "state":true, "no": 3, "sido":"대전광역시", "gungu":"중구", "dong": "목동", "type":"adminDong"},
+			{ "state":true, "no": 4, "sido":"대전광역시", "gungu":"중구", "dong": "중촌동", "type":"adminDong"},
+		],
+	};
+
+	var dataModel2 = {
+		"data": [
+			{"no":"1", "name":"은행선화동1", "address":"대전광역시 중구 보문로336번길 21 (선화동)", "lat":36.3321057, "lon":127.422082},
+			{"no":"2", "name":"은행선화동2", "address":"대전광역시 중구 중앙로79번길 77 (선화동)", "lat":36.3286484, "lon":127.4183913},
+			{"no":"3", "name": "중촌동1", "address": "대전광역시 중구  대전천서로 709 (중촌동, 중촌역푸르지오센터파크)", "lat": 36.3444813, "lon": 127.4080244},
+			{"no":"4", "name": "목동1", "address": "대전광역시 중구  목동로 37 (목동, 목양마을아파트)", "lat": 36.33335, "lon": 127.404677},
+			{"no":"5", "name": "용두동1", "address": "대전광역시 중구  동서대로1321번길 22 (용두동)", "lat": 36.3300247, "lon": 127.4057841},
+		]
+	};
+
+	var options = {
+		scrollModel: { autoFit: true },
+		width: '100%',
+		height: 400,
+		minHeight: 400,
+		rowHt: 45,
+		rowHtHead: 45,
+		collapsible: { on: false, toggle: false },
+
+		columnBorders: true,
+		rowBorders: true,
+		stripeRows: true,
+
+		postRenderInterval: -1, //synchronous post rendering.
+		dataModel: dataModel,
+		colModel: colModel,
+		selectionModel: { type: 'row', mode: 'block' },
+
+		columnTemplate: {
+			align: 'center', valign: 'center'
+		},
+		editable: false,
+		freezeCols: 0,
+		freezeRows: 0,
+
+		numberCell: { show: false },
+		reactive: true,
+		roundCorners: false,
+		resizable: true,
+
+		showHeader: true,
+		showTitle: false,
+		showToolbar: false,
+		showTop: false,
+		showBottom: false,
+		virtualX: true, virtualY: true,
+
+		title: "",
+		strNoRows: '조회된 데이터가 없습니다.',
+
+		rowClick: function( event, ui ) {
+			var { rowIndx, rowData } = ui;
+			
+			setPositionCenter(rowData.pq_ri);
+		}
+	};
+
+	var grid = pq.grid("#grid_list_name", options);
+
+	// 지도 영역
+	var map, mapOptions;
+	var markerList = [];
+	var arr_marker = [];
+	// var appKey = "8xWDhN5buX852AwcGIHAvGD04h9thtW1HgAhpjO9";    // tmap
+	var appKey = "l7xxb3b0b2ba959c4572891ba1bc2343cf6b";    // tmap
+	var drawInfoArr = [];
+	var mapData = dataModel.data;
+	var status_addlist = false;	// 승하차 지점 추가 가능 상태
+	var polygon;
+	var newRoadAddr; // 도로명 주소
+	var status_marker;	// default, drag, add
+
+	map = new naver.maps.Map('map_div', {
+		center: new naver.maps.LatLng(37.5666805, 126.9784147),
+		zoom: 12,
+		minZoom: 9,
+		maxZoom: 14
+	});
+
+	var proj = map.getProjection();
+	
+	function isIncludeAres(paths, inPosition) {
+		var convertPaths = [];
+		var convertInPosition = proj.fromCoordToPoint(inPosition).toArray();
+		paths.forEach(point => {
+			convertPaths.push(proj.fromCoordToPoint(point).toArray());
+		});
+		var searchWithin = turf.polygon([convertPaths]);
+		return turf.pointsWithinPolygon(turf.points([convertInPosition]), searchWithin).features.length > 0;
+	}
+
+	function addMarker(status, dataItem, tag) {
+		//출도착경유구분
+		//이미지 파일 변경.    
+		var markerLayer;
+		var cls = '';
+		var txt = '';
+		var rotate = 0;
+		var driver = '';
+		var car_num = '';
+		var zindex = 0;
+		
+		switch (status) {
+			case "pinBlank":
+				txt = tag + 1;
+				cls = "pin_blank";
+				zindex = 1;
+				break;
+			case "pinStart":
+				txt = '';
+				cls = "pin_start";
+				zindex = 3;
+				break;
+			case "pinPass":
+				txt = '경유지' + tag;
+				cls = "pin_pass";
+				zindex = 3;
+				break;
+			case "pinEnd":
+				txt = '';
+				cls = "pin_end";
+				zindex = 3;
+				break
+
+			case "car":
+				txt = '';
+				cls = "car";
+				idx = tag.split('_')[1];
+				rotate = carGpsData[idx].rotation;
+				driver = carGpsData[idx].driver;
+				car_num = carGpsData[idx].number;
+				zindex = 4;
+				break;
+			case "carEmpty":
+				txt = '';
+				cls = "car car_empty";
+				idx = tag.split('_')[1];
+				rotate = carGpsData[idx].rotation;
+				driver = carGpsData[idx].driver;
+				car_num = carGpsData[idx].number;
+				zindex = 2;
+				break;
+		};
+		
+		var marker = new naver.maps.Marker({
+			position: new naver.maps.LatLng(dataItem.lat, dataItem.lon),
+			map: map,
+			icon: {
+				content: [
+					'<div class="pin ' + cls + '" style="transform:rotate(' + rotate + 'deg)">',
+						'<div class="pin_name">',
+							txt,
+						'</div>',
+					'</div>',
+					'<div class="label_car">',
+						'<span class="driver">' + driver + '</span>',
+						'<span class="car_num">' + car_num + '</span>',
+					'</div>',
+				].join(''),
+				size: new naver.maps.Size(44, 36),
+				anchor: new naver.maps.Point(22, 36),
+			},
+			draggable: true,
+			zIndex: zindex
+		});
+
+		
+
+		marker.addListener("click", function(e) {
+			e.domEvent.preventDefault()
+			var targetDiv = e.overlay._wrapper;
+			var targetIndex = $(targetDiv).index();
+			$('.pin_blank').removeClass('on');
+			$(e.domEvent.target).addClass('on');
+			idx_area = e.overlay.area;
+			idx_marker = tag;
+			
+			var position = e.overlay.position;
+			posX = position.y;
+			posY = position.x;
+
+			arr_polygon.forEach((item, i) => {
+				var mapBounds = item.getBounds();
+				if (mapBounds.hasLatLng(position)) {
+					idx_area = i;
+				}
+			});
+
+			console.log('targetIndex: ', targetIndex)
+			grid_spot.setSelection( null );
+			grid_spot.setSelection({ rowIndx: e.overlay.tag });
+
+			var name = dataModel2.data[e.overlay.tag].name;
+			var address = dataModel2.data[e.overlay.tag].address;
+			var postion = dataModel2.data[e.overlay.tag].lat + ',' + dataModel2.data[e.overlay.tag].lon;
+
+			$('.viewSpotDetail').fadeIn(200);
+			$('.viewSpotDetail').find('.title').html(name);
+			$('.viewSpotDetail').find('.address').html(address);
+			$('.viewSpotDetail').find('.position').html(postion);
+
+			status_marker = 'drag';
+		});
+
+		var pos_marker = marker.position;
+		arr_area.forEach((item, i) => {
+			var result = isIncludeAres(item, pos_marker);
+			if(result) {
+				idx_area = i;
+			}
+		});
+
+		marker.area = idx_area;
+		marker.name = dataItem.name;
+		marker.tag = tag;
+		marker.car_num = car_num;
+
+		marker.addListener("dragend", function (evt) {
+			status_marker = 'drag';
+			var position = evt.coord;
+			posX = position.y;
+			posY = position.x;
+			var status_area = false;
+
+			arr_area.forEach((item, i) => {
+				var result = isIncludeAres(item, position);
+				if(result) {
+					status_area = true;
+					idx_area = i;
+					console.log(idx_area);
+
+					idx_marker = evt.overlay.tag;
+					console.log(idx_marker)
+
+					reverseGeo(position.x, position.y);
+
+					dataModel2.data[idx_marker].address = newRoadAddr;
+					dataModel2.data[idx_marker].lat = position.y;
+					dataModel2.data[idx_marker].lon = position.x;
+
+					var name = dataModel2.data[idx_marker].name;
+					var address = dataModel2.data[idx_marker].address;
+					var postion = dataModel2.data[idx_marker].lat + ',' + dataModel2.data[idx_marker].lon;
+
+					$('.viewSpotDetail').fadeIn(200);
+					$('.viewSpotDetail').find('.title').html(name);
+					$('.viewSpotDetail').find('.address').html(address);
+					$('.viewSpotDetail').find('.position').html(postion);
+
+					
+				}
+			});
+
+			if(!status_area) {
+				toastPop_err('지정된 행정구역이 아닙니다.');
+			}
+			
+		});
+		marker.addListener("drag", function (evt) { 
+			markerObject = markerList[tag];
+		});
+		markerList.push(marker);
+
+		return marker;
+	}
+
+	function createMarker() {
+		// markerList = [];
+		if(markerList !== undefined) {
+			for(var i = 0; i < markerList.length; i ++) {
+				// console.log(markerList[i])
+				markerList[i].setMap(null);
+			}
+			markerList = [];
+		}
+
+		// 승하차 지점 마커
+		for(var i = 0; i < dataModel2.data.length; i ++){
+			addMarker('pinBlank', dataModel2.data[i], i);
+		}
+
+		// console.log(markerList)
+	}
+
+	// 공간 API 사용 city_do(시도), gu_gun(시군구), legalDong(법정동), adminDong(행정동)
+	function geofencingSpace(dataItem) {
+		var searchKeyword = dataItem.dong;
+		var searchOption = dataItem.type;
+		var headers = {}; 
+		headers["appKey"]=appKey;
+
+		$.ajax({
+			method : "GET",
+			headers : headers,
+			url : "https://apis.openapi.sk.com/tmap/geofencing/regions?version=1&format=json&callback=result",
+			async : false,
+			crossDomain : true,
+			data : {
+				"count" : "20",
+				"categories" : searchOption,//categories,
+				"searchType" : "KEYWORD",
+				"searchKeyword" : searchKeyword,
+			},
+			success : function(response) {
+				if(response){
+					// 3. regionId 얻기
+					var resultRegionsInfo = response.searchRegionsInfo;
+
+					for ( var i in resultRegionsInfo) {
+						var description = resultRegionsInfo[i].regionInfo.description;
+						var regionId = resultRegionsInfo[i].regionInfo.regionId;
+						var guName = resultRegionsInfo[i].regionInfo.properties.guName;
+						var doName = resultRegionsInfo[i].regionInfo.properties.doName;
+						var regionName = resultRegionsInfo[i].regionInfo.regionName;
+						if(guName === dataItem.gungu && doName === dataItem.sido) {
+							geofencingRegions(regionId);
+							console.log(doName, guName, regionName, regionId);
+						}
+					}
+				}
+				else{
+					popup.alertMsg("잘못된 검색입니다.");
+				}
+			},
+			error : function(request, status, error) {
+				console.log("code:"
+						+ request.status + "\n"
+						+ "message:"
+						+ request.responseText
+						+ "\n" + "error:" + error);
+			}
+		});
+	};
+
+	var arr_paths = [
+		[
+			new naver.maps.LatLng(41.921509, 119.3856758),
+			new naver.maps.LatLng(41.8049801, 136.849646),
+			new naver.maps.LatLng(28.3786463, 136.8833774),
+			new naver.maps.LatLng(32.2266773, 119.3787235),
+			new naver.maps.LatLng(41.921509, 119.3856758),
+		]
+	];
+	var arr_ptBounds = [];
+	var arr_idx = [];
+
+	// 영역API 사용요청
+	function geofencingRegions(regionId) {
+		$.ajax({
+			method : "GET",
+			url : "https://apis.openapi.sk.com/tmap/geofencing/regions/"
+					+ regionId
+					+ "?version=1&format=json&callback=result",
+			async : false,
+			data : {
+				"resCoordType" : "EPSG3857",
+				"appKey" : appKey,
+			},
+			success : function(response) {
+
+				var resultGeometry = response.features[0].geometry;
+				var resultArea = resultGeometry.coordinates[0];
+
+				var resultProperties = response.features[0].properties.regionName;
+
+				drawInfoArr = [];
+				var polyline_;
+
+				var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
+
+				if(resultGeometry.type == "MultiPolygon"){
+					for(var i in resultGeometry.coordinates){
+						drawInfoArr = []; 
+						resultArea = resultGeometry.coordinates[i];
+						var resultArea_array = resultArea[0];
+						for(var j in resultArea_array){
+							
+							// 경로들의 결과값(구간)들을 포인트 객체로 변환 
+							var latlng = new Tmapv2.Point(resultArea_array[j][0], resultArea_array[j][1]);
+							// 포인트 객체를 받아 좌표값으로 변환
+							var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+							// 포인트객체의 정보로 좌표값 변환 객체로 저장
+							var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+							
+							drawInfoArr.push(convertChange);
+							positionBounds.extend(convertChange);
+						}
+						var polygon = new Tmapv2.Polygon({
+							paths: drawInfoArr,
+							strokeColor : "red",
+							fillColor:"pink", // 다각형 내부 색상
+							map: map // 지도 객체
+						});
+						resultPolygon.push(polygon);
+					}
+				}
+				
+				else{
+					for(var i in resultArea){
+						// 경로들의 결과값(구간)들을 포인트 객체로 변환 
+						var latlng = new Tmapv2.Point(resultArea[i][0], resultArea[i][1]);
+						// 포인트 객체를 받아 좌표값으로 변환
+						var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+						
+						var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+						
+						drawInfoArr.push(convertChange);
+					}
+
+					// 결과 반경만큼 지도 레벨 조정
+					PTbounds = new naver.maps.LatLngBounds();
+					for (var i = 0; i < drawInfoArr.length; i++) {
+						PTbounds.extend(drawInfoArr[i]);
+					}
+
+					arr_ptBounds[idx_area] = PTbounds;
+					arr_idx.push(idx_area);
+				}
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n"
+						+ "message:" + request.responseText + "\n"
+						+ "error:" + error);
+			}
+		});
+	};
+
+	function createPolygon() {
+		if(polygon !== undefined) {
+			polygon.setMap(null);
+		}
+		polygon = new naver.maps.Polygon({
+			map: map,
+			paths: arr_paths,
+			fillColor: '#000',
+			fillOpacity: 0.3,
+			strokeColor: '#0072FF',
+			strokeOpacity: 0,
+			strokeWeight: 0,
+			clickable: false
+		});
+	}
+
+	// 좌표 정보 구하기
+	function reverseGeo(lon, lat) {
+		var headers = {}; 
+		headers["appKey"]=appKey;
+		
+		$.ajax({
+			method : "GET",
+			headers : headers,
+			url : "https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result",
+			async : false,
+			data : {
+				"coordType" : "WGS84GEO",
+				"addressType" : "A10",
+				"lon" : lon,
+				"lat" : lat
+			},
+			success : function(response) {
+				// json에서 주소 파싱
+				var arrResult = response.addressInfo;
+
+				//법정동 마지막 문자 
+				var lastLegal = arrResult.legalDong
+						.charAt(arrResult.legalDong.length - 1);
+
+				// 새주소
+				newRoadAddr = arrResult.city_do + ' ' + arrResult.gu_gun + ' ';
+
+				if (arrResult.eup_myun == ''
+						&& (lastLegal == "읍" || lastLegal == "면")) {//읍면
+					newRoadAddr += arrResult.legalDong;
+				} else {
+					newRoadAddr += arrResult.eup_myun;
+				}
+				newRoadAddr += ' ' + arrResult.roadName + ' ' + arrResult.buildingIndex;
+
+				// 새주소 법정동& 건물명 체크
+				if (arrResult.legalDong != '' && (lastLegal != "읍" && lastLegal != "면")) {//법정동과 읍면이 같은 경우
+					if (arrResult.buildingName != '') {//빌딩명 존재하는 경우
+						newRoadAddr += (' (' + arrResult.legalDong
+								+ ', ' + arrResult.buildingName + ') ');
+					} else {
+						newRoadAddr += (' (' + arrResult.legalDong + ')');
+					}
+				} else if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
+					newRoadAddr += (' (' + arrResult.buildingName + ') ');
+				}
+
+				// 구주소
+				jibunAddr = arrResult.city_do + ' '
+						+ arrResult.gu_gun + ' '
+						+ arrResult.legalDong + ' ' + arrResult.ri
+						+ ' ' + arrResult.bunji;
+				//구주소 빌딩명 존재
+				if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
+					jibunAddr += (' ' + arrResult.buildingName);
+				}
+
+				// result = "새주소 : " + newRoadAddr + "</br>";
+				// result += "지번주소 : " + jibunAddr + "</br>";
+				// result += "위경도좌표 : " + lat + ", " + lon;
+				// console.log(newRoadAddr);
+				return newRoadAddr;
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n"
+						+ "message:" + request.responseText + "\n"
+						+ "error:" + error);
+			}
+		});
+
+	}
+
+	function setPositionCenter(areaIndex) {
+		var pos = arr_ptBounds[areaIndex];
+		// console.log('setPositionCenter: ', areaIndex)
+		map.fitBounds(pos);
+	}
+	
+	var arr_polygon = [];
+	var polygon_area;
+	var lst_selected = [];
+
+	var arr_area = [];
+
+	function initMap() {
+		lst_selected = mapData.filter((item) => item.state === true);
+
+		lst_selected.forEach((item) => {
+			idx_area = item.pq_ri;
+			geofencingSpace(item);
+			arr_paths[idx_area + 1] = drawInfoArr;
+			arr_area[idx_area] = drawInfoArr;
+
+			dataModel2.data.forEach((item, idx) => {
+				item.no = idx + 1;
+			});
+
+			polygon_area = new naver.maps.Polygon({
+				map: map,
+				paths: drawInfoArr,
+				fillColor: '#fff',
+				fillOpacity: 0,
+				strokeColor: '#fff',
+				strokeOpacity: 0,
+				strokeWeight: 0,
+				clickable: false
+			});
+
+			arr_polygon[idx_area] = polygon_area;
+		});
+
+		createMarker();
+
+		if(lst_selected.length !== 0) {
+			createPolygon();
+		}
+
+		setTimeout(() => {
+			setPositionCenter(idx_area);
+		}, 200);
+	}
+
+	// 승하차지 추가
+	$(document).on('click', '.btn_add', function(e) {
+		if(lst_selected.length > 0) {
+			status_addlist = true;
+			$(this).attr('disabled', true);
+			map.setCursor('crosshair');
+		} else {
+			toastPop_err("최소 하나 이상의 행정구역을 설정하세요.");
+		}
+	});
+
+	var newMarker;
+	var idx_area = 0;
+	var idx_marker = 0;
+	var posX = 0;
+	var posY = 0;
+	
+	var colModel2 = [
+		{ title: "No", dataIndx: "no", width: 80, nodrag: true, },
+		{ title: "영역", dataIndx: "area", hidden: true },
+		{ title: "승하차지명", dataIndx: "name", width: 200, nodrag: true, },
+		{ title: "주소", dataIndx: "address", width: 484, nodrag: true, },
+		{ title: "위도", dataIndx: "lat", width: 100, nodrag: true, },
+		{ title: "경도", dataIndx: "lon", width: 100, nodrag: true, },
+		{ title: "ID", dataIndx: "areaIndex", hidden: true },
+	]; 
+
+	var options2 = {
+		scrollModel: { autoFit: true },
+		width: '100%',
+		minWidth: 960,
+		height: '270',
+		minHeight: 270,
+		rowHt: 45,
+		rowHtHead: 45,
+		collapsible: { on: false, toggle: false },
+
+		columnBorders: true,
+		rowBorders: true,
+		stripeRows: true,
+
+		postRenderInterval: -1, //synchronous post rendering.
+		dataModel: dataModel2,
+		colModel: colModel2,
+		selectionModel: { type: 'row', mode: 'block' },
+
+		columnTemplate: {
+			align: 'center', valign: 'center'
+		},
+		editable: false,
+		freezeCols: 0,
+		freezeRows: 0,
+
+		numberCell: { show: false },
+		reactive: true,
+		roundCorners: false,
+		resizable: true,
+
+		showHeader: true,
+		showTitle: false,
+		showToolbar: false,
+		showTop: false,
+		showBottom: false,
+		virtualX: true, virtualY: true,
+
+		title: "",
+		strNoRows: '조회된 데이터가 없습니다.',
+
+		rowClick: function( event, ui ) {
+			var { rowIndx, rowData } = ui;
+			var targetMarker;
+			// idx_area = rowData.areaIndex;
+
+			console.log(arr_marker)
+
+			markerList.forEach((item, idx) => {
+				// console.log(item)
+				if(item.tag === rowData.pq_ri) {
+					targetMarker = item;
+				}
+			});
+
+			$('.pin_blank').removeClass('on');
+			$(targetMarker.eventTarget).find('.pin_blank').addClass('on');
+			
+			setPositionCenter(targetMarker.area);
+
+			$('.registSpotName').fadeOut(200);
+			$('.viewSpotDetail').fadeOut(200);
+		}
+	};
+
+	var grid_spot = pq.grid("#grid_list_inout", options2);
+
+	initMap();
+});
+</script>
+
+</html>

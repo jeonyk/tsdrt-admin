@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+<style>
+	/* .form_ctl { margin-right: 10px;}
+	.form_ctl + .form_ctl { margin-left: 30px;} */
+</style>
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">기사 상세 정보</h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><span>수정하기</span></button>
+						<!-- <button type="button" class="btn btn_blue btn_outline"><span>돌아가기</span></button> -->
+					</div>
+				</div>
+
+				<div class="content">
+					<ul class="tabs tab mb20">
+						<li class="on"><a href="#none">기본 정보</a></li>
+						<li><a href="#none">주행 내역</a></li>
+					</ul>
+					<div class="tab_contents on">
+						<div class="box_section">
+							<div class="both_col">
+								<div class="left">
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only"></caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>시도</th>
+													<td>서울시</td>
+												</tr>
+												<tr>
+													<th>시군구</th>
+													<td>종로구</td>
+												</tr>
+												<tr>
+													<th>소속기관</th>
+													<td>종로구 행복택시</td>
+												</tr>
+												<tr>
+													<th>센터</th>
+													<td>사직 1</td>
+												</tr>
+												<tr>
+													<th>운수회사</th>
+													<td>종로운수</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="right">
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only"></caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>이름</th>
+													<td>송진혁</td>
+												</tr>
+												<tr>
+													<th>전화번호</th>
+													<td>010-1234-1234</td>
+												</tr>
+												<tr>
+													<th>기사 구분</th>
+													<td>개인</td>
+												</tr>
+												<tr>
+													<th>기사 등록일자</th>
+													<td>2022-08-22</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h3 class="title_md">
+							<div class="title">담당 차량</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_blue btn_outline"><span>대표 차량 변경</span></button>
+							</div>
+						</h3>
+						<div class="box_section">
+							<div id="car_list" class="grid_list"></div>
+						</div>	
+						<h3 class="title_md">
+							<div class="title">대표 및 담당 차량 변경 히스토리</div>
+						</h3>
+						<div class="box_section">
+							<div id="history_list" class="grid_list"></div>
+						</div>													
+					</div>	
+					<div class="tab_contents">
+							<div class="box_section"></div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(function () {
+
+		var carData = {
+			"data": [
+			    { "state": true, "carNum": "123가 5678", "driver":"송진혁","company":"종로구 행복택시","center":"사직","carKind":"중형","num":"4"},
+			    { "state": false, "carNum": "123가 5678", "driver":"송진혁","company":"종로구 행복택시","center":"사직","carKind":"중형","num":"4"},
+			    { "state": false, "carNum": "123가 5678", "driver":"송진혁","company":"종로구 행복택시","center":"사직","carKind":"대형","num":"7"},
+			]
+		};
+
+		var carCol = [{
+				dataIndx: "state",
+				maxWidth: 100,
+				minWidth: 100,
+				align: "center",
+				resizable: false,
+				title: "대표 차량",
+				menuIcon: false,
+				type: 'checkBoxSelection',
+				cls: 'ui-state-default',
+				sortable: false,
+				editor: false,
+				dataType: 'bool',
+				cb: {
+					all: false, //checkbox selection in the header affect current page only.
+					header: false, //show checkbox in header. 
+					select: false,
+				},
+				editable: function (ui) {
+					return ui.rowData.disabled
+				},
+			},
+			{ title: "담당 차량번호", dataIndx: "carNum", width: 200, nodrag: true, nodrop: true,},
+			{ title: "대표 기사", dataIndx: "driver", width: 200, nodrag: true, nodrop: true,},
+			{ title: "소속기관", dataIndx: "company", width: 305, nodrag: true, nodrop: true,},
+			{ title: "센터", dataIndx: "center", width: 305, nodrag: true, nodrop: true,},
+			{ title: "차종", dataIndx: "carKind", width: 200, nodrag: true, nodrop: true,},
+			{ title: "탑승가능 인원", dataIndx: "num", width: 200, nodrag: true, nodrop: true,},
+		];
+
+		var carOpt = {
+			scrollModel:{autoFit:true},
+			width: 'auto',
+			minHeight: 200,
+			rowHt: 50,
+			rowHtHead: 45,
+			collapsible: {
+				on: false,
+				toggle: false
+			},
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: carData,
+			colModel: carCol,
+			// selectionModel: {
+			// 	type: 'row',
+			// 	mode: 'block'
+			// },
+
+			columnTemplate: {
+				align: 'center',
+				valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: {
+				show: false
+			},
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+			pageModel: {
+				type: "remote",
+				rPP: 20,
+				strRpp: "{0}"
+			},
+
+			title: "",
+			strNoRows: '대표차량이 설정되지 않았습니다.',
+		};
+		var grid = pq.grid("#car_list", carOpt);
+		//======================================== 
+		var historyData = {
+			"data": [
+			    { "no": 1, "hisoty": "대표 차량 변경", "carNum":"종로 1234","driverName":"송진혁","update":"2022-10-14 05:48:22","name":"이재성"},
+			    { "no": 2, "hisoty": "대표 차량 설정", "carNum":"종로 1234","driverName":"송진혁","update":"2022-10-14 05:48:22","name":"이재성"},
+			    { "no": 3, "hisoty": "대표 차량 해제", "carNum":"종로 1234","driverName":"송진혁","update":"2022-10-14 05:48:22","name":"이재성"},
+			]
+		};
+
+		var historyCol = [
+			{ title: "No", dataIndx: "no", width: 90, nodrag: true, nodrop: true,},
+			{ title: "차량 변동 내역", dataIndx: "hisoty", width: 350, nodrag: true, nodrop: true,},
+			{ title: "차량 번호", dataIndx: "carNum", width: 305, nodrag: true, nodrop: true,},
+			{ title: "이름", dataIndx: "driverName", width: 220, nodrag: true, nodrop: true,},
+			{ title: "상태 업데이트 일시", dataIndx: "update", width: 320, nodrag: true, nodrop: true,},
+			{ title: "담당자", dataIndx: "name", width: 225, nodrag: true, nodrop: true,},
+		];
+
+		var histotyOpt = {
+			scrollModel:{autoFit:true},
+			width: 'auto',
+			minHeight: 200,
+			rowHt: 50,
+			rowHtHead: 45,
+			collapsible: {
+				on: false,
+				toggle: false
+			},
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: historyData,
+			colModel: historyCol,
+			selectionModel: {
+				type: 'row',
+				mode: 'block'
+			},
+
+			columnTemplate: {
+				align: 'center',
+				valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: {
+				show: false
+			},
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+			pageModel: {
+				type: "remote",
+				rPP: 20,
+				strRpp: "{0}"
+			},
+
+			title: "",
+			strNoRows: '대표차량이 설정되지 않았습니다.',
+		};
+		var grid = pq.grid("#history_list", histotyOpt);
+		//======================================== 
+
+		$(".tabs li a").on("click", function(){
+			$(".grid_list").pqGrid("refreshDataAndView");
+		});
+		//======================================== PQ Grid refresh
+
+
+	});
+</script>
+
+</html>

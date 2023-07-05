@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	
+<div id="wrap">
+	@@include('../_include/header.html')	
+	
+	<!-- container-->
+	<div id="container">
+		@@include('../_include/lnb.html')
+		<!--inner-->
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">보조금 지급 승인 내역</h2>
+				<div class="btn_area">
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역 추가</span></button>
+					<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄 추가</span></button>
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+				<div class="content_h">
+				
+				
+				</div>
+			</div> 
+			<!--// content-->
+			
+		</div>
+		<!--//inner-->
+	</div>
+	<!-- //container-->
+	
+</div>
+<!--//wrap-->
+
+<!-- Table Modal  -->
+<div id="pop_all02" style="display: none;">
+		
+	<div class="pop_contents">	
+		<div class="title_md mt0">
+			<div class="title color_gray">다시 등록하여 주시기 바랍니다.</div>
+		</div>
+		<div class="">
+			<div class="box_gray"> 
+				<ul class="info_list">
+					<li>2행 xxx 필드입력값 없음</li>
+					<li>3행 xxx 필드 입력 형식 오류 (영문,숫자 이외의 형식 입력)</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>2행 xxx 필드입력값 없음</li>
+					<li>3행 xxx 필드 입력 형식 오류 (영문,숫자 이외의 형식 입력)</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>2행 xxx 필드입력값 없음</li>
+					<li>3행 xxx 필드 입력 형식 오류 (영문,숫자 이외의 형식 입력)</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>2행 xxx 필드입력값 없음</li>
+					<li>3행 xxx 필드 입력 형식 오류 (영문,숫자 이외의 형식 입력)</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>2행 xxx 필드입력값 없음</li>
+					<li>3행 xxx 필드 입력 형식 오류 (영문,숫자 이외의 형식 입력)</li>
+					<li>4행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+					<li>4222222222 오류 (입력 길이 오류</li>
+					<li>2EEEEEEEEEEE 없음</li>
+					<li>3행WWWWWWWW식 오류 (영문,숫자 이외의 형식 입력)</li>
+					<li>4SDDDDDDDD드 입력 형식 오류 (입력 길이 오류</li>
+					<li>eeeeeeeeeeeeeeeee행 xxx 필드 입력 형식 오류 (입력 길이 오류</li>
+				</ul>
+			
+			</div>
+		</div>
+		
+ 
+	</div>
+</div>
+
+
+<script>
+$(function(){
+$('#pop_all02').dialog({
+	dialogClass: 'popup',
+	width: 840,
+	height: 588,
+	title: '기사 일괄 등록을 실패하였습니다.',
+	modal: true,
+	buttons: [
+			{
+			text: "확인",  
+			class: "btn btn_md btn_blue",
+			click: function () {
+				$(this).dialog("close");
+			}
+		}
+	]
+});
+});
+
+</script>
+
+
+
+	
+</body>
+<script>
+
+</script>
+
+</html>
+

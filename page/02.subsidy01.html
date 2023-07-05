@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<!-- container-->
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<!--inner-->
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">보조금 지급 승인 내역</h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>주행 내역
+								추가</span></button>
+						<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄
+								추가</span></button>
+					</div>
+				</div>
+				<!--content-->
+				<div class="content">
+					<div class="content_h">
+						<div class="box_section">
+							<!-- 지역 분류필 필터 -->
+							<div class="search_filter">
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">시도</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>강원도</option>
+												<option>경기도</option>
+												<option>경상남도</option>
+												<option>경상북도</option>
+												<option selected>전라북도</option>
+												<option>전라남도</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">시군구</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">소속기관</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">센터</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시브라보택시</option>
+											</select>
+										</div>
+									</li>
+
+									<li>
+										<div class="form_inline">
+											<div class="label_t">기사 구분</div>
+											<div class="input_check">
+												<input type="checkbox" id="label_text1" name="">
+												<label for="label_text1" class="txt_label">전체</label>
+											</div>
+											<div class="input_check">
+												<input type="checkbox" id="label_text2" name="">
+												<label for="label_text2" class="txt_label">개인</label>
+											</div>
+											<div class="input_check">
+												<input type="checkbox" id="label_text3" name="">
+												<label for="label_text3" class="txt_label">법인</label>
+											</div>
+											<!--
+											[기사 구분 필터]에서 ‘법인＇이 선택된 경우만 입력필그 활성화
+											드롭다운 리스트 [운수회사 관리]에서 등록된 {운수회사명}만 표출
+										-->
+											<input type="text" class="form_ctl f_search" placeholder="운수회사 검색">
+
+											<select class="form_ctl" id="">
+												<option selected>운수회사 검색</option>
+												<option>회사1</option>
+												<option>회사2</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">차량 구분</div>
+											<div class="input_check">
+												<input type="checkbox" id="car_type" name="">
+												<label for="car_type" class="txt_label">전체</label>
+											</div>
+											<div class="input_check">
+												<input type="checkbox" id="car_type2" name="">
+												<label for="car_type2" class="txt_label">택시</label>
+											</div>
+											<div class="input_check">
+												<input type="checkbox" id="car_type3" name="">
+												<label for="car_type3" class="txt_label">버스</label>
+											</div>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">검증 여부</div>
+											<div class="input_check">
+												<input type="checkbox" id="label_text7" name="">
+												<label for="label_text7" class="txt_label">전체</label>
+											</div>
+											<div class="input_check">
+												<input type="checkbox" id="label_text8" name="">
+												<label for="label_text8" class="txt_label">정상</label>
+											</div>
+											<div class="input_check">
+												<input type="checkbox" id="label_text9" name="">
+												<label for="label_text9" class="txt_label">비정상</label>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div class="form_inline">
+											<div class="label_t">탑승 일자</div>
+											<div class="date_wrap">
+												<i class="icon icon_date"></i>
+												<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+												<span class="dash">~</span>
+												<input type="text" name="" class="form_ctl datepicker" placeholder="" />
+											</div>
+										</div>
+										<div class="form_inline">
+											<select class="form_ctl changeTxt" id="">
+												<option selected>주행거리</option>
+												<option>승객 지불 요금</option>
+											</select>
+											<div class="date_wrap">
+												<input type="text" class="form_ctl" placeholder="" />
+												<span class="inner_txt">Km</span>
+												<span class="dash">~</span>
+												<input type="text" class="form_ctl" placeholder="" />
+												<span class="inner_txt">Km</span>
+											</div>
+										</div>
+										<div class="form_inline">
+											<select class="form_ctl changeInput" id="">
+												<option selected>담당 기사</option>
+												<option>차량번호</option>
+											</select>
+											<input type="text" class="form_ctl f_search" placeholder="담당 기사 검색">
+										</div>
+										<div class="form_inline">
+											<button type="button" class="btn btn_blue"><span>검색</span></button>
+										</div>
+									</li>
+								</ul>
+
+							</div>
+							<!-- //지역 분류필터 -->
+
+						</div>
+
+						<h3 class="title_md">
+							<div class="title">합계</div>
+						</h3>
+
+						<div class="box_section">
+							<div id="grid_list" class="grid_list"></div>
+						</div>
+
+
+						<div class="detail_top">
+							<div class="left_area">
+								<!-- 기본 상태 버튼 : btn btn_blue btn_outline color_black-->
+								<button type="button" class="btn_allCheck btn btn_blue btn_outline color_black"><span>전체</span></button>
+								<!-- 선택 된 버튼 : btn btn_blue btn_outline -->
+								<button type="button" class="btn_normal btn btn_blue btn_outline"><span>승인 대기</span></button>
+								<button type="button" class="btn_normal btn btn_blue btn_outline color_black"><span>승인 완료</span></button>
+								<button type="button" class="btn_normal btn btn_blue btn_outline color_black"><span>반려</span></button>
+							</div>
+
+							<div class="right_area">
+								<button type="button" class="btn btn_gray">승인 상태 변경</span></button>
+								<button type="button" class="btn btn_gray"><i class="icon icon_dw"></i><span>다운로드</span></button>
+							</div>
+						</div>
+
+						<div class="grid_wrap">
+							<div id="grid_json2"></div>
+						</div>
+					</div>
+
+					<div class="footer">
+						<div class="page_wrap">
+							<div class="page_num">Rows per page</div>
+
+							<select class="page_sel" id="">
+								<option>20</option>
+								<option selected>30</option>
+								<option>40</option>
+								<option>50</option>
+							</select>
+
+							<!-- 처음 일 떄 first 클래스 추가-->
+							<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+							<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+							<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+							<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+							<div class="page_count">
+								1 - 7 of 1
+							</div>
+
+							<!-- 마지막 페이지 일 떄 last 클래스 추가-->
+							<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+							<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+							<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+							<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막 페이지</span></a>
+						</div>
+					</div>
+
+				</div>
+				<!--// content-->
+
+			</div>
+			<!--//inner-->
+		</div>
+		<!-- //container-->
+
+	</div>
+	<!--//wrap-->
+
+	<script>
+		$(function () {
+			//========================================
+			// input placeholder 변경
+			//======================================== 
+
+			$(".changeInput").selectmenu({
+				change: function () {
+					// console.log(this);
+					const option = $(this).siblings('.ui-selectmenu-button').text();
+					$(this).siblings('input').attr('placeholder', option + ' 검색');
+				},
+			});
+
+			$(".changeTxt").selectmenu({
+				change: function () {
+					// console.log(this);
+					const option = $(this).siblings('.ui-selectmenu-button').text();
+					if (option === '주행거리') {
+						$(this).siblings('.date_wrap').children('.inner_txt').text('Km');
+					} else {
+						$(this).siblings('.date_wrap').children('.inner_txt').text('원');
+					}
+				},
+			});
+			
+			
+			// 버튼 전체 선책 버튼
+			$(".btn_allCheck").on("click",  function () {
+	    		if ($(".btn_allCheck").hasClass('color_black')) {
+	                $(this).removeClass('color_black');
+	                $(this).siblings('.btn_normal').removeClass('color_black');
+	    	    } else {
+	                $(this).addClass('color_black');
+	                $(this).siblings('.btn_normal').addClass('color_black');
+	    		} 
+	    	});
+	    	
+	        // 버튼 개별 선택 때 전체 버튼 
+	        $(".btn_allCheck").on("click", function() {
+	          var hasColorBlack = false;
+	          $(".btn_normal").each(function() {
+	            if ($(this).hasClass('color_black')) {
+	              hasColorBlack = true;
+	              return false;
+	            }
+	          });
+	          if (hasColorBlack) {
+	            $(this).addClass('color_black');
+	          } else {
+	            $(this).removeClass('color_black');
+	          }
+	        });
+	        
+	        // 버튼 개별 선택
+	        $(document).on('click', '.detail_top .left_area .btn_normal', function() {
+	          $(this).toggleClass('color_black');
+	          var hasColorBlack = false;
+	          $(".btn_normal").each(function() {
+	            if ($(this).hasClass('color_black')) {
+	              hasColorBlack = true;
+	              return false;
+	            }
+	          });
+	          if (hasColorBlack) {
+	            $(".btn_allCheck").addClass('color_black');
+	          } else {
+	            $(".btn_allCheck").removeClass('color_black');
+	          }
+	        });
+
+			var colModel = [
+				/* { dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+					title: "",
+					menuIcon: false,
+					type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+					dataType: 'bool',
+					cb: {
+						all: false, //checkbox selection in the header affect current page only.
+						header: true, //show checkbox in header. 
+						select: true 
+					}
+				}, */
+				{ title: "승인 상태", dataIndx: "approval-status", width: 189, nodrag: true, nodrop: true, },
+				{ title: "주행 건수", dataIndx: "driving-number", width: 189, nodrag: true, nodrop: true, },
+				{ title: "총 요금", dataIndx: "total-charge", width: 189, nodrag: true, nodrop: true, },
+				{ title: "승객 지불 요금", dataIndx: "passenger-paid-fare", width: 189, nodrag: true, nodrop: true, },
+				{ title: "보조금", dataIndx: "subsidy", width: 189, nodrag: true, nodrop: true, },
+				{ title: "탑승인원", dataIndx: "passengers", width: 189, nodrag: true, nodrop: true, },
+				{ title: "총 주행 시간", dataIndx: "total-driving-time", width: 189, nodrag: true, nodrop: true, },
+				{ title: "총 주행 거리(km)", dataIndx: "total-distance", width: 189, nodrag: true, nodrop: true, },
+			];
+
+			var dataModel = {
+				"data": [
+					{ "approval-status": "승인 완료", "driving-number": "25", "total-charge": "225,000", "passenger-paid-fare": "37,500", "subsidy": "187,500", "passengers": "28", "total-driving-time": "00:27:30", "total-distance": "45.643" },
+				]
+			};
+
+
+			var options = {
+				scrollModel: { autoFit: true },
+				width: '100%',
+				height: 'flex',
+				//minWidth: 1280,
+				// minHeight: 200,
+				rowHt: 45,
+				rowHtHead: 45,
+				collapsible: { on: false, toggle: false },
+
+				columnBorders: true,
+				rowBorders: true,
+				stripeRows: true,
+
+				postRenderInterval: -1, //synchronous post rendering.
+				dataModel: dataModel,
+				colModel: colModel,
+				// selectionModel: { type: 'row', mode: 'block' },
+
+				columnTemplate: {
+					align: 'center', valign: 'center'
+				},
+				editable: false,
+				freezeCols: 0,
+				freezeRows: 0,
+
+				numberCell: { show: false },
+				reactive: true,
+				roundCorners: false,
+				resizable: true,
+
+				showHeader: true,
+				showTitle: false,
+				showToolbar: false,
+				showTop: false,
+				showBottom: false,
+				virtualX: true, virtualY: true,
+
+				title: "",
+				strNoRows: '조회된 데이터가 없습니다.',
+			};
+
+			var grid = pq.grid("#grid_list", options);
+
+			var dataModel2 = {
+				"data": [
+					{ "no": 1, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "", "fare1": "1,500", "fare2": "1,000", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "파일없음" },
+					{ "no": 2, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 3, "approval-status": "승인 완료", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 4, "approval-status": "정상", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 5, "approval-status": "비정상", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 6, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 7, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 8, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 9, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+					{ "no": 10, "approval-status": "승인 대기", "verification": "정상", "sido": "경상남도", "sigungu": "창원시", "agency": "창원시", "center": "창원시청", "driving-intime": "2022-10-27 18:30:00", "driving-outtime": "2022-10-27 18:45:00", "receipt-location": [{ "case": "start", "detail": "부산 해운대구 중동 1015" }, { "case": "end", "detail": "부산 해운대구 남동 26" }], "receipt-location-matching": [{ "case": "start", "point": "등촌마을(상남면)" }, { "case": "end", "point": "신나면사무소" }], "driving-personnel": "1", "total-charge": "9,000", "passenger-paid-fare": "1500", "fare1": "", "fare2": "", "subsidy": "7,500", "total-driving-time": "00:05:30", "total-distance": "4.312", "car_num": "강원123사 5678", "driver-type": "개인", "car_type": "택시", "driver-charge": "택시", "driver-charge": "이재성", "driving-photo": "" },
+				]
+			};
+
+			var colModel2 = [
+				{
+					dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+					title: "",
+					menuIcon: false,
+					type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+					dataType: 'bool',
+					cb: {
+						all: false, //checkbox selection in the header affect current page only.
+						header: true, //show checkbox in header. 
+						select: true,
+					},
+					editable: function (ui) {
+						return !ui.rowData.disabled
+					},
+				},
+				{ title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+				{ title: "승인 상태", dataIndx: "approval-status", width: 80, nodrag: true, nodrop: true, },
+				{ title: "검증 여부", dataIndx: "verification", width: 80, nodrag: true, nodrop: true, },
+				{ title: "시도", dataIndx: "sido", width: 80, nodrag: true, nodrop: true, },
+				{ title: "시군구", dataIndx: "sigungu", width: 80, nodrag: true, nodrop: true, },
+				{ title: "소속기관", dataIndx: "agency", width: 80, nodrag: true, nodrop: true, },
+				{ title: "센터", dataIndx: "center", width: 80, nodrag: true, nodrop: true, },
+				{ title: "탑승 일시", dataIndx: "driving-intime", width: 100, nodrag: true, nodrop: true, },
+				{ title: "하차 일시", dataIndx: "driving-outtime", width: 100, nodrag: true, nodrop: true, },
+				{
+					title: "탑승지/하차지", dataIndx: "receipt-location", width: 240, align: "left", nodrag: true, nodrop: true,
+					render: function (ui) { // checkbox custom
+						var items = ui.cellData;
+						var ul = `<ul class='location_lst'>`;
+						var ul_end = `</ul>`;
+						var li = '';
+						var cls = '';
+
+						for (var i = 0; i < items.length; i++) {
+							if (items[i].case === 'start') {
+								cls = 'icon_location1';
+							} else {
+								cls = 'icon_location3';
+							}
+							li += `<li><i class='icon ${cls}'></i><span><strong>${items[i].detail}</strong></span></li>`
+						}
+						result = ul + li + ul_end;
+						return result;
+					}
+				},
+				{
+					title: "탑승지/하차지<br>(승하차지점 매칭)", dataIndx: "receipt-location-matching", width: 240, align: "left", nodrag: true, nodrop: true,
+					render: function (ui) { // checkbox custom
+						var items = ui.cellData;
+						var ul = `<ul class='location_lst'>`;
+						var ul_end = `</ul>`;
+						var li = '';
+						var cls = '';
+
+						for (var i = 0; i < items.length; i++) {
+							if (items[i].case === 'start') {
+								cls = 'icon_location1';
+							} else {
+								cls = 'icon_location3';
+							}
+							li += `<li><i class='icon ${cls}'></i><span><strong>${items[i].point}</strong></span></li>`
+						}
+						result = ul + li + ul_end;
+						return result;
+					}
+				},
+				{ title: "탑승 인원", dataIndx: "driving-personnel", width: 100, nodrag: true, nodrop: true, },
+				{ title: "총 요금", dataIndx: "total-charge", width: 100, nodrag: true, nodrop: true, },
+				{
+					title: "승객 지불 요금", dataIndx: "passenger-paid-fare", width: 90, nodrag: true, nodrop: true,
+					render: function (ui) { // checkbox custom
+						var rowData = ui.rowData, dataIndx = ui.dataIndx;
+						var val = rowData[dataIndx];
+						let fare_lst = `<ul class='fare_lst'><li><span>최초 : ${ui.rowData.fare1}</span><sapn>수정 : ${ui.rowData.fare2}</span></li></ul>`;
+						if (ui.rowData.fare1 !== '' && ui.rowData.fare2 !== '') {
+							return fare_lst;
+						}
+					},
+				},
+				{ title: "보조금", dataIndx: "subsidy", width: 100, nodrag: true, nodrop: true, },
+				{ title: "총 주행 시간", dataIndx: "total-driving-time", width: 100, nodrag: true, nodrop: true, },
+				{ title: "총 주행 거리(km)", dataIndx: "total-distance", width: 100, nodrag: true, nodrop: true, },
+				{ title: "차량 번호", dataIndx: "car_num", width: 80, nodrag: true, nodrop: true, },
+				{ title: "기사 구분", dataIndx: "driver-type", width: 80, nodrag: true, nodrop: true, },
+				{ title: "차량 구분", dataIndx: "car_type", width: 80, nodrag: true, nodrop: true, },
+				{ title: "담당 기사", dataIndx: "driver-charge", width: 80, nodrag: true, nodrop: true, },
+				{
+					title: "주행 증빙 사진", dataIndx: "driving-photo", width: 80, nodrag: true, nodrop: true,
+					render: function (ui) { // checkbox custom
+						var rowData = ui.rowData, dataIndx = ui.dataIndx;
+						var val = rowData[dataIndx];
+						if (val === '파일없음') {
+							return "<i class='icon icon_unfile'></i>";
+						} else {
+							return "<i class='icon icon_onfile'></i>"
+						}
+					},
+				},
+				{
+					title: "상세 보기", dataIndx: "view-details", width: 80, nodrag: true, nodrop: true,
+					render: function (ui) { // checkbox custom
+						var rowData = ui.rowData, dataIndx = ui.dataIndx;
+						var val = rowData[dataIndx];
+						var result = "<i class='btn_detail icon icon_search'><span class='sr_only'>상세보기</span></i>";
+						return result;
+					},
+				},
+			];
+			var options2 = {
+				scrollModel: { autoFit: false },
+				width: 'auto',
+				minWidth: 980,
+				height: 540,
+				maxHeight: 740,
+				rowHt: 92,
+				rowHtHead: 64,
+				collapsible: { on: false, toggle: false },
+
+				columnBorders: true,
+				rowBorders: true,
+				stripeRows: true,
+
+				// postRenderInterval: -1, //synchronous post rendering.
+				dataModel: dataModel2,
+				colModel: colModel2,
+				// selectionModel: { type: 'row', mode: 'block' },
+
+				columnTemplate: {
+					align: 'center', valign: 'center'
+				},
+				editable: false,
+				freezeCols: 0,
+				freezeRows: 0,
+
+				numberCell: { show: false },
+				reactive: true,
+				roundCorners: false,
+				resizable: false,
+
+				showHeader: true,
+				showTitle: false,
+				showToolbar: false,
+				showTop: false,
+				showBottom: false,
+				virtualX: true,
+				virtualY: true,
+
+				title: "",
+				strNoRows: '조회된 데이터가 없습니다.',
+
+				rowSelect: function (evt, ui) {
+					console.log('rowSelect', ui);
+				},
+				selectChange: function (evt, ui) {
+					console.log('selectChange', evt, ui);
+
+				},
+			};
+			var grid = pq.grid("#grid_json2", options2);
+		});
+	</script>
+
+
+</body>
+<script>
+
+</script>
+
+</html>

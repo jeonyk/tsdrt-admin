@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+@mixin sr_only{
+    border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    text-indent: -9999px;
+    &.focusable{
+        &:active, &:focus{
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            white-space: inherit;
+            width: auto;
+        }
+
+    }
+}
+
+@mixin clearfix{
+  &:before{
+      content: " ";
+      display: table;
+  }
+  &:after{
+      content: " ";
+      display: table;
+      clear: both;
+  }
+}
+
+
+@mixin ir{
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+    text-indent: -10000px;
+}
+
+@mixin txt_ellipsis{
+    display: block !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@function rem($value) {
+  $remValue: calc($value / 16) + rem; 
+  @return $remValue;
+}
+
+/* ==========================================================================
+   responsive size
+   ========================================================================== */
+
+// Break Point
+$tablet: 768px;
+$laptop: 1020px;
+$desktop: 1400px;
+ 
+ 
+// Mixins
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+ 
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+ 
+ 
+@mixin desktop {
+  @media (max-width: #{$desktop}) {
+    @content;
+  }
+}

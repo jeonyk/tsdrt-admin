@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+<style>
+	/* .form_ctl { margin-right: 10px;}
+	.form_ctl + .form_ctl { margin-left: 30px;} */
+</style>
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">그룹 상세 정보</h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><span>수정하기</span></button>
+						<!-- <button type="button" class="btn btn_blue btn_outline"><span>돌아가기</span></button> -->
+					</div>
+				</div>
+
+				<div class="content">
+						<div class="box_section">
+							<div class="both_col">
+								<div class="left">
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only"></caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>시도</th>
+													<td>경상남도</td>
+												</tr>
+												<tr>
+													<th>시군구</th>
+													<td>고성군</td>
+												</tr>
+												<tr>
+													<th>소속기관</th>
+													<td>고성군청</td>
+												</tr>
+												<tr>
+													<th>센터</th>
+													<td>고성군청</td>
+												</tr>
+												<tr>
+													<th>그룹명</th>
+													<td>하일면 대군막마을</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="right">
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only"></caption>
+											<colgroup>
+												<col width="40%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>바우처 이용 유형</th>
+													<td>개인</td>
+												</tr>
+												<tr>
+													<th>바우처 충전 후 자여 개수(기본 설정 값)</th>
+													<td>50</td>
+												</tr>
+												<tr>
+													<th>바우처 자동 충전 주기</th>
+													<td>1개월</td>
+												</tr>
+												<tr>
+													<th>바우처 충전 시작일자</th>
+													<td>2022-11-01</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h3 class="title_md">
+							<div class="title">소속 회원</div>
+						</h3>
+						<div class="box_section">
+							<div id="user_list" class="grid_list"></div>
+						</div>
+						<div class="footer">
+							<div class="page_wrap">
+								<div class="page_num">Rows per page</div>
+										
+								<select class="page_sel" id="">
+									<option>20</option>
+									<option selected>30</option>
+									<option>40</option>
+									<option>50</option>
+								</select> 
+								
+								<!-- 처음 일 떄 first 클래스 추가-->
+								<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+								<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+								
+								<div class="page_count">
+									1 - 7 of 1 
+								</div>
+								
+								<!-- 마지막 페이지 일 떄 last 클래스 추가-->	
+								<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+								<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+								<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막 페이지</span></a>
+							</div>
+						</div>	
+						<h3 class="title_md">
+							<div class="title">변경 내역</div>
+						</h3>
+						<div class="box_section">
+							<div id="history_list" class="grid_list"></div>
+						</div>
+						<div class="footer">
+							<div class="page_wrap">
+								<div class="page_num">Rows per page</div>
+										
+								<select class="page_sel" id="">
+									<option>20</option>
+									<option selected>30</option>
+									<option>40</option>
+									<option>50</option>
+								</select> 
+								
+								<!-- 처음 일 떄 first 클래스 추가-->
+								<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+								<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+								
+								<div class="page_count">
+									1 - 7 of 1 
+								</div>
+								
+								<!-- 마지막 페이지 일 떄 last 클래스 추가-->	
+								<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+								<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+								<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막 페이지</span></a>
+							</div>
+						</div>																								
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(function () {
+		var dataModel = {
+		      "data": [
+		          { "no": 1,"username": "김류희", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 2,"username": "김지수", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 3,"username": "김지수", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 4,"username": "김행복", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 5,"username": "송진혁", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 6,"username": "이재성", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 7,"username": "조행복", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 8,"username": "조행복", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 9,"username": "차행복", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		          { "no": 10,"username": "장진욱", "call": "010-2222-2222", "sexual": "여성","birthYear":1993, "kind": "청소년", "cardNum": "123456789", "voucher":"30/50"},
+		      ]
+		  };
+
+		  var colModel = [
+		      { title: "No", dataIndx: "no", width: 85, nodrag: true, nodrop: true,  },
+		      { title: "회원 이름", dataIndx: "username", width: 200, nodrag: true, nodrop: true,  },
+		      { title: "전화번호", dataIndx: "call", width: 200, nodrag: true, nodrop: true, },
+		      { title: "성별", dataIndx: "sexual", width: 100, nodrag: true, nodrop: true, },
+		      { title: "출생연도", dataIndx: "birthYear", width: 200, nodrag: true, nodrop: true, },
+		      { title: "회원 유형", dataIndx: "kind", width: 250, nodrag: true, nodrop: true, },
+		      { title: "바우처 카드번호", dataIndx: "cardNum", width: 260, nodrag: true, nodrop: true, },
+		      { title: "바우처 잔여 개수", dataIndx: "voucher", width: 210, nodrag: true, nodrop: true, },
+		  ];
+
+		var options = {
+			scrollModel:{autoFit:true},
+			width: 'auto',
+			minWidth: 980,
+			minHeight: 200,
+			rowHt: 50,
+			rowHtHead: 45,
+			collapsible: {
+				on: false,
+				toggle: false
+			},
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			selectionModel: {
+				type: 'row',
+				mode: 'block'
+			},
+
+			columnTemplate: {
+				align: 'center',
+				valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: {
+				show: false
+			},
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+			pageModel: {
+				type: "remote",
+				rPP: 20,
+				strRpp: "{0}"
+			},
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+		var grid = pq.grid("#user_list", options);
+
+
+		var historyModel = {
+		      "data": [
+		          { "no": 1,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 2,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 3,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 4,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 5,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 6,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 7,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 8,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 9,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		          { "no": 10,"groupName": "하이면 대군막", "vKind": "그룹", "vDefault": 40,"vAuto":"1개월", "vStart": "2022-11-01", "update": "2022-10-16 07:48", "user":"관리자(손재성)"},
+		      ]
+		  };
+
+		  var colModel = [
+		      { title: "No", dataIndx: "no", width: 85, nodrag: true, nodrop: true,  },
+		      { title: "그룹명", dataIndx: "groupName", width: 200, nodrag: true, nodrop: true,  },
+		      { title: "바우처 이용 유형", dataIndx: "vKind", width: 150, nodrag: true, nodrop: true, },
+		      { title: "바우처 충전 후 잔여 개수(기본 설정값)", dataIndx: "vDefault", width: 250, nodrag: true, nodrop: true, },
+		      { title: "바우처 자동 충전 주기", dataIndx: "vAuto", width: 150, nodrag: true, nodrop: true, },
+		      { title: "바우처 충전 시작일자", dataIndx: "vStart", width: 200, nodrag: true, nodrop: true, },
+		      { title: "업데이트 일시", dataIndx: "update", width: 260, nodrag: true, nodrop: true, },
+		      { title: "담당자", dataIndx: "user", width: 210, nodrag: true, nodrop: true, },
+		  ];
+
+		var historyOts = {
+			scrollModel:{autoFit:true},
+			width: 'auto',
+			minWidth: 980,
+			minHeight: 200,
+			rowHt: 50,
+			rowHtHead: 45,
+			collapsible: {
+				on: false,
+				toggle: false
+			},
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: historyModel,
+			colModel: colModel,
+			selectionModel: {
+				type: 'row',
+				mode: 'block'
+			},
+
+			columnTemplate: {
+				align: 'center',
+				valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: {
+				show: false
+			},
+			reactive: true,
+			roundCorners: false,
+			resizable: false,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true,
+			virtualY: true,
+			pageModel: {
+				type: "remote",
+				rPP: 20,
+				strRpp: "{0}"
+			},
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+		var grid = pq.grid("#history_list", historyOts);
+
+		$(".tabs li a").on("click", function(){
+			$(".grid_list").pqGrid("refreshDataAndView");
+		});
+		//======================================== PQ Grid refresh
+
+
+	});
+</script>
+
+</html>

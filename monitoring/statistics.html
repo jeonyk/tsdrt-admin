@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+    <div id="wrap">
+        @@include('../_include/header.html')
+
+        <div id="container">
+            @@include('../_include/lnb.html')
+            <div class="inner">
+                <div class="title_wrap">
+                    <h2 class="title_lg">통계</h2>
+                </div>
+                <div class="content">
+                    <ul class="tabs tab">
+                        <li class="on"><a href="#none">전체</a></li>
+                        <li><a href="#none">그룹</a></li>
+                        <li><a href="#none">운수회사</a></li>
+                    </ul>
+                    <!--  전체 tab -->
+                    <div class="tab_contents on">
+                        <div class="content_h">
+                            <div class="box_section mt20">
+                                <div class="search_filter">
+                                    <ul>
+                                        <li>
+                                            <div class="form_inline">
+                                                <div class="label_t">시도</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>강원도</option>
+                                                    <option>경기도</option>
+                                                    <option>경상남도</option>
+                                                    <option>경상북도</option>
+                                                    <option>전라북도</option>
+                                                    <option>전라남도</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">시군구</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">소속기관</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">센터</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시브라보택시</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form_inline">
+                                                <div class="label_t">승인 상태</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">차량 구분</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">검색 일자</div>
+                                                <div class="date_wrap">
+                                                    <i class="icon icon_date"></i>
+                                                    <input type="text" name="" class="form_ctl datepicker"
+                                                        placeholder="" />
+                                                    <span class="dash">~</span>
+                                                    <input type="text" name="" class="form_ctl datepicker"
+                                                        placeholder="" />
+                                                </div>
+                                                <div class="form_inline">
+                                                    <button type="button" class="btn btn_blue"><span>검색</span></button>
+                                                </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail_top">
+                                <div class="left_area">
+                                    <button type="button" class="btn btn_gray"><i
+                                            class="icon icon_dw"></i><span>다운로드</span></button>
+                                </div>
+                            </div>
+                            <div class="grid_wrap">
+                                <div id="grid_total" class="grid_list"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="page_wrap">
+                                    <div class="page_num">Rows per page</div>
+
+                                    <select class="page_sel" id="">
+                                        <option>20</option>
+                                        <option selected>30</option>
+                                        <option>40</option>
+                                        <option>50</option>
+                                    </select>
+
+                                    <!-- 처음 일 떄 first 클래스 추가-->
+                                    <a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+                                    <div class="page_count">
+                                        1 - 7 of 1
+                                    </div>
+
+                                    <!-- 마지막 페이지 일 떄 last 클래스 추가-->
+                                    <!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+                                            페이지</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 그룹  tab -->
+                    <div class="tab_contents">
+                        <div class="content_h">
+                            <div class="box_section mt20">
+                                <div class="search_filter">
+                                    <ul>
+                                        <li>
+                                            <div class="form_inline">
+                                                <div class="label_t">시도</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>강원도</option>
+                                                    <option>경기도</option>
+                                                    <option>경상남도</option>
+                                                    <option>경상북도</option>
+                                                    <option>전라북도</option>
+                                                    <option>전라남도</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">시군구</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">소속기관</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">센터</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시브라보택시</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form_inline">
+                                                <div class="label_t">승인 상태</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">차량 구분</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">검색 일자</div>
+                                                <div class="date_wrap">
+                                                    <i class="icon icon_date"></i>
+                                                    <input type="text" name="" class="form_ctl datepicker"
+                                                        placeholder="" />
+                                                    <span class="dash">~</span>
+                                                    <input type="text" name="" class="form_ctl datepicker"
+                                                        placeholder="" />
+                                                </div>
+                                                <div class="form_inline">
+                                                    <button type="button" class="btn btn_blue"><span>검색</span></button>
+                                                </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail_top">
+                                <div class="left_area">
+                                    <button type="button" class="btn btn_gray"><i
+                                            class="icon icon_dw"></i><span>다운로드</span></button>
+                                </div>
+                            </div>
+                            <div class="grid_wrap">
+                                <div id="grid_group" class="grid_list"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="page_wrap">
+                                    <div class="page_num">Rows per page</div>
+
+                                    <select class="page_sel" id="">
+                                        <option>20</option>
+                                        <option selected>30</option>
+                                        <option>40</option>
+                                        <option>50</option>
+                                    </select>
+
+                                    <!-- 처음 일 떄 first 클래스 추가-->
+                                    <a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+                                    <div class="page_count">
+                                        1 - 7 of 1
+                                    </div>
+
+                                    <!-- 마지막 페이지 일 떄 last 클래스 추가-->
+                                    <!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+                                            페이지</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 운수회사 tab -->
+                    <div class="tab_contents">
+                        <div class="content_h">
+                            <div class="box_section mt20">
+                                <div class="search_filter">
+                                    <ul>
+                                        <li>
+                                            <div class="form_inline">
+                                                <div class="label_t">시도</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>강원도</option>
+                                                    <option>경기도</option>
+                                                    <option>경상남도</option>
+                                                    <option>경상북도</option>
+                                                    <option>전라북도</option>
+                                                    <option>전라남도</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">시군구</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">소속기관</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">센터</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                    <option>거제시브라보택시</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form_inline">
+                                                <div class="label_t">승인 상태</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">차량 구분</div>
+                                                <select class="form_ctl" id="">
+                                                    <option>전체</option>
+                                                </select>
+                                            </div>
+                                            <div class="form_inline">
+                                                <div class="label_t">검색 일자</div>
+                                                <div class="date_wrap">
+                                                    <i class="icon icon_date"></i>
+                                                    <input type="text" name="" class="form_ctl datepicker"
+                                                        placeholder="" />
+                                                    <span class="dash">~</span>
+                                                    <input type="text" name="" class="form_ctl datepicker"
+                                                        placeholder="" />
+                                                </div>
+                                                <div class="form_inline">
+                                                    <button type="button" class="btn btn_blue"><span>검색</span></button>
+                                                </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail_top">
+                                <div class="left_area">
+                                    <button type="button" class="btn btn_gray"><i
+                                            class="icon icon_dw"></i><span>다운로드</span></button>
+                                </div>
+                            </div>
+                            <div class="grid_wrap">
+                                <div id="grid_company" class="grid_list"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="page_wrap">
+                                    <div class="page_num">Rows per page</div>
+
+                                    <select class="page_sel" id="">
+                                        <option>20</option>
+                                        <option selected>30</option>
+                                        <option>40</option>
+                                        <option>50</option>
+                                    </select>
+
+                                    <!-- 처음 일 떄 first 클래스 추가-->
+                                    <a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+                                    <div class="page_count">
+                                        1 - 7 of 1
+                                    </div>
+
+                                    <!-- 마지막 페이지 일 떄 last 클래스 추가-->
+                                    <!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+                                            페이지</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    $(function () {
+
+        //전체 grid
+        var colModel = [
+            // { title: "No", dataIndx: "no", width: 80, nodrag: true, nodrop: true, },
+            { title: "시도", dataIndx: "sido", width: 180, nodrag: true, nodrop: true, },
+            { title: "시군구", dataIndx: "sigungu", width: 180, nodrag: true, nodrop: true, },
+            { title: "소속기관", dataIndx: "agency", width: 240, nodrag: true, nodrop: true, },
+            { title: "센터", dataIndx: "center", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행 건수", dataIndx: "driving-number", width: 240, nodrag: true, nodrop: true, },
+            { title: "탑승 인원", dataIndx: "driving-personnel", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행시간", dataIndx: "driving-time", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행거리(km)", dataIndx: "distance", width: 240, nodrag: true, nodrop: true, },
+            {
+                title: "운행 대수", dataIndx: "driving-count", nodrag: true, nodrop: true,
+                colModel: [
+                    { title: "개인", dataIndx: "individual", width: 200, nodrag: true, nodrop: true, },
+                    { title: "법인", dataIndx: "corporate", width: 200, nodrag: true, nodrop: true, },
+                ]
+            },
+            { title: "보조금", dataIndx: "subsidy", width: 240, nodrag: true, nodrop: true, },
+            { title: "승객 지불 요금", dataIndx: "passenger-paid-fare", width: 240, nodrag: true, nodrop: true, },
+
+        ];
+
+        var dataModel = {
+            "data": [
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+            ]
+        };
+
+        var options = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            // height: 'flex',
+            minHeight: 521,
+            rowHt: 45,
+            rowHtHead: 35,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: dataModel,
+            colModel: colModel,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#grid_total", options);
+
+        //그룹 grid
+        var colModel_group = [
+            { title: "시도", dataIndx: "sido", width: 180, nodrag: true, nodrop: true, },
+            { title: "시군구", dataIndx: "sigungu", width: 180, nodrag: true, nodrop: true, },
+            { title: "소속기관", dataIndx: "agency", width: 240, nodrag: true, nodrop: true, },
+            { title: "센터", dataIndx: "center", width: 240, nodrag: true, nodrop: true, },
+            { title: "탑승지<br>(승하차지점)", dataIndx: "point-start", width: 240, nodrag: true, nodrop: true, },
+            { title: "하차지<br>(승하차지점)", dataIndx: "point-end", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행 건수", dataIndx: "driving-number", width: 240, nodrag: true, nodrop: true, },
+            { title: "탑승 인원", dataIndx: "driving-personnel", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행시간", dataIndx: "driving-time", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행거리(km)", dataIndx: "distance", width: 240, nodrag: true, nodrop: true, },
+            {
+                title: "운행 대수", dataIndx: "driving-count", nodrag: true, nodrop: true,
+                colModel: [
+                    { title: "개인", dataIndx: "individual", width: 200, nodrag: true, nodrop: true, },
+                    { title: "법인", dataIndx: "corporate", width: 200, nodrag: true, nodrop: true, },
+                ]
+            },
+            { title: "보조금", dataIndx: "subsidy", width: 240, nodrag: true, nodrop: true, },
+            { title: "승객 지불 요금", dataIndx: "passenger-paid-fare", width: 240, nodrag: true, nodrop: true, },
+        ];
+
+        var dataModel_group = {
+            "data": [
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "point-start": "동상면", "point-end": "사평", "driving-number": "854", "driving-personnel": "867", "driving-time": "66:32:12", "distance": "3,200", "driving-count": "", "individual": "210", "corporate": "92", "subsidy": "20,926,231,503", "passenger-paid-fare": "255,100" },
+            ]
+        };
+
+        var options_group = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            // height: 'flex',
+            minHeight: 521,
+            rowHt: 45,
+            rowHtHead: 35,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: dataModel_group,
+            colModel: colModel_group,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        //운수회사 grid
+        var colModel_company = [
+            { title: "시도", dataIndx: "sido", width: 180, nodrag: true, nodrop: true, },
+            { title: "시군구", dataIndx: "sigungu", width: 180, nodrag: true, nodrop: true, },
+            { title: "소속기관", dataIndx: "agency", width: 240, nodrag: true, nodrop: true, },
+            { title: "센터", dataIndx: "center", width: 240, nodrag: true, nodrop: true, },
+            { title: "법인명", dataIndx: "corporate-name", width: 240, nodrag: true, nodrop: true, },
+            { title: "운행 대수", dataIndx: "driving-count", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행 건수", dataIndx: "driving-number", width: 240, nodrag: true, nodrop: true, },
+            { title: "탑승 인원", dataIndx: "driving-personnel", width: 240, nodrag: true, nodrop: true, },
+            { title: "이용 시간", dataIndx: "time", width: 240, nodrag: true, nodrop: true, },
+            { title: "주행거리", dataIndx: "distance", width: 240, nodrag: true, nodrop: true, },
+            { title: "보조금", dataIndx: "subsidy", width: 240, nodrag: true, nodrop: true, },
+        ];
+
+        var dataModel_company = {
+            "data": [
+                { "sido": "전라북도", "sigungu": "완주군", "agency": "동상안전협동조합", "center": "동상면", "corporate-name": "유한회사순천운수", "driving-count": "1", "driving-number": "8", "driving-personnel": "867", "time": "00:45:12", "distance": "3,200", "subsidy": "42,800", },
+            ]
+        };
+
+        var options_company = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            // height: 'flex',
+            minHeight: 521,
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: dataModel_company,
+            colModel: colModel_company,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        //========================================
+        // PQ Grid refresh
+        //========================================
+
+        // $(".tabs li a").on("click", function () {
+        // 	$(".grid_list").pqGrid("refreshDataAndView");
+        // });
+        $(document).on('click', '.tabs li a', function () {
+            var tg = $(this).closest('li');
+            var idx = tg.index();
+            console.log(idx);
+
+            if (grid_desc !== undefined) {
+                grid_desc.destroy();
+            }
+
+            if (idx === 0) {
+                grid_desc = pq.grid("#grid_total", options);
+            } else if (idx === 1) {
+                grid_desc = pq.grid("#grid_group", options_group);
+            } else if (idx === 2) {
+                grid_desc = pq.grid("#grid_company", options_company);
+            }
+        })
+        //========================================
+
+
+    })
+
+</script>
+
+</html>

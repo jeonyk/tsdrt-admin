@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<!-- container-->
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<!--inner-->
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">접수 상세 정보 </h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_blue btn_outline" disabled><span>주행 상태 변경</span></button>
+						<button type="button" class="btn btn_blue btn_outline" disabled><span>배차 정보 수정</span></button>
+						<button type="button" class="btn btn_blue btn_outline"><span>돌아가기</span></button>
+					</div>
+				</div>
+				<!--content-->
+				<div class="content">
+					<div class="content_h">
+						<div class="box_section">
+
+							<div class="both_col">
+								<div class="left">
+									<div class="title_md">
+										<div class="title">접수 정보</div>
+									</div>
+
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">접수 정보</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>배차 방식</th>
+													<td>예약 배차</td>
+												</tr>
+												<tr>
+													<th>주행 상태</th>
+													<td> <button type="button" class="state_navy state">주행 완료</button>
+													</td>
+												</tr>
+												<tr>
+													<th>주행 상태</th>
+													<td>
+														<div class="drive_info">
+															<button type="button" class="state_blue state">배차
+																완료</button>
+															<ul class="drive_option">
+																<li><a href="javascript:void(0);">예약 취소</a></li>
+																<li><a href="javascript:void(0);">배차 대기</a></li>
+															</ul>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<th>접수 일시</th>
+													<td>2022-10-17 20:01:10</td>
+												</tr>
+												<tr>
+													<th>배차 일시</th>
+													<td>2022-10-17 20:01:15</td>
+												</tr>
+												<tr>
+													<th>탑승 예정 일시</th>
+													<td>2022-10-17 20:30:00</td>
+												</tr>
+												<tr>
+													<th>예상 주행 시간</th>
+													<td>00시 30분 00초</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">예약자 정보</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>예약자 전화번호</th>
+													<td>010-1234-5678</td>
+												</tr>
+												<tr>
+													<th>예약 인원</th>
+													<td>3명</td>
+												</tr>
+												<tr>
+													<th>예약 메모</th>
+													<td>-</td>
+												</tr>
+												<tr>
+													<th>상담원 </th>
+													<td>이재성</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">예약자 정보</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>탑승지</th>
+													<td>무주공용버스터미널 (전북 무주군 무주읍 한풍루로 351 무주공용버스터미널)</td>
+												</tr>
+												<tr>
+													<th>경유지1</th>
+													<td>대티회관 (전북 무주군 부남면 대티길 58)</td>
+												</tr>
+												<tr>
+													<th>하차지</th>
+													<td>하장백그룹회관 (전북 무주군 무주읍 하장백길 71)</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+
+								<div class="right">
+									<div class="title_md">
+										<div class="title">기사 정보</div>
+									</div>
+
+									<div class="table_list align_left">
+										<!--검색된 결과가 없을 시-->
+										<!-- <p class="blank">검색 결과가 존재하지 않습니다.</p> -->
+										<table>
+											<caption class="sr_only">기사 정보</caption>
+											<colgroup>
+												<col width="20%">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>기사 이름</th>
+													<td>조정수</td>
+												</tr>
+												<tr>
+													<th>기사 연락처</th>
+													<td>010-0000-0000</td>
+												</tr>
+												<tr>
+													<th>기사 구분</th>
+													<td>개인</td>
+												</tr>
+												<tr>
+													<th>운수 회사</th>
+													<td>-</td>
+												</tr>
+												<tr>
+													<th>차량 유형</th>
+													<td>택시</td>
+												</tr>
+												<tr>
+													<th>차종 </th>
+													<td>중형</td>
+												</tr>
+												<tr>
+													<th>차량번호 </th>
+													<td>전북36바3003</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+
+
+
+					</div>
+					<!--// content-->
+
+				</div>
+				<!--//inner-->
+			</div>
+			<!-- //container-->
+
+		</div>
+		<!--//wrap-->
+
+
+		<!-- Table Modal  -->
+		<div id="pop_drive01" style="display: none;">
+
+			<div class="form_inline mt20 both_col">
+				<div class="input_radio">
+					<input type="radio" id="label_text1" name="">
+					<label for="label_text1" class="txt_label">배차 대기</label>
+				</div>
+				<div class="input_radio">
+					<input type="radio" id="label_text2" name="" disabled>
+					<label for="label_text2" class="txt_label">배차</label>
+				</div>
+				<div class="input_radio">
+					<input type="radio" id="label_text3" name="">
+					<label for="label_text3" class="txt_label">예약 취소</label>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script>
+		$(function () {
+			$('#pop_drive01').dialog({
+				dialogClass: 'popup',
+				width: 500,
+				height: 280,
+				title: '주행상태 변경하기',
+				modal: true,
+				open: function (event, ui) {
+					$(".ui-dialog-titlebar-close", $(this).parent()).hide();
+				},
+				buttons: [{
+					text: "취소",
+					class: "btn btn_md btn_gray btn_outline",
+					click: function () {
+						$(this).dialog("close");
+					}
+				},
+				{
+					text: "확인",
+					class: "btn btn_md btn_blue",
+					click: function () {
+						$(this).dialog("close");
+					}
+				}
+				]
+			});
+		});
+
+	</script>
+
+
+</body>
+<script>
+
+</script>
+
+</html>

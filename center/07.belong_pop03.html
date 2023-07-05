@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+	<div id="wrap">
+		@@include('../_include/header.html')
+		<div id="container">
+			@@include('../_include/lnb.html')
+
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">주행 상세 정보 </h2>
+				</div>
+
+				<div class="content">
+					<div class="content_h">
+						<div class="box_section">
+							<h3 class="title_md">
+								<div class="title">중간 타이틀</div>
+								<div class="right_area">
+									<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+								</div>
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- Table Modal  -->
+	<div id="pop_result" style="display: none;">
+
+		<div class="pop_contents step01">
+
+			<ul class="step_wrap">
+				<li class="on">기본정보</li>
+				<li>서비스 지역</li>
+				<li>요금제</li>
+			</ul>
+
+			<div class="box_section_wrap">
+
+				<div class="box_section">
+					<div class="search_filter">
+						<div class="title_sm">
+							<div class="title">
+								센터 기본 정보
+							</div>
+						</div>
+						<ul>
+							<li>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">시도</span></div>
+									<select class="form_ctl" id="">
+										<option>시도</option>
+										<option>경상남도</option>
+										<option>경상북도</option>
+									</select>
+								</div>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">시군구</span></div>
+									<select class="form_ctl" id="">
+										<option>전체</option>
+										<option>ㅇㅇ군</option>
+									</select>
+								</div>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">소속기관</span></div>
+									<select class="form_ctl" id="">
+										<option>전체</option>
+										<option>전체</option>
+									</select>
+								</div>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">센터명</span></div>
+									<input type="text" class="form_ctl" placeholder="센터명 입력" value=""
+										style="width:133px" />
+								</div>
+							</li>
+							<li>
+								<div class="form_inline">
+									<div class="label_t">센터 연락처</div>
+									<input type="text" class="form_ctl w_small" placeholder="" value="" />
+									<input type="text" class="form_ctl w_small" placeholder="" value="" />
+									<input type="text" class="form_ctl w_small" placeholder="" value="" />
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="box_section">
+					<div class="search_filter">
+						<div class="title_sm">
+							<div class="title">
+								운영 정책 설정
+							</div>
+						</div>
+						<ul>
+							<!--default-->
+							<!-- <li>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">배차방식</span></div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label1" name="">
+										<label for="txt_label2" class="txt_label">셀프 배차</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label2" name="">
+										<label for="txt_label2" class="txt_label">예약 배차</label>
+									</div>
+								</div>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">경유지 설정 허용 여부</span>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label3" name="">
+										<label for="txt_label3" class="txt_label">허용</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label4" name="">
+										<label for="txt_label4" class="txt_label">비허용</label>
+									</div>
+								</div>
+							</li> -->
+							<!--허용 설정 시-->
+							<li>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">배차방식</span></div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label1" name="">
+										<label for="txt_label2" class="txt_label">셀프 배차</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label2" name="">
+										<label for="txt_label2" class="txt_label">예약 배차</label>
+									</div>
+								</div>
+								<div class="form_inline">
+									<div class="label_t sub_txt"><span class="essential" title="필수">경유지 설정 허용 여부</span>
+										<span class="txt color_red">경유지 설정을 허용하는 경우 협정요금의 사용이 불가 합니다</span>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label3" name="">
+										<label for="txt_label3" class="txt_label">허용</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label4" name="">
+										<label for="txt_label4" class="txt_label">비허용</label>
+									</div>
+								</div>
+							</li>
+
+							<li>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">증빙 사진 첨부 여부</span></div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label5" name="">
+										<label for="txt_label5" class="txt_label">첨부</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label6" name="">
+										<label for="txt_label6" class="txt_label">미첨부</label>
+									</div>
+								</div>
+								<div class="form_inline">
+									<div class="label_t"><span class="essential" title="필수">탑승 인원 확인방식</span>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label7" name="">
+										<label for="txt_label7" class="txt_label">바우처카드</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label" name="8">
+										<label for="txt_label8" class="txt_label">카드</label>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- case1 -->
+				<div class="box_section">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential" title="필수">운영 시간 설정</span>
+						</div>
+					</div>
+					<div class="both_col left_type">
+						<div class="search_filter">
+							<ul>
+								<li>
+									<div class="form_inline">
+										<div class="label_t">평일</div>
+										<div class="input_check">
+											<input type="checkbox" id="txt_label11" name="">
+											<label for="txt_label11" class="txt_label">평일 운영 시간 동일</label>
+										</div>
+									</div>
+								</li>
+
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">월요일</div>
+
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">화요일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">수요일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">목요일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">금요일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+
+								<!-- 케이스 1-1-->
+								<li class="ml50">
+									<div class="form_inline">
+										<!-- <div class="label_t">평일</div> -->
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+									</div>
+								</li>
+
+							</ul>
+						</div>
+
+						<div class="search_filter">
+							<ul>
+								<li>
+									<div class="form_inline">
+										<div class="label_t">주말/공휴일</div>
+										<div class="input_check">
+											<input type="checkbox" id="txt_label14" name="">
+											<label for="txt_label14" class="txt_label">주말, 공휴일 운영 시간 동일</label>
+										</div>
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">토요일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">일요일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="label_t">공휴일</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+
+									</div>
+								</li>
+								<!-- 케이스 1-1-->
+								<li class="ml50">
+									<div class="form_inline">
+										<div class="input_radio">
+											<input type="radio" id="txt_label10" name="">
+											<label for="txt_label10" class="txt_label">운영안함</label>
+										</div>
+										<div class="input_radio">
+											<input type="radio" id="txt_label9" name="" checked>
+											<label for="txt_label9" class="txt_label">운영</label>
+										</div>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="00:00" />
+										<span class="dash">~</span>
+										<input type="text" class="form_ctl w_small timepicker" placeholder=""
+											value="23:59" />
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- case2 -->
+				<!-- <div class="box_section">
+				<div class="title_sm">
+					<div class="title">
+						<span class="essential" title="필수">운영 시간 설정</span>
+					</div>
+				</div>
+				<div class="both_col left_type">
+					<div class="search_filter">
+						<ul>
+							<li>
+								<div class="form_inline">
+									<div class="label_t">평일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name=""  checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+									<div class="input_check">
+										<input type="checkbox" id="txt_label11" name="">
+										<label for="txt_label11" class="txt_label">평일 운영 시간 동일</label>
+									</div>
+								</div>
+							</li>
+							
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">월요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">화요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">수요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">목요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">금요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							
+							
+							
+							
+						</ul>
+					</div>
+					
+					<div class="search_filter">
+						<ul>
+							<li>
+								<div class="form_inline">
+									<div class="label_t">주말/공휴일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label12" name="">
+										<label for="txt_label12" class="txt_label">운영</label>
+									</div>
+									
+									<div class="input_radio">
+										<input type="radio" id="txt_label13" name="" checked>
+										<label for="txt_label13" class="txt_label">운영안함</label>
+									</div>
+									<div class="input_check">
+										<input type="checkbox" id="txt_label14" name="">
+										<label for="txt_label14" class="txt_label">주말, 공휴일 운영 시간 동일</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">토요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">일요일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+							<li class="ml50">
+								<div class="form_inline">
+									<div class="label_t">공휴일</div>
+									<div class="input_radio">
+										<input type="radio" id="txt_label9" name="">
+										<label for="txt_label9" class="txt_label">운영</label>
+									</div>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00" disabled/>
+									<span class="dash">~</span>
+									<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59" disabled/>
+									<div class="input_radio">
+										<input type="radio" id="txt_label10" name="" checked>
+										<label for="txt_label10" class="txt_label">운영안함</label>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				
+				</div>
+				
+				
+			</div> -->
+
+				<!-- case3 -->
+				<!-- <div class="box_section">
+				<div class="search_filter">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential" title="필수">운영 시간 설정</span>
+						</div>
+					</div>
+					<ul>
+						<li>
+							<div class="form_inline">
+								<div class="label_t">평일</div>
+								<div class="input_radio">
+									<input type="radio" id="txt_label9" name="" checked>
+									<label for="txt_label9" class="txt_label">운영</label>
+								</div>
+								<input type="text" class="form_ctl w_small timepicker" placeholder="" value="00:00"/>
+								<span class="dash">~</span>
+								<input type="text" class="form_ctl w_small timepicker" placeholder="" value="23:59"/>
+								<div class="input_radio">
+									<input type="radio" id="txt_label10" name="">
+									<label for="txt_label10" class="txt_label">운영안함</label>
+								</div>
+								<div class="input_check">
+									<input type="checkbox" id="txt_label11" name="" checked>
+									<label for="txt_label11" class="txt_label">평일 운영 시간 동일</label>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="form_inline">
+								<div class="label_t">주말/공휴일
+								</div>
+								<div class="input_radio">
+									<input type="radio" id="txt_label12" name="" checked>
+									<label for="txt_label12" class="txt_label">운영</label>
+								</div>
+								<input type="text" class="form_ctl w_small timepicker" name="" placeholder="" value="00:00"/>
+								<span class="dash">~</span>
+								<input type="text" class="form_ctl w_small timepicker" name="" placeholder="" value="23:59"/>
+								
+								<div class="input_radio">
+									<input type="radio" id="txt_label13" name="">
+									<label for="txt_label13" class="txt_label">운영안함</label>
+								</div>
+								<div class="input_check">
+									<input type="checkbox" id="txt_label14" name="" checked>
+									<label for="txt_label14" class="txt_label">주말, 공휴일 운영 시간 동일</label>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div> -->
+
+			</div>
+
+
+
+
+
+		</div>
+	</div>
+
+
+	<script>
+		$(function () {
+			$('#pop_result').dialog({
+				dialogClass: 'popup',
+				width: 1120,
+				height: 752,
+				title: '센터 등록 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+				titleIsHtml: true,
+				buttons: [
+					{
+						text: "취소",
+						class: "btn btn_gray btn_outline",
+						click: function () {
+							$(this).dialog("close");
+						}
+					},
+					{
+						text: "다음",
+						class: "btn btn_blue",
+						click: function () {
+							$(this).dialog("close");
+						}
+					}
+				]
+			});
+
+
+		});
+
+	</script>
+
+
+
+</body>
+<script>
+
+// $(document).ready(function(){
+//     $('input.timepicker').timepicker({ timeFormat: 'h:mm:ss p' });
+// });
+
+
+</script>
+
+</html>

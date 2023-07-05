@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보</h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+
+
+<!-- Table Modal  -->
+<div id="pop_result" style="display: none;">
+		
+	<div class="pop_contents">
+			
+		<div class="detail_top mt10">
+			<div class="left_area">
+				<ul class="step_wrap">
+					<li>기본정보</li>
+					<li class="on">서비스 지역</li>
+					<li>요금제</li>
+				</ul>
+			</div>
+			<div class="right_area">
+				<button type="button" class="btn btn_gray btn_add"><i class="icon icon_plus"></i><span>승하차지 추가</span></button>
+			</div>
+		</div>
+		
+		<div class="box_section_wrap">
+			<div class="both_col">
+				<div class="left box_section">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential">승하차지 설정</span>
+						</div>
+					</div>
+					<div class="map_area">
+						<div id="map_div"></div>
+						<!-- 승하차지명 입력 -->
+						<div class="registSpotName pop_spot">
+							<div class="pop_contents">
+								<input type="text" class="form_ctl" placeholder="승하차지명 입력">
+								<button type="button" class="btn_close ir">닫기</button>
+							</div>
+							<div class="pop_foot">
+								<button type="button" class="btn btn_sm btn_blue btn_outline btn_cancel">취소</button>
+								<button type="button" class="btn btn_sm btn_blue btn_save">저장</button>
+							</div>
+						</div>
+						<!-- 승하차지명 상세 -->
+						<div class="viewSpotDetail pop_spot">
+							<div class="pop_header">
+								<h4 class="title">승하차지명</h4>
+								<button type="button" class="btn_close ir">닫기</button>
+							</div>
+							<div class="row">
+								<div class="pop_contents col">
+									<ul class="lst_desc">
+										<li class="address">전북 무주군 무주읍 주계로 97</li>
+										<li class="position">37.58561234, 126.97502323</li>
+									</ul>
+								</div>
+								<div class="pop_foot col">
+									<button type="button" class="btn btn_sm btn_blue btn_outline btn_edit">수정</button>
+									<button type="button" class="btn btn_sm btn_blue btn_delete">삭제</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="right box_section">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential">행정구역 설정</span>
+						</div>
+					</div>
+					
+					<div id="grid_list_name" class="grid_list"></div>
+				</div>
+			</div>
+			
+			<div class="box_section mt40">
+				<div class="title_sm">
+					<div class="title">
+						<span class="essential">승하차지 목록</span>
+					</div>
+				</div>
+				
+				<div id="grid_list_inout" class="grid_list"></div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<!-- 필수값 입력되지 않을 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast"><p class="error_type"><i class="icon icon_error"></i>필수 입력 항목을 모두 입력해 주세요</p></div>
+</div>
+
+<div class="toast_popup toastPop_conf">
+	<div class="toast"><p class="confirm_type"><i class="icon icon_confirm"></i>정상적으로 승인되었습니다</p></div>
+</div>
+
+<!-- <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=8xWDhN5buX852AwcGIHAvGD04h9thtW1HgAhpjO9"></script> -->
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script>
+$(function(){
+	$('#pop_result').dialog({
+		dialogClass: 'popup',
+		width: 1120,
+		height: 737,
+		title: '센터 등록 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+		titleIsHtml: true,
+		buttons: [
+			{
+				text: "뒤로",  
+				class: "btn btn_gray btn_outline",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "다음",  
+				class: "btn btn_blue",
+				// onclick: 'toastPop_err();',
+				click: function () {
+					toastPop_err();
+				}
+			}
+		]
+	});
+});
+</script>
+
+<script src='../assets/js/vendor/turf.min.js'></script>
+
+<script>
+  var inPosition = new naver.maps.LatLng(37.3263888,126.6791388);
+  // var outPosition = new naver.maps.LatLng(37.3263888,126.6793913);
+  var paths = [
+    new naver.maps.LatLng(37.3265054,126.6791388),
+    new naver.maps.LatLng(37.3262357,126.6789132),
+    new naver.maps.LatLng(37.3260129,126.6792852),
+    new naver.maps.LatLng(37.326267,126.679528),
+    new naver.maps.LatLng(37.3265054,126.6791388),
+    new naver.maps.LatLng(37.3265054,126.6791388)
+  ];
+
+  console.log('inPosition: ', inPosition)
+
+  var map = new naver.maps.Map("map_div", {
+    center: new naver.maps.LatLng(37.3260129,126.6792852),
+    zoom: 15,
+    // mapTypeControl : true,
+    // mapTypeControlOptions: {
+    //   style: naver.maps.MapTypeControlStyle.BUTTON,
+    //   position: naver.maps.Position.BOTTOM_LEFT
+    // },
+    // mapTypeId: naver.maps.MapTypeId.NORMAL
+  });
+
+  var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [paths],
+    fillColor: '#ff0000',
+    fillOpacity: 0.2,
+    strokeColor: '#ff0000',
+    strokeOpacity: 1,
+    strokeWeight: 2
+  });
+
+  // var bounds = polygon.getBounds();
+
+  // var outMarker = new naver.maps.Marker({
+  //   map: map,
+  //   position: outPosition
+  // });
+
+  var inMarker = new naver.maps.Marker({
+    map: map,
+    position: inPosition
+  });
+
+  // console.log('outMarker: ', outMarker)
+  // console.log('inMarker: ', inMarker)
+
+  /* 
+  var sw = bounds.getMin();
+  var ne = bounds.getMax();
+  var se = new naver.maps.Point(ne.x, sw.y);
+  var nw = new naver.maps.Point(sw.x, ne.y);
+
+  var boundsPolygon = new naver.maps.Polygon({
+    map: map,
+    paths: [[se, sw, nw, ne]],
+    fillColor: '#0000ff',
+    fillOpacity: 0.3,
+    strokeColor: '#0000ff',
+    strokeOpacity: 0.3,
+    strokeWeight: 0
+  }); 
+
+ var minMarker = new naver.maps.Marker({
+    map: map,
+    position: sw
+  });
+
+  var maxMarker = new naver.maps.Marker({
+    map: map,
+    position: ne
+  });
+
+  console.log('minMarker: ', minMarker)
+  console.log('maxMarker: ', maxMarker)
+
+
+  if (bounds.hasLatLng(outPosition)) {
+    console.log('polygon 안에 있습니다.');
+  }else {
+    console.log('polygon 밖에 있습니다.');
+  } */
+
+  var proj = map.getProjection();
+
+  var convertPaths = [];
+  var convertInPosition = proj.fromCoordToPoint(inPosition).toArray();
+  // var convertOutPosition = proj.fromCoordToPoint(outPosition).toArray();
+  // var checkPoints = turf.points([convertInPosition, convertOutPosition]);
+
+
+  paths.forEach(point => {
+    convertPaths.push(proj.fromCoordToPoint(point).toArray());
+  });
+
+
+  var searchWithin = turf.polygon([convertPaths]);
+  // var within = turf.pointsWithinPolygon(checkPoints, searchWithin);
+
+
+  // console.log('within', within);
+  console.log(turf.pointsWithinPolygon(turf.points([convertInPosition]), searchWithin).features.length > 0);
+  // console.log(turf.pointsWithinPolygon(turf.points([convertOutPosition]), searchWithin).features.length > 0);
+</script>
+
+
+</body>
+</html>

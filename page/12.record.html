@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">기록 관리</h2>
+				</div>
+				<div class="content">
+					<ul class="tabs tab">
+						<li class="on"><a href="#none">접속 이력</a></li>
+						<li><a href="#none">다운로드 이력</a></li>
+						<li><a href="#none">약관/서약서 동의 이력</a></li>
+						<li><a href="#none">정보 변경 이력</a></li>
+					</ul>
+					<!-- 접속 이력 tab -->
+					<div class="tab_contents on">
+						<div class="content_h">
+							<div class="box_section mt20">
+								<div class="search_filter">
+									<ul>
+										<li>
+											<div class="form_inline">
+												<div class="label_t">접속 일자</div>
+												<div class="date_wrap">
+													<i class="icon icon_date"></i>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+													<span class="dash">~</span>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+												</div>
+											</div>
+											<div class="form_inline">
+												<div class="label_t">접속 성공 여부</div>
+												<select class="form_ctl" id="">
+													<option>전체</option>
+													<option>성공</option>
+													<option>실패</option>
+												</select>
+											</div>
+											<div class="form_inline">
+												<select class="form_ctl changeInput">
+													<option value="user_id" selected>사용자ID</option>
+													<option value="user_ip">접속IP</option>
+												</select>
+												<input type="text" class="form_ctl f_search user_input"
+													placeholder="사용자ID 검색">
+											</div>
+											<div class="form_inline">
+												<button type="button" class="btn btn_blue"><span>검색</span></button>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="grid_wrap mt40">
+								<div id="grid_record" class="grid_list"></div>
+							</div>
+							<div class="footer">
+								<div class="page_wrap">
+									<div class="page_num">Rows per page</div>
+
+									<select class="page_sel" id="">
+										<option>20</option>
+										<option selected>30</option>
+										<option>40</option>
+										<option>50</option>
+									</select>
+
+									<!-- 처음 일 떄 first 클래스 추가-->
+									<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+									<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+									<div class="page_count">
+										1 - 7 of 1
+									</div>
+
+									<!-- 마지막 페이지 일 떄 last 클래스 추가-->
+									<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+									<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+									<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+											페이지</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 다운로드 이력 tab -->
+					<div class="tab_contents">
+						<div class="content_h">
+							<div class="box_section mt20">
+								<div class="search_filter">
+									<ul>
+										<li>
+											<div class="form_inline">
+												<div class="label_t">다운로드 일자</div>
+												<div class="date_wrap">
+													<i class="icon icon_date"></i>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+													<span class="dash">~</span>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+												</div>
+											</div>
+											<div class="form_inline">
+												<div class="label_t">다운로드 항목</div>
+												<select class="form_ctl" id="">
+													<option>전체</option>
+												</select>
+											</div>
+											<div class="form_inline">
+												<select class="form_ctl changeInput">
+													<option value="user_id" selected>사용자ID</option>
+													<option value="user_ip">접속IP</option>
+												</select>
+												<input type="text" class="form_ctl f_search user_input"
+													placeholder="사용자ID 검색">
+											</div>
+											<div class="form_inline">
+												<button type="button" class="btn btn_blue"><span>검색</span></button>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="grid_wrap mt40">
+								<div id="grid_down" class="grid_list"></div>
+							</div>
+							<div class="footer">
+								<div class="page_wrap">
+									<div class="page_num">Rows per page</div>
+
+									<select class="page_sel" id="">
+										<option>20</option>
+										<option selected>30</option>
+										<option>40</option>
+										<option>50</option>
+									</select>
+
+									<!-- 처음 일 떄 first 클래스 추가-->
+									<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+									<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+									<div class="page_count">
+										1 - 7 of 1
+									</div>
+
+									<!-- 마지막 페이지 일 떄 last 클래스 추가-->
+									<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+									<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+									<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+											페이지</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 약관/서약서 동의 이력 tab -->
+					<div class="tab_contents">
+						<div class="content_h">
+							<div class="box_section mt20">
+								<div class="search_filter">
+									<ul>
+										<li>
+											<div class="form_inline">
+												<div class="label_t">약관 동의 일자</div>
+												<div class="date_wrap">
+													<i class="icon icon_date"></i>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+													<span class="dash">~</span>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+												</div>
+											</div>
+											<div class="form_inline">
+												<div class="label_t">약관 유형</div>
+												<select class="form_ctl" id="">
+													<option>전체</option>
+												</select>
+											</div>
+											<div class="form_inline">
+												<select class="form_ctl changeInput">
+													<option value="user_id" selected>사용자ID</option>
+													<option value="user_ip">접속IP</option>
+												</select>
+												<input type="text" class="form_ctl f_search user_input"
+													placeholder="사용자ID 검색">
+											</div>
+											<div class="form_inline">
+												<button type="button" class="btn btn_blue"><span>검색</span></button>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="grid_wrap mt40">
+								<div id="grid_terms" class="grid_list"></div>
+							</div>
+							<div class="footer">
+								<div class="page_wrap">
+									<div class="page_num">Rows per page</div>
+
+									<select class="page_sel" id="">
+										<option>20</option>
+										<option selected>30</option>
+										<option>40</option>
+										<option>50</option>
+									</select>
+
+									<!-- 처음 일 떄 first 클래스 추가-->
+									<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+									<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+									<div class="page_count">
+										1 - 7 of 1
+									</div>
+
+									<!-- 마지막 페이지 일 떄 last 클래스 추가-->
+									<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+									<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+									<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+											페이지</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 정보 변경 이력 tab -->
+					<div class="tab_contents">
+						<div class="content_h">
+							<div class="box_section mt20">
+								<div class="search_filter">
+									<ul>
+										<li>
+											<div class="form_inline">
+												<div class="label_t">변경 일자</div>
+												<div class="date_wrap">
+													<i class="icon icon_date"></i>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+													<span class="dash">~</span>
+													<input type="text" name="" class="form_ctl datepicker"
+														placeholder="" />
+												</div>
+											</div>
+											<div class="form_inline form_lg">
+												<div class="label_t">해당 메뉴</div>
+												<select class="form_ctl" id="">
+													<option>전체</option>
+													<option>보조금 지급 승인 내역</option>
+												</select>
+											</div>
+											<div class="form_inline">
+												<select class="form_ctl changeInput">
+													<option value="user_id" selected>사용자ID</option>
+													<option value="user_ip">접속IP</option>
+													<option value="user_info">변경 정보</option>
+												</select>
+												<input type="text" class="form_ctl f_search user_input"
+													placeholder="사용자ID 검색">
+											</div>
+											<div class="form_inline">
+												<button type="button" class="btn btn_blue"><span>검색</span></button>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="grid_wrap mt40">
+								<div id="grid_info" class="grid_list"></div>
+							</div>
+							<div class="footer">
+								<div class="page_wrap">
+									<div class="page_num">Rows per page</div>
+
+									<select class="page_sel" id="">
+										<option>20</option>
+										<option selected>30</option>
+										<option>40</option>
+										<option>50</option>
+									</select>
+
+									<!-- 처음 일 떄 first 클래스 추가-->
+									<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+									<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+									<div class="page_count">
+										1 - 7 of 1
+									</div>
+
+									<!-- 마지막 페이지 일 떄 last 클래스 추가-->
+									<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+									<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+									<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+									<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+											페이지</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script>
+	$(function () {
+
+		//접속 이력 grid
+		var colModel = [
+			{ title: "No", dataIndx: "no", width: 80, nodrag: true, nodrop: true, },
+			{ title: "접속 일시", dataIndx: "date", width: 240, nodrag: true, nodrop: true, },
+			{ title: "접속 성공 여부", dataIndx: "suc", width: 240, nodrag: true, nodrop: true, },
+			{ title: "사용자ID", dataIndx: "id", width: 240, nodrag: true, nodrop: true, },
+			{ title: "관리자 타입", dataIndx: "type", width: 240, nodrag: true, nodrop: true, },
+			{ title: "접속IP", dataIndx: "ip", width: 240, nodrag: true, nodrop: true, },
+
+		];
+
+		var dataModel = {
+			"data": [
+				{ "no": 20, "date": "2022-11-25 11:06:38", "suc": "성공", "id": "wonju", "type": "시군구 관리자", "ip": "220.86.111.130" },
+			]
+		};
+
+		var options = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			// height: 'flex',
+			minHeight: 948,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		var grid_desc = pq.grid("#grid_record", options);
+
+		//다운로드 이력 grid
+		var colModel_down = [
+			{ title: "No", dataIndx: "no", width: 80, nodrag: true, nodrop: true, },
+			{ title: "다운로드 일시", dataIndx: "down_date", width: 240, nodrag: true, nodrop: true, },
+			{ title: "다운로드 항목", dataIndx: "down_item", width: 240, nodrag: true, nodrop: true, },
+			{ title: "다운로드 사유", dataIndx: "down_reason", width: 240, nodrag: true, nodrop: true, },
+			{ title: "사용자ID", dataIndx: "id", width: 240, nodrag: true, nodrop: true, },
+			{ title: "관리자 타입", dataIndx: "admin_type", width: 240, nodrag: true, nodrop: true, },
+			{ title: "접속IP", dataIndx: "ip", width: 240, nodrag: true, nodrop: true, },
+		];
+
+		var dataModel_down = {
+			"data": [
+				{ "no": 20, "down_date": "2022-11-25 11:06:38", "down_item": "보조금 지급 승인 내역", "down_reason": "제출용", "id": "dkd1234", "admin_type": "시도 관리자", "ip": "" },
+			]
+		};
+
+		var options_down = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			// height: 'flex',
+			minHeight: 948,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel_down,
+			colModel: colModel_down,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		//약관/서약서 동의 이력 grid
+		var colModel_terms = [
+			{ title: "No", dataIndx: "no", width: 80, nodrag: true, nodrop: true, },
+			{ title: "약관 동의 일시", dataIndx: "terms_date", width: 240, nodrag: true, nodrop: true, },
+			{ title: "약관 유형", dataIndx: "terms_type", width: 240, nodrag: true, nodrop: true, },
+			{ title: "관리자 타입", dataIndx: "admin_type", width: 240, nodrag: true, nodrop: true, },
+			{ title: "사용자ID", dataIndx: "id", width: 240, nodrag: true, nodrop: true, },
+			{ title: "약관 동의 대상", dataIndx: "terms_agree", width: 240, nodrag: true, nodrop: true, },
+			{ title: "접속IP", dataIndx: "ip", width: 240, nodrag: true, nodrop: true, },
+		];
+
+		var dataModel_terms = {
+			"data": [
+				{ "no": 20, "terms_date": "2022-11-25 11:06:38", "terms_type": "개인정보 보호 서약[필수]", "id": "dkd1234", "admin_type": "소속기관 관리자", "terms_agree": "관리자", "ip": "220.86.111.133", },
+			]
+		};
+
+		var options_terms = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			// height: 'flex',
+			minHeight: 948,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel_terms,
+			colModel: colModel_terms,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		//정보 변경 이력 grid
+		var colModel_info = [
+			{ title: "No", dataIndx: "no", width: 80, nodrag: true, nodrop: true, },
+			{ title: "변경 일시", dataIndx: "change_date", width: 240, nodrag: true, nodrop: true, },
+			{ title: "해당 메뉴", dataIndx: "menu", width: 240, nodrag: true, nodrop: true, },
+			{ title: "변경 정보", dataIndx: "change_info", width: 240, nodrag: true, nodrop: true, },
+			{ title: "정보조회 ID", dataIndx: "view_id", width: 240, nodrag: true, nodrop: true, },
+			{ title: "변경 전 데이터", dataIndx: "before", width: 240, nodrag: true, nodrop: true, },
+			{ title: "변경 후 데이터", dataIndx: "after", width: 240, nodrag: true, nodrop: true, },
+			{ title: "사용자ID", dataIndx: "id", width: 240, nodrag: true, nodrop: true, },
+			{ title: "관리자 타입", dataIndx: "admin_type", width: 240, nodrag: true, nodrop: true, },
+			{ title: "접속IP", dataIndx: "ip", width: 220, nodrag: true, nodrop: true, },
+		];
+
+		var dataModel_info = {
+			"data": [
+				{ "no": 20, "change_date": "2022-11-25 11:06:38", "menu": "보조금 지급 승인 내역", "change_info": "바우처 자동 충전 주기", "view_id": "AseUoVEaTYihJsZ6bbtxvf", "before": "5,000", "after": "5,500", "id": "dkd1234", "admin_type": "소속기관 관리자", "ip": "220.86.111.133", },
+			]
+		};
+
+		var options_info = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			// height: 'flex',
+			minHeight: 948,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel_info,
+			colModel: colModel_info,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		//========================================
+		// input placeholder 변경
+		//======================================== 
+
+		$(".changeInput").selectmenu({
+			change: function () {
+				console.log(this);
+				const option = $(this).siblings('.ui-selectmenu-button').text();
+				$(this).siblings('input').attr('placeholder', option + ' 검색');
+			},
+		});
+		$(".changeInput").selectmenu("refresh");
+
+		//======================================== 
+		// PQ Grid refresh
+		//======================================== 
+
+		// $(".tabs li a").on("click", function () {
+		// 	$(".grid_list").pqGrid("refreshDataAndView");
+		// });
+		$(document).on('click', '.tabs li a', function () {
+			var tg = $(this).closest('li');
+			var idx = tg.index();
+			console.log(idx);
+
+			if (grid_desc !== undefined) {
+				grid_desc.destroy();
+			}
+
+			if (idx === 0) {
+				grid_desc = pq.grid("#grid_record", options);
+			} else if (idx === 1) {
+				grid_desc = pq.grid("#grid_down", options_down);
+			} else if (idx === 2) {
+				grid_desc = pq.grid("#grid_terms", options_terms);
+			} else if (idx === 3) {
+				grid_desc = pq.grid("#grid_info", options_info);
+			}
+		})
+		//======================================== 
+
+
+	})
+</script>
+
+</html>

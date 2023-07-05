@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+<div id="wrap">
+	@@include('../_include/header.html')	
+	<div id="container">
+		@@include('../_include/lnb.html')
+		
+		<div class="inner">
+			<div class="title_wrap">
+				<h2 class="title_lg">주행 상세 정보 </h2>
+			</div>
+			
+			<div class="content">
+				<div class="content_h">
+					<div class="box_section">
+						<h3 class="title_md">
+							<div class="title">중간 타이틀</div>
+							<div class="right_area">
+								<button type="button" class="btn btn_gray btn_outline"><span>검색</span></button>
+							</div>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</div>
+
+<!-- Table Modal  -->
+<div id="pop_result" style="display: none;">
+		
+	<div class="pop_contents">
+			
+		<div class="detail_top mt10">
+			<div class="left_area">
+				<ul class="step_wrap">
+					<li>기본정보</li>
+					<li class="on">서비스 지역</li>
+					<li>요금제</li>
+				</ul>
+			</div>
+			<div class="right_area">
+				<button type="button" class="btn btn_gray btn_add"><i class="icon icon_plus"></i><span>승하차지 추가</span></button>
+			</div>
+		</div>
+		
+		<div class="box_section_wrap">
+			<div class="both_col">
+				<div class="left box_section">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential">승하차지 설정</span>
+						</div>
+					</div>
+					<div class="map_area">
+						<div id="map_div"></div>
+						<!-- 승하차지명 입력 -->
+						<div class="registSpotName pop_spot">
+							<div class="pop_contents">
+								<input type="text" class="form_ctl" placeholder="승하차지명 입력">
+								<button type="button" class="btn_close ir">닫기</button>
+							</div>
+							<div class="pop_foot">
+								<button type="button" class="btn btn_sm btn_blue btn_outline btn_cancel">취소</button>
+								<button type="button" class="btn btn_sm btn_blue btn_save">저장</button>
+							</div>
+						</div>
+						<!-- 승하차지명 상세 -->
+						<div class="viewSpotDetail pop_spot">
+							<div class="pop_header">
+								<h4 class="title">승하차지명</h4>
+								<button type="button" class="btn_close ir">닫기</button>
+							</div>
+							<div class="row">
+								<div class="pop_contents col">
+									<ul class="lst_desc">
+										<li class="address">전북 무주군 무주읍 주계로 97</li>
+										<li class="position">37.58561234, 126.97502323</li>
+									</ul>
+								</div>
+								<div class="pop_foot col">
+									<button type="button" class="btn btn_sm btn_blue btn_outline btn_edit">수정</button>
+									<button type="button" class="btn btn_sm btn_blue btn_delete">삭제</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="right box_section">
+					<div class="title_sm">
+						<div class="title">
+							<span class="essential">행정구역 설정</span>
+						</div>
+					</div>
+					
+					<div id="grid_list_name" class="grid_list"></div>
+				</div>
+			</div>
+			
+			<div class="box_section mt40">
+				<div class="title_sm">
+					<div class="title">
+						<span class="essential">승하차지 설정</span>
+					</div>
+				</div>
+				
+				<div id="grid_list_inout" class="grid_list"></div>
+				
+			</div>
+		
+		</div>
+		
+
+	</div>
+</div>
+
+<!-- 필수값 입력되지 않을 시 토스트 팝업 -->
+<div class="toast_popup toastPop_err">
+	<div class="toast">
+		<p class="error_type">
+			<i class="icon icon_error"></i>
+			<span>필수 입력 항목을 모두 입력해 주세요</span>
+		</p>
+	</div>
+</div>
+
+<div class="toast_popup toastPop_conf">
+	<div class="toast">
+		<p class="confirm_type">
+			<i class="icon icon_confirm"></i>
+			<span>정상적으로 승인되었습니다</span>
+		</p>
+	</div>
+</div>
+
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f"></script>
+<!-- <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script> -->
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script src="../assets/js/vendor/turf.min.js"></script>
+<script>
+$(function(){
+	$('#pop_result').dialog({
+		dialogClass: 'popup',
+		width: 1120,
+		height: 737,
+		title: '센터 수정 <span class="add_text"><span class="color_red">*</span>는 필수 입력 항목입니다</span>',
+		titleIsHtml: true,
+		buttons: [
+			{
+				text: "뒤로",  
+				class: "btn btn_gray btn_outline",
+				click: function () {
+					$(this).dialog("close");
+				}
+			},
+			{
+				text: "다음",  
+				class: "btn btn_blue",
+				onclick: 'toastPop_err();',
+				click: function () {
+					//$(this).dialog("close");
+				}
+			}
+		]
+	});
+});
+</script>
+
+<script>
+$(function(){
+	var colModel = [
+		{ dataIndx: "state", width:80, align: "center", resizable: false,
+			title: "",
+			menuIcon: false,
+			type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: true,
+			dataType: 'bool', editable: true,
+			cb: {
+				all: false, //checkbox selection in the header affect current page only.
+				header: true, //show checkbox in header. 
+				select: true 
+			}
+		},
+		{ title: "No", dataIndx: "no", width: 80, nodrag: true, },
+		{ title: "행정구역명", dataIndx: "dong", width: 120, nodrag: true, },
+	];
+
+	var dataModel = {
+		"data": [	// city_do(시도), gu_gun(시군구), legalDong(법정동), adminDong(행정동)
+			{ "state":true, "no": 1, "sido":"대전광역시", "gungu":"중구", "dong": "은행선화동", "type":"adminDong"},
+			{ "state":false, "no": 2, "sido":"대전광역시", "gungu":"중구", "dong": "용두동", "type":"adminDong"},
+			{ "state":false, "no": 3, "sido":"대전광역시", "gungu":"중구", "dong": "목동", "type":"adminDong"},
+			{ "state":true, "no": 4, "sido":"대전광역시", "gungu":"중구", "dong": "중촌동", "type":"adminDong"},
+		],
+	};
+
+	var dataModel2 = {
+		"data": [
+			{"no":"1", "name":"은행선화동1", "address":"대전광역시 중구 보문로336번길 21 (선화동)", "lat":36.3321057, "lon":127.422082},
+			{"no":"2", "name":"은행선화동2", "address":"대전광역시 중구 중앙로79번길 77 (선화동)", "lat":36.3286484, "lon":127.4183913},
+			{"no":"3", "name": "중촌동1", "address": "대전광역시 중구  대전천서로 709 (중촌동, 중촌역푸르지오센터파크)", "lat": 36.3444813, "lon": 127.4080244},
+			{"no":"4", "name": "목동1", "address": "대전광역시 중구  목동로 37 (목동, 목양마을아파트)", "lat": 36.33335, "lon": 127.404677},
+			{"no":"5", "name": "용두동1", "address": "대전광역시 중구  동서대로1321번길 22 (용두동)", "lat": 36.3300247, "lon": 127.4057841},
+		]
+	};
+
+	var options = {
+		scrollModel: { autoFit: true },
+		width: '265',
+		height: '300',
+		minHeight: 300,
+		rowHt: 45,
+		rowHtHead: 45,
+		collapsible: { on: false, toggle: false },
+
+		columnBorders: true,
+		rowBorders: true,
+		stripeRows: true,
+
+		postRenderInterval: -1, //synchronous post rendering.
+		dataModel: dataModel,
+		colModel: colModel,
+		// selectionModel: { type: 'row', mode: 'block' },
+
+		columnTemplate: {
+			align: 'center', valign: 'center'
+		},
+		editable: false,
+		freezeCols: 0,
+		freezeRows: 0,
+
+		numberCell: { show: false },
+		reactive: true,
+		roundCorners: false,
+		resizable: true,
+
+		showHeader: true,
+		showTitle: false,
+		showToolbar: false,
+		showTop: false,
+		showBottom: false,
+		virtualX: true, virtualY: true,
+
+		title: "",
+		strNoRows: '조회된 데이터가 없습니다.',
+	};
+
+	var grid = pq.grid("#grid_list_name", options);
+
+	// 지도 영역
+	var map, mapOptions;
+	var markerList = [];
+	var arr_marker = [];
+	var appKey = "WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f";    // tmap
+	// var appKey = "l7xxb3b0b2ba959c4572891ba1bc2343cf6b";    // tmap
+	var drawInfoArr = [];
+	var mapData = dataModel.data;
+	var status_addlist = false;	// 승하차 지점 추가 가능 상태
+	var polygon;
+	var newRoadAddr; // 도로명 주소
+	var status_marker;	// default, drag, add
+
+	map = new naver.maps.Map('map_div', {
+		center: new naver.maps.LatLng(37.5666805, 126.9784147),
+		zoom: 12,
+		minZoom: 9,
+		maxZoom: 14
+	});
+
+	var proj = map.getProjection();
+	
+	function isIncludeAres(paths, inPosition) {
+		var convertPaths = [];
+		var convertInPosition = proj.fromCoordToPoint(inPosition).toArray();
+		paths.forEach(point => {
+			convertPaths.push(proj.fromCoordToPoint(point).toArray());
+		});
+		var searchWithin = turf.polygon([convertPaths]);
+		return turf.pointsWithinPolygon(turf.points([convertInPosition]), searchWithin).features.length > 0;
+	}
+
+	function addMarker(status, dataItem, tag) {
+		//출도착경유구분
+		//이미지 파일 변경.    
+		var markerLayer;
+		var cls = '';
+		var txt = '';
+		var rotate = 0;
+		var driver = '';
+		var car_num = '';
+		var zindex = 0;
+		
+		switch (status) {
+			case "pinBlank":
+				txt = tag + 1;
+				cls = "pin_blank";
+				zindex = 1;
+				break;
+			case "pinStart":
+				txt = '';
+				cls = "pin_start";
+				zindex = 3;
+				break;
+			case "pinPass":
+				txt = '경유지' + tag;
+				cls = "pin_pass";
+				zindex = 3;
+				break;
+			case "pinEnd":
+				txt = '';
+				cls = "pin_end";
+				zindex = 3;
+				break
+
+			case "car":
+				txt = '';
+				cls = "car";
+				idx = tag.split('_')[1];
+				rotate = carGpsData[idx].rotation;
+				driver = carGpsData[idx].driver;
+				car_num = carGpsData[idx].number;
+				zindex = 4;
+				break;
+			case "carEmpty":
+				txt = '';
+				cls = "car car_empty";
+				idx = tag.split('_')[1];
+				rotate = carGpsData[idx].rotation;
+				driver = carGpsData[idx].driver;
+				car_num = carGpsData[idx].number;
+				zindex = 2;
+				break;
+		};
+		
+		var marker = new naver.maps.Marker({
+			position: new naver.maps.LatLng(dataItem.lat, dataItem.lon),
+			map: map,
+			icon: {
+				content: [
+					'<div class="pin ' + cls + '" style="transform:rotate(' + rotate + 'deg)">',
+						'<div class="pin_name">',
+							txt,
+						'</div>',
+					'</div>',
+					'<div class="label_car">',
+						'<span class="driver">' + driver + '</span>',
+						'<span class="car_num">' + car_num + '</span>',
+					'</div>',
+				].join(''),
+				size: new naver.maps.Size(44, 36),
+				anchor: new naver.maps.Point(22, 36),
+			},
+			draggable: true,
+			zIndex: zindex
+		});
+
+		
+
+		marker.addListener("click", function(e) {
+			e.domEvent.preventDefault()
+			var targetDiv = e.overlay._wrapper;
+			var targetIndex = $(targetDiv).index();
+			$('.pin_blank').removeClass('on');
+			$(e.domEvent.target).addClass('on');
+			idx_area = e.overlay.area;
+			idx_marker = tag;
+			
+			var position = e.overlay.position;
+			posX = position.y;
+			posY = position.x;
+
+			arr_polygon.forEach((item, i) => {
+				var mapBounds = item.getBounds();
+				if (mapBounds.hasLatLng(position)) {
+					idx_area = i;
+				}
+			});
+
+			console.log('targetIndex: ', targetIndex)
+			grid_spot.setSelection( null );
+			grid_spot.setSelection({ rowIndx: e.overlay.tag });
+
+			var name = dataModel2.data[e.overlay.tag].name;
+			var address = dataModel2.data[e.overlay.tag].address;
+			var postion = dataModel2.data[e.overlay.tag].lat + ',' + dataModel2.data[e.overlay.tag].lon;
+
+			$('.viewSpotDetail').fadeIn(200);
+			$('.viewSpotDetail').find('.title').html(name);
+			$('.viewSpotDetail').find('.address').html(address);
+			$('.viewSpotDetail').find('.position').html(postion);
+
+			status_marker = 'drag';
+		});
+
+		var pos_marker = marker.position;
+		arr_area.forEach((item, i) => {
+			var result = isIncludeAres(item, pos_marker);
+			if(result) {
+				idx_area = i;
+			}
+		});
+
+		marker.area = idx_area;
+		marker.name = dataItem.name;
+		marker.tag = tag;
+		marker.car_num = car_num;
+
+		marker.addListener("dragend", function (evt) {
+			status_marker = 'drag';
+			var position = evt.coord;
+			posX = position.y;
+			posY = position.x;
+			var status_area = false;
+
+			arr_area.forEach((item, i) => {
+				var result = isIncludeAres(item, position);
+				if(result) {
+					status_area = true;
+					idx_area = i;
+					console.log(idx_area);
+
+					idx_marker = evt.overlay.tag;
+					console.log(idx_marker)
+
+					reverseGeo(position.x, position.y);
+
+					dataModel2.data[idx_marker].address = newRoadAddr;
+					dataModel2.data[idx_marker].lat = position.y;
+					dataModel2.data[idx_marker].lon = position.x;
+
+					var name = dataModel2.data[idx_marker].name;
+					var address = dataModel2.data[idx_marker].address;
+					var postion = dataModel2.data[idx_marker].lat + ',' + dataModel2.data[idx_marker].lon;
+
+					$('.viewSpotDetail').fadeIn(200);
+					$('.viewSpotDetail').find('.title').html(name);
+					$('.viewSpotDetail').find('.address').html(address);
+					$('.viewSpotDetail').find('.position').html(postion);
+
+					
+				}
+			});
+
+			if(!status_area) {
+				toastPop_err('지정된 행정구역이 아닙니다.');
+			}
+			
+		});
+		marker.addListener("drag", function (evt) { 
+			markerObject = markerList[tag];
+		});
+		markerList.push(marker);
+
+		return marker;
+	}
+
+	function createMarker() {
+		// markerList = [];
+		if(markerList !== undefined) {
+			for(var i = 0; i < markerList.length; i ++) {
+				// console.log(markerList[i])
+				markerList[i].setMap(null);
+			}
+			markerList = [];
+		}
+
+		// 승하차 지점 마커
+		for(var i = 0; i < dataModel2.data.length; i ++){
+			addMarker('pinBlank', dataModel2.data[i], i);
+		}
+
+		// console.log(markerList)
+	}
+
+	// 공간 API 사용 city_do(시도), gu_gun(시군구), legalDong(법정동), adminDong(행정동)
+	function geofencingSpace(dataItem) {
+		var searchKeyword = dataItem.dong;
+		var searchOption = dataItem.type;
+		var headers = {}; 
+		headers["appKey"]=appKey;
+
+		$.ajax({
+			method : "GET",
+			headers : headers,
+			url : "https://apis.openapi.sk.com/tmap/geofencing/regions?version=1&format=json&callback=result",
+			async : false,
+			crossDomain : true,
+			data : {
+				"count" : "20",
+				"categories" : searchOption,//categories,
+				"searchType" : "KEYWORD",
+				"searchKeyword" : searchKeyword,
+			},
+			success : function(response) {
+				if(response){
+					// 3. regionId 얻기
+					var resultRegionsInfo = response.searchRegionsInfo;
+
+					for ( var i in resultRegionsInfo) {
+						var description = resultRegionsInfo[i].regionInfo.description;
+						var regionId = resultRegionsInfo[i].regionInfo.regionId;
+						var guName = resultRegionsInfo[i].regionInfo.properties.guName;
+						var doName = resultRegionsInfo[i].regionInfo.properties.doName;
+						var regionName = resultRegionsInfo[i].regionInfo.regionName;
+						if(guName === dataItem.gungu && doName === dataItem.sido) {
+							geofencingRegions(regionId);
+							console.log(doName, guName, regionName, regionId);
+						}
+					}
+				}
+				else{
+					popup.alertMsg("잘못된 검색입니다.");
+				}
+			},
+			error : function(request, status, error) {
+				console.log("code:"
+						+ request.status + "\n"
+						+ "message:"
+						+ request.responseText
+						+ "\n" + "error:" + error);
+			}
+		});
+	};
+
+	var arr_paths = [
+		[
+			new naver.maps.LatLng(41.921509, 119.3856758),
+			new naver.maps.LatLng(41.8049801, 136.849646),
+			new naver.maps.LatLng(28.3786463, 136.8833774),
+			new naver.maps.LatLng(32.2266773, 119.3787235),
+			new naver.maps.LatLng(41.921509, 119.3856758),
+		]
+	];
+	var arr_ptBounds = [];
+	var arr_idx = [];
+
+	// 영역API 사용요청
+	function geofencingRegions(regionId) {
+		$.ajax({
+			method : "GET",
+			url : "https://apis.openapi.sk.com/tmap/geofencing/regions/"
+					+ regionId
+					+ "?version=1&format=json&callback=result",
+			async : false,
+			data : {
+				"resCoordType" : "EPSG3857",
+				"appKey" : appKey,
+			},
+			success : function(response) {
+
+				var resultGeometry = response.features[0].geometry;
+				var resultArea = resultGeometry.coordinates[0];
+
+				var resultProperties = response.features[0].properties.regionName;
+
+				drawInfoArr = [];
+				var polyline_;
+
+				var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
+
+				if(resultGeometry.type == "MultiPolygon"){
+					for(var i in resultGeometry.coordinates){
+						drawInfoArr = []; 
+						resultArea = resultGeometry.coordinates[i];
+						var resultArea_array = resultArea[0];
+						for(var j in resultArea_array){
+							
+							// 경로들의 결과값(구간)들을 포인트 객체로 변환 
+							var latlng = new Tmapv2.Point(resultArea_array[j][0], resultArea_array[j][1]);
+							// 포인트 객체를 받아 좌표값으로 변환
+							var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+							// 포인트객체의 정보로 좌표값 변환 객체로 저장
+							var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+							
+							drawInfoArr.push(convertChange);
+							positionBounds.extend(convertChange);
+						}
+						var polygon = new Tmapv2.Polygon({
+							paths: drawInfoArr,
+							strokeColor : "red",
+							fillColor:"pink", // 다각형 내부 색상
+							map: map // 지도 객체
+						});
+						resultPolygon.push(polygon);
+					}
+				}
+				
+				else{
+					for(var i in resultArea){
+						// 경로들의 결과값(구간)들을 포인트 객체로 변환 
+						var latlng = new Tmapv2.Point(resultArea[i][0], resultArea[i][1]);
+						// 포인트 객체를 받아 좌표값으로 변환
+						var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+						
+						var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+						
+						drawInfoArr.push(convertChange);
+					}
+
+					// 결과 반경만큼 지도 레벨 조정
+					PTbounds = new naver.maps.LatLngBounds();
+					for (var i = 0; i < drawInfoArr.length; i++) {
+						PTbounds.extend(drawInfoArr[i]);
+					}
+
+					arr_ptBounds[idx_area] = PTbounds;
+					arr_idx.push(idx_area);
+				}
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n"
+						+ "message:" + request.responseText + "\n"
+						+ "error:" + error);
+			}
+		});
+	};
+
+	function createPolygon() {
+		if(polygon !== undefined) {
+			polygon.setMap(null);
+		}
+		polygon = new naver.maps.Polygon({
+			map: map,
+			paths: arr_paths,
+			fillColor: '#000',
+			fillOpacity: 0.3,
+			strokeColor: '#0072FF',
+			strokeOpacity: 0,
+			strokeWeight: 0,
+			clickable: false
+		});
+	}
+
+	// 좌표 정보 구하기
+	function reverseGeo(lon, lat) {
+		var headers = {}; 
+		headers["appKey"]=appKey;
+		
+		$.ajax({
+			method : "GET",
+			headers : headers,
+			url : "https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result",
+			async : false,
+			data : {
+				"coordType" : "WGS84GEO",
+				"addressType" : "A10",
+				"lon" : lon,
+				"lat" : lat
+			},
+			success : function(response) {
+				// json에서 주소 파싱
+				var arrResult = response.addressInfo;
+
+				//법정동 마지막 문자 
+				var lastLegal = arrResult.legalDong
+						.charAt(arrResult.legalDong.length - 1);
+
+				// 새주소
+				newRoadAddr = arrResult.city_do + ' ' + arrResult.gu_gun + ' ';
+
+				if (arrResult.eup_myun == ''
+						&& (lastLegal == "읍" || lastLegal == "면")) {//읍면
+					newRoadAddr += arrResult.legalDong;
+				} else {
+					newRoadAddr += arrResult.eup_myun;
+				}
+				newRoadAddr += ' ' + arrResult.roadName + ' ' + arrResult.buildingIndex;
+
+				// 새주소 법정동& 건물명 체크
+				if (arrResult.legalDong != '' && (lastLegal != "읍" && lastLegal != "면")) {//법정동과 읍면이 같은 경우
+					if (arrResult.buildingName != '') {//빌딩명 존재하는 경우
+						newRoadAddr += (' (' + arrResult.legalDong
+								+ ', ' + arrResult.buildingName + ') ');
+					} else {
+						newRoadAddr += (' (' + arrResult.legalDong + ')');
+					}
+				} else if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
+					newRoadAddr += (' (' + arrResult.buildingName + ') ');
+				}
+
+				// 구주소
+				jibunAddr = arrResult.city_do + ' '
+						+ arrResult.gu_gun + ' '
+						+ arrResult.legalDong + ' ' + arrResult.ri
+						+ ' ' + arrResult.bunji;
+				//구주소 빌딩명 존재
+				if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
+					jibunAddr += (' ' + arrResult.buildingName);
+				}
+
+				// result = "새주소 : " + newRoadAddr + "</br>";
+				// result += "지번주소 : " + jibunAddr + "</br>";
+				// result += "위경도좌표 : " + lat + ", " + lon;
+				// console.log(newRoadAddr);
+				return newRoadAddr;
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n"
+						+ "message:" + request.responseText + "\n"
+						+ "error:" + error);
+			}
+		});
+
+	}
+
+	function setPositionCenter(areaIndex) {
+		var pos = arr_ptBounds[areaIndex];
+		// console.log('setPositionCenter: ', areaIndex)
+		map.fitBounds(pos);
+	}
+	
+	var arr_polygon = [];
+	var polygon_area;
+	var lst_selected = [];
+
+	var arr_area = [];
+
+	function initMap() {
+		lst_selected = mapData.filter((item) => item.state === true);
+		var checkedRow = grid.Checkbox('state').getCheckedNodes().map(function(rd){
+			return rd;
+		});
+
+		checkedRow.forEach((item) => {
+			idx_area = item.pq_ri;
+			geofencingSpace(item);
+			arr_paths[idx_area + 1] = drawInfoArr;
+			arr_area[idx_area] = drawInfoArr;
+
+			dataModel2.data.forEach((item, idx) => {
+				item.no = idx + 1;
+			});
+
+			polygon_area = new naver.maps.Polygon({
+				map: map,
+				paths: drawInfoArr,
+				fillColor: '#fff',
+				fillOpacity: 0,
+				strokeColor: '#fff',
+				strokeOpacity: 0,
+				strokeWeight: 0,
+				clickable: false
+			});
+
+			arr_polygon[idx_area] = polygon_area;
+		});
+
+		createMarker();
+
+		if(lst_selected.length !== 0) {
+			createPolygon();
+
+			setTimeout(() => {
+				setPositionCenter(idx_area);
+			}, 200);
+		}
+	}
+
+	grid.on( "check", function( event, ui ) {
+		lst_selected = mapData.filter((item) => item.state === true);
+		if(ui.check) {
+			idx_area = ui.rowData.pq_ri;
+			geofencingSpace(ui.rowData);
+			arr_paths[idx_area + 1] = drawInfoArr;
+			arr_area[idx_area] = drawInfoArr;
+			createMarker();
+
+			dataModel2.data.forEach((item, idx) => {
+				item.no = idx + 1;
+			});
+
+			polygon_area = new naver.maps.Polygon({
+				map: map,
+				paths: drawInfoArr,
+				fillColor: '#fff',
+				fillOpacity: 0,
+				strokeColor: '#fff',
+				strokeOpacity: 0,
+				strokeWeight: 0,
+				clickable: false
+			});
+
+			arr_polygon[idx_area] = polygon_area;
+
+			if(lst_selected.length !== 0) {
+				createPolygon();
+			}
+
+			setPositionCenter(idx_area);
+		} else {
+			ui.rows.forEach(item => {
+				var { rowData } = item;
+				arr_paths[rowData.pq_ri + 1] = null;
+				
+				dataModel2.data.forEach((item, idx) => {
+					item.no = idx + 1;
+				});
+
+				arr_idx = arr_idx.filter(item => {
+					return item !== rowData.pq_ri;
+				});
+
+				arr_ptBounds[rowData.pq_ri] = [];
+				if(arr_idx.length > 0) {
+					map.fitBounds(arr_ptBounds[arr_idx[arr_idx.length - 1]]);
+				}
+
+				var checkedRow = grid.Checkbox('state').getCheckedNodes().map(function(rd){
+					return rd;
+				});
+				if(checkedRow.length === 0 && polygon) {
+					polygon.setMap(null);
+				} else {
+					createPolygon();
+				}
+			});
+		}
+	});
+
+	// 승하차지 추가
+	$(document).on('click', '.btn_add', function(e) {
+		if(lst_selected.length > 0) {
+			status_addlist = true;
+			$(this).attr('disabled', true);
+			map.setCursor('crosshair');
+		} else {
+			toastPop_err("최소 하나 이상의 행정구역을 설정하세요.");
+		}
+	});
+
+	var newMarker;
+	var idx_area = 0;
+	var idx_marker = 0;
+	var posX = 0;
+	var posY = 0;
+	
+	var listener = naver.maps.Event.addListener(map, 'click', function(e) {
+		if(lst_selected.length > 0) {
+			var position = e.coord;
+			$('.pin_blank').removeClass('on');
+
+			var pos_marker = position;
+
+			arr_area.forEach((item, i) => {
+				var result = isIncludeAres(item, pos_marker);
+				if(result) {
+					idx_area = i;
+					reverseGeo(position.x, position.y);
+					var address = newRoadAddr;
+					var tag = markerList.length;
+
+					var dataItem = {
+						"no": tag,
+						"area": mapData[idx_area].dong,
+						"name": '',
+						"address": address, 
+						"lat": e.coord.y,
+						"lon": e.coord.x,
+						"case":"blank"
+					}
+
+					if(status_addlist) {
+						newMarker = addMarker('pinBlank', dataItem, tag);
+						idx_marker = tag;
+						$('.registSpotName').fadeIn(200, function(){
+							$(this).find('.form_ctl').val('').focus();
+						});
+						posX = e.coord.y;
+						posY = e.coord.x;
+						status_marker = 'add';
+					} else {
+						return false;
+					}
+				}
+			});
+		}
+	});
+
+	$(document).on('click', '.btn_save', function(e) {
+		var title = $('.registSpotName').find('.form_ctl').val();
+		var address = '';
+
+		if(title !== '') {
+			reverseGeo(posY, posX);
+			address = newRoadAddr;
+
+			$('.viewSpotDetail').fadeIn(200);
+			$('.viewSpotDetail').find('.title').html(title);
+			$('.viewSpotDetail').find('.address').html(address);
+			var postion = posX + ',' + posY;
+			$('.viewSpotDetail').find('.position').html(postion);
+
+			var item = {
+				"no": idx_marker + 1,
+				"name": title,
+				"address": address, 
+				"lat": posX,
+				"lon": posY,
+			}
+			// console.log('status_marker: ', status_marker);
+			switch(status_marker) {
+				case 'drag':
+					console.log('drag')
+					dataModel2.data[idx_marker].name = title;
+					dataModel2.data[idx_marker].address = newRoadAddr;
+					dataModel2.data[idx_marker].lat = posX;
+					dataModel2.data[idx_marker].lon = posY;
+					markerList[idx_marker].name = title;
+					status_marker = 'default';
+					break;
+				case 'add':
+					console.log('add')
+					dataModel2.data.push(item);
+					newMarker.name = title;
+					console.log(newMarker);
+
+					status_marker = 'default';
+					break;
+			}
+
+			status_addlist = false;
+			$('.btn_add').attr('disabled', false);
+			map.setCursor('grab');
+			// console.log('idx_marker: ', idx_marker);
+			grid_spot.refreshDataAndView();
+			grid_spot.setSelection( null );
+			grid_spot.setSelection({ rowIndx: idx_marker });
+
+			dataModel2.data.forEach((item, idx) => {
+				item.no = idx + 1;
+			});
+
+			$(this).closest('.pop_spot').fadeOut(200);
+		} else {
+			toastPop_err('승하차지명을 입력하세요.');
+			return false;
+		}
+	});
+
+	$(document).on('click', '.registSpotName .btn_cancel, .registSpotName .btn_close', function() {
+		$(this).closest('.pop_spot').fadeOut();
+
+		if(status_marker === 'add') {
+			newMarker.setMap(null);
+			markerList.pop();
+		}
+
+		status_addlist = false;
+		$('.btn_add').attr('disabled', false);
+		map.setCursor('grab');
+	});
+
+	$(document).on('click', '.viewSpotDetail .btn_edit', function() {
+		status_marker = 'drag';
+		var name = dataModel2.data[idx_marker].name;
+		// console.log(name)
+		$('.viewSpotDetail').fadeOut(200);
+		$('.registSpotName').fadeIn(200, function(){
+			$(this).find('.form_ctl').focus();
+		});
+		$('.registSpotName').find('.form_ctl').val(name);
+	});
+
+	$(document).on('click', '.viewSpotDetail .btn_delete', function() {
+		$('.viewSpotDetail').fadeOut(200);
+
+		if(status_marker === 'add') {
+			console.log('add');
+			newMarker.setMap(null);
+			markerList.pop();
+			// dataModel.data[idx_area].spot.pop();
+			
+			status_addlist = false;
+			$('.btn_add').attr('disabled', false);
+			map.setCursor('grab');
+		} else {	// drag
+			console.log('drag');
+			// console.log(arr_marker[idx_area]);
+
+			// dataModel2.data = dataModel2.data.filter((item) => {
+			// 	// console.log(item.areaIndex, idx_area, item.name, arr_marker[idx_area][idx_marker].name, idx_marker)
+			// 	return item.name !== markerList[idx_marker].name;
+			// });
+			dataModel2.data.splice(idx_marker, 1);
+			console.log(dataModel2.data);
+			
+			createMarker();
+
+			dataModel2.data.forEach((item, idx) => {
+				item.no = idx + 1;
+			});
+		}
+	});
+
+	$(document).on('click', '.viewSpotDetail .btn_close', function() {
+		$('.viewSpotDetail').fadeOut(200);
+	});
+
+	var colModel2 = [
+		{ title: "No", dataIndx: "no", width: 80, nodrag: true, },
+		{ title: "영역", dataIndx: "area", hidden: true },
+		{ title: "승하차지명", dataIndx: "name", width: 200, nodrag: true, },
+		{ title: "주소", dataIndx: "address", width: 484, nodrag: true, },
+		{ title: "위도", dataIndx: "lat", width: 100, nodrag: true, },
+		{ title: "경도", dataIndx: "lon", width: 100, nodrag: true, },
+		{ title: "ID", dataIndx: "areaIndex", hidden: true },
+	]; 
+
+	var options2 = {
+		scrollModel: { autoFit: true },
+		width: '960',
+		minWidth: 960,
+		height: '270',
+		minHeight: 270,
+		rowHt: 45,
+		rowHtHead: 45,
+		collapsible: { on: false, toggle: false },
+
+		columnBorders: true,
+		rowBorders: true,
+		stripeRows: true,
+
+		postRenderInterval: -1, //synchronous post rendering.
+		dataModel: dataModel2,
+		colModel: colModel2,
+		selectionModel: { type: 'row', mode: 'block' },
+
+		columnTemplate: {
+			align: 'center', valign: 'center'
+		},
+		editable: false,
+		freezeCols: 0,
+		freezeRows: 0,
+
+		numberCell: { show: false },
+		reactive: true,
+		roundCorners: false,
+		resizable: true,
+
+		showHeader: true,
+		showTitle: false,
+		showToolbar: false,
+		showTop: false,
+		showBottom: false,
+		virtualX: true, virtualY: true,
+
+		title: "",
+		strNoRows: '조회된 데이터가 없습니다.',
+
+		rowClick: function( event, ui ) {
+			var { rowIndx, rowData } = ui;
+			var targetMarker;
+			// idx_area = rowData.areaIndex;
+
+			console.log(arr_marker)
+
+			markerList.forEach((item, idx) => {
+				// console.log(item)
+				if(item.tag === rowData.pq_ri) {
+					targetMarker = item;
+				}
+			});
+
+			$('.pin_blank').removeClass('on');
+			$(targetMarker.eventTarget).find('.pin_blank').addClass('on');
+			
+			setPositionCenter(targetMarker.area);
+
+			$('.registSpotName').fadeOut(200);
+			$('.viewSpotDetail').fadeOut(200);
+		}
+	};
+
+	var grid_spot = pq.grid("#grid_list_inout", options2);
+
+	initMap();
+	
+	
+});
+</script>
+	
+</body>
+</html>

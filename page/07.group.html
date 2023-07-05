@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">그룹 목록</h2>
+					<div class="btn_area">
+						<button type="button" class="btn btn_gray"><span>그룹 등록</span></button>
+						<button type="button" class="btn btn_gray"><i class="icon icon_plus"></i><span>일괄
+								등록</span></button>
+					</div>
+				</div>
+				<div class="content">
+					<div class="content_h">
+						<div class="box_section">
+							<div class="search_filter">
+								<ul>
+									<li>
+										<div class="form_inline">
+											<div class="label_t">시도</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>강원도</option>
+												<option>경기도</option>
+												<option>경상남도</option>
+												<option>경상북도</option>
+												<option>전라북도</option>
+												<option>전라남도</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">시군구</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">소속기관</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시</option>
+											</select>
+										</div>
+										<div class="form_inline">
+											<div class="label_t">센터</div>
+											<select class="form_ctl" id="">
+												<option>전체</option>
+												<option>거제시브라보택시</option>
+											</select>
+										</div>
+									</li>
+									<li>
+										<div class="form_inline ">
+											<div class="label_t">그룹</div>
+											<input type="text" class="form_ctl f_search" placeholder="그룹 검색">
+										</div>
+										<div class="form_inline">
+											<button type="button" class="btn btn_blue"><span>검색</span></button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="detail_top">
+							<div class="left_area">
+								<button type="button" class="btn btn_gray"><i
+										class="icon icon_dw"></i><span>다운로드</span></button>
+							</div>
+						</div>
+						<div class="grid_wrap">
+							<div id="grid_group" class="grid_list"></div>
+						</div>
+						<div class="footer">
+							<div class="page_wrap">
+								<div class="page_num">Rows per page</div>
+
+								<select class="page_sel" id="">
+									<option>20</option>
+									<option selected>30</option>
+									<option>40</option>
+									<option>50</option>
+								</select>
+
+								<!-- 처음 일 떄 first 클래스 추가-->
+								<a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+								<a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+								<div class="page_count">
+									1 - 7 of 1
+								</div>
+
+								<!-- 마지막 페이지 일 떄 last 클래스 추가-->
+								<!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+								<a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+								<!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+								<a href="javascript:void(0);" class="last_p last"><span class="ir">마지막 페이지</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+<script>
+	$(function () {
+		var colModel = [
+			/*{
+				dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+				title: "",
+				menuIcon: false,
+				type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+				dataType: 'bool',
+				cb: {
+					all: false, //checkbox selection in the header affect current page only.
+					header: true, //show checkbox in header. 
+					select: true,
+				},
+				editable: function (ui) {
+					return !ui.rowData.disabled
+				},
+			},*/
+			{ title: "No", dataIndx: "no", width: 100, nodrag: true, nodrop: true, },
+			{ title: "시도", dataIndx: "sido", width: 200, nodrag: true, nodrop: true, },
+			{ title: "시군구", dataIndx: "sigungu", width: 200, nodrag: true, nodrop: true, },
+			{ title: "소속기관", dataIndx: "agency", width: 200, nodrag: true, nodrop: true, },
+			{ title: "센터", dataIndx: "center", width: 240, nodrag: true, nodrop: true, },
+			{ title: "그룹", dataIndx: "group", width: 240, nodrag: true, nodrop: true, },
+			{ title: "소속 회원 수", dataIndx: "group_num", width: 240, nodrag: true, nodrop: true, },
+			{
+				title: "상세", dataIndx: "details", width: 160, nodrag: true, nodrop: true,
+				render: function (ui) { // checkbox custom
+					var rowData = ui.rowData, dataIndx = ui.dataIndx;
+					var result = "<i class='btn_detail icon icon_search'><span class='sr_only'>상세보기</span></i>";
+					return result;
+				},
+			},
+
+		];
+
+		var dataModel = {
+			"data": [
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+				{ "no": 1, "sido": "울산광역시", "sigungu": "울주군", "agency": "울주군", "center": "시우리", "group": "시우1리마을회관", "group_num": "15", "details": "", },
+			]
+		};
+
+		var options = {
+			scrollModel: { autoFit: true },
+			width: '100%',
+			// height: 'flex',
+			minHeight: 498,
+			rowHt: 45,
+			rowHtHead: 45,
+			collapsible: { on: false, toggle: false },
+
+			columnBorders: true,
+			rowBorders: true,
+			stripeRows: true,
+
+			postRenderInterval: -1, //synchronous post rendering.
+			dataModel: dataModel,
+			colModel: colModel,
+			// selectionModel: { type: 'row', mode: 'block' },
+
+			columnTemplate: {
+				align: 'center', valign: 'center'
+			},
+			editable: false,
+			freezeCols: 0,
+			freezeRows: 0,
+
+			numberCell: { show: false },
+			reactive: true,
+			roundCorners: false,
+			resizable: true,
+
+			showHeader: true,
+			showTitle: false,
+			showToolbar: false,
+			showTop: false,
+			showBottom: false,
+			virtualX: true, virtualY: true,
+
+			title: "",
+			strNoRows: '조회된 데이터가 없습니다.',
+		};
+
+		var grid = pq.grid("#grid_group", options);
+
+
+	});
+</script>
+
+</html>

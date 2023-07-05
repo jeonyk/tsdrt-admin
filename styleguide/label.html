@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>마크업가이드 - POPUP</title>
+	<!-- 가이드 css -->
+	<link rel="stylesheet" href="../guide_common/css/common.css">
+	<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+	<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+	<link rel="stylesheet" href="../assets/css/common.css">
+	<!-- //style -->
+	<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+	<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+	<script src="../assets/js/common.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+	<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+		$(document).ready(function () {
+			$('.g-nav-snb').append(webSnb);
+			$('.g-nav-snb ul li').eq(5).addClass("active");
+		});
+	</script>
+</head>
+
+<body>
+	<div id="g-wrap" class="open-aside">
+		<!-- aside -->
+		<div id="g-aside">
+			<!-- # 좌측컨텐츠 # -->
+			<div class="wrap-aside">
+				<!-- 사용자정보영역 -->
+				<div class="box-info">
+				</div>
+				<!-- 네비게이션 : SNB -->
+				<div class="g-nav-snb guide"></div>
+			</div>
+			<!-- # 컨트롤 # -->
+			<div class="g-area-control">
+				<a href="#none">좌측영역 펼침/닫기</a>
+			</div>
+		</div>
+		<!-- //aside -->
+
+		<div class="g-content">
+			<div class="g-box-basic">
+				<h2 class="g-tit-basic">LABEL</h2>
+
+				<!-- 탭그룹 -->
+				<div class="row">
+					<h3 class="g-tit-basic">Badge</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<div class="state_blue state">배차 완료</div>
+								<div class="state_red state">배차 대기</div>
+								<div class="state_gray state">예약 취소</div>
+								<div class="state_navy state">주행 완료</div>
+								<div class="state_green state">주행중</div>
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+									<div class="state_blue state">배차 완료</div>
+									<div class="state_red state">배차 대기</div>
+									<div class="state_gray state">예약 취소</div>
+									<div class="state_navy state">주행 완료</div>
+									<div class="state_green state">주행중</div>
+								</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+						
+							</pre>
+							</div>
+						</div>
+					</div>
+					<h3 class="g-tit-basic mt30">ICON</h3>
+					<div class="tab-wrap g-tab-sample ui-tab">
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<i class="icon icon_dw"></i>
+								<i class="icon icon_date"></i>
+								<i class="icon icon_plus"></i>
+								<i class="icon icon_minus"></i>
+								<i class="icon icon_logout"></i>
+								<i class="icon icon_unfile"></i>
+								<i class="icon icon_onfile"></i>
+								<i class="icon icon_search"></i>
+								<i class="icon icon_option"></i>
+								<i class="icon icon_location1"></i>
+								<i class="icon icon_location2"></i>
+								<i class="icon icon_location3"></i>
+								<i class="icon sub_mark"></i>
+								<i class="icon icon_w_back"></i>
+
+								<!-- //view -->
+							</div>
+						</div>
+						<div class="tab-content">
+							<div class="g-tab-inner">
+								<p class="on">HTML</p>
+								<pre class="syntax brush:html">
+									<i class="icon icon_dw"></i>
+								<i class="icon icon_date"></i>
+								<i class="icon icon_plus"></i>
+								<i class="icon icon_minus"></i>
+								<i class="icon icon_logout"></i>
+								<i class="icon icon_unfile"></i>
+								<i class="icon icon_onfile"></i>
+								<i class="icon icon_search"></i>
+								<i class="icon icon_option"></i>
+								<i class="icon icon_location1"></i>
+								<i class="icon icon_location2"></i>
+								<i class="icon icon_location3"></i>
+								<i class="icon sub_mark"></i>
+								<i class="icon icon_w_back"></i>
+								</pre>
+								<p>CSS</p>
+								<pre class="syntax brush:css">
+									.icon {
+										width: 30px;
+										height: 30px;
+										display: inline-block;
+										vertical-align: middle;
+										background-size: cover;
+								  
+										&.icon_del {
+											 // background-color: #6f6f6f;
+											 // -webkit-mask: url("../img/icon/icon_arrow_right.svg") no-repeat 50% 50%;
+											 // mask: url("../img/icon/icon_arrow_right.svg") no-repeat 50% 50%;        
+											 background-size: contain;
+											 background: url("../img/icon/icon_del.svg") no-repeat 50% 50%;
+										}
+								  
+										&.icon_cert {
+											 background-size: cover;
+											 background: url("../img/icon/icon_cert.svg") no-repeat 50% 50%;
+											 margin: -6px 0px -5px -6px;
+											 width: 24px;
+											 height: 24px;
+								  
+											 &.on {
+												  background: url("../img/icon/icon_cert_on.svg") no-repeat 50% 50%;
+											 }
+								  
+											 &.active {
+												  background: url("../img/icon/icon_cert_blue.svg") no-repeat 50% 50%;
+											 }
+										}
+								  
+										&.icon_down {
+											 background-size: contain;
+											 background: url("../img/icon/icon_down.svg") no-repeat 50% 50%;
+										}
+										&.icon_full {
+											 background-size: contain;
+											 background: url("../img/icon/icon_full.svg") no-repeat 50% 50%;
+										}
+								  
+										&.icon_warning {
+											 background-size: contain;
+											 background: url("../img/icon/icon_warning.svg") no-repeat 50% 50%;
+										}
+								  
+										&.icon_arrow_right {
+											 background-size: contain;
+											 background: url("../img/icon/icon_arrow_right.svg") no-repeat 50% 50%;
+										}
+										&.icon_pw {
+											 background-size: contain;
+											 background: url("../img/icon/icon_pw_gray.svg") no-repeat 50% 50%;
+										}
+										&.icon_logout {
+											 background-size: contain;
+											 background: url("../img/icon/icon_logout.svg") no-repeat 50% 50%;
+										}
+										&.icon_m_arrow {
+											 background-size: contain;
+											 background: url("../img/icon/m_arrow_w.svg") no-repeat 50% 50%;
+										}
+										&.icon_m_arrow_b {
+											 background-size: contain;
+											 background: url("../img/icon/m_arrow_b.svg") no-repeat 50% 50%;
+										}
+								  
+										&.icon_home {
+											 background: url("../img/icon/icon_home.svg") no-repeat 50% 50%;
+											 background-size: contain;
+										}
+								  
+										&.icon_clip {
+											 background: url("../img/icon/icon_clip.svg") no-repeat 50% 50%;
+											 background-size: contain;
+										}
+								  
+										&.icon_search {
+											 margin: -6px 1px -5px -6px;
+											 background: url("../img/icon/icon_search.svg") no-repeat 50% 50%;
+											 background-size: cover;
+											 width: 24px;
+											 height: 24px;
+										}
+										&.icon_plus_w {
+											 margin: -7px -7px -5px 0px;
+											 background: url("../img/icon/icon_plus_w.svg") no-repeat 50% 50%;
+											 background-size: cover;
+											 width: 24px;
+											 height: 24px;
+										}
+										&.icon_close {
+											 background: url("../img/icon/icon_close.svg") no-repeat 50% 50%;
+											 background-size: cover;
+											 width: 24px;
+											 height: 24px;
+										}
+										&.icon_reset_w {
+											 margin: -6px 1px -5px -6px;
+											 background: url("../img/icon/m_reset.svg") no-repeat 50% 50%;
+											 background-size: cover;
+											 width: 24px;
+											 height: 24px;
+										}
+								  
+										&.icon_view {
+											 margin: -8px -4px -5px -3px;
+											 background: url("../img/icon/icon_search_blue.svg") no-repeat 50% 50%;
+											 background-size: cover;
+											 width: 24px;
+											 height: 24px;
+										}
+										&.icon_search_lnb {
+											 margin: -6px 1px -5px -6px;
+											 background: url("../img/icon/icon_search_lnb.svg") no-repeat 50% 50%;
+											 background-size: cover;
+											 width: 24px;
+											 height: 24px;
+										}
+								  
+										&.icon_page_left {
+											 background: url("../img/icon/icon_page_left.svg") no-repeat 50% 50%;
+											 background-size: 10px;
+										}
+								  
+										&.icon_page_right {
+											 background: url("../img/icon/icon_page_right.svg") no-repeat 50% 50%;
+											 background-size: 10px;
+										}
+								  
+										&.icon_reset {
+											 background: url("../img/icon/icon_reset.svg") no-repeat 50% 50%;
+											 background-size: contain;
+											 width: 24px;
+											 height: 26px;
+											 margin-right: -10px;
+										}
+								  
+										&.icon_user_info {
+											 background: url("../img/icon/icon_user_info.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+										&.icon_cctv_info {
+											 background: url("../img/icon/icon_cctv_info.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+										&.gnb_temp {
+											 background: url("../img/icon/gnb_data_temp.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_o2 {
+											 background: url("../img/icon/gnb_data_o2.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_co2 {
+											 background: url("../img/icon/gnb_data_co2.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_illum {
+											 background: url("../img/icon/gnb_data_illum.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_dust {
+											 background: url("../img/icon/gnb_data_dust.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_gas {
+											 background: url("../img/icon/gnb_data_gas.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+										&.gnb_loca {
+											 background: url("../img/icon/gnb_data_loca.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+										&.gnb_alt {
+											 background: url("../img/icon/gnb_data_alt.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_fire {
+											 background: url("../img/icon/gnb_data_fire.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  
+										&.gnb_noise {
+											 background: url("../img/icon/gnb_data_noise.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+										&.icon_alram {
+											 background: url("../img/icon/m_icon_alram.svg") no-repeat 50% 50%;
+											 background-size: 32px;
+										}
+								  }
+							</pre>
+							</div>
+						</div>
+					</div>
+					<!-- //탭그룹 -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

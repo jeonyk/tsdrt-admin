@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+	<div id="wrap">
+		@@include('../_include/header.html')
+
+		<div id="container">
+			@@include('../_include/lnb.html')
+			<div class="inner">
+				<div class="title_wrap">
+					<h2 class="title_lg">공지사항 등록</h2>
+				</div>
+				<div class="content">
+					<div class="box_section">
+						<div class="table_list align_left">
+							<table>
+								<caption class="sr_only">기사 정보1</caption>
+								<colgroup>
+									<col width="10%">
+									<col width="*">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>제목</th>
+										<td>
+											<div class="form_wrap">
+												<div class="input_check">
+													<input type="checkbox" id="import" name="">
+													<label for="import" class="txt_label">중요</label>
+												</div>
+												<input type="text" class="form_ctl w100" placeholder="제목을 입력해주세요."></td>
+											</div>
+									</tr>
+									<tr>
+										<th rowspan="2">대상</th>
+										<td>
+											<!-- <div class="title_sm">
+												<div class="title">발송 지역</div>
+											</div> -->
+											<div class="form_wrap">
+												<div class="form_inline">
+													<span class="line_title">발송 지역</span>
+													<div class="label_t"><span class="essential" title="필수">시도</span></div>
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option>강원도</option>
+														<option>경기도</option>
+														<option>경상남도</option>
+														<option>경상북도</option>
+														<option selected>전라북도</option>
+														<option>전라남도</option>
+													</select>
+												</div>
+												<div class="form_inline">
+													<div class="label_t"><span class="essential" title="필수">시군구</span></div>
+													<select class="form_ctl" id="">
+														<option>전체</option>
+														<option>거제시</option>
+													</select>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="form_wrap">
+												<div class="form_inline">
+													<span class="line_title">수신 구분</span>
+													<div class="input_check">
+														<input type="checkbox" id="allCheck" checked>
+														<label for="allCheck" class="txt_label">전체</label>
+													</div>
+													<div class="input_check">
+														<input type="checkbox" id="label_text2" name="type">
+														<label for="label_text2" class="txt_label">기사앱</label>
+													</div>
+													<div class="input_check">
+														<input type="checkbox" id="label_text3" name="type">
+														<label for="label_text3" class="txt_label">관리자 시스템</label>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th rowspan="2">게시 설정</th>
+										<td>
+											<div class="form_wrap">
+												<div class="form_line">
+													<div class="input_radio">
+														<input type="radio" id="write_now" name="date" value="now" checked>
+														<label for="write_now" class="txt_label">즉시</label>
+													</div>
+													<div class="input_radio">
+														<input type="radio" id="write_later" name="date" value="later">
+														<label for="write_later" class="txt_label">예약</label>
+													</div>
+													<div class="date_wrap" >
+														<i class="icon icon_date"></i>
+														<input type="text" name="" class="form_ctl datepicker" placeholder="" disabled>
+													</div>
+													<input type="text" class="form_ctl w_small timepicker" name="" placeholder="0000" value="00:00" disabled>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="form_wrap">
+												<span class="line_title">푸시 알림</span>
+												<div class="input_radio">
+													<input type="radio" id="push_n" name="push" checked>
+													<label for="push_n" class="txt_label">발송 안 함</label>
+												</div>
+												<div class="input_radio">
+													<input type="radio" id="push_y" name="push">
+													<label for="push_y" class="txt_label">발송</label>
+												</div>
+											</div>
+										</td>
+									</tr>
+						
+								</tbody>
+							</table>
+						</div>
+						<div class="edit_wrap">
+							<div id="toolbar-container"></div>
+							<div id="editor"></div>
+						</div>
+					</div>
+					<div class="btn_area ac mt20">
+						<button type="button" class="btn btn_gray btn_outline">취소</button>
+						<button type="button" class="btn btn_blue ml10">완료</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+
+<script type="module">
+    import editor from '../assets/js/vendor/editor.js'
+    $(document).ready(function () {
+		var newEditor;
+        editor("#editor").then(editor => {
+			newEditor = editor;
+
+        })
+		.catch( error => {
+			console.error( error );
+		} );
+
+		
+		$(document).on('click', '.btn_area .btn_blue', function() {
+			// 값 가져오기
+			var editorData = newEditor.getData();
+			alert(editorData)
+		})
+    })
+</script>
+
+<script>
+	$(function () {
+		// ClassicEditor
+		// 	.create(document.querySelector('#editor'))
+		// 	.catch(error => {
+		// 		console.error(error);
+		// 	});
+
+		
+
+		// 체크박스 전체 선택
+		if($("#allCheck").is(':checked')){
+			$("input[name=type]").prop("checked", true);
+		}
+
+		$("#allCheck").on("click",  function () {
+			if ($("#allCheck").is(':checked')) {
+				$("input[name=type]").prop("checked", true);
+			} else {
+				$("input[name=type]").prop("checked", false);
+			}
+		});
+
+		// 체크박스 개별 선택
+		$("input[name=type]").on("click", function () {
+			var is_checked = true;
+
+			$("input[name=type]").each(function () {
+				is_checked = is_checked && $(this).is(":checked");
+			});
+
+			$("#allCheck").prop("checked", is_checked);
+		});
+			
+
+			//게시 설정
+			$("input:radio[name=date]").click(function () {
+				console.log($(this).parent().siblings('.date_wrap'));
+
+			if ($("input[name=date]:checked").val() == "now") {
+				$(this).parent().siblings('.date_wrap').addClass('disabled');
+				$(this).parent().siblings('.date_wrap').children('input').attr('disabled', true);
+				$(this).parent().siblings('.form_ctl.timepicker').attr('disabled', true);
+
+			} else if ($("input[name=date]:checked").val() == "later") {
+				$(this).parent().siblings('.date_wrap').removeClass('disabled');
+				$(this).parent().siblings('.date_wrap').children('input').attr('disabled', false);
+				$(this).parent().siblings('.form_ctl.timepicker').attr('disabled', false);
+			}
+		});
+
+
+	});
+</script>
+
+</html>

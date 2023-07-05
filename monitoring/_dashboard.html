@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+
+    <div id="wrap">
+        @@include('../_include/header.html')
+
+        <div id="container">
+            @@include('../_include/lnb.html')
+            <div class="inner">
+                <div class="title_wrap">
+                    <h2 class="title_lg">대시보드</h2>
+                </div>
+                <div class="content dashboard">
+                    <!-- 검색 -->
+                    <div class="box_section">
+                        <div class="search_filter">
+                            <ul>
+                                <li>
+                                    <div class="form_inline">
+                                        <div class="label_t">시도</div>
+                                        <select class="form_ctl" id="">
+                                            <option>전체</option>
+                                            <option>강원도</option>
+                                            <option>경기도</option>
+                                            <option>경상남도</option>
+                                            <option>경상북도</option>
+                                            <option>전라북도</option>
+                                            <option>전라남도</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_inline">
+                                        <div class="label_t">시군구</div>
+                                        <select class="form_ctl" id="">
+                                            <option>전체</option>
+                                            <option>거제시</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_inline">
+                                        <div class="label_t">소속기관</div>
+                                        <select class="form_ctl" id="">
+                                            <option>전체</option>
+                                            <option>거제시</option>
+                                        </select>
+                                    </div>
+                                    <div class="form_inline">
+                                        <select class="form_ctl type" id="">
+                                            <option value="m">월간 검색</option>
+                                            <option value="d">일간 검색</option>
+                                        </select>
+                                        <div class="date_wrap month">
+                                            <i class="icon icon_date"></i>
+                                            <input type="text" name="" class="form_ctl monthPicker" placeholder="" />
+                                        </div>
+                                        <div class="date_wrap day">
+                                            <i class="icon icon_date"></i>
+                                            <input type="text" name="" class="form_ctl datepicker" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <div class="form_inline">
+                                        <button type="button" class="btn btn_blue"><span>검색</span></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 승인 비용 총계 -->
+                    <div class="row">
+                        <div class="col map">
+                            <div id="map_div" class="map_area" style="width:100%;height:100%"></div>
+                        </div>
+                        <div class="col">
+                            <div class="title_md mt0">
+                                <p class="title">월간 승인 비용 총계</p>
+                            </div>
+                            <div class="box_section">
+                                <div class="table_area">
+                                    <div class="table_list align_left">
+                                        <table>
+                                            <caption class="sr_only">총 주행 건수</caption>
+                                            <colgroup>
+                                                <col width="200px">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>총 주행 건수</th>
+                                                    <td>1,150,500건 </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>승인대기</th>
+                                                    <td class="sub_td">3,500건</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_section df">
+                                <div class="table_area">
+                                    <div class="table_list align_left">
+                                        <table>
+                                            <caption class="sr_only">총 요금(승인)</caption>
+                                            <colgroup>
+                                                <col width="200px">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>승인</th>
+                                                    <td colspan="2">1,150,500건</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th">총 요금</th>
+                                                    <td class="sub_td">1,130,000,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전일대비
+                                                            <span><i class="icon icon_high"></i>145,500원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+                                                    <td class="sub_td">1,1500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전일대비
+                                                            <span><i class="icon icon_high"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>보조금</th>
+                                                    <td class="sub_td">1,127,500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point blue">
+                                                            전일대비
+                                                            <span><i class="icon icon_low"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="chart_area">
+                                    <div class="chart_wrap">
+                                        <canvas id="totalChart"></canvas>
+                                    </div>
+                                    <div class="labels">
+                                        <p>승객 지불 요금</p>
+                                        <p>보조금</p>
+                                    </div>
+                                    <div class="top">
+                                        <i class="icon icon_question"></i>
+                                        <div class="pop_question">
+                                            <strong>총 요금을 구성하는 비율입니다.</strong>
+                                            <p>총 요금 : <span>주행 1건의 운임료(승객 지불 요금+보조금)</span></p>
+                                            <p>승객 지불 요금 : <span>주민 부담금</span></p>
+                                            <p>보조금 : <span>운임 지원금</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_section df">
+                                <div class="table_area">
+                                    <div class="table_list align_left">
+                                        <table>
+                                            <caption class="sr_only">총 요금(반려)</caption>
+                                            <colgroup>
+                                                <col width="200px">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>반려</th>
+                                                    <td colspan="2">1,150,500건</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th">총 요금</th>
+                                                    <td class="sub_td">1,130,000,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전일대비
+                                                            <span><i class="icon icon_high"></i>145,500원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>승객 지불 요금</th>
+                                                    <td class="sub_td">1,1500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point">
+                                                            전일대비
+                                                            <span><i class="icon icon_high"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="sub_th"><i class="icon sub_mark"></i>보조금</th>
+                                                    <td class="sub_td">1,127,500,000원</td>
+                                                    <td class="ar bd0">
+                                                        <p class="txt_point blue">
+                                                            전일대비
+                                                            <span><i class="icon icon_low"></i>5,000원</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="chart_area">
+                                    <div class="chart_wrap">
+                                        <canvas id="totalChart2"></canvas>
+                                    </div>
+                                    <div class="labels">
+                                        <p>승객 지불 요금</p>
+                                        <p>보조금</p>
+                                    </div>
+                                    <div class="top">
+                                        <i class="icon icon_question"></i>
+                                        <div class="pop_question">
+                                            <strong>총 요금을 구성하는 비율입니다.</strong>
+                                            <p>총 요금 : <span>주행 1건의 운임료(승객 지불 요금+보조금)</span></p>
+                                            <p>승객 지불 요금 : <span>주민 부담금</span></p>
+                                            <p>보조금 : <span>운임 지원금</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 월간 보조금 지급 승인 현황 -->
+                    <div class="title_md">
+                        <p class="title">월간 보조금 지급 승인 현황</p>
+                    </div>
+                    <div class="box_section bar_chart">
+                        <div class="chart_area">
+                            <div class="chart_wrap">
+                                <canvas id="monthChart" width="100%" height="20vh"></canvas>
+                            </div>
+                            <div class="bar_labels">
+                                <p>승인</p>
+                                <p>반려</p>
+                                <p>승인 대기</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  tab  -->
+                    <ul class="tabs tab mt40">
+                        <li class="on"><a href="#none">TOP 5 통계</a></li>
+                        <li><a href="#none">이용자 통계</a></li>
+                        <li><a href="#none">차량 통계</a></li>
+                    </ul>
+                    <!-- TOP5 tab -->
+                    <div class="tab_contents on">
+                        <div class="box_section">
+                            <div class="statistics_group">
+                                <div class="col">
+                                    <div class="title_sm">
+                                        <div class="title">일간 최다 탑승지</div>
+                                    </div>
+                                    <div id="monthMaxStartGrid" class="grid_list"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="title_sm">
+                                        <div class="title">일간 최다 하차지</div>
+                                    </div>
+                                    <div id="monthMaxOffGrid" class="grid_list"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="title_sm">
+                                        <div class="title">일간 최다 주행 기사님</div>
+                                    </div>
+                                    <div id="monthMaxDriverGrid" class="grid_list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 이용자 통계 tab -->
+                    <div class="tab_contents">
+                        <div class="box_section">
+                            <div class="user_group">
+                                <div class="col">
+                                    <div class="col_area">
+                                        <div class="title_sm">
+                                            <div class="title">회원 유형 별 이용자 수</div>
+                                            <div class="top">
+                                                <i class="icon icon_question"></i>
+                                                <div class="pop_question">
+                                                    <p>바우처카드 이용 회원만 집계됩니다.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart_area">
+                                            <div class="chart_wrap">
+                                                <canvas id="userTypeChart" height="180vh"></canvas>
+                                            </div>
+                                            <div class="labels type">
+                                                <p>고령자</p>
+                                                <p>장애인</p>
+                                                <p>임산부</p>
+                                                <p>영유아</p>
+                                                <p>영유아 가정</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col_area">
+                                        <div id="userTypeGrid" class="grid_list"></div>
+                                    </div>
+                                </div>
+                                <div class="col df_col">
+                                    <div class="title_sm">
+                                        <div class="title">성별/연령 별 이용자 수</div>
+                                        <!-- <select class="form_ctl" id="">
+                                            <option>차트</option>
+                                            <option selected>표</option>
+                                        </select> -->
+                                    </div>
+                                    <div id="tabs" class="select_tab">
+                                        <ul class="select_tabs_hd">
+                                            <li class="on"><a href="#tabs-1">표</a></li>
+                                            <li><a href="#tabs-2">차트</a></li>
+                                        </ul>
+                                        <div id="tabs-1">
+                                            <div id="ageGrid" class="grid_list"></div>
+                                        </div>
+                                        <div id="tabs-2" style="position: relative;">
+                                            <div class="genderChart_labels">
+                                                <p>여자</p>
+                                                <p>남자</p>
+                                            </div>
+                                            <div class="chart_area">
+                                                <div class="chart_wrap" style="height:230px;">
+                                                    <canvas id="genderChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 차량 통계 tab -->
+                    <div class="tab_contents">
+                        <div class="box_section">
+                            <div class="car_group">
+                                <div class="col">
+                                    <div class="title_sm">
+                                        <div class="title">등록 차량 대수</div>
+                                    </div>
+                                    <div class="chart_area">
+                                        <div class="chart_wrap">
+                                            <canvas id="carChart" height="180vh"></canvas>
+                                        </div>
+                                        <div class="labels type">
+                                            <p>중형 택시</p>
+                                            <p>대형 택시</p>
+                                            <p>중형 버스</p>
+                                            <p>대형 버스</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col grid">
+                                    <div id="carGrid" class="grid_list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script>
+    $(function () {
+
+        $('.date_wrap.month').show();
+        $('.date_wrap.day').hide();
+
+        $(".type").on('selectmenuchange', function () {
+            console.log($(this).val())
+            if ($(this).val() === 'm') {
+                $('.date_wrap.month').show();
+                $('.date_wrap.day').hide();
+            } else {
+                $('.date_wrap.day').show();
+                $('.date_wrap.month').hide();
+            }
+        })
+
+        //성별 연령 별 이용자 수 
+        $("#tabs").tabs({
+            load: function (event, ui) { }
+            , activate: function (event, ui) {
+                var ix = ui.newTab.index();
+                switch (ix) {
+                    case 0:
+                        $("#ageGrid").pqGrid("refresh");
+                        break
+                    case 1:
+                        $("#genderChart").chart.update();
+                        break
+                    default:
+                        console.log(ix);
+                }
+            }
+        });
+
+        $(".select_tab .select_tabs_hd li:first-child").hide();
+        $('.select_tab .select_tabs_hd li').on('click', function () {
+            $(this).hide();
+            $(this).siblings('li').show();
+        });
+
+
+
+        /* ==========================================================================
+           일간 승인 비용 총계 PIE 그래프
+       ========================================================================== */
+
+        let totalData = {
+            labels: ['보조금', '승객 지불 요금',],
+            datasets: [{
+                label: 'Dataset',
+                data: [20, 80],
+                backgroundColor: [
+                    '#5e8ce7',
+                    '#14429c',
+                ],
+                borderWidth: 0,
+            }]
+        }
+
+        let totalData2 = {
+            labels: ['보조금', '승객 지불 요금',],
+            datasets: [{
+                label: 'Dataset',
+                data: [60, 40],
+                backgroundColor: [
+                    '#5e8ce7',
+                    '#14429c',
+                ],
+                borderWidth: 0,
+            }]
+        }
+
+        let totalOption = {
+            legend: {
+                display: false
+            },
+            tooltips: {
+                enabled: false
+            },
+            plugins: {
+                datalabels: {
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        return percentage;
+                    },
+                    color: '#FFFFFF',
+                    font: {
+                        size: 12,
+                        family: "'SUIT', 'sans-serif'",
+                        weight: 500,
+                    }
+                },
+            }
+        }
+
+        const totalCtx = document.querySelector('#totalChart').getContext('2d');
+        const totalChart = new Chart(totalCtx, {
+            type: 'pie',
+            data: totalData,
+            options: totalOption
+        });
+
+        const totalCtx2 = document.querySelector('#totalChart2').getContext('2d');
+        const totalChart2 = new Chart(totalCtx2, {
+            type: 'pie',
+            data: totalData2,
+            options: totalOption
+        });
+
+        /* ==========================================================================
+          월간 > 이용자 통계 tab > PIE 그래프
+       ========================================================================== */
+
+
+        let userData = {
+            labels: ['고령자', '장애인', '임산부', '영유아', '영유아 가정',],
+            datasets: [{
+                label: 'Dataset',
+                data: [130, 80, 50, 20, 60],
+                backgroundColor: [
+                    '#14429c',
+                    '#ff6928',
+                    '#5e8ce7',
+                    '#cfdaf8',
+                    '#f0f3f5',
+                ],
+                borderWidth: 0,
+            }]
+        }
+
+
+        let userOption = {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            legend: {
+                display: false
+            },
+            plugins: {
+                datalabels: {
+                    display: false,
+                },
+            },
+            tooltips: {
+                // mode: 'index',
+                intersect: false,
+                enabled: false,
+                bodyFontFamily: "'SUIT', sans-serif",
+                bodyFontSize: 14,
+                custom: function (tooltipModel) {
+
+                    const data = userData.datasets[0].data;
+                    const total = data.reduce((prev, current) => {
+                        return prev + current;
+                    }, 0);
+
+                    // 툴팁 요소
+                    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+
+                    // 첫번째 그리기에서 요소 만들기
+                    if (!tooltipEl) {
+                        tooltipEl = document.createElement('div');
+                        tooltipEl.id = 'chartjs-tooltip';
+                        tooltipEl.classList.add('wrap_tooltip');
+                        const contents = document.createElement('div');
+                        contents.classList.add('tooltip');
+                        tooltipEl.appendChild(contents);
+                        document.body.appendChild(tooltipEl);
+                    }
+
+                    // 툴팁이 없으면 숨기기
+                    if (tooltipModel.opacity === 0) {
+                        tooltipEl.style.opacity = 0;
+                        return;
+                    }
+
+
+                    // 캐럿 위치 설정
+                    tooltipEl.classList.remove('above', 'below', 'no-transform');
+                    if (tooltipModel.yAlign) {
+                        tooltipEl.classList.add(tooltipModel.yAlign);
+                    } else {
+                        tooltipEl.classList.add('no-transform');
+                    }
+
+                    function getBody(bodyItem) {
+                        let newArr = [];
+                        let lines = bodyItem.lines;
+                        newArr.push(lines.toString().split(":"))
+                        bodyItem = newArr;
+                        return bodyItem;
+                    }
+
+
+                    // 텍스트 설정
+                    if (tooltipModel.body) {
+                        var bodyLines = tooltipModel.body.map(getBody);
+
+                        const titleArea = document.createElement('p');
+                        titleArea.classList.add('title');
+
+                        const contentsArea = document.createElement('div');
+                        contentsArea.classList.add('table_list');
+                        const tableWrap = document.createElement('table');
+                        const tableWrapBody = document.createElement('tbody');
+                        $(tableWrap).append(tableWrapBody);
+                        $(contentsArea).append(tableWrap);
+
+                        bodyLines.forEach(function (body, i) {
+                            let bodyTitle = body[0][0];
+                            let bodyText = body[0][1];
+                            let userTotalPercent = Math.round(bodyText / total * 100);
+
+                            $(titleArea).text(bodyTitle);
+
+                            const table = `<tr><th>등록 회원</th><td>${bodyText}</td></tr><tr><th>이용자 수</th><td>${bodyText}명(${userTotalPercent}%)</td></tr>`
+
+                            $(tableWrapBody).append(table);
+                        });
+
+
+                        const tableRoot = tooltipEl.querySelector('.tooltip');
+
+                        // Remove old children
+                        while (tableRoot.firstChild) {
+                            tableRoot.firstChild.remove();
+                        }
+
+                        // Add new children
+                        tableRoot.appendChild(titleArea);
+                        tableRoot.appendChild(contentsArea);
+
+                    }
+
+                    // `this` 전반적인 툴팁이 될 것입니다
+                    // var position = this._chart.canvas.getBoundingClientRect();
+                    const { offsetLeft: positionX, offsetTop: positionY } = this._chart.canvas;
+
+                    // 폰트에 대한 보여지기, 위치, 그리고 스타일을 설정합니다
+                    tooltipEl.style.opacity = 1;
+                    tooltipEl.style.position = 'absolute';
+                    tooltipEl.style.left = positionX + tooltipModel.caretX + 400 + 'px';
+                    tooltipEl.style.top = positionY + tooltipModel.caretY + 400 + 'px';
+                    tooltipEl.style.pointerEvents = 'none';
+
+                    // console.log(tooltipModel.caretX)
+
+                },
+            },
+        }
+
+        const userCtx = document.querySelector('#userTypeChart').getContext('2d');
+        const userChart = new Chart(userCtx, {
+            type: 'pie',
+            data: userData,
+            options: userOption,
+        });
+
+        /* ==========================================================================
+            월간 > 차량 통계 tab > PIE 그래프
+         ========================================================================== */
+
+        let carData = {
+            labels: ['중형 택시', '대형 택시', '중형 버스', '대형 버스'],
+            datasets: [{
+                label: 'Dataset',
+                data: [130, 80, 50, 20, 60],
+                backgroundColor: [
+                    '#14429c',
+                    '#ff6928',
+                    '#5e8ce7',
+                    '#cfdaf8',
+                    '#f0f3f5',
+                ],
+                borderWidth: 0,
+            }]
+        }
+
+        let carOption = {
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                enabled: false
+            },
+            plugins: {
+                datalabels: {
+                    display: false,
+                }
+
+            }
+        }
+
+        const carCtx = document.querySelector('#carChart').getContext('2d');
+        const carChart = new Chart(carCtx, {
+            type: 'pie',
+            data: carData,
+            options: carOption
+        });
+
+        /* ==========================================================================
+            월간 보조금 지급 현황 막대 그래프
+        ========================================================================== */
+
+
+        let monthData = {
+            labels: ['10월;21년', '11월;21년', '12월;21년', '1월;22년', '2월;22년', '3월;22년', '4월;22년', '5월;22년', '6월;22년', '7월;22년', '8월;22년', '9월;22년', '10월;22년', '11월;22년', '12월;22년', '1월;23년', '2월;23년', '3월;23년'],
+            datasets: [
+                {
+                    xAxisID: 'xAxis1',
+                    label: '승인',
+                    data: [2500, 2000, 3000, 2500, 2000, 3000, 4000, 3500, 1500, 2000, 1000, 2000, 1500, 2000, 1000, 1000, 1000, 1000, 1000],
+                    backgroundColor: '#14429c',
+                },
+                {
+                    label: '반려',
+                    data: [2000, 1500, 2000, 2000, 1500, 2000, 1000, 2000, 1500, 2000, 1000, 2000, 1500, 2000, 1000, 1000, 1000, 1000, 1000],
+                    backgroundColor: '#5e8ce7',
+                },
+                {
+                    label: '승인 대기',
+                    data: [500, 600, 100, 500, 600, 100, 200, 700, 600, 400, 500, 600, 100, 200, 700, 700, 1000, 1000, 1000],
+                    backgroundColor: '#cfdaf8',
+                },
+            ]
+        }
+
+
+        let monthOption = {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                y: {
+                    stacked: true,
+                },
+                xAxes: [
+                    {
+                        id: 'xAxis1',
+                        type: "category",
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            fontColor: '#000000',
+                            callback: function (label) {
+                                var month = label.split(";")[0];
+                                var year = label.split(";")[1];
+                                return month;
+                            }
+                        }
+                    },
+                    {
+                        id: 'xAxis2',
+                        type: "category",
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            padding: 0,
+                            fontColor: '#000000',
+                            callback: function (label) {
+                                var month = label.split(";")[0];
+                                var year = label.split(";")[1];
+                                if (month === "1월") {
+                                    return year;
+                                } else {
+                                    return "";
+                                }
+                            }
+                        },
+                    },
+                    /* {
+                        gridLines: {
+                            lineWidth: 0,
+                        },
+                        ticks: {
+                            fontColor: '#000000',
+                        },
+                    } */
+                ],
+
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 500,
+                        fontColor: '#000000',
+                    },
+                    gridLines: {
+                        lineWidth: 0,
+                    },
+                }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                enabled: false,
+                bodyFontFamily: "'SUIT', sans-serif",
+                bodyFontSize: 14,
+                custom: function (tooltipModel) {
+                    // 툴팁 요소
+                    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                    // 첫번째 그리기에서 요소 만들기
+                    if (!tooltipEl) {
+                        tooltipEl = document.createElement('div');
+                        tooltipEl.id = 'chartjs-tooltip';
+                        tooltipEl.classList.add('wrap_tooltip');
+                        const contents = document.createElement('div');
+                        contents.classList.add('tooltip');
+                        tooltipEl.appendChild(contents);
+                        document.body.appendChild(tooltipEl);
+                    }
+
+                    // 툴팁이 없으면 숨기기
+                    if (tooltipModel.opacity === 0) {
+                        tooltipEl.style.opacity = 0;
+                        return;
+                    }
+
+                    // 캐럿 위치 설정
+                    tooltipEl.classList.remove('above', 'below', 'no-transform');
+                    if (tooltipModel.yAlign) {
+                        tooltipEl.classList.add(tooltipModel.yAlign);
+                    } else {
+                        tooltipEl.classList.add('no-transform');
+                    }
+
+                    function getBody(bodyItem) {
+                        let newArr = [];
+                        let lines = bodyItem.lines;
+                        newArr.push(lines.toString().split(":"))
+                        // console.log(newArr[0][1]);
+
+                        bodyItem = newArr;
+                        return bodyItem;
+                    }
+
+                    // 텍스트 설정
+                    if (tooltipModel.body) {
+                        var titleLines = tooltipModel.title || [];
+                        var bodyLines = tooltipModel.body.map(getBody);
+
+                        const titleArea = document.createElement('p');
+                        titleArea.classList.add('title');
+
+                        titleLines.forEach(title => {
+                            $(titleArea).text(title + ' 승인 내역');
+                        });
+
+                        const contentsArea = document.createElement('div');
+                        contentsArea.classList.add('table_list');
+                        const tableWrap = document.createElement('table');
+                        const tableWrapBody = document.createElement('tbody');
+                        $(tableWrap).append(tableWrapBody);
+                        $(contentsArea).append(tableWrap);
+
+
+                        bodyLines.forEach(function (body, i) {
+                            let bodyTitle = body[0][0];
+                            let bodyText = body[0][1] + '원';
+                            const table = `<tr><th>${bodyTitle}</th><td>${bodyText}</td></tr>`
+
+                            $(tableWrapBody).append(table);
+                        });
+
+
+                        const tableRoot = tooltipEl.querySelector('.tooltip');
+
+                        // Remove old children
+                        while (tableRoot.firstChild) {
+                            tableRoot.firstChild.remove();
+                        }
+
+                        // Add new children
+                        tableRoot.appendChild(titleArea);
+                        tableRoot.appendChild(contentsArea);
+
+                    }
+
+                    // `this` 전반적인 툴팁이 될 것입니다
+                    const { offsetLeft: positionX, offsetTop: positionY } = this._chart.canvas;
+
+                    // 폰트에 대한 보여지기, 위치, 그리고 스타일을 설정합니다
+                    tooltipEl.style.opacity = 1;
+                    tooltipEl.style.position = 'absolute';
+                    tooltipEl.style.left = positionX + tooltipModel.caretX + 100 + 'px';
+                    tooltipEl.style.top = positionY + tooltipModel.caretY + 100 + 'px';
+                    tooltipEl.style.pointerEvents = 'none';
+
+                },
+            },
+            plugins: {
+                datalabels: {
+                    font: {
+                        size: 'none',
+                    }
+                },
+            },
+        }
+
+        const monthCtx = document.querySelector('#monthChart').getContext('2d');
+        const monthChart = new Chart(monthCtx, {
+            type: 'bar',
+            data: monthData,
+            options: monthOption
+        });
+
+
+        /* ==========================================================================
+              chart style
+          ========================================================================== */
+        Chart.pluginService.register({
+            beforeDraw: function (chart, easing) {
+                // let count = chart.chart.data.datasets[0].data
+                let width = chart.chart.width,
+                    height = chart.chart.height,
+                    ctx = chart.chart.ctx;
+                var chartArea = chart.chartArea;
+                ctx.restore();
+                ctx.font = "12px SUIT";
+
+                //bar chart background color
+                if (chart.canvas.id === 'monthChart') {
+                    ctx.fillStyle = "#f0f3f5";
+                    ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+
+                }
+            }
+        });
+
+
+        //========================================
+        //  TOP5 통계 GRID
+        //======================================== 
+
+        // 월간 최다 탑승지 grid
+        var monthStartCol = [
+            { title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+            { title: "탑승지", dataIndx: "start", width: 220, nodrag: true, nodrop: true, align: 'left', cls: "add_pd" },
+            { title: "탑승 건수", dataIndx: "start_num", width: 120, nodrag: true, nodrop: true, },
+            { title: "탑승 인원", dataIndx: "start_person", width: 100, nodrag: true, nodrop: true, },
+
+        ];
+
+        var monthStartData = {
+            "data": [
+                { "no": "1", "start": "하장백그룹회관", "start_num": "30건(50%)", "start_person": "50명" },
+                { "no": "2", "start": "하장백그룹회관", "start_num": "30건(50%)", "start_person": "50명" },
+                { "no": "3", "start": "하장백그룹회관", "start_num": "30건(50%)", "start_person": "50명" },
+                { "no": "4", "start": "하장백그룹회관", "start_num": "30건(50%)", "start_person": "50명" },
+                { "no": "5", "start": "하장백그룹회관", "start_num": "30건(50%)", "start_person": "50명" },
+            ]
+        };
+
+        var monthStartOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: monthStartData,
+            colModel: monthStartCol,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#monthMaxStartGrid", monthStartOpt);
+
+        // 월간 최다 하차지 grid
+        var monthOffCol = [
+            { title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+            { title: "하차지", dataIndx: "off", width: 220, nodrag: true, nodrop: true, align: 'left', cls: "add_pd" },
+            { title: "하차 건수", dataIndx: "off_num", width: 120, nodrag: true, nodrop: true, },
+            { title: "하차 인원", dataIndx: "off_person", width: 100, nodrag: true, nodrop: true, },
+
+        ];
+
+        var monthOffData = {
+            "data": [
+                { "no": "1", "off": "하장백그룹회관", "off_num": "30건(50%)", "off_person": "50명" },
+                { "no": "2", "off": "하장백그룹회관", "off_num": "30건(50%)", "off_person": "50명" },
+                { "no": "3", "off": "하장백그룹회관", "off_num": "30건(50%)", "off_person": "50명" },
+                { "no": "4", "off": "하장백그룹회관", "off_num": "30건(50%)", "off_person": "50명" },
+                { "no": "5", "off": "하장백그룹회관", "off_num": "30건(50%)", "off_person": "50명" },
+            ]
+        };
+
+        var monthOffOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: monthOffData,
+            colModel: monthOffCol,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true,
+            virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#monthMaxOffGrid", monthOffOpt);
+
+        // 월간 최다 주행 기사님 grid
+        var monthDriverCol = [
+            { title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+            { title: "기사이름", dataIndx: "name", width: 120, nodrag: true, nodrop: true, cls: "link" },
+            { title: "주행 건수", dataIndx: "driving_num", width: 100, nodrag: true, nodrop: true, },
+            { title: "지급 보조금", dataIndx: "subsidy", width: 120, nodrag: true, nodrop: true, },
+
+        ];
+
+        var monthDriverData = {
+            "data": [
+                { "no": "1", "name": "김행복", "driving_num": "30건", "subsidy": "150,000원" },
+                { "no": "2", "name": "김행복", "driving_num": "30건", "subsidy": "150,000원" },
+                { "no": "3", "name": "김행복", "driving_num": "30건", "subsidy": "150,000원" },
+                { "no": "4", "name": "김행복", "driving_num": "30건", "subsidy": "150,000원" },
+                { "no": "5", "name": "김행복", "driving_num": "30건", "subsidy": "150,000원" },
+            ]
+        };
+
+        var monthDriverOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: monthDriverData,
+            colModel: monthDriverCol,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true,
+            virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#monthMaxDriverGrid", monthDriverOpt);
+
+        /* ==========================================================================
+            이용자 통계 TAB
+        ========================================================================== */
+
+        //  회원 유형 별 이용자 수 grid
+        var userTypeColGroup = {
+            userTypeCol: [
+                {
+                    title: "회원 유형", dataIndx: "type", width: 120, nodrag: true, nodrop: true, exportRender: false,
+                    render: function (ui) {
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData;
+                        }
+                    }
+                },
+                {
+                    title: "이용자 수", dataIndx: "num", width: 120, nodrag: true, nodrop: true, dataType: "float",
+                    render: function (ui) {
+                        var items = ui.cellData;
+                        return ui.cellData + '명';
+                    }
+                },
+            ],
+            summaryData: [
+                { type: '합계', summaryRow: true, pq_fn: { num: 'sum(B:B)', } },
+            ]
+        }
+
+        var userTypeData = {
+            "data": [
+                { "type": "고령자", "num": "150", },
+                { "type": "장애인", "num": "100" },
+                { "type": "임산부", "num": "110" },
+                { "type": "영유아", "num": "150" },
+                { "type": "영유아 가정", "num": "190" },
+            ],
+        };
+
+        var userTypeOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+            change: function () {
+                this.refreshSummary();
+            },
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: userTypeData,
+            colModel: userTypeColGroup.userTypeCol,
+            summaryData: userTypeColGroup.summaryData,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+            filterModel: { on: true, header: false },
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc = pq.grid("#userTypeGrid", userTypeOpt);
+
+        //성별&연령 별 이용자 수 grid
+
+        const ageTotal = 1000
+        var ageColGroup = {
+            ageCol: [
+                {
+                    title: "", dataIndx: "gender", width: 60, nodrag: true, nodrop: true, exportRender: false,
+                    render: function (ui) {
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData;
+                        }
+                    }
+                },
+                {
+                    title: "10대 이하", dataIndx: "age10", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "20대", dataIndx: "age20", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "30대", dataIndx: "age30", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "40대", dataIndx: "age40", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "50대", dataIndx: "age50", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "60대", dataIndx: "age60", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "70대", dataIndx: "age70", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "80대 이상", dataIndx: "age80", width: 98, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        } else {
+                            return ui.cellData + '명'
+                        }
+                    }
+                },
+                {
+                    title: "합계", dataIndx: "rowTotal", width: 98, nodrag: true, nodrop: true, cls: "fwsb",
+                    render: function (ui) {
+                        let average = (ui.cellData / ageTotal) * 100
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData + '명'
+                        } else {
+                            return ui.cellData + '명 \n' + '(' + average + '%)';
+                        }
+                    }
+                }
+            ],
+            summaryData: [
+                {
+                    gender: '합계', summaryRow: true, pq_fn: { age10: 'sum(B:B)', age20: 'sum(C:C)', age30: 'sum(D:D)', age40: 'sum(E:E)', age50: 'sum(F:F)', age60: 'sum(G:G)', age70: 'sum(H:H)', age80: 'sum(I:I)', rowTotal: 'sum(J:J)', },
+                },
+            ]
+        }
+
+        var ageData = {
+            "data": [
+                { "gender": "남자", "age10": 100, "age20": 40, "age30": 50, "age40": 60, "age50": 60, "age60": 60, "age70": 80, "age80": 80, "rowTotal": "", },
+                { "gender": "여자", "age10": 200, "age20": 40, "age30": 50, "age40": 60, "age50": 60, "age60": 60, "age70": 80, "age80": 80, "rowTotal": "" },
+            ]
+        };
+
+        var ageOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 60,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            formulas: [
+                ['rowTotal', function (rd, i) { return rd['age10'] + rd['age20'] + rd['age30'] + rd['age40'] + rd['age50'] + rd['age60'] + rd['age70'] + rd['age80']; }],
+
+            ],
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: ageData,
+            colModel: ageColGroup.ageCol,
+            summaryData: ageColGroup.summaryData,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true,
+            virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_desc2 = pq.grid("#ageGrid", ageOpt);
+
+
+        /* ==========================================================================
+성별/연령 별 이용자 수 막대 그래프
+ ========================================================================== */
+
+        let genderData = {
+            labels: ['10대 이하', '20대', '30대', '40대', '50대', '60대', '70대', '80대 이상'],
+            datasets: [{
+                //categoryPercentage: 1.0,
+                //barPercentage: 0.5,
+                //barThickness : 8,
+                label: '남성',
+                backgroundColor: "#ff6928",
+                data: [100, 59, 70, 70, 58, 90, 59, 87],
+            }, {
+                //categoryPercentage: 1.0,
+                //barPercentage: 0.5,
+                //barThickness : 8,
+                label: '여성',
+                backgroundColor: "#14429c",
+                data: [50, 59, 120, 56, 58, 12, 59, 85],
+            }
+            ],
+        }
+
+        let genderOption = {
+            scales: {
+                x: {
+                    stacked: true,
+                    display: false,
+                },
+                y: {
+                    stacked: true,
+                    display: true,
+                },
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: false,
+                        lineWidth: 0,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 50,
+                        max: 250,
+                        fontColor: '#000000',
+                        fontSize: 12,
+                        family: "'SUIT', sans-serif",
+                        weight: 600,
+                    },
+                    gridLines: {
+                        lineWidth: 0,
+                    },
+                    type: 'linear',
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            chartArea: {
+                backgroundColor: '#f0f3f5',
+            },
+            //legend: { position: 'bottom' },
+            legend: {
+                display: false,
+            },
+
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                enabled: false,
+                bodyFontFamily: "'SUIT', sans-serif",
+                bodyFontSize: 14,
+                custom: function (tooltipModel) {
+                    // 툴팁 요소
+                    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                    // 첫번째 그리기에서 요소 만들기
+                    if (!tooltipEl) {
+                        tooltipEl = document.createElement('div');
+                        tooltipEl.id = 'chartjs-tooltip';
+                        tooltipEl.classList.add('wrap_tooltip');
+                        const contents = document.createElement('div');
+                        contents.classList.add('tooltip');
+                        tooltipEl.appendChild(contents);
+                        document.body.appendChild(tooltipEl);
+                    }
+
+                    // 툴팁이 없으면 숨기기
+                    if (tooltipModel.opacity === 0) {
+                        tooltipEl.style.opacity = 0;
+                        return;
+                    }
+
+                    // 캐럿 위치 설정
+                    tooltipEl.classList.remove('above', 'below', 'no-transform');
+                    if (tooltipModel.yAlign) {
+                        tooltipEl.classList.add(tooltipModel.yAlign);
+                    } else {
+                        tooltipEl.classList.add('no-transform');
+                    }
+
+
+                    function getBody(bodyItem) {
+                        let newArr = [];
+                        let lines = bodyItem.lines;
+                        newArr.push(lines.toString().split(":"))
+                        // console.log(newArr[0][1]);
+
+                        bodyItem = newArr;
+                        return bodyItem;
+                    }
+
+
+                    // 텍스트 설정
+                    if (tooltipModel.body) {
+                        var titleLines = tooltipModel.title || [];
+                        var bodyLines = tooltipModel.body.map(getBody);
+
+                        const titleArea = document.createElement('p');
+                        titleArea.classList.add('title');
+
+                        titleLines.forEach(title => {
+                            $(titleArea).text(title);
+                        });
+
+                        const contentsArea = document.createElement('div');
+                        contentsArea.classList.add('table_list');
+                        const tableWrap = document.createElement('table');
+                        const tableWrapBody = document.createElement('tbody');
+                        $(tableWrap).append(tableWrapBody);
+                        $(contentsArea).append(tableWrap);
+
+
+                        // 1. 남성 데이터와 여성 데이터를 분리합니다.
+                        const maleData = genderData.datasets[0].data;
+                        const femaleData = genderData.datasets[1].data;
+                        // 2. 같은 연령대별로 남성과 여성 데이터를 더합니다.
+                        const combinedData = maleData.map((val, index) => val + femaleData[index]);
+                        // 3. 남성 데이터를 같은 연령대별 합계로 나누고 100을 곱해 비율을 계산합니다.
+                        const maleRatios = maleData.map((val, index) => ((val / combinedData[index]) * 100).toFixed(2));
+                        // 4. 여성 데이터를 같은 연령대별 합계로 나누고 100을 곱해 비율을 계산합니다.
+                        const femaleRatios = femaleData.map((val, index) => ((val / combinedData[index]) * 100).toFixed(2));
+
+                        let dataIndex = tooltipModel.dataPoints[0].index;
+                        bodyLines.forEach(function (body, i) {
+                            let bodyTitle = body[0][0];
+
+                            let count;
+                            let ratio;
+
+                            if (i == 0) {
+                                count = maleData[dataIndex];
+                                ratio = maleRatios[dataIndex];
+                            } else if (i == 1) {
+                                count = femaleData[dataIndex];
+                                ratio = femaleRatios[dataIndex];
+                            }
+
+                            let bodyText = `${count}명 (${ratio}%)`;
+
+                            const table = `<tr><th>${bodyTitle}</th><td>${bodyText}</td></tr>`
+
+                            $(tableWrapBody).append(table);
+
+                        });
+
+
+                        const tableRoot = tooltipEl.querySelector('.tooltip');
+
+                        // Remove old children
+                        while (tableRoot.firstChild) {
+                            tableRoot.firstChild.remove();
+                        }
+
+                        // Add new children
+                        tableRoot.appendChild(titleArea);
+                        tableRoot.appendChild(contentsArea);
+
+                    }
+
+                    // `this` 전반적인 툴팁이 될 것입니다
+                    let position = this._chart.canvas.getBoundingClientRect();
+                    //const { offsetLeft: positionX, offsetTop: positionY } = this._chart.canvas;
+                    let gap = 20;
+
+                    // 폰트에 대한 보여지기, 위치, 그리고 스타일을 설정합니다
+                    tooltipEl.style.opacity = 1;
+                    tooltipEl.style.position = 'absolute';
+                    //tooltipEl.style.left = positionX + tooltipModel.caretX + 'px';
+                    // tooltipEl.style.top = positionY + tooltipModel.caretY + 'px';
+                    tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                    tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+
+                    tooltipEl.style.pointerEvents = 'none';
+
+                },
+            },
+
+
+            plugins: {
+                datalabels: {
+                    font: {
+                        size: 'none',
+                    }
+                },
+            },
+
+        }
+
+        const genderCtx = document.querySelector('#genderChart').getContext('2d');
+        const genderChart = new Chart(genderCtx, {
+            type: 'bar',
+            data: genderData,
+            options: genderOption
+        });
+
+
+
+
+
+        /*  ==========================================================================
+            차랑 통계 TAB
+        ========================================================================== */
+
+        //차량 통계 grid
+        var carColGruop = {
+            carTotalCol: [
+                {
+                    title: "차량 구분", dataIndx: "type", width: 80, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        if (ui.rowData.summaryRow) {
+                            return ui.cellData;
+                        }
+                    }
+                },
+                { title: "차종", dataIndx: "car_type", width: 100, nodrag: true, nodrop: true, },
+                {
+                    title: "등록 차량 대수", dataIndx: "car_num", width: 100, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let data = ui.cellData;
+                        let result = data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        return result + '대';
+                    }
+                },
+                {
+                    title: "총 주행 건수", dataIndx: "total_driving", width: 150, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let data = ui.cellData;
+                        let result = data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        return result + '건';
+                    }
+                },
+                {
+                    title: "대당 평균 주행 건수", dataIndx: "average_driving", width: 150, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        return ui.cellData + '건';
+                    }
+                },
+                {
+                    title: "총 이용자 수", dataIndx: "total_person", width: 150, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let data = ui.cellData;
+                        let result = data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        return result + '명';
+                    }
+                },
+                {
+                    title: "대당 평균 이용자 수", dataIndx: "average_person", width: 150, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        return ui.cellData + '명';
+                    }
+                },
+                {
+                    title: "총 주행 거리", dataIndx: "total_distance", width: 150, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let data = ui.cellData;
+                        let result = data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        return result + 'Km';
+                    }
+                },
+                {
+                    title: "대당 평균 주행 거리", dataIndx: "average_distance", width: 150, nodrag: true, nodrop: true,
+                    render: function (ui) {
+                        let data = ui.cellData;
+                        let result = data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        return result + 'Km';
+                    }
+                },
+            ],
+            summaryData: [
+                { type: '합계', summaryRow: true, pq_fn: { car_num: 'sum(C:C)', total_driving: 'sum(D:D)', average_driving: 'sum(E:E)', total_person: 'sum(F:F)', average_person: 'sum(G:G)', total_distance: 'sum(H:H)', average_distance: 'sum(I:I)' } },
+            ]
+        }
+
+        var carTotalData = {
+            "data": [
+                { "type": "택시", "car_type": "중형", "car_num": 12056, "total_driving": 4350, "average_driving": 3.4, "total_person": 3000, "average_person": 2.8, "total_distance": 4800, "average_distance": 5345 },
+                { "type": "", "car_type": "대형", "car_num": 12056, "total_driving": 4350, "average_driving": 3.4, "total_person": 3000, "average_person": 2.8, "total_distance": 4800, "average_distance": 5345 },
+                { "type": "버스", "car_type": "중형", "car_num": 12056, "total_driving": 4350, "average_driving": 3.4, "total_person": 3000, "average_person": 2.8, "total_distance": 4800, "average_distance": 5345 },
+                { "type": "", "car_type": "대형", "car_num": 12056, "total_driving": 4350, "average_driving": 3.4, "total_person": 3000, "average_person": 2.8, "total_distance": 4800, "average_distance": 5345 }
+            ]
+        };
+
+        var carTotalOpt = {
+            scrollModel: { autoFit: true },
+            width: '100%',
+            height: 'flex',
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            // formulas: [
+            //     ['rowTotal', function (rd, i) { return rd['age10'] + rd['age20'] + rd['age30'] + rd['age40'] + rd['age50'] + rd['age60'] + rd['age70'] + rd['age80']; }],
+
+            // ],
+
+            mergeCells: [
+                { r1: 0, c1: 0, rc: 2, cc: 1 },
+                { r1: 2, c1: 0, rc: 2, cc: 1 }
+            ],
+
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: carTotalData,
+            colModel: carColGruop.carTotalCol,
+            summaryData: carColGruop.summaryData,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true,
+            virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+        var grid_car = pq.grid("#carGrid", carTotalOpt);
+
+
+        //======================================== 
+        // PQ Grid refresh
+        //======================================== 
+
+        $(".tabs li a").on("click", function () {
+            grid_desc.refreshDataAndView();
+            grid_desc2.refreshDataAndView();
+            grid_car.refreshDataAndView();
+        });
+        //======================================== 
+    })
+</script>
+
+<script>
+    var dataModel = {   // 시, 도
+        "data": [
+            { "name": "경기도", "lat": "4479441.55063332", "lon": "14143573.56989571", "count": "2230" },
+            { "name": "강원도", "lat": "4563245.81944605", "lon": "14218819.88277769", "count": "545" },
+            { "name": "충청북도", "lat": "4388450.34314208", "lon": "14192276.56840460", "count": "1245" },
+            { "name": "충청남도", "lat": "4391747.04832568", "lon": "14101200.60980514", "count": "334" },
+            { "name": "경상북도", "lat": "4380160.54350907", "lon": "14305212.65999097", "count": "4455" },
+            { "name": "경상남도", "lat": "4196245.29181517", "lon": "14325920.41508494", "count": "16000" },
+            { "name": "전라북도", "lat": "4275933.93699862", "lon": "14149678.37042744", "count": "6550" },
+            { "name": "전라남도", "lat": "4138935.80685049", "lon": "14077787.53128276", "count": "22400" },
+            { "name": "제주도", "lat": "3960394.53336689", "lon": "14081723.93307265", "count": "555" }
+        ],
+    };
+
+    var dataModel2 = {  // 시, 군, 구
+        "data": [
+            { "name": "고창군", "lat": "4223264.17351224", "lon": "14104413.56738598", "count": "504" },
+            { "name": "장수군", "lat": "4252201.45183824", "lon": "14195597.18097096", "count": "521" },
+            { "name": "순창군", "lat": "4214881.91047825", "lon": "14152895.26435587", "count": "346" },
+            { "name": "광주광역시", "lat": "4185657.92121210", "lon": "14121036.57445829", "count": "854" },
+            { "name": "하동군", "lat": "4173020.63314568", "lon": "14221206.27576951", "count": "237" },
+        ],
+    };
+
+    var map = new naver.maps.Map("map_div", {
+        zoom: 7,
+        minZoom: 7,
+        maxZoom: 13,
+        center: new naver.maps.LatLng(35.7290000, 127.6460516),
+        // zoomControl: true,
+        // zoomControlOptions: {
+        //     position: naver.maps.Position.TOP_LEFT,
+        //     style: naver.maps.ZoomControlStyle.SMALL
+        // }
+    });
+
+    var markerList = [];
+
+    // create an array of markerList
+    function createMarker(dataItems, selectedValue) {
+        // markerList 초기화
+        if (markerList.length > 0) {
+            for (var i = 0; i < markerList.length; i++) {
+                markerList[i].setMap(null);
+            }
+            markerList = [];
+        }
+
+        if (selectedValue) {
+            var selectedItem = dataItems.filter((item) => {
+                return item.name === selectedValue;
+            });
+
+            console.log(selectedItem)
+
+            // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+            var latlng = new Tmapv2.Point(selectedItem[0].lon, selectedItem[0].lat);
+            // 포인트 객체를 받아 좌표값으로 변환
+            var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+            // 포인트객체의 정보로 좌표값 변환 객체로 저장
+            var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+
+            map.setCenter(convertChange);
+            map.setZoom(9);
+        }
+
+        for (var i = 0; i < dataItems.length; i++) {
+            // 경로들의 결과값(구간)들을 포인트 객체로 변환 
+            var latlng = new Tmapv2.Point(dataItems[i].lon, dataItems[i].lat);
+            // 포인트 객체를 받아 좌표값으로 변환
+            var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+            // 포인트객체의 정보로 좌표값 변환 객체로 저장
+            var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+
+            var name = dataItems[i].name;
+            var count = Number(dataItems[i].count);
+            var cls = '';
+            var str = count.toString().split('')[0];
+            var result = '';
+
+            if (count >= 1000 && count < 10000) {
+                cls = 'more1000';
+                result = str + '천 +';
+            } else if (count >= 10000) {
+                cls = 'more10000';
+                result = str + '만 +';
+            } else {
+                cls = '';
+                result = count;
+            }
+
+            var marker = new naver.maps.Marker({
+                position: convertChange,
+                map: map,
+                icon: {
+                    content: [
+                        '<div class="pin pin_area ' + cls + '">',
+                        '<div class="name">',
+                        name,
+                        '</div>',
+                        '<div class="count">',
+                        result,
+                        '</div>',
+                        '</div>'
+                    ].join(''),
+                    size: new naver.maps.Size(120, 60),
+                    anchor: new naver.maps.Point(60, 30),
+                },
+                draggable: false,
+                clickable: false,
+                zIndex: 10
+            });
+            markerList.push(marker);
+        }
+    }
+
+
+    function updateCluster(label) {
+        console.log('label: ', label)
+        var zoomLabel = label;
+
+        if (zoomLabel < 10) {
+            createMarker(dataModel.data);
+        } else {
+            createMarker(dataModel2.data);
+        }
+    }
+
+    // 전체 선택 시
+    createMarker(dataModel.data);
+
+    // 시군구 선택 시
+    // createMarker(dataModel2.data, "순창군");
+
+    // register the function to the zoom_changed event
+    naver.maps.Event.addListener(map, 'zoom_changed', updateCluster);
+</script>
+
+</html>

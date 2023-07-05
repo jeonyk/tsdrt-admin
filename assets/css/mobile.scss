@@ -1,0 +1,228 @@
+@import "./variables.scss";
+
+
+/* ==========================================================================
+   MOBILE COMMON
+   ========================================================================== */
+
+
+.pop_respon {
+   width: 96% !important;
+       margin: 0 2%  !important;
+}
+
+/* main.css */ 
+
+@media screen and (max-width:1900px) { 
+.dashboard{
+   .row{
+      .col{
+         .box_section.df {
+            .table_area { width: 500px !important; /*width: 500px !important;*/
+               table {
+                  .sub_td {padding: 14px 0px 14px 24px;}
+                  .ar {padding: 14px 24px 14px 0;}
+                  }
+               }
+            }
+        }
+      }
+   }
+}
+
+@media screen and (max-width:1700px) { 
+   .dashboard{
+      .row{
+         display: block !important;
+         .col{
+            &.map {width: 100% !important; margin-bottom: 40px; height: 350px !important;}
+           }
+      }
+   }
+}
+
+@media screen and (max-width:1595px) { 
+   .reservation {
+      .row{
+         padding-right: calc(40% + 40px) !important;
+         .group_map { width: 40%  !important; }
+         .select_area{
+            .ui-selectmenu-button.ui-button{
+                margin-bottom: 10px;
+            }
+         }
+      }
+   }
+}
+
+@media screen and (max-width:1465px) {
+   .reservation {
+      .form_datetime .label_t {margin-left: 30px !important;}
+   } 
+}
+
+@media screen and (max-width:1415px) {
+   .reservation {
+      .form_datetime {width: 350px;
+         .label_t {margin-top: 10px;}
+         .wrap_count {margin-top: 10px;}
+      }
+   } 
+}
+
+
+@media screen and (max-width:1280px) { 
+   .login_wrap  {
+      min-width: 100% !important;
+      height: 100vh !important;
+   }
+   #footer .inner { padding:18px 84px;}  
+   
+   .reservation {
+      .form_datetime { width:auto;
+         .label_t {margin-top: 0px;}
+         .wrap_count {margin-top: 0px;}
+        }
+        
+      .group_user {
+         .grid_list {
+            .pq-grid-cell > div {
+               padding:14px 10px; 
+               word-break: break-all;
+               }
+            }
+          } 
+             
+      #grid_previnfo { width: 100% !important; }
+      // .row {display: block !important;
+      //    .group_map { width: 100% !important; margin-top: 40px; margin-left:0 !important; }
+      // }
+      // .form_memo .form_ctl {width: 80% !important;}
+       .row {
+          .group_map { 
+            .select_area{
+               .ui-selectmenu-button.ui-button{
+                   margin-bottom: 10px;
+                  }
+              }
+          }
+       }
+   }
+   
+   #pop_reservation {
+      .pop_contents {
+         .row {
+            display: flex !important;
+            .group_map { 
+               width: 43% !important; 
+               margin-top: 0px; 
+               margin-left:20px;  
+               flex:0 0 40% !important;
+               height:480px !important;
+               min-height: 480px !important;
+               .select_area{
+                  .ui-selectmenu-button.ui-button{
+                      margin-bottom: 10px;
+                  }
+              }
+            }
+         }
+      }
+   }
+   
+   .dashboard{
+      .row{
+         .col{
+            .box_section.df {
+               .table_area { width: auto !important;
+                  table {
+                     .sub_td {padding:14px 24px;}
+                     .ar {padding: 14px 24px;}
+                     }
+                  }
+               }
+           }
+         }
+      }
+      
+ } 
+ 
+ 
+ /* common.css */ 
+@media screen and (max-width:1280px) { 
+   #lnb {
+       position: fixed;
+       height: 100%;
+       top: 0;
+       left:-250px;
+       transition: .3s;
+       z-index: 100;
+       &.active{
+         left: 0;
+         .lnbopen_btn {
+           left: 240px; 
+           transition: .3s;
+           background:#fff url(../img/btn_page_prev.png) no-repeat 50%;
+         }
+       }
+       .lnbopen_btn {
+         display: block; 
+         width: 20px; height: 40px; 
+         background:#fff url(../img/btn_page_next.png) no-repeat 50%; 
+         border:1px solid #ccc;
+         border-left:none;
+         border-radius: 0 8px 8px 0;
+         position: fixed; 
+         top:100px; left:0; 
+         cursor:pointer;
+         z-index: 100;
+       }
+     } 
+       
+     .inner {
+       width: 100% !important;
+     }
+     
+     .pq-grid.ui-widget.ui-widget-content {
+      .pq-grid-cell {
+         .state { 
+            width: 50px !important; 
+            letter-spacing: -2px;}
+         }
+     }
+     
+ } 
+ 
+ 
+/* guide.css */ 
+@media screen and (max-width:1280px) { 
+   .box_section {
+       .both_col {
+            flex-direction: column; 
+            .map_area {width: 100%;}
+            
+            &.map_col {
+               .right {width: 100%;}
+            }
+         }
+       }
+   
+   .grid_list {min-width:auto !important;}
+   
+   #voucher_pop03 {
+      .form_inline.mr40 {margin-right: 22px !important;}
+   }
+   
+   .title_sm.respon {  margin: 0 !important; }
+   
+}
+
+
+@media screen and (max-width:1024px) { 
+   .ui-dialog {
+       width: 96% !important;
+       margin: 0 2%  !important;
+   }
+   .file_text_wtap {width: 400px !important;}
+}
+

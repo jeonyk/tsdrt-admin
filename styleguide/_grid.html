@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>마크업가이드 - GRID</title>
+<!-- 가이드 css -->
+<link rel="stylesheet" href="../guide_common/css/common.css">
+<link rel="stylesheet" href="../guide_common/css/shCoreDefault.css">
+<link rel="stylesheet" href="../assets/css/common.css">
+<link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqselect.min.css">
+<link rel="stylesheet" href="../assets/css/vendor/pqgrid.css">
+
+<script src="../assets/js/vendor/jquery-3.4.1.min.js"></script>
+<script src="../assets/js/vendor/jquery-ui.min.js"></script>
+<script src="../assets/js/vendor/pqgrid.min.js"></script>
+<script src="../assets/js/vendor/pqselect.min.js"></script>
+<script src="../assets/js/vendor/jszip.min.js"></script>
+<script src="../assets/js/vendor/FileSaver.min.js"></script>
+<script src="../assets/js/common.js"></script>
+
+<script type="text/javascript" src=" ../guide_common/js/shCore.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushXml.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushCss.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/shBrushJScript.js"></script>
+<script type="text/javascript" src=" ../guide_common/js/guide.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+	$(document).ready(function(){
+		$('.g-nav-snb').append(webSnb);
+		$('.g-nav-snb ul li').eq(5).addClass("active");
+	});
+</script>
+</head>
+<body>
+<div id="g-wrap" class="open-aside">
+	<!-- aside -->
+	<div id="g-aside">
+		<!-- # 좌측컨텐츠 # -->
+		<div class="wrap-aside">
+			<!-- 사용자정보영역 -->
+			<div class="box-info">
+			</div>
+			<!-- 네비게이션 : SNB -->
+			<div class="g-nav-snb guide"></div>
+		</div>
+		<!-- # 컨트롤 # -->
+		<div class="g-area-control">
+			<a href="#none">좌측영역 펼침/닫기</a>
+		</div>
+	</div>
+	<!-- //aside -->
+
+	<div class="g-content">
+		<div class="g-box-basic">
+			<h2 class="g-tit-basic">Grid</h2>
+
+			<!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<!-- view -->
+							<h3 class="g-tit-basic">ParamQuery Grid</h3>
+							<div id="grid_json" style="margin:auto;"></div>
+							
+							<ul class="lst_options">
+								<li><a href="javascript:void(0);">접수 상세 정보</a></li>
+								<li><a href="javascript:void(0);">주행 상세 정보</a></li>
+								<li><a href="javascript:void(0);">배차 대기</a></li>
+								<li><a href="javascript:void(0);">배차</a></li>
+								<li><a href="javascript:void(0);">배차 정보 수정</a></li>
+								<li><a href="javascript:void(0);">예약 취소</a></li>
+							</ul>
+
+							<ul class="lst_status">
+								<li><a href="javascript:void(0);">배차 대기</a></li>
+								<li><a href="javascript:void(0);">배차</a></li>
+								<li><a href="javascript:void(0);">예약 취소</a></li>
+							</ul>
+
+							<style>
+								.lst_options,.lst_status{
+									display: none;
+									position: fixed;
+									width: 200px;
+									background-color: #fff;
+									border: 1px solid #ccc;
+								}
+								.lst_options li a,.lst_status li a{
+									display: block;
+									padding: 5px 10px;
+								}
+								.lst_options li a.disabled,.lst_status li a.disabled{
+									background-color: #eee;
+									cursor: not-allowed;
+								}
+
+                                .pq-grid-cell.disabled{
+                                    background-color: #ccc;
+                                }
+							</style>
+							<script>
+								$(function () {
+									// var dataModel = {
+									// 		location: 'remote',
+									// 		url: "https://paramquery.com/pro/customers/get"
+									// }
+
+									var dataModel = {"data":[
+										{"no":1,"sido":"전라북도","sigungu":"고창군","agency":"고창택시","center":"고창읍","status":"주행 중","receipt-date":"2022-10-18 12:31:00","receipt-location":"무주공용버스터미널(전북 무주군 무주읍 한풍루로 351)","receipt-phone":"01023840543","receipt-personnel":"2","receipt-date":"2022-10-18 12:31:00","receipt-consultant":"이재성","driver-num":"전북36바3000","driver-type":"개인","driver-car":"택시","driver-charge":"송진혁","driving-personnel":"2","driving-intime":"2022-10-18 12:31:00","driving-outtime":"2022-10-18 12:31:00","driving-time":"01시 00분 00초","option":"case1"},
+										{"no":1,"sido":"전라북도","sigungu":"고창군","agency":"고창택시","center":"고창읍","status":"주행 완료","receipt-date":"2022-10-18 12:31:00","receipt-location":"무주공용버스터미널(전북 무주군 무주읍 한풍루로 351)","receipt-phone":"01023840543","receipt-personnel":"2","receipt-date":"2022-10-18 12:31:00","receipt-consultant":"이재성","driver-num":"전북36바3000","driver-type":"개인","driver-car":"택시","driver-charge":"송진혁","driving-personnel":"2","driving-intime":"2022-10-18 12:31:00","driving-outtime":"2022-10-18 12:31:00","driving-time":"01시 00분 00초","option":"case2"},
+										{"no":1,"sido":"전라북도","sigungu":"고창군","agency":"고창택시","center":"고창읍","status":"배차 대기","receipt-date":"2022-10-18 12:31:00","receipt-location":"무주공용버스터미널(전북 무주군 무주읍 한풍루로 351)","receipt-phone":"01023840543","receipt-personnel":"2","receipt-date":"2022-10-18 12:31:00","receipt-consultant":"이재성","driver-num":"전북36바3000","driver-type":"개인","driver-car":"택시","driver-charge":"송진혁","driving-personnel":"2","driving-intime":"2022-10-18 12:31:00","driving-outtime":"2022-10-18 12:31:00","driving-time":"01시 00분 00초","option":"case3"},
+										{"no":1,"sido":"전라북도","sigungu":"고창군","agency":"고창택시","center":"고창읍","status":"배차 완료","receipt-date":"2022-10-18 12:31:00","receipt-location":"무주공용버스터미널(전북 무주군 무주읍 한풍루로 351)","receipt-phone":"01023840543","receipt-personnel":"2","receipt-date":"2022-10-18 12:31:00","receipt-consultant":"이재성","driver-num":"전북36바3000","driver-type":"개인","driver-car":"택시","driver-charge":"송진혁","driving-personnel":"2","driving-intime":"2022-10-18 12:31:00","driving-outtime":"2022-10-18 12:31:00","driving-time":"01시 00분 00초","option":"case3"},
+										{"no":1,"sido":"전라북도","sigungu":"고창군","agency":"고창택시","center":"고창읍","status":"예약 취소","receipt-date":"2022-10-18 12:31:00","receipt-location":"무주공용버스터미널(전북 무주군 무주읍 한풍루로 351)","receipt-phone":"01023840543","receipt-personnel":"2","receipt-date":"2022-10-18 12:31:00","receipt-consultant":"이재성","driver-num":"전북36바3000","driver-type":"개인","driver-car":"택시","driver-charge":"송진혁","driving-personnel":"2","driving-intime":"2022-10-18 12:31:00","driving-outtime":"2022-10-18 12:31:00","driving-time":"01시 00분 00초","option":"case3"},
+									]};
+
+									var pageModel = { 
+											type: "local", 
+											rPP: 10, 
+											strRpp: "{0}", 
+											//customize localization strings.
+											strDisplay: "{0} to {1} of {2}",
+											strPage: "Page {0} / {1}",             
+											layout: ['first','prev', 'next','last', 'strPage', "|", "strDisplay"]                    
+									};
+
+									function filterhandler() {
+											var $toolbar = this.toolbar(),
+											$value = $toolbar.find(".filterValue"),
+											value = $value.val(),
+											// condition = $toolbar.find(".filterCondition").val(),
+											// dataIndx = $toolbar.find(".filterColumn").val(),
+											condition = 'contain',
+											dataIndx = '',
+											filterRules;
+
+											if (dataIndx == "") {//search through all fields when no field selected.
+												filterRules = this.getColModel().map(function(column){                                    
+													return { dataIndx: column.dataIndx, condition: condition, value: value };
+												})
+											}
+											else {//search through selected field.
+												filterRules = [{ dataIndx: dataIndx, condition: condition, value: value}];
+											}
+
+											//call to grid filter method.
+											this.filter({
+												oper: 'replace',
+												rules: filterRules
+											});
+									}
+									//filterRender to highlight matching cell text.(optional)
+									function filterRender(ui) {
+											var val = ui.cellData,
+											filter = ui.column.filter,
+											crules = (filter || {}).crules;
+
+											if (filter && filter.on && crules && crules[0].value) {
+													var condition = crules[0].condition,
+													valUpper = val.toUpperCase(),
+													txt = crules[0].value,
+													txt = (txt == null) ? "" : txt.toString(),
+													txtUpper = txt.toUpperCase(),
+													indx = -1;
+													if (condition == "end") {
+															indx = valUpper.lastIndexOf(txtUpper);
+															//if not at the end
+															if (indx + txtUpper.length != valUpper.length) {
+																	indx = -1;
+															}
+													}
+													else if (condition == "contain") {
+															indx = valUpper.indexOf(txtUpper);
+													}
+													else if (condition == "begin") {
+															indx = valUpper.indexOf(txtUpper);
+															//if not at the beginning.
+															if (indx > 0) {
+																	indx = -1;
+															}
+													}
+													if (indx >= 0) {
+															var txt1 = val.substring(0, indx);
+															var txt2 = val.substring(indx, indx + txt.length);
+															var txt3 = val.substring(indx + txt.length);
+															return txt1 + "<span style='background:yellow;color:#333;'>" + txt2 + "</span>" + txt3;
+													}
+													else {
+															return val;
+													}
+											}
+											else {
+													return val;
+											}
+									}
+									
+									function showStatus(rowIndx, grid, tg) {
+										var st = $(window).scrollTop();
+										var sl = $(window).scrollLeft();
+
+										$(window).scroll(function(evt){
+											$('.lst_status').css({'display': 'none'});
+											$('.btn_status').removeClass('on');
+										});
+
+										$(window).resize(function(){
+											$('.lst_status').css({'display': 'none'});
+											$('.btn_status').removeClass('on');
+										});
+
+										if(!tg.hasClass('on')) {
+											$('.lst_status').css({
+												'display': 'block',
+												'left': tg.offset().left - $('.lst_status').outerWidth()/2 + tg.outerWidth()/2 - sl,
+												'top': tg.offset().top + tg.outerHeight() - st
+											});
+											tg.addClass('on');
+										} else {
+											$('.lst_status').css({'display': 'none'});
+											$('.btn_status').removeClass('on');
+										}
+
+										var rowData = grid.getRowData({rowIndx: rowIndx});
+										$('.lst_status li a').removeClass('disabled');
+
+										switch(rowData.status) {
+											case '배차 대기':
+												$('.lst_status li a').eq(0).addClass('disabled');
+												break;
+											case '배차 완료':
+												$('.lst_status li a').eq(1).addClass('disabled');
+												break;
+											case '주행 중':
+												$('.lst_status li a').addClass('disabled');
+												break;
+											case '주행 완료':
+												$('.lst_status li a').addClass('disabled');
+												break;
+											case '예약 취소':
+												$('.lst_status li a').addClass('disabled');
+												break;
+										}
+									}
+
+									function showOptions(rowIndx, grid, tg) {
+										var st = $(window).scrollTop();
+										var sl = $(window).scrollLeft();
+
+										$(window).scroll(function(evt){
+											$('.lst_options').css({'display': 'none'});
+											$('.btn_more').removeClass('on');
+										});
+
+										$(window).resize(function(){
+											$('.lst_options').css({'display': 'none'});
+											$('.btn_more').removeClass('on');
+										});
+										
+										if(!tg.hasClass('on')) {
+											$('.lst_options').css({
+												'display': 'block',
+												'left': tg.offset().left - $('.lst_options').outerWidth() + tg.outerWidth() - sl,
+												'top': tg.offset().top + tg.outerHeight() - st
+											});
+											tg.addClass('on');
+										} else {
+											$('.lst_options').css({'display': 'none'});
+											$('.btn_more').removeClass('on');
+										}
+
+										var rowData = grid.getRowData({rowIndx: rowIndx});
+										$('.lst_options li a').removeClass('disabled');
+
+										switch(rowData.status) {
+											case '배차 대기':
+												console.log('배차 대기11');
+												$('.lst_options li a').eq(1).addClass('disabled');
+												$('.lst_options li a').eq(2).addClass('disabled');
+												$('.lst_options li a').eq(4).addClass('disabled');
+												break;
+											case '배차 완료':
+												$('.lst_options li a').eq(1).addClass('disabled');
+												break;
+											case '주행 중':
+												$('.lst_options li a').eq(2).addClass('disabled');
+												$('.lst_options li a').eq(3).addClass('disabled');
+												$('.lst_options li a').eq(5).addClass('disabled');
+												break;
+											case '주행 완료':
+												$('.lst_options li a').eq(2).addClass('disabled');
+												$('.lst_options li a').eq(3).addClass('disabled');
+												$('.lst_options li a').eq(4).addClass('disabled');
+												$('.lst_options li a').eq(5).addClass('disabled');
+												break;
+											case '예약 취소':
+												$('.lst_options li a').eq(2).addClass('disabled');
+												$('.lst_options li a').eq(3).addClass('disabled');
+												$('.lst_options li a').eq(4).addClass('disabled');
+												$('.lst_options li a').eq(5).addClass('disabled');
+												break;
+										}
+									}
+
+									$(document).on('click', function(evt) {
+										if(!$(evt.target).hasClass('btn_more')) {
+											$('.lst_options').css({'display': 'none'});
+											$('.btn_more').removeClass('on');
+										};
+
+										if(!$(evt.target).hasClass('btn_status')) {
+											$('.lst_status').css({'display': 'none'});
+											$('.btn_status').removeClass('on');
+										}
+									});
+
+									var colModel = [
+										/* { dataIndx: "state", maxWidth: 60, minWidth: 60, align: "center", resizable: false,
+											title: "",
+											menuIcon: false,
+											type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editor: false,
+											dataType: 'bool',
+											cb: {
+												all: false, //checkbox selection in the header affect current page only.
+												header: true, //show checkbox in header. 
+												select: true 
+											}
+										}, */
+										{ title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+										{ title: "시도", dataIndx: "sido", width: 100, nodrag: true, nodrop: true, },
+										{ title: "시군구", dataIndx: "sigungu", width: 100, nodrag: true, nodrop: true, },
+										{ title: "소속기관", dataIndx: "agency", width: 100, nodrag: true, nodrop: true, },
+										{ title: "센터", dataIndx: "center", width: 100, nodrag: true, nodrop: true, },
+										{ title: "주행 상태", dataIndx: "status", width: 150, nodrag: true, nodrop: true,
+											render: function (ui) { // checkbox custom
+												// console.log(ui);
+												var rowData = ui.rowData, dataIndx = ui.dataIndx;
+												var val = rowData[dataIndx];
+												var lst;
+												
+												var result = "<button type='button' class='btn_status'>" + val + "</button>";
+												return result;
+											},
+											postRender: function (ui) {
+												var rowIndx = ui.rowIndx,
+													grid = this,
+													$cell = grid.getCell(ui);
+
+												//delete button
+												$cell.find(".btn_status").bind("click", function (evt) {
+													var tg = $(this);
+													showStatus(rowIndx, grid, tg);
+												});
+
+												//edit button
+												// $cell.find(".edit_btn").button({ icons: { primary: 'ui-icon-pencil'} })
+												// .bind("click", function (evt) {
+												// 	if (isEditing(grid)) {
+												// 		return false;
+												// 	}
+												// 	editRow(rowIndx, grid, true);
+												// });
+
+												//if it has edit class, then edit the row.
+												// if (grid.hasClass({ rowData: ui.rowData, cls: 'pq-row-edit' })) {
+												// 	editRow(rowIndx, grid);
+												// }
+											},
+									
+										},
+
+										{ title: "접수 정보", dataIndx: "receipt", nodrag: true, nodrop: true,
+											colModel: [
+												{ title: "접수 일시", dataIndx: "receipt-date", width: 100, nodrag: true, nodrop: true, },
+												{ title: "탑승지/하차지", dataIndx: "receipt-location", width: 300, align: "left", nodrag: true, nodrop: true, },
+												{ title: "예약자 전화번호", dataIndx: "receipt-phone", width: 100, nodrag: true, nodrop: true, },
+												{ title: "예약자 인원", dataIndx: "receipt-personnel", width: 80, nodrag: true, nodrop: true, },
+												{ title: "상담원", dataIndx: "receipt-consultant", width: 80, nodrag: true, nodrop: true, },
+											]
+										},
+
+										{ title: "기사 정보", dataIndx: "driver", nodrag: true, nodrop: true,
+											colModel: [
+												{ title: "차량번호", dataIndx: "driver-num", width: 100, nodrag: true, nodrop: true, },
+												{ title: "기사 구분", dataIndx: "driver-type", width: 100, nodrag: true, nodrop: true, },
+												{ title: "차량유형", dataIndx: "driver-car", width: 100, nodrag: true, nodrop: true, },
+												{ title: "담당 기사", dataIndx: "driver-charge", width: 100, nodrag: true, nodrop: true, },
+											]
+										},
+
+										{ title: "주행 정보", dataIndx: "driving", nodrag: true, nodrop: true,
+											colModel: [
+												{ title: "탑승 인원", dataIndx: "driving-personnel", width: 100, nodrag: true, nodrop: true, },
+												{ title: "탑승 일시", dataIndx: "driving-intime", width: 100, nodrag: true, nodrop: true, },
+												{ title: "하차 일시", dataIndx: "driving-outtime", width: 100, nodrag: true, nodrop: true, },
+												{ title: "주행 시간", dataIndx: "driving-time", width: 100, nodrag: true, nodrop: true, },
+											]
+										},
+
+										{ title: "옵션", dataIndx: "option", width: 60, maxWidth: 60, minWidth: 60, nodrag: true, nodrop: true,
+											render: function (ui) { // checkbox custom
+												// console.log(ui);
+												var rowData = ui.rowData, dataIndx = ui.dataIndx;
+												var val = rowData[dataIndx];
+												var lst;
+												
+												var result = "<button type='button' class='btn_more'>더보기</button>";
+												return result;
+											},
+											postRender: function (ui) {
+												var rowIndx = ui.rowIndx,
+													grid = this,
+													$cell = grid.getCell(ui);
+                                                // console.log(ui)
+                                                // console.log($cell);
+
+												//delete button
+												$cell.find(".btn_more").bind("click", function (evt) {
+													var tg = $(this);
+													showOptions(rowIndx, grid, tg);
+												});
+											},
+										},
+									];
+									
+
+									var options = {
+										// scrollModel: {autoFit: true},  
+										width: 'auto', 
+										minWidth: 980,
+										// flexHeight: true,
+										// height: 'flex',
+										minHeight: 200,
+										// maxHeight: 400,
+										rowHt: 24,
+										rowHtHead: 24,
+										collapsible: {on: false, toggle: false},
+
+										columnBorders: true,
+										rowBorders: true,
+										stripeRows: true,
+										
+										// filterModel: { on: true, mode: "AND", header: true },
+										postRenderInterval: -1, //synchronous post rendering.
+										dataModel: dataModel,
+										colModel: colModel,
+										// pageModel: { type: "" },
+										// pageModel: pageModel,
+										selectionModel: { type: 'row', mode: 'block' },
+										
+										// columnTemplate: {render: filterRender},
+										columnTemplate: {
+											//set horizontal and vertical alignment of all cells in all columns.
+											align: 'center', valign: 'center'
+										},
+										editable: false,
+										freezeCols: 0,
+										freezeRows: 0,                        
+																
+										numberCell: { show: false },
+										reactive: true,
+										roundCorners: false,
+										resizable: true,
+
+										showHeader: true,
+										showTitle: false,
+										showToolbar: false,
+										showTop: false,
+										showBottom: false,
+										virtualX: true, virtualY: true,
+
+										title: "",
+										strNoRows : '조회된 데이터가 없습니다.',
+										/* toolbar: {
+											cls: "pq-toolbar-search",
+											items: [
+												{
+													type: 'button',
+													cls: 'btn btn_sm btn_excel',
+													label: "Excel Export",
+													// icon: 'ui-icon-arrowthickstop-1-s',
+													listener: function () {
+														// var format = $("#export_format").val(),                            
+														var format = 'xlsx',                            
+															blob = this.exportData({
+																			//url: "/pro/demos/exportData",
+																			format: format,        
+																			nopqdata: true, //applicable for JSON export.                        
+																			render: true
+															});
+														if(typeof blob === "string"){                            
+															blob = new Blob([blob]);
+														}
+														saveAs(blob, "pqGrid."+ format );
+													}
+												},
+												{
+													type: 'select',
+													cls:'rpp form_control form_sm',
+													label: "페이지 목록 ",
+													value: pageModel.rPP,
+													options: [10, 20, 50, 100, 1000],
+													listener: function(evt) {
+														console.log(evt);
+														this.option('pageModel.rPP', $(evt.target).val())
+														this.refreshDataAndView();
+													}
+												}
+											]
+										}, */
+									};
+									var grid = pq.grid("#grid_json", options);
+
+									// $(document).on('click', '.btn_more', function(evt) {
+									// 	var checked = grid.Checkbox('state').getCheckedNodes().map(function(rd){
+									// 		console.log(rd);
+									// 		return rd.id;
+									// 	});
+									// 	console.log(evt);
+									// });
+
+									$(document).on('click', '.btn_clear', function() {
+										console.log('잠금 해제');
+									});
+
+									// $('select.form_control').selectmenu({
+									// 	// appendTo: '.selectbox',       
+									// });
+
+									// $(document).on('selectmenuchange', 'select', function(){
+									// 	console.log($(this).val());
+									// 	grid.option('pageModel.rPP', $(this).val());
+									// 	grid.refreshDataAndView();
+									// })
+								});
+							</script>
+
+							<!-- //view -->
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html">
+                                
+								
+							</pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css">
+								
+							</pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+
+			<!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<!-- view -->
+							<h3 class="g-tit-basic">ParamQuery Grid</h3>
+							<div id="grid_reservation" style="margin:auto;"></div>
+							
+							<style>
+								.merge_area{
+									overflow: visible;
+								}
+								.merge_area > div{
+									padding: 3px 0;
+								}
+								.bar{
+									position: relative;
+									height: 20px;
+									background-color: steelblue;
+								}
+								.bar .not{
+									position: absolute;
+									height: 100%;
+									left: 22%;
+									width: 20%;
+									background-color: rgb(197, 126, 18);
+								}
+								.bar .selected{
+									position: absolute;
+									/* height: 20px; */
+									top: -12px;
+									bottom: -12px;
+									left: 13.2%;
+									width: 5.5%;
+									border-left: 3px solid #ff0000;
+									border-right: 3px solid #ff0000;
+								}
+							</style>
+							<script>
+								$(function () {
+									var dataModel2 = {"data":[
+										{"select":"배차","driver":"이재성","car_num":"울산 나 7433","car_type":"택시","notallowed":"11:30-15:20","hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+										{"select":"배차","driver":"이재성","car_num":"울산 나 7433","car_type":"택시","notallowed":"11:20-15:00","hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+										{"select":"배차","driver":"이재성","car_num":"울산 나 7433","car_type":"택시","notallowed":"11:10-15:30","hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+										{"select":"배차","driver":"이재성","car_num":"울산 나 7433","car_type":"택시","notallowed":"11:00-15:10","hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+										{"select":"배차","driver":"이재성","car_num":"울산 나 7433","car_type":"택시","notallowed":"10:50-15:00","hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+									]};
+
+									var data_selected = '09:00-09:40';
+
+									var colModel2 = [
+										{ title: "선택", dataIndx: "select", width: 100, nodrag: true, nodrop: true, },
+										{ title: "기사", dataIndx: "driver", width: 100, nodrag: true, nodrop: true, },
+										{ title: "차량 번호", dataIndx: "car_num", width: 100, nodrag: true, nodrop: true, },
+										{ title: "차량 유형", dataIndx: "car_type", width: 100, nodrag: true, nodrop: true, },
+										{ title: "07:00", dataIndx: "hour07", width: 100, nodrag: true, nodrop: true, cls: "merge_area", 
+											render: function (ui) { // checkbox custom
+												// console.log(ui);
+												var rowData = ui.rowData, dataIndx = ui.dataIndx, rowIndx = ui.rowIndx;
+												var val = rowData[dataIndx];
+												var notallowed = rowData.notallowed;
+
+												function calcPos(time) {
+													var gap = 100/15;
+													var start = time.split('-')[0];
+													var start_hour = start.split(':')[0];
+													var start_min = start.split(':')[1];
+													var pos_left = (start_hour - 7)*gap + (start_min/60*gap);
+													return pos_left;
+												}
+
+												function calcWd(time) {
+													var gap = 100/15;
+													var end = time.split('-')[1];
+													var end_hour = end.split(':')[0];
+													var end_min = end.split(':')[1];
+													var wd = (end_hour - 7)*gap + (end_min/60*gap) - calcPos(time);
+													return wd;
+												}
+												
+												var result = 	"<div class='bar'>" +
+																	"<span class='selected' style='left:" + calcPos(data_selected) + "%;width:" + calcWd(data_selected) + "%;'></span>" +
+																	"<span class='not' style='left:" + calcPos(notallowed) + "%;width:" + calcWd(notallowed) + "%;'></span>" +
+																"</div>";
+												return result;
+											},
+											
+										},
+										{ title: "08:00", dataIndx: "hour08", width: 100, nodrag: true, nodrop: true, },
+										{ title: "09:00", dataIndx: "hour09", width: 100, nodrag: true, nodrop: true, },
+										{ title: "10:00", dataIndx: "hour10", width: 100, nodrag: true, nodrop: true, },
+										{ title: "11:00", dataIndx: "hour11", width: 100, nodrag: true, nodrop: true, },
+										{ title: "12:00", dataIndx: "hour12", width: 100, nodrag: true, nodrop: true, },
+										{ title: "13:00", dataIndx: "hour13", width: 100, nodrag: true, nodrop: true, },
+										{ title: "14:00", dataIndx: "hour14", width: 100, nodrag: true, nodrop: true, },
+										{ title: "15:00", dataIndx: "hour15", width: 100, nodrag: true, nodrop: true, },
+										{ title: "16:00", dataIndx: "hour16", width: 100, nodrag: true, nodrop: true, },
+										{ title: "17:00", dataIndx: "hour17", width: 100, nodrag: true, nodrop: true, },
+										{ title: "18:00", dataIndx: "hour18", width: 100, nodrag: true, nodrop: true, },
+										{ title: "19:00", dataIndx: "hour19", width: 100, nodrag: true, nodrop: true, },
+										{ title: "20:00", dataIndx: "hour20", width: 100, nodrag: true, nodrop: true, },
+										{ title: "21:00", dataIndx: "hour21", width: 100, nodrag: true, nodrop: true, },
+										
+									];
+									
+									var options = {
+										// scrollModel: {autoFit: true},  
+										width: 'auto', 
+										minWidth: 980,
+										// flexHeight: true,
+										// height: 'flex',
+										minHeight: 200,
+										// maxHeight: 400,
+										rowHt: 24,
+										rowHtHead: 24,
+										collapsible: {on: false, toggle: false},
+
+										columnBorders: true,
+										rowBorders: true,
+										stripeRows: true,
+										
+										dataModel: dataModel2,
+										colModel: colModel2,
+										selectionModel: { type: 'row', mode: 'block', column: false },
+
+										columnTemplate: {
+											//set horizontal and vertical alignment of all cells in all columns.
+											align: 'center', valign: 'center'
+										},
+										editable: false,
+										freezeCols: 0,
+										freezeRows: 0,                        
+																
+										numberCell: { show: false },
+										reactive: true,
+										roundCorners: false,
+										resizable: true,
+
+										showHeader: true,
+										showTitle: false,
+										showToolbar: false,
+										showTop: false,
+										showBottom: false,
+										virtualX: true, virtualY: true,
+
+										title: "",
+										strNoRows : '조회된 데이터가 없습니다.',
+									};
+									var grid = pq.grid("#grid_reservation", options);
+
+									var mc = [],
+										CM = grid.option("colModel"),
+										data = grid.option("dataModel.data");
+
+									for(var i = 0; i < data.length; i ++) {
+										mc.push({r1: i, c1: 4, rc: 1, cc: CM.length});
+									}
+
+									grid.option('mergeCells', mc);
+									grid.refreshView();
+
+									// $(document).on('click', '.btn_more', function(evt) {
+									// 	var checked = grid.Checkbox('state').getCheckedNodes().map(function(rd){
+									// 		console.log(rd);
+									// 		return rd.id;
+									// 	});
+									// 	console.log(evt);
+									// });
+									
+								});
+							</script>
+
+							<!-- //view -->
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html">
+							
+								
+							</pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css">
+								
+							</pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+
+            <!-- 탭그룹 -->
+			<div class="row">
+				<!-- <h3 class="g-tit-basic">List</h3> -->
+				<div class="tab-wrap g-tab-sample ui-tab">
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<!-- view -->
+							<h3 class="g-tit-basic">ParamQuery Grid</h3>
+							<div id="grid_select" style="margin:auto;"></div>
+							<!-- <button type="button" class="btn_add">add</button> -->
+							
+							<script>
+								$(function () {
+									// var dataModel = {
+									// 		location: 'remote',
+									// 		url: "https://paramquery.com/pro/customers/get"
+									// }
+
+									var dataModel3 = {"data":[
+										{"no":1,"voucher_status":"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"회원 이름", "member_etc":""},
+										{"no":2,"voucher_status":"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"회원 이름", "member_etc":""},
+										{"no":3,"voucher_status":"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"회원 이름", "member_etc":""},
+										{"no":4,"voucher_status":"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"회원 이름", "member_etc":""},
+										{"no":5,"voucher_status":"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"회원 이름", "member_etc":""},
+									]};
+                                    
+                                    var data_sigungu = ['a', 'b', 'c'];
+                                    var data_agency = ['agency1', 'agency2', 'agency3'];
+                                    var data_center = ['center1', 'center2', 'center3'];
+                                    var data_group = ['group1', 'group2', 'group3'];
+
+                                    var select_start = "<select id='sigungu' class='form_control'>";
+                                    var options = "<option>선택</option>";
+                                    var select_end = "</select>";
+
+                                    var selectedAgencyIndex, selectedCenterIndex, selectedGroupIndex;
+
+                                    for(var i = 0; i < data_sigungu.length; i ++) {
+                                        options += "<option value='" + data_sigungu[i] + "'>" + data_sigungu[i] + "</option>";
+                                    }
+
+                                    var select_sigungu = select_start + options + select_end;
+
+
+                                    function createSelect(dataset, id) {
+                                        var select_start = "<select id='" + id + "' class='form_control select_info'>";
+                                        var options = "<option>선택</option>";
+                                        var select_end = "</select>";
+                                        var selectedIndex;
+
+                                        switch(id) {
+                                            case 'agency':
+                                                options = "<option value=''>소속기관 선택</option>";
+                                                break;
+                                            case 'center':
+                                                select_start = "<select id='" + id + "' class='form_control select_info' disabled>";
+                                                options = "<option value=''>센터 선택</option>";
+                                                break;
+                                            case 'group':
+                                                select_start = "<select id='" + id + "' class='form_control select_info' disabled>";
+                                                options = "<option value=''>그룹 선택</option>";
+                                                break;
+                                        }
+
+                                        for(var i = 0; i < dataset.length; i ++) {
+                                            options += "<option value='" + dataset[i] + "'>" + dataset[i] + "</option>";
+                                        }
+                                        return select_start + options + select_end;
+                                    }
+                                    
+                                    var select_agency = createSelect(data_agency, 'agency');
+                                    var select_center = createSelect(data_center, 'center');
+                                    var select_group = createSelect(data_group, 'group');
+
+                                    var selectedCell = [];
+                                    var status_voucher = 0; // 0: 수정 불가능, 1: 수정 가능 (바우처 충전 개수(member_charge))
+
+									var colModel3 = [
+										{ title: "No", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+                                        { title: "바우처카드 정보", dataIndx: "voucher", nodrag: true, nodrop: true, align: "center",
+											colModel: [
+												{ title: "카드 상태", dataIndx: "voucher_status", width: 100, nodrag: true, nodrop: true, },
+												{ title: "시도", dataIndx: "voucher_sido", width: 100, nodrag: true, nodrop: true, },
+												{ title: "시군구", dataIndx: "voucher_sigungu", width: 100, nodrag: true, nodrop: true, },
+												{ title: "바우처카드번호", dataIndx: "voucher_number", width: 80, nodrag: true, nodrop: true, }
+											]
+										},
+                                        { title: "회원 정보", dataIndx: "member", nodrag: true, nodrop: true, align: "center",
+											colModel: [
+												{ title: select_agency, dataIndx: "member_agency", width: 100, nodrag: true, nodrop: true, },
+												{ title: select_center, dataIndx: "member_center", width: 100, nodrag: true, nodrop: true, },
+												{ title: select_group, dataIndx: "member_group", width: 100, nodrag: true, nodrop: true, },
+												{ title: "바우처 이용 유형", dataIndx: "member_type", width: 100, nodrag: true, nodrop: true, },
+												{ title: "바우처 충전 개수", dataIndx: "member_charge", width: 100, nodrag: true, nodrop: true,
+                                                    editable: function (ui) {
+                                                        // console.log(ui);
+
+                                                        // var countries = ['SPAIN', 'UK', 'USA'],
+                                                        //     country = ui.rowData['Country'].toUpperCase();
+                                                        //make cell read only if country in this row is present in countries list.    
+                                                        if (status_voucher !== 1) {
+                                                            return false;
+                                                        }
+                                                        else {
+                                                            return true;
+                                                        }
+                                                    },
+                                                    render: function(ui) {
+                                                        var //grid = $(this).pqGrid('getInstance').grid,
+                                                            grid = this,
+                                                            rowData = ui.rowData,
+                                                            rowIndx = ui.rowIndx,
+                                                            dataIndx = ui.dataIndx;
+
+                                                        if (grid.isEditableCell({ rowIndx: rowIndx, dataIndx: dataIndx }) == false) {
+                                                            //inject disabled class into read only cells.                
+                                                            grid.addClass({ rowIndx: rowIndx, dataIndx: dataIndx, cls: 'disabled' });
+                                                        }
+                                                        else {
+                                                            grid.removeClass({ rowIndx: rowIndx, dataIndx: dataIndx, cls: 'disabled' });
+                                                        }
+                                                    }
+                                                    /* render: function (ui) { // checkbox custom
+                                                        var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                                                        var val = rowData[dataIndx];
+                                                        var lst;
+                                                        
+                                                        var result = "<input type='text' style='width:100%;' disabled />";
+                                                        return result;
+                                                    }, */
+                                                },
+												{ title: "회원 이름", dataIndx: "member_name", width: 100, nodrag: true, nodrop: true,
+                                                    editor: {
+                                                        type: 'select',
+                                                        cls: 'form_control select_name',
+                                                        options: [
+                                                            { "회원 이름": "회원 이름" },
+                                                            { "김진혁": "김진혁" },
+                                                            { "이정수": "이정수" },
+                                                            { "송재성": "송재성" }
+                                                        ],
+                                                        /* init: function (ui) {
+                                                            var $cell = grid.getCell(ui);
+                                                            console.log($cell.next())
+                                                            // selectedCell = $cell;
+                                                        }, */
+                                                        // attr: 'id=aaa',
+                                                        /* init: function (ui) {
+                                                            
+                                                            var $cell = grid.getCell(ui);
+                                                            selectedCell = $cell;
+                                                            ui.$cell.find("select").pqSelect({
+                                                                singlePlaceholder: '회원 이름',
+                                                                search: false,
+                                                                deselect: false,
+                                                                maxDisplay: 2
+                                                            });
+                                                            setTimeout(function () {
+                                                                ui.$cell.find("select").pqSelect('open');
+                                                            })
+
+
+                                                        },
+                                                        valueIndx: "value",
+                                                        labelIndx: "text",
+                                                        mapIndices: { "text": "member_name", "value": "member_name" },
+                                                        options: [
+                                                            { "value": "", "text": "회원 이름" },
+                                                            { "value": "김진혁", "text": "김진혁" },
+                                                            { "value": "이정수", "text": "이정수" },
+                                                            { "value": "송재성", "text": "송재성" },
+                                                            { "value": "강행복", "text": "강행복" }
+                                                        ] */
+                                                    },
+                                                    editable: function (ui) {
+                                                        console.log('회원 이름');
+                                                        console.log(ui.rowData);
+
+                                                        // var countries = ['SPAIN', 'UK', 'USA'],
+                                                        //     country = ui.rowData['Country'].toUpperCase();
+                                                        //make cell read only if country in this row is present in countries list.    
+                                                        if (ui.rowData.member_agency === "-" || ui.rowData.member_center === "-" || ui.rowData.member_group === "-") {
+                                                            return false;
+                                                        }
+                                                        else {
+                                                            return true;
+                                                        }
+                                                    },
+                                                    render: function(ui) {
+                                                        var //grid = $(this).pqGrid('getInstance').grid,
+                                                            grid = this,
+                                                            rowData = ui.rowData,
+                                                            rowIndx = ui.rowIndx,
+                                                            dataIndx = ui.dataIndx;
+
+                                                        if (grid.isEditableCell({ rowIndx: rowIndx, dataIndx: dataIndx }) == false) {
+                                                            //inject disabled class into read only cells.                
+                                                            grid.addClass({ rowIndx: rowIndx, dataIndx: dataIndx, cls: 'disabled' });
+                                                        }
+                                                        else {
+                                                            grid.removeClass({ rowIndx: rowIndx, dataIndx: dataIndx, cls: 'disabled' });
+                                                        }
+                                                    }
+                                                    /* render: function (ui) {
+                                                        var option = ui.column.editor.options.find(function (obj) {
+                                                            // console.log(ui.cellData)
+                                                            return (obj[ui.cellData] != null);
+                                                        });
+                                                        return option ? option[ui.cellData] : "";
+                                                    }, */
+                                                    // validations: [{ type: 'minLen', value: 1, msg: "Required" }]
+                                                    /* render: function (ui) { // checkbox custom
+                                                        // console.log(ui);
+                                                        var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                                                        var val = rowData[dataIndx];
+                                                        var lst;
+                                                        
+                                                        var result = "<select disabled><option>회원 이름</option><option>회원 이름1</option><option>회원 이름2</option><option>회원 이름3</option></select>";
+                                                        return result;
+                                                    }, */
+                                                },
+												{ title: "비고", dataIndx: "member_etc", width: 100, nodrag: true, nodrop: true,
+                                                    render: function (ui) { // checkbox custom
+                                                        // console.log(ui);
+                                                        var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                                                        var val = rowData[dataIndx];
+                                                        var lst;
+                                                        
+                                                        var result = "<button type='button' class='btn_reset' disabled>초기화</button>";
+                                                        return result;
+                                                    },
+                                                    postRender: function (ui) {
+                                                        // console.log(ui);
+                                                        var rowIndx = ui.rowIndx,
+                                                            grid = this,
+                                                            $cell = grid.getCell(ui);
+
+                                                        // console.log($cell.attr('id'));
+
+                                                        //delete button
+                                                        $cell.find(".btn_reset").bind("click", function (evt) {
+                                                            console.log('reset');
+                                                            var tg = $(this);
+                                                            var rowdata = grid.getData();
+                                                            var items = {"member_agency": "-","member_center": "-","member_group": "-", "member_type": "-","member_charge": "-","member_name": "회원 이름"};
+                                                            // grid.updateRow({ rowIndx: rowIndx, row: items, checkEditable: false });
+                                                            rowdata[rowIndx].member_agency = "-";
+                                                            rowdata[rowIndx].member_center = "-";
+                                                            rowdata[rowIndx].member_group = "-";
+                                                            rowdata[rowIndx].member_type = "-";
+                                                            rowdata[rowIndx].member_charge = "-";
+                                                            rowdata[rowIndx].member_name = "회원 이름";
+                                                 
+                                                            selectedAgencyIndex = 0;
+                                                            selectedCenterIndex = 0;
+                                                            selectedGroupIndex = 0;
+
+                                                            // grid.colModel[9].editable = false;
+                                                            // grid.colModel[9].cls = '';
+
+                                                            // grid.colModel[10].editable = false;
+                                                            // grid.colModel[10].cls = '';
+
+                                                            tg.attr('disabled', true);
+                                                            var idx = selectedCell.indexOf($cell.attr('id'));
+                                                            selectedCell.splice(idx, 1);
+                                                            // console.log('reset:' + selectedCell);
+                                                        });
+
+                                                        //edit button
+                                                        // $cell.find(".edit_btn").button({ icons: { primary: 'ui-icon-pencil'} })
+                                                        // .bind("click", function (evt) {
+                                                        // 	if (isEditing(grid)) {
+                                                        // 		return false;
+                                                        // 	}
+                                                        // 	editRow(rowIndx, grid, true);
+                                                        // });
+
+                                                        //if it has edit class, then edit the row.
+                                                        // if (grid.hasClass({ rowData: ui.rowData, cls: 'pq-row-edit' })) {
+                                                        // 	editRow(rowIndx, grid);
+                                                        // }
+                                                    },
+                                                },
+											]
+										}
+									];
+									
+
+									var options3 = {
+										scrollModel: {autoFit: true},  
+										width: 'auto', 
+										minWidth: 980,
+										// height: 'flex',
+										// maxHeight: 500,
+										rowHt: 24,
+										rowHtHead: 24,
+										collapsible: {on: false, toggle: false},
+
+										columnBorders: true,
+										rowBorders: true,
+										stripeRows: true,
+
+										dataModel: dataModel3,
+										colModel: colModel3,
+										selectionModel: { type: 'row', mode: 'block', column: false },
+                                        trackModel : { on: true },
+                                        historyModel: { on: true },
+                                        editModel: {
+                                            clicksToEdit: 1,
+                                            keyUpDown: false,
+                                            onBlur: 'save'
+                                        },
+										
+                                        postRenderInterval: -1, //synchronous post rendering.
+										columnTemplate: { align: 'center', valign: 'center' },
+										editable: false,
+										freezeCols: 0,
+										freezeRows: 0,                        
+																
+										numberCell: { show: false },
+										reactive: true,
+										roundCorners: false,
+										resizable: true,
+
+										showHeader: true,
+										showTitle: false,
+										showToolbar: false,
+										showTop: false,
+										showBottom: false,
+										virtualX: true, virtualY: true,
+
+										title: "",
+										strNoRows : '조회된 데이터가 없습니다.',
+
+                                        // formulas: [
+                                        //     [9, function (rd) { 
+                                        //         console.log('formulas: ' + rd);
+                                        //      }],
+                                        //     [7, function (rd) { return rd[6] - rd[5]; }]
+                                        // ],
+										
+                                        create: function( event, ui ) {
+                                            // console.log(ui)
+                                        },
+                                        refresh: function( event, ui ) {
+                                            // console.log(ui);
+                                            $('#agency option').eq(selectedAgencyIndex).attr('selected',true);
+                                            $('#center option').eq(selectedCenterIndex).attr('selected',true);
+                                            $('#group option').eq(selectedGroupIndex).attr('selected',true);
+
+                                            if($('#agency').val() !== '') {
+                                                $('#center').attr('disabled', false);
+                                            }
+                                            if($('#center').val() !== '') {
+                                                $('#group').attr('disabled', false);
+                                            }
+
+                                            // var $cell = grid.getCell({rowIndx: 0, dataIndx: 'member_name'})
+                                            // console.log($cell)
+                                            // console.log(selectedCell);
+
+                                            // selectedCell.find('div').attr('style', 'background-color:#ccc')
+                                            selectedCell.forEach(function(item, i) {
+                                                console.log('refresh disabled')
+                                                $('#' + item).find('button').attr('disabled', false);
+                                            });
+                                        },
+                                        history( event, ui ) {
+                                            // console.log(event, ui);
+                                        },
+                                        change: function( event, ui ) {
+                                            console.log('change data');
+                                            var dataIndx = Object.keys(ui.updateList[0].newRow)[0];
+                                            var rowIndex = ui.updateList[0].rowIndx;
+                                            // console.log(dataIndx, rowIndex)
+                                            // rowIndx
+                                            var $cell = grid.getCell({rowIndx:rowIndex, dataIndx:dataIndx}).next();
+                                            
+                                            // console.log($cell.attr('id'))
+
+                                            var arr_cellId = selectedCell.filter(function(item) {
+                                                return item === $cell.attr('id');
+                                            });
+
+                                            if(dataIndx === 'member_name' && arr_cellId.length === 0){
+                                                // console.log('member_name change')
+                                                selectedCell.push($cell.attr('id'));
+                                            }
+                                            // $cell.next().find('button').attr('disabled', false);
+                                            // selectedCell = $cell;
+                                            // console.log($cell);
+                                        }
+									};
+									var grid = pq.grid("#grid_select", options3);
+                    
+                                    function getRowIndx() {
+                                        var arr = grid.SelectRow().getSelection();
+                                        if (arr && arr.length > 0) {
+                                            return arr[0].rowIndx;                                
+                                        } 
+                                        else {
+                                            alert("Select a row.");
+                                            return null;
+                                        }
+                                    }
+                                    
+                                    $(document).on('change', 'select.select_info', function(evt){
+                                        console.log('change select_info');
+                                        var tg = $(this);
+                                        var val = tg.val();
+                                        var rowdata = grid.getData();
+
+                                        var idx = tg.attr('id');
+                                        var items;
+
+                                        switch(idx) {
+                                            case 'agency':
+                                                selectedAgencyIndex = tg.find('option').index(tg.find('option:selected'));
+                                                items = {"member_agency": val};
+                                                for(var i = 0; i < rowdata.length; i ++) {
+                                                    rowdata[i].member_agency = val;
+                                                }
+                                                break;
+                                            case 'center':
+                                                selectedCenterIndex = tg.find('option').index(tg.find('option:selected'));
+                                                items = {"member_center": val};
+                                                for(var i = 0; i < rowdata.length; i ++) {
+                                                    rowdata[i].member_center = val;
+                                                }
+                                                break;
+                                            case 'group':
+                                                selectedGroupIndex = tg.find('option').index(tg.find('option:selected'));
+                                                items = {"member_group": val, "member_type": "그룹", "member_charge": 30};
+                                                for(var i = 0; i < rowdata.length; i ++) {
+                                                    rowdata[i].member_group = val;
+                                                    rowdata[i].member_type = '그룹';
+                                                    rowdata[i].member_charge = 30;
+                                                }
+                                                
+                                                
+                                                /* grid.colModel[9].render = function(ui) {
+                                                    return '<input type="text" style="width:100%;" value="30" />';
+                                                } */
+
+                                                // grid.colModel[9].editable = true;
+                                                // grid.colModel[9].cls = 'editable';
+
+                                                // grid.colModel[10].editable = true;
+                                                // grid.colModel[10].cls = 'editable';
+
+
+
+                                                // for(var i = 0; i < rowdata.length; i ++) {
+                                                //     grid.attr({ rowIndx: i, dataIndx: 'member_charge', attr: { editable: true, class: 'editable' } });
+                                                // }
+                                                
+                                                break;
+                                        }
+
+                                        grid.refreshDataAndView();
+
+                                        // for(var i = 0; i < rowdata.length; i ++) {
+                                        //     grid.updateRow({ rowIndx: i, row: items, checkEditable: false });
+                                        //     grid.refreshDataAndView();
+                                        // }
+                                    });
+
+                                    // $(document).on('change', 'select.select_name', function(evt){
+
+                                    //     // selectedCell.next().find('.btn_reset').attr('disabled', false);
+                                    // });
+
+                                    /* var history = grid.History();
+                        
+                                    /* $(document).on('click', '.btn_add', function(evt) {
+                                        // var rowdata = {no:6,voucher_status:"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"", "member_etc":""};
+										grid.addRow( {newRow: {"no":6,"voucher_status":"지급 대기","voucher_sido":"울산광역시","voucher_sigungu":"울주군","voucher_number":"3646000001699","member_agency":"-","member_center":"-","member_group":"-","member_type":"-","member_charge":"-","member_name":"", "member_etc":""}} );
+
+                                        // grid.refreshDataAndView();
+									}); */
+                                    
+
+									// $(document).on('click', '.btn_more', function(evt) {
+									// 	var checked = grid.Checkbox('state').getCheckedNodes().map(function(rd){
+									// 		console.log(rd);
+									// 		return rd.id;
+									// 	});
+									// 	console.log(evt);
+									// });
+
+									// $('select.form_control').selectmenu({
+									// 	// appendTo: '.selectbox',       
+									// });
+
+									// $(document).on('selectmenuchange', 'select', function(){
+									// 	console.log($(this).val());
+									// 	grid.option('pageModel.rPP', $(this).val());
+									// 	grid.refreshDataAndView();
+									// })
+								});
+							</script>
+
+							<!-- //view -->
+						</div>
+					</div>
+					<div class="tab-content">
+						<div class="g-tab-inner">
+							<p class="on">HTML</p>
+							<pre class="syntax brush:html">
+							
+								
+							</pre>
+							<p>CSS</p>
+							<pre class="syntax brush:css">
+								
+							</pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- //탭그룹 -->
+		</div>
+	</div>
+</div>
+</body>
+</html>

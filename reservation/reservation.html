@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('../_include/head.html')
+
+<body>
+    <div id="wrap">
+        @@include('../_include/header.html')
+        <div id="container">
+            @@include('../_include/lnb.html')
+
+            <div class="inner">
+                <div class="content reservation">
+                    <div class="content_h">
+                        <div class="row">
+                            <div class="col">
+                                <div class="box_section group_user">
+                                    <div class="search_filter">
+                                        <ul>
+                                            <li>
+                                                <div class="label_t"><span class="essential" title="필수">전화번호</span>
+                                                </div>
+                                                <div class="wrap_auto">
+                                                    <input type="text" class="form_ctl phoneNumber"
+                                                        placeholder="전화번호 입력">
+                                                    <button type="button" class="btn btn_clear ir">초기화</button>
+                                                </div>
+                                                <button type="button" class="btn btn_blue btn_outline mt0">입력
+                                                    완료</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="info_list">
+                                        <ul>
+                                            <li>
+                                                <div class="tit">예약자 : </div>
+                                                <div class="txt">01012345678</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="grid_previnfo" class="grid_list"></div>
+                                </div>
+
+                                <div class="box_section group_place">
+                                    <div class="search_filter">
+                                        <ul class="lst_place">
+                                            <li class="form_select point_start">
+                                                <div class="label_t"><span class="essential" title="필수">탑승지</span></div>
+                                                <div class="wrap_auto">
+                                                    <input type="text" class="form_ctl f_search startPoint"
+                                                        placeholder="탑승지를 선택해 주세요">
+                                                    <button type="button" class="btn btn_clear ir">초기화</button>
+                                                </div>
+                                                <button type="button" class="btn btn_gray btn_outline btn_add">경유지
+                                                    추가</button>
+                                            </li>
+                                            <li class="form_select point_end">
+                                                <div class="label_t"><span class="essential" title="필수">하차지</span></div>
+                                                <div class="wrap_auto">
+                                                    <input type="text" class="form_ctl f_search endPoint"
+                                                        placeholder="하차지를 선택해 주세요">
+                                                    <button type="button" class="btn btn_clear ir">초기화</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="lst_user">
+                                            <li class="form_datetime">
+                                                <div class="input_check">
+                                                    <input type="checkbox" id="label_datetime" name="">
+                                                    <label for="label_datetime" class="txt_label">탑승 예약</label>
+                                                </div>
+                                                <input type="text" name="" class="form_ctl datepicker"
+                                                    placeholder="YYYY-MM-DD" disabled />
+                                                <input type="text" class="form_ctl w_small timepicker" name=""
+                                                    placeholder="00:00" disabled />
+                                                <div class="label_t"><span>예약 인원</span></div>
+                                                <div class="wrap_count">
+                                                    <button type="button" class="btn_plus"></button>
+                                                    <input type="text" class="form_ctl" value="0">
+                                                    <button type="button" class="btn_minus"></button>
+                                                </div>
+                                            </li>
+                                            <li class="form_memo">
+                                                <div class="label_t"><span>접수메모</span></div>
+                                                <input type="text" class="form_ctl"
+                                                    placeholder="메모 작성시 기사님에게 전달 드려요. (최대 30자)">
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="btn_area ar">
+                                        <button type="button" class="btn btn_blue btn_outline">배차 대기</button>
+                                        <button type="button" class="btn btn_blue">기사 조회</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col group_map">
+                                <div id="map_div" class="map_area"></div>
+                                <div id="result" class="desc"></div>
+                                <div class="label_area">
+                                    <span>탑승</span>
+                                    <span>빈차</span>
+                                </div>
+                                <div class="select_area">
+                                    <select name="" id="select-si" class="form_ctl" disabled>
+                                        <option value="">서울시</option>
+                                    </select>
+                                    <select name="" id="select-gu" class="form_ctl" disabled>
+                                        <option value="">종로구</option>
+                                    </select>
+                                    <select name="" id="select-agency" class="form_ctl" disabled>
+                                        <option value="">종로구 행복택시</option>
+                                    </select>
+                                    <select name="" id="select-center" class="form_ctl">
+                                        <option value="1">사직1</option>
+                                        <option value="2">사직2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box_section group_dispatch">
+                            <div class="label_area">
+                                <span>예약가능</span>
+                                <span>예약</span>
+                            </div>
+                            <div id="grid_reservation" class="grid_list"></div>
+                        </div>
+
+                        <ul class="tabs">
+                            <li class="on"><a href="javascript:void(0);">접수 내역</a></li>
+                            <li><a href="javascript:void(0);">회원 목록</a></li>
+                        </ul>
+
+                        <div class="tab_contents on">
+                            <div class="detail_top">
+                                <div class="left_area">
+                                    <!-- 기본 상태 버튼 : btn btn_blue btn_outline color_black-->
+                                    <button type="button" class="btn btn_blue btn_outline color_black">전체</button>
+                                    <!-- 선택 된 버튼 : btn btn_blue btn_outline -->
+                                    <button type="button" class="btn btn_blue btn_outline"><span>배차 대기
+                                            16</span></button>
+                                    <button type="button" class="btn btn_blue btn_outline"><span>배차 완료 5</span></button>
+                                    <button type="button" class="btn btn_blue btn_outline"><span>주행 중 10</span></button>
+                                    <button type="button" class="btn btn_blue btn_outline"><span>주행 완료
+                                            16</span></button>
+                                    <button type="button" class="btn btn_blue btn_outline"><span>예약 취소 5</span></button>
+                                </div>
+
+                                <div class="right_area">
+                                    <div class="update">
+                                        <button type="button" class="btn_refresh ir">refresh</button>업데이트 일시<b
+                                            class="datetime">2021-10-26 00시 00분</b>
+                                    </div>
+                                    <div class="myreceipt">
+                                        <div class="push on">
+                                            <span class="icon"></span>
+                                        </div>
+                                        <span class="label">내 접수 보기</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box_section">
+                                <div id="grid_receipt"></div>
+
+                                <ul class="lst_options">
+                                    <li><a href="javascript:void(0);">접수 상세 정보</a></li>
+                                    <li><a href="javascript:void(0);">주행 상세 정보</a></li>
+                                    <li><a href="javascript:void(0);">배차 대기</a></li>
+                                    <li><a href="javascript:void(0);">배차</a></li>
+                                    <li><a href="javascript:void(0);">배차 정보 수정</a></li>
+                                    <li><a href="javascript:void(0);">예약 취소</a></li>
+                                </ul>
+
+                                <ul class="lst_status">
+                                    <li><a href="javascript:void(0);">배차 대기</a></li>
+                                    <li><a href="javascript:void(0);">배차</a></li>
+                                    <li><a href="javascript:void(0);">예약 취소</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="footer">
+                                <div class="page_wrap">
+                                    <div class="page_num">Rows per page</div>
+
+                                    <select class="page_sel" id="">
+                                        <option>20</option>
+                                        <option selected>30</option>
+                                        <option>40</option>
+                                        <option>50</option>
+                                    </select>
+
+                                    <!-- 처음 일 떄 first 클래스 추가-->
+                                    <a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+                                    <div class="page_count">
+                                        1 - 7 of 1
+                                    </div>
+
+                                    <!-- 마지막 페이지 일 떄 last 클래스 추가-->
+                                    <!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+                                            페이지</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab_contents">
+                            <div class="box_section">
+                                <div id="grid_member"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="page_wrap">
+                                    <div class="page_num">Rows per page</div>
+
+                                    <select class="page_sel" id="">
+                                        <option>20</option>
+                                        <option selected>30</option>
+                                        <option>40</option>
+                                        <option>50</option>
+                                    </select>
+
+                                    <!-- 처음 일 떄 first 클래스 추가-->
+                                    <a href="javascript:void(0);" class="first_p"><span class="ir">처음 페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="first_p first"><span class="ir">처음 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="prev"><span class="ir">이전페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="prev first"><span class="ir">이전페이지</span></a> -->
+
+                                    <div class="page_count">
+                                        1 - 7 of 1
+                                    </div>
+
+                                    <!-- 마지막 페이지 일 떄 last 클래스 추가-->
+                                    <!-- <a href="javascript:void(0);" class="next"><span class="ir">다음페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="next last"><span class="ir">다음페이지</span></a>
+                                    <!-- <a href="javascript:void(0);" class="last_p"><span class="ir">마지막 페이지</span></a> -->
+                                    <a href="javascript:void(0);" class="last_p last"><span class="ir">마지막
+                                            페이지</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f"></script>
+<!-- <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb3b0b2ba959c4572891ba1bc2343cf6b"></script> -->
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3okwk3rkyp"></script>
+<script>
+    $(function () {
+        $(document).on('click', '.wrap_count button', function () {
+            var cls = $(this).attr('class');
+            var val = $(this).siblings('input').val();
+            var result;
+            switch (cls) {
+                case 'btn_plus':
+                    val < 45 ? val++ : val;
+                    break;
+                case 'btn_minus':
+                    val > 0 ? val-- : val;
+                    break;
+            }
+            $(this).siblings('input').val(val);
+        });
+
+        $(document).on('change', '#label_datetime', function (e) {
+            // console.log($(this).is(':checked'))
+            if ($(this).is(':checked')) {
+                $(this).closest('.input_check').siblings().attr('disabled', false);
+            } else {
+                $(this).closest('.input_check').siblings().attr('disabled', true);
+            }
+        });
+
+        var today = moment().format('YYYY-MM-DD');
+        $('.form_datetime .datepicker').val(today);
+
+        var time_current = moment().add(10, 'minutes').format('HH:mm');
+
+        $('.timepicker').val(time_current);
+
+
+        var map, mapOptions;
+        var markerList = [];
+        var carMarkerList = [];
+        var arr_passList = [];  // 경유지
+        var arr_blankList = [];  // 승하차 지점
+        var appKey = "WWjravqCMw7xvullLY4989HrmNTHMunl3fxuWy1f";    // tmap
+        // var appKey = "l7xxb3b0b2ba959c4572891ba1bc2343cf6b";    // tmap
+        var resultPolygon = [];
+        var drawInfoArr = [];
+
+        var marker_start, marker_end;
+
+        var mapData = [
+            { "title": "무주읍1", "address": "전북 무주군 무주읍 하장백길 71", "agency": "종로구 행복택시", "center": "사직1", "lat": "36.028032030280826", "lon": "127.70028359821887", "case": "blank" },
+            { "title": "무주읍2", "address": "전북 무주군 무주읍 한풍루로 251", "agency": "종로구 행복택시", "center": "사직2", "lat": "36.00470830000012", "lon": "127.66404465769727", "case": "blank" },
+            { "title": "무주읍3", "address": "전북 무주군 무주읍 한풍루로 252", "agency": "종로구 행복택시", "center": "사직2", "lat": "36.00020830000012", "lon": "127.61204465769727", "case": "blank" },
+            { "title": "무주읍4", "address": "전북 무주군 무주읍 한풍루로 253", "agency": "종로구 행복택시", "center": "사직2", "lat": "36.02870830000012", "lon": "127.62404465769727", "case": "blank" },
+            { "title": "무주읍5", "address": "전북 무주군 무주읍 가옥리 1054", "agency": "종로구 행복택시", "center": "사직3", "lat": "35.97918884549752", "lon": "127.65010275307006", "case": "blank" },
+            { "title": "무주읍6", "address": "전북 무주군 부남면 대티길 58", "agency": "종로구 행복택시", "center": "사직4", "lat": "35.99540252379289", "lon": "127.57340466568048", "case": "blank" },
+            { "title": "무주읍7", "address": "전북 무주군 부남면 대티길 43", "agency": "종로구 행복택시", "center": "사직4", "lat": "35.93540252379289", "lon": "127.57340466568048", "case": "blank" },
+        ];
+
+        var carGpsData = [
+            { "lat": "36.008032030280826", "lon": "127.70028359821887", "rotation": 30, "status": "empty", "driver": "이재성1", "number": "울산 가 7431" },
+            { "lat": "36.00470830000012", "lon": "127.64404465769727", "rotation": 55, "status": "driving", "driver": "이재성2", "number": "울산 나 7432" },
+            { "lat": "35.9900884549752", "lon": "127.62010275307006", "rotation": 128, "status": "empty", "driver": "이재성3", "number": "울산 다 7433" },
+            { "lat": "35.99918884549752", "lon": "127.55010275307006", "rotation": 128, "status": "empty", "driver": "이재성4", "number": "울산 라 7433" },
+            { "lat": "35.97918884549752", "lon": "127.67010275307006", "rotation": 128, "status": "empty", "driver": "이재성5", "number": "울산 마 7433" },
+        ];
+
+        var areaItems = [
+            {
+                sido: '전라북도',
+                gungu: '무주군',
+                dong: '무주읍',
+                type: 'adminDong'
+            },
+            {
+                sido: '전라북도',
+                gungu: '무주군',
+                dong: '부남면',
+                type: 'adminDong'
+            },
+        ];
+
+        var arr_point = mapData.map((item, idx) => {
+            return { label: '(' + item.title + ') ' + item.address, value: '(' + item.title + ') ' + item.address, address: item.address, idx: idx };
+        });
+
+        var prevStartItem = {};
+        var prevEndItem = {};
+        var prevPassItem = [];
+
+        $('.startPoint').autocomplete({
+            source: arr_point,
+            minLength: 0,
+            position: {
+                my: "left+0 top+8",
+            },
+            disabled: true,
+            select: function (event, ui) {
+                console.log('startPoint: ', event, ui)
+                if (ui.item.disabled) {
+                    toastPop_err('다른 승하차지를 선택해 주세요');
+                    return;
+                }
+                $(this).autocomplete('disable');
+                $(this).val(ui.item.value).next().addClass('on');
+
+                var selectedVal = ui.item.address;
+                var targetData = mapData.filter((item) => {
+                    return item.address === selectedVal;
+                });
+
+                function findAddress(element) {
+                    if (element.address === selectedVal) {
+                        return true
+                    };
+                }
+                var idx_point = arr_point.findIndex(findAddress);
+
+                if (prevStartItem.address !== targetData[0].address) {
+                    var prevData = mapData.filter((item) => {
+                        return item.address === prevStartItem.address;
+                    });
+                    if (prevData.length > 0) prevData[0].case = 'blank';
+                    console.log(prevData[0], targetData[0])
+
+                    targetData[0].case = 'start';
+                    arr_point[idx_point].disabled = true;
+
+                    console.log(prevData[0], targetData[0])
+
+                    createMap(mapData, carGpsData, areaItems);
+
+                    prevStartItem = ui.item;
+                }
+
+                $(this).next().click(function () {
+                    targetData[0].case = 'blank';
+                    arr_point[idx_point].disabled = false;
+                    prevStartItem = {};
+
+                    $(this).siblings('.form_ctl').val('');
+                    createMap(mapData, carGpsData, areaItems);
+                });
+            },
+            close: function (event, ui) {
+                $(this).autocomplete('disable');
+            },
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            return $("<li class='" + (item.disabled ? 'disabled' : '') + "'>")
+                .append("<div class='" + (item.disabled ? 'ui-state-disabled' : '') + "'>" + item.label + "</div>")
+                .appendTo(ul);
+        };
+
+        $('.endPoint').autocomplete({
+            source: arr_point,
+            minLength: 0,
+            position: {
+                my: "left+0 top+8",
+            },
+            disabled: true,
+            select: function (event, ui) {
+                console.log('endPoint: ', event, ui)
+                if (ui.item.disabled) {
+                    toastPop_err('다른 승하차지를 선택해 주세요');
+                    return;
+                }
+                $(this).autocomplete('disable');
+                $(this).val(ui.item.value).next().addClass('on');
+
+                var selectedVal = ui.item.address;
+                var targetData = mapData.filter((item) => {
+                    return item.address === selectedVal;
+                });
+
+                function findAddress(element) {
+                    if (element.address === selectedVal) {
+                        return true
+                    };
+                }
+                var idx_point = arr_point.findIndex(findAddress);
+
+                if (prevEndItem.address !== targetData[0].address) {
+                    var prevData = mapData.filter((item) => {
+                        return item.address === prevEndItem.address;
+                    });
+                    if (prevData.length > 0) prevData[0].case = 'blank';
+
+                    targetData[0].case = 'end';
+                    arr_point[idx_point].disabled = true;
+
+                    createMap(mapData, carGpsData, areaItems);
+                    prevEndItem = ui.item;
+                }
+
+                $(this).next().click(function () {
+                    targetData[0].case = 'blank';
+                    arr_point[idx_point].disabled = false;
+                    prevEndItem = {};
+                    $(this).siblings('.form_ctl').val('');
+                    createMap(mapData, carGpsData, areaItems);
+                });
+            },
+            close: function (event, ui) {
+                $(this).autocomplete('disable');
+            },
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            return $("<li class='" + (item.disabled ? 'disabled' : '') + "'>")
+                .append("<div class='" + (item.disabled ? 'ui-state-disabled' : '') + "'>" + item.label + "</div>")
+                .appendTo(ul);
+        };
+
+        // 경유지 추가
+        $(document).on('click', '.btn_add', function () {
+            var startVal = $('.startPoint').val();
+            var endVal = $('.endPoint').val();
+            if (startVal === '') {
+                toastPop_err('탑승지를 선택해 주세요');
+                return;
+            }
+            if (endVal === '') {
+                toastPop_err('하차지를 선택해 주세요');
+                return false;
+            }
+
+            var arr_passPoint = $('.passPoint').get();
+
+            var statusPassVal = true;
+            arr_passPoint.forEach((item, i) => {
+                var passVal = $(item).val();
+                if (passVal === '') {
+                    statusPassVal = false;
+                } else {
+                    statusPassVal = true;
+                }
+            });
+
+            if (!statusPassVal) {
+                toastPop_err('경유지를 선택해 주세요');
+                return false;
+            }
+
+            var passlist = $('.point_pass').get();
+
+
+            var contentString = [
+                '<li class="form_select point_pass">',
+                '   <div class="label_t"><span class="essential" title="필수">경유지' + (passlist.length + 1) + '</span></div>',
+                '   <div class="wrap_auto">',
+                '       <input type="text" class="form_ctl f_search passPoint" placeholder="경유지를 선택해 주세요">',
+                '       <button type="button" class="btn btn_clear ir">초기화</button>',
+                '   </div>',
+                '   <button type="button" class="btn_delete">삭제하기</button>',
+                '</li>'
+            ].join('');
+
+            if (passlist.length === 0) {
+                $('.point_start').after(contentString);
+            } else if (passlist.length > 0 && passlist.length < 10) {
+                $('.point_pass').eq(passlist.length - 1).after(contentString);
+            }
+
+            var passPoint = $('.passPoint').get();
+
+            passPoint.forEach((item) => {
+                $(item).autocomplete({
+                    source: arr_point,
+                    minLength: 0,
+                    position: {
+                        my: "left+0 top+8",
+                    },
+                    disabled: true,
+                    select: function (event, ui) {
+                        if (ui.item.disabled) {
+                            toastPop_err('다른 승하차지를 선택해 주세요');
+                            return;
+                        }
+                        $(this).autocomplete('disable');
+                        $(this).val(ui.item.value).next().addClass('on');
+
+                        var selectedVal = ui.item.address;
+                        var targetData = mapData.filter((item) => {
+                            return item.address === selectedVal;
+                        });
+
+                        var idx_list = $(this).closest('li').find('.label_t span').text().split('경유지')[1];
+                        var idx = Number(idx_list) - 1;
+
+                        function findAddress(element) {
+                            if (element.address === selectedVal) {
+                                return true
+                            };
+                        }
+                        var idx_point = arr_point.findIndex(findAddress);
+
+                        if (prevPassItem[idx] === undefined) {
+                            prevPassItem[idx] = {}
+                        }
+                        console.log(prevPassItem[idx].address);
+                        if (prevPassItem[idx].address !== targetData[0].address) {
+                            var prevData = mapData.filter((item) => {
+                                // console.log(item)
+                                return item.address === prevPassItem[idx].address;
+                            });
+                            if (prevData.length > 0) prevData[0].case = 'blank';
+
+                            targetData[0].case = 'pass';
+                            arr_point[idx_point].disabled = true;
+
+                            console.log(arr_point)
+
+                            prevPassItem[idx] = ui.item;
+
+                            var item = {
+                                "viaPointId": "pass_" + i,
+                                "viaPointName": "pass_" + i,
+                                "title": targetData[0].title,
+                                "address": targetData[0].address,
+                                "center": targetData[0].center,
+                                "lat": targetData[0].lat,
+                                "lon": targetData[0].lon,
+                                "viaX": targetData[0].lon,
+                                "viaY": targetData[0].lat,
+                            };
+                            arr_passList[idx] = item;
+
+                            createMap(mapData, carGpsData, areaItems);
+                        }
+
+                        $(this).next().click(function () {
+                            targetData[0].case = 'blank';
+                            $(this).siblings('.form_ctl').val('');
+                            arr_point[idx_point].disabled = false;
+                            prevPassItem[idx] = {};
+                            arr_passList[idx] = {};
+                        });
+                    },
+                    close: function (event, ui) {
+                        $(this).autocomplete('disable');
+                    },
+                }).autocomplete("instance")._renderItem = function (ul, item) {
+                    return $("<li class='" + (item.disabled ? 'disabled' : '') + "'>")
+                        .append("<div class='" + (item.disabled ? 'ui-state-disabled' : '') + "'>" + item.label + "</div>")
+                        .appendTo(ul);
+                };
+            })
+        });
+
+        // 경유지 삭제
+        $(document).on('click', '.btn_delete', function () {
+            var idx_list = $(this).closest('li').find('.label_t span').text().split('경유지')[1];
+            var idx = Number(idx_list) - 1;
+            if (prevPassItem[idx] === undefined) {
+                prevPassItem[idx] = {};
+            }
+            var prevData = mapData.filter((item) => {
+                return item.address === prevPassItem[idx].address;
+            });
+            if (prevData.length > 0) prevData[0].case = 'blank';
+            prevPassItem[idx].disabled = false;
+            prevPassItem.splice(idx, 1);
+            arr_passList.splice(idx, 1);
+
+            $(this).closest('li').remove();
+
+            createMap(mapData, carGpsData, areaItems);
+
+            var arr_lst = $('.point_pass').get();
+            arr_lst.forEach((item, i) => {
+                $(item).find('.label_t span').html('경유지' + (i + 1));
+            });
+        });
+
+        var arr_phoneNumber = [
+            "010-1234-5678",
+            "010-1234-5679",
+            "010-1234-5670",
+            "010-1234-5671",
+            "010-1234-5672",
+            "010-1234-5673",
+            "010-1234-5674",
+            "010-1234-5675",
+            "010-1234-5676",
+            "010-1234-5676",
+            "010-1234-5676",
+            "010-1234-5676",
+            "010-1234-5676",
+            "010-1234-5676",
+        ];
+        $('.phoneNumber').autocomplete({
+            source: arr_phoneNumber,
+            minLength: 0,
+            position: {
+                my: "left+0 top+8",
+            },
+            disabled: true,
+            select: function (event, ui) {
+                $(this).autocomplete('disable');
+                $(this).val(ui.item.value).next().addClass('on');
+            },
+            close: function (event, ui) {
+                $(this).autocomplete('disable');
+            },
+        });
+
+        // input 입력시 btn_clear 활성화
+        function checkSearchForm(target) {
+            // console.log(target)
+            if (target.val() === '') {
+                target.siblings('.btn_clear').removeClass('on');
+            } else {
+                target.siblings('.btn_clear').addClass('on');
+            }
+        }
+        $(document).on("propertychange change keydown keyup paste input", ".wrap_auto input", function (e) {
+            var tg = $(this);
+            if (e.keyCode === 13) {
+                $(this).autocomplete('enable');
+                $(this).autocomplete("search", $(this).val());
+            }
+            checkSearchForm(tg);
+        });
+
+        // btn_clear 클릭시 input value 삭제
+        $(document).on('click', '.wrap_auto .btn_clear', function () {
+            $(this).siblings('.form_ctl').val('');
+            $(this).removeClass('on');
+        });
+
+        // grid 이전 정보 불러오기
+        var colModel_prev = [
+            { title: "접수 일시", dataIndx: "datetime", nodrag: true, width: 80 },
+            { title: "상태", dataIndx: "status", nodrag: true, width: 80 },
+            { title: "출발지", dataIndx: "point_start", nodrag: true, width: 200, align: 'left' },
+            {
+                title: "도착지", dataIndx: "point_end", nodrag: true, width: 200, align: 'left',
+                render: function (ui) {
+                    var contentString = [
+                        '<span class="address">' + ui.rowData.point_end + '</span>',
+                        '<button type="button" class="btn btn_link">입력</button>'
+                    ].join('');
+
+                    return contentString;
+                },
+                postRender: function (ui) {
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = grid.getCell(ui);
+                    $cell.find(".btn_link").bind("click", function (evt) {
+                        var tg = $(this);
+                        var rowdata = grid.getRowData({ rowIndx: rowIndx });
+
+                        prevStartItem = {};
+                        prevEndItem = {};
+                        prevPassItem = [];
+                        arr_passList = [];
+                        $('.startPoint').val('').next().removeClass('on');;
+                        $('.point_pass').remove();
+                        $('.endPoint').val('').next().removeClass('on');;
+                        mapData.forEach((item) => {
+                            item.case = 'blank';
+                        })
+                        createMap(mapData, carGpsData, areaItems);
+
+                        $('.startPoint').data('ui-autocomplete')._trigger('select', 'autocompleteselect', {
+                            item: {
+                                label: '(' + rowdata.title_start + ')' + rowdata.point_start,
+                                value: '(' + rowdata.title_start + ')' + rowdata.point_start,
+                                address: rowdata.point_start,
+                                disabled: false,
+                                idx: rowIndx
+                            }
+                        });
+
+                        $('.endPoint').data('ui-autocomplete')._trigger('select', 'autocompleteselect', {
+                            item: {
+                                label: '(' + rowdata.title_end + ')' + rowdata.point_end,
+                                value: '(' + rowdata.title_end + ')' + rowdata.point_end,
+                                address: rowdata.point_end,
+                                disabled: false,
+                                idx: rowIndx
+                            }
+                        });
+
+                        $('.form_memo .form_ctl').val(rowdata.memo);
+                    });
+                },
+            },
+            { title: "접수 메모", dataIndx: "memo", nodrag: true, width: 80 },
+            { title: "상담원", dataIndx: "consultant", nodrag: true, width: 80 },
+        ];
+
+        var dataModel_prev = {
+            "data": [
+                { "datetime": "2022-10-22 19:00:15", "status": "배차 대기", "title_start": "무주읍1", "point_start": "전북 무주군 무주읍 하장백길 71", "title_end": "무주읍6", "point_end": "전북 무주군 부남면 대티길 58", "memo": "취객", "consultant": "이재성" },
+                { "datetime": "2022-10-22 19:00:15", "status": "배차 대기", "title_start": "무주읍7", "point_start": "전북 무주군 부남면 대티길 43", "title_end": "무주읍1", "point_end": "전북 무주군 무주읍 하장백길 71", "memo": "취객1234", "consultant": "이재성" },
+            ]
+        };
+
+        var options_prev = {
+            scrollModel: { autoFit: true },
+            width: '100%', // 반응형 이슈로 width 100%
+            height: 'flex',
+            maxHeight: 185,
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: dataModel_prev,
+            colModel: colModel_prev,
+            // selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+
+        var grid_previnfo = pq.grid("#grid_previnfo", options_prev);
+
+
+
+        var info_title, info_address, info_agency, info_center = '';
+
+        var contentString = [
+            '<div class="iw_inner infowindow">',
+            '   <h3>승하차지점 정보</h3>',
+            '   <a href="javascript:void(0);" class="btn_close ir">정보 닫기</a>',
+            '   <div class="table_list tableFixHead">',
+            '       <table>',
+            '           <thead>',
+            '               <tr>',
+            '                   <th>승하차지명</th>',
+            '                   <th class="title">' + info_title + '</th>',
+            '               </tr>',
+            '           </thead>',
+            '           <tbody>',
+            '               <tr>',
+            '                   <td>주소</td>',
+            '                   <td class="address">' + info_address + '</td>',
+            '               </tr>',
+            '               <tr>',
+            '                   <td>소속기관</td>',
+            '                   <td class="agency">' + info_agency + '</td>',
+            '               </tr>',
+            '               <tr>',
+            '                   <td>센터</td>',
+            '                   <td class="center">' + info_center + '</td>',
+            '               </tr>',
+            '           </tbody>',
+            '       </table>',
+            '   </div>',
+            '</div>'
+        ].join('');
+
+        var infowindow = new naver.maps.InfoWindow({
+            content: contentString,
+            backgroundColor: "transparent",
+            borderWidth: 0,
+            anchorSize: new naver.maps.Size(0, 0),
+            pixelOffset: new naver.maps.Point(0, -10)
+        });
+
+        var arr_polygon = [
+            [
+                new naver.maps.LatLng(41.921509, 119.3856758),
+                new naver.maps.LatLng(41.8049801, 136.849646),
+                new naver.maps.LatLng(28.3786463, 136.8833774),
+                new naver.maps.LatLng(32.2266773, 119.3787235),
+                new naver.maps.LatLng(41.921509, 119.3856758),
+            ]
+        ];
+        var obj_polygon;
+
+        function addMarker(status, dataItem, tag) {
+            //출도착경유구분
+            //이미지 파일 변경.
+            var markerLayer;
+            var cls = '';
+            var txt = '';
+            var rotate = 0;
+            var driver = '';
+            var car_num = '';
+            var zindex = 0;
+            var marker;
+
+            switch (status) {
+                case "pinBlank":
+                    txt = Number(tag.split('_')[1]) + 1;
+                    cls = "pin_blank";
+                    zindex = 1;
+                    break;
+
+                case "pinStart":
+                    txt = '';
+                    cls = "pin_start";
+                    zindex = 3;
+                    break;
+                case "pinPass":
+                    txt = '경유지' + (Number(tag.split('_')[1]) + 1);
+                    cls = "pin_pass";
+                    zindex = 3;
+                    break;
+                case "pinEnd":
+                    txt = '';
+                    cls = "pin_end";
+                    zindex = 3;
+                    break
+
+                case "car":
+                    txt = '';
+                    cls = "car";
+                    idx = tag.split('_')[1];
+                    rotate = carGpsData[idx].rotation;
+                    driver = carGpsData[idx].driver;
+                    car_num = carGpsData[idx].number;
+                    zindex = 4;
+                    break;
+                case "carEmpty":
+                    txt = '';
+                    cls = "car car_empty";
+                    idx = tag.split('_')[1];
+                    rotate = carGpsData[idx].rotation;
+                    driver = carGpsData[idx].driver;
+                    car_num = carGpsData[idx].number;
+                    zindex = 2;
+                    break;
+            };
+
+            marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(dataItem.lat, dataItem.lon),
+                map: map,
+                icon: {
+                    content: [
+                        '<div class="pin ' + cls + '" style="transform:rotate(' + rotate + 'deg)">',
+                        '<div class="pin_name">',
+                        txt,
+                        '</div>',
+                        '</div>',
+                        '<div class="label_car">',
+                        '<span class="driver">' + driver + '</span>',
+                        '<span class="car_num">' + car_num + '</span>',
+                        '</div>',
+                    ].join(''),
+                    size: new naver.maps.Size(44, 36),
+                    anchor: new naver.maps.Point(22, 36),
+                },
+                draggable: false,
+                zIndex: zindex
+            });
+
+            marker.addListener("click", function (e) {
+                console.log(e);
+                if (infowindow.getMap()) {
+                    infowindow.close();
+                    $('.pin_pass').removeClass('on');
+                    $('.pin_blank').removeClass('on');
+                } else {
+                    $('.pin_pass').removeClass('on');
+                    $('.pin_blank').removeClass('on');
+                    $('.car').removeClass('on');
+                    $(e.domEvent.target).addClass('on');
+
+                    if (!$(e.domEvent.target).hasClass('car')) {
+                        infowindow.open(map, marker);
+
+                        info_title = dataItem.title;
+                        info_address = dataItem.address;
+                        info_agency = dataItem.agency;
+                        info_center = dataItem.center;
+
+                        $('.infowindow').find('.title').text(info_title);
+                        $('.infowindow').find('.address').text(info_address);
+                        $('.infowindow').find('.agency').text(info_agency);
+                        $('.infowindow').find('.center').text(info_center);
+
+                        $('.infowindow').on('click', '.btn_close', function () {
+                            infowindow.close();
+                            $('.pin_pass').removeClass('on');
+                        });
+
+                        $.fn.hasScrollBar = function () {
+                            return (this.prop("scrollHeight") == 0 && this.prop("clientHeight") == 0) || (this.prop("scrollHeight") > this.prop("clientHeight"));
+                        };
+
+                        if ($(".infowindow table tbody").hasScrollBar()) {
+                            $(".infowindow table thead").addClass('hasscroll');
+                        }
+                    } else {
+                        console.log(e.overlay.car_num);
+                        var selectedData = carGpsData.filter(item => {
+                            return item.number === e.overlay.car_num;
+                        })
+                        console.log(selectedData[0]);
+
+                        grid_reservation.setSelection(null);
+                        grid_reservation.setSelection({ rowIndx: e.overlay.tag.split('_')[1] });
+                    }
+                }
+            });
+
+            marker.tag = tag;
+            marker.car_num = car_num;
+
+            markerList.push(marker);
+
+            return marker;
+        }
+
+        function createMarker(mapDataItems) {
+            // arr_passList = [];
+            arr_blankList = [];
+
+            if (markerList.length > 0) {
+                for (var i = 0; i < markerList.length; i++) {
+                    markerList[i].setMap(null);
+                }
+                markerList = [];
+            }
+
+            for (var i = 0; i < mapDataItems.length; i++) {
+                if (mapDataItems[i].case === 'start') {
+                    addMarker('pinStart', mapDataItems[i], 'start');
+                }
+                else if (mapDataItems[i].case === 'end') {
+                    addMarker('pinEnd', mapDataItems[i], 'end');
+                }
+                else if (mapDataItems[i].case === 'pass') {
+                    // var item = {
+                    //     "viaPointId": "pass_" + i,
+                    //     "viaPointName": "pass_" + i,
+                    //     "address": mapDataItems[i].address,
+                    //     "viaX": mapDataItems[i].lon,
+                    //     "viaY": mapDataItems[i].lat,
+                    // };
+                    // arr_passList.push(item);
+                    // addMarker('pinPass', mapDataItems[i], 'pass_' + i);
+                } else {
+                    // arr_blankList.push(mapDataItems[i].lon + ',' + mapDataItems[i].lat);
+                    addMarker('pinBlank', mapDataItems[i], 'blank_' + i);
+                }
+            }
+
+            // console.log(arr_passList)
+
+            // 경유지 마커
+            // for(var i = 0; i < arr_passList.length; i ++){
+            //     addMarker('pinPass', arr_passList[i].viaX, arr_passList[i].viaY, 'pass_' + i);
+            // }
+            for (var i = 0; i < arr_passList.length; i++) {
+                addMarker('pinPass', arr_passList[i], 'pass_' + i);
+            }
+
+            // 승하차 지점 마커
+            // for(var i = 0; i < arr_blankList.length; i ++){
+            //     addMarker('pinBlank', arr_blankList[i].split(',')[0], arr_blankList[i].split(',')[1], 'blank_' + i);
+            // }
+        }
+
+        function createCars(gpsData) {
+            for (var i = 0; i < gpsData.length; i++) {
+                switch (gpsData[i].status) {
+                    case 'empty':
+                        addMarker('carEmpty', gpsData[i], 'car_' + i);
+                        break;
+                    case 'driving':
+                        addMarker('car', gpsData[i], 'car_' + i);
+                        break;
+                }
+            }
+        }
+
+        function drawData(data) {
+            var newData = [];
+            var equalData = [];
+            var pointId1 = "-1234567";
+            var ar_line = [];
+
+            for (var i = 0; i < data.features.length; i++) {
+                var feature = data.features[i];
+
+                // console.log(feature)
+
+                // 배열에 경로 좌표 저장
+                if (feature.geometry.type == "LineString") {
+                    ar_line = [];
+                    for (var j = 0; j < feature.geometry.coordinates.length; j++) {
+                        // 경로들의 결과값(구간)들을 포인트 객체로 변환
+                        var latlng = new Tmapv2.Point(feature.geometry.coordinates[j][0], feature.geometry.coordinates[j][1]);
+                        // 포인트 객체를 받아 좌표값으로 변환
+                        var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                        // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                        // var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+
+                        var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+                        ar_line.push(convertChange);
+                    }
+
+                    var polyline = new naver.maps.Polyline({
+                        path: ar_line,
+                        strokeColor: '#14429c',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 4,
+                        zIndex: 2,
+                        clickable: true,
+                        map: map
+                    });
+                }
+
+                newData.push(feature)
+            }
+            geoData = newData;
+
+            // 경로탐색 결과 반경만큼 지도 레벨 조정
+            // var newData = geoData;
+            var PTbounds = new naver.maps.LatLngBounds();
+
+            for (var i = 0; i < geoData.length; i++) {
+                var mData = geoData[i];
+                var type = mData.geometry.type;
+                if (type === "Point") {
+                    // 경로들의 결과값(구간)들을 포인트 객체로 변환
+                    var latlng = new Tmapv2.Point(mData.geometry.coordinates[0], mData.geometry.coordinates[1]);
+                    // 포인트 객체를 받아 좌표값으로 변환
+                    var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                    var linePt = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+                    PTbounds.extend(linePt);
+                }
+                else {
+                    // var startPt,endPt;
+                    for (var j = 0; j < mData.geometry.coordinates.length; j++) {
+                        // 경로들의 결과값(구간)들을 포인트 객체로 변환
+                        var latlng = new Tmapv2.Point(mData.geometry.coordinates[j][0], mData.geometry.coordinates[j][1]);
+                        // 포인트 객체를 받아 좌표값으로 변환
+                        var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                        var linePt = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+                        PTbounds.extend(linePt);
+                    }
+                }
+            }
+
+            setTimeout(function () {
+                map.fitBounds(PTbounds);
+            }, 200);
+
+        }
+
+        function time(seconds) {
+            //3항 연산자를 이용하여 10보다 작을 경우 0을 붙이도록 처리 하였다.
+            var hour = parseInt(seconds / 3600) < 10 ? '0' + parseInt(seconds / 3600) : parseInt(seconds / 3600);
+            var min = parseInt((seconds % 3600) / 60) < 10 ? '0' + parseInt((seconds % 3600) / 60) : parseInt((seconds % 3600) / 60);
+            var sec = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
+
+            //연산한 값을 화면에 뿌려주는 코드
+            // document.getElementById("time").innerHTML = hour+":"+min+":" + sec;
+            return hour + "시간 " + min + "분 " + sec + "초";
+        }
+
+        function Info(data) {
+            /*
+                taxiFare // 택시 예상 요금 정보(단위:원)
+                totalDistance // 경로 총 길이(단위: m)
+                totalFare // 경로 총 요금 정보(단위:원)
+                totalTime  // 경로 총 소요 시간(단위: 초)
+                turnType // 회전 정보
+            */
+
+            var center = map.getCenter();//map의 중심 좌표 값
+            var level = map.getZoom();//map의 ZoomLevel 값
+            var extent = map.getBounds();//map의 영역의 값
+            var km = data.totalDistance / 1000;
+            var totalDistance = km.toFixed(2);
+            var totalTime = time(data.totalTime);
+            // var taxiFare = data.taxiFare.toLocaleString('ko-KR');
+            var result =
+                // '중심좌표: '+center+'<br>'+
+                // '레벨: '+level+'<br>'+
+                // '영역값: '+extent+'<br>'+
+                '예상 주행 시간 : ' + totalTime + '<br>' +
+                '예상 주행 거리: ' + totalDistance + 'km' + '<br>' +
+                '요금 정책: 미터기 요금';
+            // '요금 정책: '+taxiFare+'원';
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = result;
+            resultDiv.style.display = "block";
+        }
+
+        // 공간 API 사용 city_do(시도), gu_gun(시군구), legalDong(법정동), adminDong(행정동)
+        function geofencingSpace(dataItem) {
+            console.log('geofencingSpace')
+            var searchKeyword = dataItem.dong;
+            var searchOption = dataItem.type;
+            var headers = {};
+            headers["appKey"] = appKey;
+
+            $.ajax({
+                method: "GET",
+                headers: headers,
+                url: "https://apis.openapi.sk.com/tmap/geofencing/regions?version=1&format=json&callback=result",
+                async: false,
+                crossDomain: true,
+                data: {
+                    "count": "20",
+                    "categories": searchOption,//categories,
+                    "searchType": "KEYWORD",
+                    "searchKeyword": searchKeyword,
+                },
+                success: function (response) {
+                    if (response) {
+                        // 3. regionId 얻기
+                        var resultRegionsInfo = response.searchRegionsInfo;
+
+                        for (var i in resultRegionsInfo) {
+                            var description = resultRegionsInfo[i].regionInfo.description;
+                            var regionId = resultRegionsInfo[i].regionInfo.regionId;
+                            var guName = resultRegionsInfo[i].regionInfo.properties.guName;
+                            var doName = resultRegionsInfo[i].regionInfo.properties.doName;
+                            var regionName = resultRegionsInfo[i].regionInfo.regionName;
+                            if (guName === dataItem.gungu && doName === dataItem.sido) {
+                                geofencingRegions(regionId);
+                                // console.log(doName, guName, regionName, regionId);
+                            }
+                        }
+                    }
+                    else { }
+                },
+                error: function (request, status, error) {
+                    console.log("code:"
+                        + request.status + "\n"
+                        + "message:"
+                        + request.responseText
+                        + "\n" + "error:" + error);
+                }
+            });
+        };
+
+        var PTbounds_area = new naver.maps.LatLngBounds();
+
+        // 영역API 사용요청
+        function geofencingRegions(regionId) {
+            console.log('geofencingRegions')
+            $.ajax({
+                method: "GET",
+                url: "https://apis.openapi.sk.com/tmap/geofencing/regions/"
+                    + regionId
+                    + "?version=1&format=json&callback=result",
+                async: false,
+                data: {
+                    "resCoordType": "EPSG3857",
+                    "appKey": appKey,
+                },
+                success: function (response) {
+                    // console.log(response);
+
+                    var resultGeometry = response.features[0].geometry;
+                    var resultArea = resultGeometry.coordinates[0];
+
+                    var resultProperties = response.features[0].properties.regionName;
+                    // console.log(resultProperties);
+
+                    drawInfoArr = [];
+                    var polyline_;
+
+                    var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
+
+                    if (resultGeometry.type == "MultiPolygon") {
+                        // console.log('MultiPolygon');
+                        for (var i in resultGeometry.coordinates) {
+                            drawInfoArr = [];
+                            resultArea = resultGeometry.coordinates[i];
+                            var resultArea_array = resultArea[0];
+                            for (var j in resultArea_array) {
+
+                                // 경로들의 결과값(구간)들을 포인트 객체로 변환
+                                var latlng = new Tmapv2.Point(resultArea_array[j][0], resultArea_array[j][1]);
+                                // 포인트 객체를 받아 좌표값으로 변환
+                                var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                                // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                                var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+
+                                drawInfoArr.push(convertChange);
+                                positionBounds.extend(convertChange);
+                            }
+                            var polygon = new Tmapv2.Polygon({
+                                paths: drawInfoArr,
+                                strokeColor: "red",
+                                fillColor: "pink", // 다각형 내부 색상
+                                map: map // 지도 객체
+                            });
+                            resultPolygon.push(polygon);
+                        }
+                    }
+
+                    else {
+                        for (var i in resultArea) {
+                            // 경로들의 결과값(구간)들을 포인트 객체로 변환
+                            var latlng = new Tmapv2.Point(resultArea[i][0], resultArea[i][1]);
+                            // 포인트 객체를 받아 좌표값으로 변환
+                            var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+
+                            var convertChange = new naver.maps.LatLng(convertPoint._lat, convertPoint._lng);
+
+                            drawInfoArr.push(convertChange);
+                        }
+                    }
+
+                    arr_polygon.push(drawInfoArr);
+
+                    if (obj_polygon !== undefined) {
+                        obj_polygon.setMap(null);
+                    }
+
+                    // black background 생성
+                    obj_polygon = new naver.maps.Polygon({
+                        map: map,
+                        paths: arr_polygon,
+                        fillColor: '#000',
+                        fillOpacity: 0.3,
+                        strokeColor: '#000',
+                        strokeOpacity: 0,
+                        strokeWeight: 0,
+                        zIndex: 500
+                    });
+
+                    for (var i = 0; i < drawInfoArr.length; i++) {
+                        PTbounds_area.extend(drawInfoArr[i]);
+                    }
+
+                    // map.fitBounds(PTbounds_area);
+                },
+                error: function (request, status, error) {
+                    console.log("code:" + request.status + "\n"
+                        + "message:" + request.responseText + "\n"
+                        + "error:" + error);
+                }
+            });
+        };
+
+        function createRoute(mapDataItems) {    // 경유지 미포함
+            console.log(mapDataItems)
+            var headers = {};
+            headers["appKey"] = appKey;
+
+            var arr_start = mapDataItems.filter((item) => {
+                return item.case === 'start';
+            });
+            var arr_end = mapDataItems.filter((item) => {
+                return item.case === 'end';
+            });
+
+            //JSON TYPE EDIT [S]
+            // https://apis.openapi.sk.com/tmap/routes?version=1&format=json
+            $.ajax({
+                type: "POST",
+                headers: headers,
+                url: "https://apis.openapi.sk.com/tmap/routes?version=1&format=json&callback=result&appKey=" + appKey,
+                async: false,
+                data: {
+                    "startX": arr_start[0].lon,
+                    "startY": arr_start[0].lat,
+                    "endX": arr_end[0].lon,
+                    "endY": arr_end[0].lat,
+                    "reqCoordType": "WGS84GEO",
+                    "resCoordType": "EPSG3857",
+                    "searchOption": 0,
+                    "trafficInfo": "N"
+                },
+                success: function (response) {
+                    console.log('response: ', response);
+                    var resultData = response.features;
+
+                    // var tDistance = "총 거리 : " + (resultData[0].properties.totalDistance / 1000).toFixed(1) + "km,";
+                    // var tTime = " 총 시간 : " + (resultData[0].properties.totalTime / 60).toFixed(0) + "분,";
+                    // var tFare = " 총 요금 : " + resultData[0].properties.totalFare + "원,";
+                    // var taxiFare = " 예상 택시 요금 : " + resultData[0].properties.taxiFare + "원";
+
+                    Info(resultData[0].properties);
+                    drawData(response);
+                },
+                error: function (request, status, error) {
+                    console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+
+        }
+
+        function createrouteOptimization(mapDataItems) {    // 경유지 포함
+            var headers = {};
+            headers["appKey"] = appKey;
+
+            var arr_start = mapDataItems.filter((item) => {
+                return item.case === 'start';
+            });
+            var arr_end = mapDataItems.filter((item) => {
+                return item.case === 'end';
+            });
+
+            console.log(arr_start, arr_end, arr_passList);
+
+            $.ajax({
+                type: "POST",
+                headers: headers,
+                url: "https://apis.openapi.sk.com/tmap/routes/routeOptimization30?version=1&format=json",//
+                async: false,
+                contentType: "application/json",
+                data: JSON.stringify({
+                    "reqCoordType": "WGS84GEO",
+                    "resCoordType": "EPSG3857",
+                    "startName": "출발",
+                    "startX": arr_start[0].lon,
+                    "startY": arr_start[0].lat,
+                    "startTime": "201711121314",
+                    "endName": "도착",
+                    "endX": arr_end[0].lon,
+                    "endY": arr_end[0].lat,
+                    "searchOption": "0",
+                    "viaPoints": arr_passList
+                }),
+                success: function (response) {
+                    var resultData = response.properties;
+                    var resultFeatures = response.features;
+
+                    Info(resultData);
+                    drawData(response);
+
+                    // 결과 출력
+                    // var tDistance = "총 거리 : " + (resultData.totalDistance/1000).toFixed(1) + "km,  ";
+                    // var tTime = "총 시간 : " + (resultData.totalTime/60).toFixed(0) + "분,  ";
+                    // var tFare = "총 요금 : " + resultData.totalFare + "원";
+                },
+                error: function (request, status, error) {
+                    console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+        }
+
+        function createMap(mapDataItems, carGpsDataItems, areaDataItem) {
+            arr_polygon = [
+                [
+                    new naver.maps.LatLng(41.921509, 119.3856758),
+                    new naver.maps.LatLng(41.8049801, 136.849646),
+                    new naver.maps.LatLng(28.3786463, 136.8833774),
+                    new naver.maps.LatLng(32.2266773, 119.3787235),
+                    new naver.maps.LatLng(41.921509, 119.3856758),
+                ]
+            ];
+            if (map !== undefined) {
+                map.destroy();
+            }
+
+            mapOptions = {
+                zoom: 12,
+                minZoom: 9,
+                maxZoom: 14
+            };
+
+            map = new naver.maps.Map('map_div', mapOptions);
+
+            naver.maps.Event.addListener(map, 'click', function (e) {
+                $('.pin_pass').removeClass('on');
+                $('.pin_blank').removeClass('on');
+                $('.car').removeClass('on');
+                infowindow.close();
+            });
+
+            PTbounds_area = new naver.maps.LatLngBounds();
+            for (var i = 0; i < areaDataItem.length; i++) {
+                geofencingSpace(areaDataItem[i]);
+            };
+
+            setTimeout(function () {
+                map.fitBounds(PTbounds_area);
+            }, 100);
+
+            setTimeout(function () {
+                createMarker(mapDataItems); // 마커 생성
+                createCars(carGpsDataItems);    // 차량 생성
+            }, 100);
+
+
+            var status_passVal = true;
+            if ($('.passPoint').length > 0) {
+                $('.passPoint').each((idx, el) => {
+                    if ($(el).val() === '') {
+                        status_passVal = false;
+                    } else {
+                        status_passVal = true;
+                    }
+                });
+            }
+
+            if ($('.startPoint').val() !== '' && $('.endPoint').val() !== '' && status_passVal) {
+                if (arr_passList.length === 0) {
+                    createRoute(mapData);
+                } else {
+                    createrouteOptimization(mapData);
+                }
+            }
+        }
+
+        createMap(mapData, carGpsData, areaItems);
+
+        $(document).on('selectmenuchange', '#select-center', function (event, ui) {
+            switch (ui.item.value) {
+                case '1':
+                    mapData = [
+                        { "title": "무주읍1", "address": "전북 무주군 무주읍 하장백길 71", "agency": "종로구 행복택시", "center": "사직1", "lat": "36.028032030280826", "lon": "127.70028359821887", "case": "blank" },
+                        { "title": "무주읍2", "address": "전북 무주군 무주읍 한풍루로 251", "agency": "종로구 행복택시", "center": "사직2", "lat": "36.00470830000012", "lon": "127.66404465769727", "case": "blank" },
+                        { "title": "무주읍3", "address": "전북 무주군 무주읍 한풍루로 252", "agency": "종로구 행복택시", "center": "사직2", "lat": "36.00020830000012", "lon": "127.61204465769727", "case": "blank" },
+                        { "title": "무주읍4", "address": "전북 무주군 무주읍 한풍루로 253", "agency": "종로구 행복택시", "center": "사직2", "lat": "36.02870830000012", "lon": "127.62404465769727", "case": "blank" },
+                        { "title": "무주읍5", "address": "전북 무주군 무주읍 가옥리 1054", "agency": "종로구 행복택시", "center": "사직3", "lat": "35.97918884549752", "lon": "127.65010275307006", "case": "blank" },
+                        { "title": "무주읍6", "address": "전북 무주군 부남면 대티길 58", "agency": "종로구 행복택시", "center": "사직4", "lat": "35.99540252379289", "lon": "127.57340466568048", "case": "blank" },
+                        { "title": "무주읍7", "address": "전북 무주군 부남면 대티길 43", "agency": "종로구 행복택시", "center": "사직4", "lat": "35.93540252379289", "lon": "127.57340466568048", "case": "blank" },
+                    ];
+                    carGpsData = [
+                        { "lat": "36.008032030280826", "lon": "127.70028359821887", "rotation": 30, "status": "empty", "driver": "이재성1", "number": "울산 가 7431" },
+                        { "lat": "36.00470830000012", "lon": "127.64404465769727", "rotation": 55, "status": "driving", "driver": "이재성2", "number": "울산 나 7432" },
+                        { "lat": "35.9900884549752", "lon": "127.62010275307006", "rotation": 128, "status": "empty", "driver": "이재성3", "number": "울산 다 7433" },
+                        { "lat": "35.99918884549752", "lon": "127.55010275307006", "rotation": 128, "status": "empty", "driver": "이재성4", "number": "울산 라 7433" },
+                        { "lat": "35.97918884549752", "lon": "127.67010275307006", "rotation": 128, "status": "empty", "driver": "이재성5", "number": "울산 마 7433" },
+                    ];
+                    areaItems = [
+                        { sido: '전라북도', gungu: '무주군', dong: '무주읍', type: 'adminDong' },
+                        { sido: '전라북도', gungu: '무주군', dong: '부남면', type: 'adminDong' },
+                    ];
+                    break;
+                case '2':
+                    mapData = [
+                        { "title": "용산동1", "address": "테스트 1", "agency": "종로구 행복택시", "center": "사직1", "lat": "37.4941465", "lon": "127.0289518", "case": "blank" },
+                        { "title": "용산동2", "address": "테스트 2", "agency": "종로구 행복택시", "center": "사직2", "lat": "37.545168", "lon": "127.0880022", "case": "blank" },
+                        { "title": "용산동2", "address": "테스트 2", "agency": "종로구 행복택시", "center": "사직2", "lat": "37.525168", "lon": "127.0680022", "case": "blank" },
+                        { "title": "용산동3", "address": "테스트 3", "agency": "종로구 행복택시", "center": "사직3", "lat": "37.5366681", "lon": "126.9558969", "case": "blank" },
+                        { "title": "용산동3", "address": "테스트 3", "agency": "종로구 행복택시", "center": "사직3", "lat": "37.5566681", "lon": "126.9758969", "case": "blank" },
+                        { "title": "용산동4", "address": "테스트 4", "agency": "종로구 행복택시", "center": "사직4", "lat": "37.5301315", "lon": "126.9262302", "case": "blank" },
+                    ];
+                    carGpsData = [
+                        { "lat": "37.4841465", "lon": "127.0089518", "rotation": 30, "status": "empty", "driver": "이재성1", "number": "울산 나 7432" },
+                        { "lat": "37.565168", "lon": "127.0880022", "rotation": 55, "status": "driving", "driver": "이재성2", "number": "울산 나 7432" },
+                        { "lat": "37.5366681", "lon": "126.9758969", "rotation": 128, "status": "empty", "driver": "이재성3", "number": "울산 나 7432" },
+                    ];
+                    areaItems = [
+                        { sido: '서울특별시', gungu: '용산구', dong: '용산2가동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '이태원2동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '이태원1동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '후암동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '보광동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '서빙고동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '남영동', type: 'adminDong' },
+                        { sido: '서울특별시', gungu: '용산구', dong: '한남동', type: 'adminDong' },
+                    ];
+                    break;
+            }
+
+            prevStartItem = {};
+            prevEndItem = {};
+            prevPassItem = [];
+            arr_passList = [];
+            $('.startPoint').val('').next().removeClass('on');
+            $('.endPoint').val('').next().removeClass('on');;
+            $('.point_pass').remove();
+            mapData.forEach((item) => {
+                item.case = 'blank';
+            });
+            createMap(mapData, carGpsData, areaItems);
+        });
+
+    // grid 배차
+    var data_dispatch = {"data":[
+        {"select":1,"driver":"이재성1","car_num":"울산 가 7433","car_personnel":4,"car_type":"택시","notallowed":["11:30-15:20", "16:30-18:30"],"hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+        {"select":1,"driver":"이재성2","car_num":"울산 나 7433","car_personnel":4,"car_type":"택시","notallowed":["11:20-15:00"],"hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+        {"select":0,"driver":"이재성3","car_num":"울산 다 7433","car_personnel":4,"car_type":"택시","notallowed":["11:10-15:30"],"hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+        {"select":0,"driver":"이재성4","car_num":"울산 라 7433","car_personnel":4,"car_type":"택시","notallowed":["11:00-15:10"],"hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+        {"select":0,"driver":"이재성5","car_num":"울산 마 7433","car_personnel":4,"car_type":"택시","notallowed":["10:50-15:00"],"hour07":"","hour08":"","hour09":"","hour10":"","hour11":"","hour12":"","hour13":"","hour14":"","hour15":"","hour16":"","hour17":"","hour18":"","hour19":"","hour20":"","hour21":""},
+    ]};
+
+        var data_selected = '03:30-05:30';  // 예약 시간 표시
+
+        var colModel_dispatch = [
+            {
+                title: "선택", dataIndx: "select", width: 100, nodrag: true, nodrop: true,
+                render: function (ui) {
+                    var content = '';
+                    if (ui.cellData === 0) {
+                        content = '<button type="button" class="btn btn_blue btn_dispatch" disabled>배차</button>';
+                    } else {
+                        content = '<button type="button" class="btn btn_blue btn_dispatch">배차</button>';
+                    }
+                    return content;
+                },
+                postRender: function (ui) {
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = grid.getCell(ui);
+                    $cell.find(".btn_dispatch").bind("click", function (evt) {
+                        var tg = $(this);
+                        var rowdata = grid.getRowData({ rowIndx: rowIndx })
+                        console.log(rowdata)
+                    });
+                },
+            },
+            { title: "기사", dataIndx: "driver", width: 100, nodrag: true, nodrop: true, },
+            { title: "차량 번호", dataIndx: "car_num", width: 130, nodrag: true, nodrop: true, },
+            { title: "탑승 가능 인원", dataIndx: "car_personnel", width: 130, nodrag: true, nodrop: true, },
+            { title: "차량 유형", dataIndx: "car_type", width: 100, nodrag: true, nodrop: true, },
+            {
+                title: "00:00", dataIndx: "hour00", width: 100, nodrag: true, nodrop: true, cls: "merge_area",
+                render: function (ui) {
+                    var rowData = ui.rowData, dataIndx = ui.dataIndx, rowIndx = ui.rowIndx;
+                    var val = rowData[dataIndx];
+                    var notallowed = rowData.notallowed;
+
+                    function calcPos(time) {
+                        var gap = 100 / 25;
+                        var start = time.split('-')[0];
+                        var start_hour = start.split(':')[0];
+                        var start_min = start.split(':')[1];
+                        var pos_left = (start_hour) * gap + (start_min / 60 * gap);
+                        return pos_left;
+                    }
+
+                    function calcWd(time) {
+                        var gap = 100/25;
+                        var end = time.split('-')[1];
+                        var end_hour = end.split(':')[0];
+                        var end_min = end.split(':')[1];
+                        var wd = (end_hour)*gap + (end_min/60*gap) - calcPos(time);
+                        return wd;
+                    }
+
+                    var layer_notallowed = '';
+                    notallowed.forEach(item => {
+                        console.log(item)
+                        layer_notallowed = layer_notallowed + "<span class='not' style='left:" + calcPos(item) + "%;width:" + calcWd(item) + "%;'></span>"
+                    });
+                    
+                    var result = 	"<div class='bar'>" +
+                                        "<span class='selected' style='left:" + calcPos(data_selected) + "%;width:" + calcWd(data_selected) + "%;'></span>" +
+                                        layer_notallowed +
+                                    "</div>";
+                    return result;
+                }
+            },
+            { title: "01:00", dataIndx: "hour01", width: 100, nodrag: true, nodrop: true, },
+            { title: "02:00", dataIndx: "hour02", width: 100, nodrag: true, nodrop: true, },
+            { title: "03:00", dataIndx: "hour03", width: 100, nodrag: true, nodrop: true, },
+            { title: "04:00", dataIndx: "hour04", width: 100, nodrag: true, nodrop: true, },
+            { title: "05:00", dataIndx: "hour05", width: 100, nodrag: true, nodrop: true, },
+            { title: "06:00", dataIndx: "hour06", width: 100, nodrag: true, nodrop: true, },
+            { title: "07:00", dataIndx: "hour07", width: 100, nodrag: true, nodrop: true, },
+            { title: "08:00", dataIndx: "hour08", width: 100, nodrag: true, nodrop: true, },
+            { title: "09:00", dataIndx: "hour09", width: 100, nodrag: true, nodrop: true, },
+            { title: "10:00", dataIndx: "hour10", width: 100, nodrag: true, nodrop: true, },
+            { title: "11:00", dataIndx: "hour11", width: 100, nodrag: true, nodrop: true, },
+            { title: "12:00", dataIndx: "hour12", width: 100, nodrag: true, nodrop: true, },
+            { title: "13:00", dataIndx: "hour13", width: 100, nodrag: true, nodrop: true, },
+            { title: "14:00", dataIndx: "hour14", width: 100, nodrag: true, nodrop: true, },
+            { title: "15:00", dataIndx: "hour15", width: 100, nodrag: true, nodrop: true, },
+            { title: "16:00", dataIndx: "hour16", width: 100, nodrag: true, nodrop: true, },
+            { title: "17:00", dataIndx: "hour17", width: 100, nodrag: true, nodrop: true, },
+            { title: "18:00", dataIndx: "hour18", width: 100, nodrag: true, nodrop: true, },
+            { title: "19:00", dataIndx: "hour19", width: 100, nodrag: true, nodrop: true, },
+            { title: "20:00", dataIndx: "hour20", width: 100, nodrag: true, nodrop: true, },
+            { title: "21:00", dataIndx: "hour21", width: 100, nodrag: true, nodrop: true, },
+            { title: "22:00", dataIndx: "hour22", width: 100, nodrag: true, nodrop: true, },
+            { title: "23:00", dataIndx: "hour23", width: 100, nodrag: true, nodrop: true, },
+            { title: "24:00", dataIndx: "hour24", width: 100, nodrag: true, nodrop: true, }
+        ];
+
+        var options_dispatch = {
+            scrollModel: { autoFit: false },
+            width: '100%',
+            height: 'flex',
+            maxHeight: 227,
+            rowHt: 45,
+            rowHtHead: 45,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: data_dispatch,
+            colModel: colModel_dispatch,
+            selectionModel: { type: 'row' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 5,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+
+            rowClick: function (event, ui) {
+                var { rowIndx, rowData } = ui;
+                var targetMarker;
+
+                markerList.forEach((item, idx) => {
+                    var type = item.tag.split('_')[0];
+                    var index = Number(item.tag.split('_')[1]);
+                    if (index === rowData.pq_ri && type === 'car') {
+                        targetMarker = item;
+                    }
+                });
+
+                $('.car').removeClass('on');
+                $(targetMarker.eventTarget).find('.car').addClass('on');
+            }
+        };
+        var grid_reservation = pq.grid("#grid_reservation", options_dispatch);
+
+        var mc = [],
+            CM = grid_reservation.option("colModel"),
+            data = grid_reservation.option("dataModel.data");
+
+        for (var i = 0; i < data.length; i++) {
+            mc.push({ r1: i, c1: 5, rc: 1, cc: CM.length });
+        }
+
+        grid_reservation.option('mergeCells', mc);
+        grid_reservation.refreshView();
+
+        // grid_reservation.setSelection( {rowIndx:0} );
+        // var sel = grid_reservation.Selection();
+        // console.log(sel);
+
+        // grid detail 접수 내역
+        var dataModel_receipt = {
+            "data": [
+                { "no": 1, "receipt-date": "2022-10-18 12:31:00", "receipt-status": "주행 중", "receipt-location": [{ "case": "start", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }, { "case": "pass", "point": "하장백그룹회관", "detail": "전북 무주군 무주읍 한풍루로 30" }, { "case": "end", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }], "receipt-phone": "01023840543", "receipt-personnel": "2", "receipt-plan": "2022-10-18 09:20:00", "driver-num": "전북36바3000", "driver-type": "개인", "driver-car": "택시", "driver-charge": "송진혁", "consultant": "이재성", "member-phone": "01023840543", "option": "", "detail": "detail view link url1" },
+                { "no": 2, "receipt-date": "2022-10-18 12:31:00", "receipt-status": "주행 완료", "receipt-location": [{ "case": "start", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }, { "case": "end", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }], "receipt-phone": "01023840543", "receipt-personnel": "2", "receipt-plan": "2022-10-18 09:20:00", "driver-num": "전북36바3000", "driver-type": "개인", "driver-car": "택시", "driver-charge": "송진혁", "consultant": "이재성", "member-phone": "01023840543", "option": "", "detail": "detail view link url2" },
+                { "no": 3, "receipt-date": "2022-10-18 12:31:00", "receipt-status": "배차 대기", "receipt-location": [{ "case": "start", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }, { "case": "pass", "point": "하장백그룹회관", "detail": "전북 무주군 무주읍 한풍루로 30" }, { "case": "end", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }], "receipt-phone": "01023840543", "receipt-personnel": "2", "receipt-plan": "2022-10-18 09:20:00", "driver-num": "전북36바3000", "driver-type": "개인", "driver-car": "택시", "driver-charge": "송진혁", "consultant": "이재성", "member-phone": "01023840543", "option": "", "detail": "detail view link url3" },
+                { "no": 4, "receipt-date": "2022-10-18 12:31:00", "receipt-status": "배차 완료", "receipt-location": [{ "case": "start", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }, { "case": "pass", "point": "하장백그룹회관", "detail": "전북 무주군 무주읍 한풍루로 30" }, { "case": "end", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }], "receipt-phone": "01023840543", "receipt-personnel": "2", "receipt-plan": "2022-10-18 09:20:00", "driver-num": "전북36바3000", "driver-type": "개인", "driver-car": "택시", "driver-charge": "송진혁", "consultant": "이재성", "member-phone": "01023840543", "option": "", "detail": "detail view link url4" },
+                { "no": 5, "receipt-date": "2022-10-18 12:31:00", "receipt-status": "예약 취소", "receipt-location": [{ "case": "start", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }, { "case": "pass", "point": "하장백그룹회관", "detail": "전북 무주군 무주읍 한풍루로 30" }, { "case": "end", "point": "마곡그룹회관", "detail": "전북 무주군 무주읍 한풍루로351" }], "receipt-phone": "01023840543", "receipt-personnel": "2", "receipt-plan": "2022-10-18 09:20:00", "driver-num": "전북36바3000", "driver-type": "개인", "driver-car": "택시", "driver-charge": "송진혁", "consultant": "이재성", "member-phone": "01023840543", "option": "", "detail": "detail view link url5" },
+            ]
+        };
+
+        function showStatus(rowIndx, grid, tg) {
+            var st = $(window).scrollTop();
+            var sl = $(window).scrollLeft();
+
+            $(window).scroll(function (evt) {
+                $('.lst_status').css({ 'display': 'none' });
+                $('.btn_status').removeClass('on');
+            });
+
+            $(window).resize(function () {
+                $('.lst_status').css({ 'display': 'none' });
+                $('.btn_status').removeClass('on');
+            });
+
+            if (!tg.hasClass('on')) {
+                $('.lst_status').css({
+                    'display': 'block',
+                    'left': tg.offset().left - $('.lst_status').outerWidth() / 2 + tg.outerWidth() / 2 - sl,
+                    'top': tg.offset().top + tg.outerHeight() - st
+                });
+                tg.addClass('on');
+            } else {
+                $('.lst_status').css({ 'display': 'none' });
+                $('.btn_status').removeClass('on');
+            }
+
+            var rowData = grid.getRowData({ rowIndx: rowIndx });
+            $('.lst_status li a').removeClass('disabled');
+            // console.log(rowData['receipt-status'])
+            switch (rowData['receipt-status']) {
+                case '배차 대기':
+                    $('.lst_status li a').eq(0).addClass('disabled');
+                    break;
+                case '배차 완료':
+                    $('.lst_status li a').eq(1).addClass('disabled');
+                    break;
+                case '주행 중':
+                    $('.lst_status li a').addClass('disabled');
+                    break;
+                case '주행 완료':
+                    $('.lst_status li a').addClass('disabled');
+                    break;
+                case '예약 취소':
+                    $('.lst_status li a').addClass('disabled');
+                    break;
+            }
+        }
+
+        function showOptions(rowIndx, grid, tg) {
+            var st = $(window).scrollTop();
+            var sl = $(window).scrollLeft();
+
+            $(window).scroll(function (evt) {
+                $('.lst_options').css({ 'display': 'none' });
+                $('.btn_more').removeClass('on');
+            });
+
+            $(window).resize(function () {
+                $('.lst_options').css({ 'display': 'none' });
+                $('.btn_more').removeClass('on');
+            });
+
+            if (!tg.hasClass('on')) {
+                $('.lst_options').css({
+                    'display': 'block',
+                    'left': tg.offset().left - $('.lst_options').outerWidth() + tg.outerWidth() - sl,
+                    'top': tg.offset().top + tg.outerHeight() - st
+                });
+                tg.addClass('on');
+            } else {
+                $('.lst_options').css({ 'display': 'none' });
+                $('.btn_more').removeClass('on');
+            }
+
+            var rowData = grid.getRowData({ rowIndx: rowIndx });
+            $('.lst_options li a').removeClass('disabled');
+
+            switch (rowData['receipt-status']) {
+                case '배차 대기':
+                    $('.lst_options li a').eq(1).addClass('disabled');
+                    $('.lst_options li a').eq(2).addClass('disabled');
+                    $('.lst_options li a').eq(4).addClass('disabled');
+                    break;
+                case '배차 완료':
+                    $('.lst_options li a').eq(3).addClass('disabled');
+                    break;
+                case '주행 중':
+                    $('.lst_options li a').eq(2).addClass('disabled');
+                    $('.lst_options li a').eq(3).addClass('disabled');
+                    $('.lst_options li a').eq(5).addClass('disabled');
+                    break;
+                case '주행 완료':
+                    $('.lst_options li a').eq(2).addClass('disabled');
+                    $('.lst_options li a').eq(3).addClass('disabled');
+                    $('.lst_options li a').eq(4).addClass('disabled');
+                    $('.lst_options li a').eq(5).addClass('disabled');
+                    break;
+                case '예약 취소':
+                    $('.lst_options li a').eq(2).addClass('disabled');
+                    $('.lst_options li a').eq(3).addClass('disabled');
+                    $('.lst_options li a').eq(4).addClass('disabled');
+                    $('.lst_options li a').eq(5).addClass('disabled');
+                    break;
+            }
+        }
+
+        $(document).on('click', function (evt) {
+            if (!$(evt.target).hasClass('btn_more')) {
+                $('.lst_options').css({ 'display': 'none' });
+                $('.btn_more').removeClass('on');
+            };
+
+            if (!$(evt.target).hasClass('btn_status')) {
+                $('.lst_status').css({ 'display': 'none' });
+                $('.btn_status').removeClass('on');
+            }
+        });
+
+        var colModel_receipt = [
+            { title: "번호", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+            {
+                title: "<span class='header_title'>접수 정보<span>", dataIndx: "receipt", nodrag: true, align: "center",
+                colModel: [
+                    { title: "접수 일시", dataIndx: "receipt-date", width: 120, nodrag: true, cls: "hd_line br0", },
+                    {
+                        title: "주행 상태", dataIndx: "receipt-status", width: 90, nodrag: true, nodrop: true, cls: "hd_line",
+                        render: function (ui) {
+                            var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                            var val = rowData[dataIndx];
+                            var lst;
+                            if (val === '주행 중') {
+                                return "<button type='button' class='btn_status state state_green'>" + val + "</button>";
+                            } else if (val === '주행 완료') {
+                                return "<button type='button' class='btn_status state state_navy'>" + val + "</button>";
+                            } else if (val === '배차 대기') {
+                                return "<button type='button' class='btn_status state state_red'>" + val + "</button>";
+                            } else if (val === '배차 완료') {
+                                return "<button type='button' class='btn_status state state_blue'>" + val + "</button>";
+                            } else if (val === '예약 취소') {
+                                return "<button type='button' class='btn_status state state_gray'>" + val + "</button>";
+                            }
+                        },
+                        postRender: function (ui) {
+                            var rowIndx = ui.rowIndx,
+                                grid = this,
+                                $cell = grid.getCell(ui);
+                            $cell.find(".btn_status").bind("click", function (evt) {
+                                var tg = $(this);
+                                showStatus(rowIndx, grid, tg);
+                            });
+                        },
+                    },
+                    {
+                        title: "탑승지/하차지", dataIndx: "receipt-location", width: 240, align: "left", nodrag: true, sortable: false, cls: "hd_line",
+                        render: function (ui) { // checkbox custom
+                            var items = ui.cellData;
+                            var ul = `<ul class='location_lst'>`;
+                            var ul_end = `</ul>`;
+                            var li = '';
+                            var cls = '';
+
+                            for (var i = 0; i < items.length; i++) {
+                                if (items[i].case === 'start') {
+                                    cls = 'icon_location1';
+                                } else if (items[i].case === 'pass') {
+                                    cls = 'icon_location2';
+                                } else {
+                                    cls = 'icon_location3';
+                                }
+                                li += `<li><i class='icon ${cls}'></i><span><strong>${items[i].point}</strong>(${items[i].detail})</span></li>`
+                            }
+
+                            result = ul + li + ul_end;
+                            return result;
+
+
+                        }
+                    },
+                    { title: "예약자 전화번호", dataIndx: "receipt-phone", width: 120, nodrag: true, nodrop: true, cls: "hd_line", },
+                    { title: "예약자 인원", dataIndx: "receipt-personnel", width: 90, nodrag: true, nodrop: true, cls: "hd_line", },
+                    { title: "탑승 예정 일시", dataIndx: "receipt-plan", width: 100, nodrag: true, nodrop: true, cls: "hd_line", },
+                ]
+            },
+
+            {
+                title: "<span class='header_title'>기사 정보<span>", dataIndx: "driver", nodrag: true, nodrop: true, align: "center",
+                colModel: [
+                    { title: "차량번호", dataIndx: "driver-num", width: 100, nodrag: true, nodrop: true, sortable: false, cls: "hd_line br0", },
+                    { title: "기사 구분", dataIndx: "driver-type", width: 100, nodrag: true, nodrop: true, sortable: false, cls: "hd_line", },
+                    { title: "차량유형", dataIndx: "driver-car", width: 100, nodrag: true, nodrop: true, sortable: false, cls: "hd_line", },
+                    { title: "담당 기사", dataIndx: "driver-charge", width: 100, nodrag: true, nodrop: true, cls: "hd_line", },
+                ]
+            },
+            { title: "상담원", dataIndx: "consultant", width: 80, nodrag: true, nodrop: true, cls: "hd_line", },
+            { title: "회원 전화번호", dataIndx: "member-phone", width: 120, nodrag: true, nodrop: true, cls: "hd_line", },
+            {
+                title: "옵션", dataIndx: "option", width: 60, maxWidth: 60, minWidth: 60, nodrag: true, sortable: false,
+                render: function (ui) {
+                    var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                    var val = rowData[dataIndx];
+                    var lst;
+
+                    var result = "<i class='btn_more icon icon_option'><span class='sr_only'>더보기</span></i>";
+                    return result;
+                },
+                postRender: function (ui) {
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = grid.getCell(ui);
+
+                    $cell.find(".btn_more").bind("click", function (evt) {
+                        var tg = $(this);
+                        showOptions(rowIndx, grid, tg);
+                    });
+                },
+            },
+            {
+                title: "상세보기", dataIndx: "detail", width: 60, maxWidth: 60, minWidth: 60, nodrag: true, nodrop: true, cls: "hd_line",
+                render: function (ui) {
+                    var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                    var val = rowData[dataIndx];
+
+                    var result = "<i class='btn_detail icon icon_search'><span class='sr_only'>상세보기</span></i>";
+                    return result;
+                },
+                postRender: function (ui) {
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = grid.getCell(ui);
+
+                    $cell.find(".btn_detail").bind("click", function (evt) {
+                        var tg = $(this);
+                        var rowData = grid.getRowData({ rowIndx: rowIndx });
+                        var link = rowData.detail;
+                        console.log(link);
+                    });
+                },
+            },
+        ];
+
+        var options_receipt = {
+            scrollModel: { autoFit: true },
+            width: 'auto',
+            minWidth: 980,
+            minHeight: 200,
+            rowHt: 50,
+            rowHtHead: 36,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: dataModel_receipt,
+            colModel: colModel_receipt,
+            selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+        var grid_desc = pq.grid("#grid_receipt", options_receipt);
+
+
+        // grid 회원 목록
+        var dataModel_member = {
+            "data": [
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+                { "no": 1, "center": "울주군행복택시", "group": "중대마을", "regist": "2022-10-18", "name": "주행 중", "phone": "010-2391-6251", "gender": "남", "birthday": "1995", "type": "청소년", "detail": "detail view link url1" },
+            ]
+        };
+
+        var colModel_member = [
+            { title: "번호", dataIndx: "no", width: 60, nodrag: true, nodrop: true, },
+            { title: "센터", dataIndx: "center", width: 120, nodrag: true, nodrop: true, },
+            { title: "그룹 이름", dataIndx: "group", width: 100, nodrag: true, nodrop: true, },
+            { title: "등록일자", dataIndx: "regist", width: 100, nodrag: true, },
+            { title: "회원 이름", dataIndx: "name", width: 100, nodrag: true, nodrop: true, },
+            { title: "전화번호", dataIndx: "phone", width: 100, nodrag: true, nodrop: true, },
+            { title: "성별", dataIndx: "gender", width: 100, nodrag: true, nodrop: true, },
+            { title: "출생연도", dataIndx: "birthday", width: 100, nodrag: true, nodrop: true, },
+            { title: "회원 유형", dataIndx: "type", width: 100, nodrag: true, nodrop: true, },
+            {
+                title: "상세보기", dataIndx: "detail", width: 100, nodrag: true, nodrop: true,
+                render: function (ui) {
+                    var rowData = ui.rowData, dataIndx = ui.dataIndx;
+                    var val = rowData[dataIndx];
+
+                    var result = "<i class='btn_detail icon icon_search'><span class='sr_only'>상세보기</span></i>";
+                    return result;
+                },
+                postRender: function (ui) {
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = grid.getCell(ui);
+
+                    $cell.find(".btn_detail").bind("click", function (evt) {
+                        var tg = $(this);
+                        var rowData = grid.getRowData({ rowIndx: rowIndx });
+                        var link = rowData.detail;
+                        console.log(link);
+                    });
+                },
+            },
+        ];
+
+        var options_member = {
+            scrollModel: { autoFit: true },
+            width: 'auto',
+            minWidth: 980,
+            minHeight: 200,
+            rowHt: 50,
+            rowHtHead: 36,
+            collapsible: { on: false, toggle: false },
+
+            columnBorders: true,
+            rowBorders: true,
+            stripeRows: true,
+
+            postRenderInterval: -1, //synchronous post rendering.
+            dataModel: dataModel_member,
+            colModel: colModel_member,
+            selectionModel: { type: 'row', mode: 'block' },
+
+            columnTemplate: {
+                align: 'center', valign: 'center'
+            },
+            editable: false,
+            freezeCols: 0,
+            freezeRows: 0,
+
+            numberCell: { show: false },
+            reactive: true,
+            roundCorners: false,
+            resizable: true,
+
+            showHeader: true,
+            showTitle: false,
+            showToolbar: false,
+            showTop: false,
+            showBottom: false,
+            virtualX: true, virtualY: true,
+
+            title: "",
+            strNoRows: '조회된 데이터가 없습니다.',
+        };
+
+
+        $(document).on('click', '.tabs li a', function () {
+            var tg = $(this).closest('li');
+            var idx = tg.index();
+
+            if (grid_desc !== undefined) {
+                grid_desc.destroy();
+            }
+
+            if (idx === 1) {
+                grid_desc = pq.grid("#grid_member", options_member);
+            } else {
+                grid_desc = pq.grid("#grid_receipt", options_receipt);
+            }
+        })
+
+        $(document).on('click', '.detail_top .left_area .btn', function () {
+            $('.btn').removeClass('color_black');
+            $(this).addClass('color_black');
+        })
+
+
+    });
+</script>
+
+</html>
