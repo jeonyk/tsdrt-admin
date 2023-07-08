@@ -11,7 +11,12 @@
 - 2022.12 – 2023.05
 - Front-End 3명, Back-End 3명
 
-## 2. 사용 기술
+## 2. 담당업무
+- 대시보드, 예약접수 마크업
+- Tmap API, Naver Map API 적용
+- Paramquery grid API 적용
+
+## 3. 사용 기술
 #### `Front-end`
   - Javascript
   - HTML5
@@ -34,20 +39,20 @@ contents :
 
 
 
-## TITLE ✨💻🚇📖😄
+<!-- ## TITLE ✨💻🚇📖😄 -->
 
-desc ([desc](https://jeonyk.github.io) desc.):
+<!-- desc ([desc](https://jeonyk.github.io) desc.): -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<table>
+<!-- <table>
   <tr>
     <td align="center"><a href="https://jeonyk.github.io"><img src="https://avatars2.githubusercontent.com/u/3272748?v=4" width="100px;" alt=""/><br /><sub><b>Jeonyk</b></sub></a><br /><a href="https://github.com" title="Code"></a> <a href="https://github.com/" title="Documentation"></a> <a href="#infra" title=""></a></td>
   </tr>
-</table>
+</table> -->
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project desc!
+<!-- This project desc! -->
