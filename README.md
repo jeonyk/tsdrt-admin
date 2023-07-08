@@ -1,6 +1,8 @@
 # TSDRT ADMIN
 >TS한국교통안전공단 행복택시 관리시스템
 
+<img src="https://jeonyk.github.io/images/project1-1.jpg" alt="">
+<img src="https://jeonyk.github.io/images/project1-2.jpg" alt="">
 <!-- <p align="center"><a href="https://jeonyk.github.io" target="_blank" rel="noopener noreferrer"><img src="./image/intro.png" alt=""></a></p> -->
 
 <!-- <p align="center"><strong>desc</strong></p> -->
@@ -19,7 +21,7 @@
 ## 3. 사용 기술
 #### `Front-end`
   - Javascript
-  - HTML5
+  - HTML
   - SCSS
   - GULP
 <!-- desc.
