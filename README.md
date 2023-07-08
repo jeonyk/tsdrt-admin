@@ -1,18 +1,23 @@
 # TSDRT ADMIN
-TS한국교통안전공단 행복택시 관리시스템
+>TS한국교통안전공단 행복택시 관리시스템
 
-<p align="center"><a href="https://jeonyk.github.io" target="_blank" rel="noopener noreferrer"><img src="./image/intro.png" alt=""></a></p>
+<!-- <p align="center"><a href="https://jeonyk.github.io" target="_blank" rel="noopener noreferrer"><img src="./image/intro.png" alt=""></a></p> -->
 
-<p align="center"><strong>desc</strong></p>
+<!-- <p align="center"><strong>desc</strong></p> -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+<!-- [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) -->
 
-## TITLE
+## 1. 제작 기간 & 참여 인원
+- 2022.12 – 2023.05
+- Front-End 3명, Back-End 3명
 
-desc [desc](https://jeonyk.github.io) desc.
-
-## TITLE
-desc.
+## 2. 사용 기술
+#### `Front-end`
+  - Javascript
+  - HTML5
+  - SCSS
+  - GULP
+<!-- desc.
 desc [desc](https://jeonyk.github.io) desc.
 
 ```
@@ -25,7 +30,7 @@ contents :
 # issue example - fixing the wrong info
 title : 
 contents : 
-```
+``` -->
 
 
 
