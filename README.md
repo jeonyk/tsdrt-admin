@@ -1,4 +1,4 @@
-# TSDRT ADMIN
+# TSDRT ADMIN ✨
 >TS한국교통안전공단 행복택시 관리시스템
 
 <img src="https://jeonyk.github.io/images/project1-1.jpg" alt="">
@@ -9,16 +9,16 @@
 
 <!-- [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors) -->
 
-## 1. 제작 기간 & 참여 인원
+### 1. 제작 기간 & 참여 인원 📖
 - 2022.12 – 2023.05
 - Front-End 3명, Back-End 3명
 
-## 2. 담당업무
+### 2. 담당업무 😄
 - 대시보드, 예약접수 마크업
 - Tmap API, Naver Map API 적용
 - Paramquery grid API 적용
 
-## 3. 사용 기술
+### 3. 사용 기술 💻
 #### `Front-end`
   - Javascript
   - HTML
